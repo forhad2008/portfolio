@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Forhad | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS STYLING --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #00d2ff;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #00d2ff;
+            border-radius: 3px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+        .menu-window {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s ease;
+        }
+
+        .menu-window.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .menu-window ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu-window ul li {
+            margin: 20px 0;
+        }
+
+        .menu-window ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .menu-window ul li a:hover {
+            color: #00d2ff;
+        }
+
+        /* --- PROFILE & COVER SECTION --- */
+        .header-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 80px;
+            position: relative;
+            text-align: center;
+        }
+
+        .cover-photo {
+            width: 100%;
+            height: 250px;
+            background: #222;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+
+        .cover-photo:hover img {
+            opacity: 0.8;
+        }
+
+        .profile-area {
+            position: relative;
+            margin-top: -75px;
+            /* প্রোফাইল পিক অর্ধেক কভারের ওপর থাকবে */
+            display: inline-block;
+        }
+
+        .profile-area img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #0f0f0f;
+            background: #0f0f0f;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Lightbox for Cover View */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            cursor: pointer;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 80%;
+            border: 2px solid #00d2ff;
+            border-radius: 10px;
+        }
+
+        /* Main Content */
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+        }
+
+        h3 {
+            font-weight: 400;
+            color: #aaa;
+        }
+
+        .highlight {
+            color: #00d2ff;
+            border-right: 2px solid #00d2ff;
+            padding-right: 5px;
+        }
+
+        p {
+            color: #888;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #00d2ff;
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .cover-photo {
+                height: 180px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2 class="logo"><span>Abdullah</span> Forhad</h2>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="menu-window" id="menu-window">
+        <ul>
+            <li><a href="#" class="menu-link">Home</a></li>
+            <li><a href="about.html" class="menu-link">About Me</a></li>
+            <li><a href="service.html" class="menu-link">Services</a></li>
+            <li><a href="contact.html" class="menu-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="header-wrapper">
+        <div class="cover-photo" id="cover-click">
+            <img src="2.jpg" alt="Cover Photo" id="main-cover">
+        </div>
+        <div class="profile-area">
+            <img src="1.jpg" alt="Abdullah Forhad">
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <img src="" alt="Full View" id="lightbox-img">
+    </div>
+
+    <div class="container">
+        <h3>Hello, I'm</h3>
+        <h1>Abdullah Forhad</h1>
+        <h2>And I'm a <span class="highlight"></span></h2>
+
+        <p>
+            Expert Graphic Designer and Web Developer focused on creating
+            high-impact digital experiences and modern visual identities.
+        </p>
+
+        <a href="contact.html" class="btn">Hair Me</a>
+    </div>
+
+    <script>
+        /* --- COVER PHOTO LIGHTBOX LOGIC --- */
+        const coverClick = document.getElementById('cover-click');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const mainCover = document.getElementById('main-cover');
+
+        coverClick.addEventListener('click', () => {
+            lightboxImg.src = mainCover.src;
+            lightbox.style.display = 'flex';
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        /* --- MENU LOGIC --- */
+        const hamburger = document.getElementById('hamburger');
+        const menuWindow = document.getElementById('menu-window');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            menuWindow.classList.toggle('open');
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                menuWindow.classList.remove('open');
+            });
+        });
+
+        /* --- TYPING ANIMATION --- */
+        const textArr = ["Web Developer", "Graphics Designer",];
+        let i = 0, j = 0, currentText = "", isDeleting = false;
+
+        function type() {
+            const element = document.querySelector(".highlight");
+            if (!isDeleting && j <= textArr[i].length) {
+                currentText = textArr[i].substring(0, j++);
+            } else if (isDeleting && j >= 0) {
+                currentText = textArr[i].substring(0, j--);
+            }
+            element.textContent = currentText;
+            if (!isDeleting && j === textArr[i].length + 1) {
+                isDeleting = true;
+                setTimeout(type, 1500);
+                return;
+            }
+            if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % textArr.length;
+            }
+            setTimeout(type, isDeleting ? 70 : 150);
+        }
+        document.addEventListener('DOMContentLoaded', type);
+    </script>
+
+</body>
+
+</html>

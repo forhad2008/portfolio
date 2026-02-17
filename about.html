@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Abdullah Forhad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* About Card Container */
+        .about-card {
+            background: #1a1a1a;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* সজ্জার জন্য ওপরের নীল বর্ডার */
+        .about-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #00d2ff;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #222;
+        }
+
+        .info-item h3 {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .info-item span {
+            color: #fff;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .highlight-text {
+            color: #00d2ff !important;
+        }
+
+        .back-btn {
+            display: block;
+            margin-top: 30px;
+            text-align: center;
+            color: #00d2ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* জন্ম তারিখের জন্য বিশেষ ডিজাইন */
+        .birth-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 480px) {
+            .about-card {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="about-card">
+        <h1>About Me</h1>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <h3>First Name</h3>
+                <span>Abdullah</span>
+            </div>
+            <div class="info-item">
+                <h3>Last Name</h3>
+                <span>Forhad</span>
+            </div>
+            <div class="info-item">
+                <h3>Country</h3>
+                <span>Bangladesh</span>
+            </div>
+            <div class="info-item">
+                <h3>Gender</h3>
+                <span>Male</span>
+            </div>
+            <div class="info-item">
+                <h3>Mentality</h3>
+                <span class="highlight-text">Alpha</span>
+            </div>
+            <div class="info-item">
+                <h3>Profession</h3>
+                <span class="highlight-text">Designing</span>
+            </div>
+            <div class="info-item">
+                <h3>Favorite</h3>
+                <span>Boxing</span>
+            </div>
+        </div>
+
+        <div class="birth-info">
+            Born on <strong>20 November, 2008</strong>
+        </div>
+
+        <a href="index.html" class="back-btn">← Back to Portfolio</a>
+    </div>
+
+</body>
+
+</html>

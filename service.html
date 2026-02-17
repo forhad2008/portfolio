@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Abdullah Forhad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 20px 50px;
+        }
+
+        /* Language Switcher Button */
+        .lang-switch {
+            position: fixed;
+            top: 25px;
+            right: 100px;
+            /* Hamburger মেনুর পাশে থাকবে */
+            z-index: 2001;
+        }
+
+        .lang-btn {
+            background: #00d2ff;
+            color: #000;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover {
+            background: #fff;
+        }
+
+        /* Header Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h1 span {
+            color: #00d2ff;
+        }
+
+        .section-title p {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Services Grid */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .service-card {
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #333;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: #00d2ff;
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+        }
+
+        .icon-box {
+            font-size: 50px;
+            color: #00d2ff;
+            margin-bottom: 20px;
+        }
+
+        .service-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .service-btn {
+            color: #00d2ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #00d2ff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .service-btn:hover {
+            background: #00d2ff;
+            color: #000;
+        }
+
+        .back-home {
+            margin-top: 50px;
+            text-decoration: none;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .back-home:hover {
+            color: #00d2ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="lang-switch">
+        <button class="lang-btn" id="lang-btn" onclick="toggleLanguage()">Switch to Bangla</button>
+    </div>
+
+    <div class="section-title">
+        <h1 id="title-main">My <span>Services</span></h1>
+        <p id="title-sub">Premium digital solutions for your business</p>
+    </div>
+
+    <div class="services-container">
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-code"></i></div>
+            <h2 id="s1-title">Web Development</h2>
+            <p id="s1-desc">I build modern and responsive websites using HTML, CSS, and JavaScript to ensure the best
+                online presence.</p>
+            <a href="#" class="service-btn" id="s1-btn">View Details</a>
+        </div>
+
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
+            <h2 id="s2-title">Graphic Design</h2>
+            <p id="s2-desc">Creating professional logos, banners, and social media posts to build a strong visual
+                identity for your brand.</p>
+            <a href="#" class="service-btn" id="s2-btn">View Details</a>
+        </div>
+
+        <div class="service-card">
+            <div class="icon-box"><i class="fas fa-vial"></i></div>
+            <h2 id="s3-title">UI/UX Design</h2>
+            <p id="s3-desc">Designing user-friendly interfaces that ensure a seamless and delightful experience for your
+                application users.</p>
+            <a href="#" class="service-btn" id="s3-btn">View Details</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-home" id="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+    <script>
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                btn: "Switch to Bangla",
+                titleMain: "My <span>Services</span>",
+                titleSub: "Premium digital solutions for your business",
+                s1Title: "Web Development",
+                s1Desc: "I build modern and responsive websites using HTML, CSS, and JavaScript to ensure the best online presence.",
+                s1Btn: "View Details",
+                s2Title: "Graphic Design",
+                s2Desc: "Creating professional logos, banners, and social media posts to build a strong visual identity for your brand.",
+                s2Btn: "View Details",
+                s3Title: "UI/UX Design",
+                s3Desc: "Designing user-friendly interfaces that ensure a seamless and delightful experience for your application users.",
+                s3Btn: "View Details",
+                back: "Back to Home"
+            },
+            bn: {
+                btn: "English-এ দেখুন",
+                titleMain: "আমার <span>সেবাসমূহ</span>",
+                titleSub: "আপনার ব্যবসার জন্য প্রিমিয়াম ডিজিটাল সমাধান",
+                s1Title: "ওয়েব ডেভেলপমেন্ট",
+                s1Desc: "আমি আধুনিক এবং রেসপনসিভ ওয়েবসাইট তৈরি করি যা আপনার অনলাইন উপস্থিতি নিশ্চিত করে।",
+                s1Btn: "বিস্তারিত",
+                s2Title: "গ্রাফিক্স ডিজাইন",
+                s2Desc: "পেশাদার লোগো, ব্যানার এবং সোশ্যাল মিডিয়া পোস্টের মাধ্যমে আপনার ব্র্যান্ডের পরিচয় তৈরি করি।",
+                s2Btn: "বিস্তারিত",
+                s3Title: "ইউআই/ইউএক্স ডিজাইন",
+                s3Desc: "ব্যবহারকারী-বান্ধব ইন্টারফেস ডিজাইন করি যা অ্যাপ ব্যবহারের অভিজ্ঞতাকে সহজ করে তোলে।",
+                s3Btn: "বিস্তারিত",
+                back: "হোমে ফিরে যান"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'bn' : 'en';
+            const lang = translations[currentLang];
+
+            document.getElementById('lang-btn').innerText = lang.btn;
+            document.getElementById('title-main').innerHTML = lang.titleMain;
+            document.getElementById('title-sub').innerText = lang.titleSub;
+            document.getElementById('s1-title').innerText = lang.s1Title;
+            document.getElementById('s1-desc').innerText = lang.s1Desc;
+            document.getElementById('s1-btn').innerText = lang.s1Btn;
+            document.getElementById('s2-title').innerText = lang.s2Title;
+            document.getElementById('s2-desc').innerText = lang.s2Desc;
+            document.getElementById('s2-btn').innerText = lang.s2Btn;
+            document.getElementById('s3-title').innerText = lang.s3Title;
+            document.getElementById('s3-desc').innerText = lang.s3Desc;
+            document.getElementById('s3-btn').innerText = lang.s3Btn;
+            document.getElementById('back-link').innerHTML = `<i class="fas fa-arrow-left"></i> ${lang.back}`;
+        }
+    </script>
+</body>
+
+</html>
