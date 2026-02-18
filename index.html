@@ -4,10 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Forhad | Portfolio</title>
+    <title>Abdullah Forhad | Luxury Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <style>
-        /* --- CSS STYLING --- */
+        :root {
+            --primary-color: #00eaff;
+            --secondary-color: #3a7bd5;
+            --bg-dark: #000000;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-light: #e0e0e0;
+            --text-medium: #a0a0a0;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,90 +27,144 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        body {
-            background-color: #0f0f0f;
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* Navigation Bar */
-        nav {
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* --- Aurora Background Effect --- */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 50px;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a1a);
+            background-size: 400% 400%;
+            animation: aurora-glow 20s ease infinite;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        @keyframes aurora-glow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* --- Custom Cursor --- */
+        .cursor {
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: exclusion;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(15, 15, 15, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 12px 8%;
+            background: rgba(0, 0, 0, 0.9);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-light);
         }
 
         .logo span {
-            color: #00d2ff;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px rgba(0, 234, 255, 0.7);
         }
 
-        /* Hamburger Menu */
         .hamburger {
-            width: 30px;
-            height: 20px;
+            cursor: pointer;
+            z-index: 2100;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            cursor: pointer;
+            gap: 6px;
         }
 
-        .hamburger span {
-            display: block;
+        .hamburger div {
+            width: 30px;
             height: 3px;
-            width: 100%;
-            background-color: #00d2ff;
+            background: var(--primary-color);
+            transition: 0.4s ease-in-out;
             border-radius: 3px;
-            transition: all 0.3s ease-in-out;
         }
 
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(8.5px) rotate(45deg);
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
-        .hamburger.active span:nth-child(2) {
+        .hamburger.active div:nth-child(2) {
             opacity: 0;
         }
 
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-8.5px) rotate(-45deg);
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -7px);
         }
 
+        /* --- Menu Window --- */
         .menu-window {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1500;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.5s ease;
+            clip-path: circle(0% at 90% 5%);
+            transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            pointer-events: none;
         }
 
         .menu-window.open {
-            opacity: 1;
-            visibility: visible;
+            clip-path: circle(150% at 90% 5%);
+            pointer-events: all;
         }
 
         .menu-window ul {
@@ -106,259 +172,329 @@
             text-align: center;
         }
 
-        .menu-window ul li {
-            margin: 20px 0;
+        .menu-window li {
+            margin: 30px 0;
         }
 
-        .menu-window ul li a {
-            text-decoration: none;
-            color: #fff;
+        .menu-window a {
             font-size: 2.5rem;
+            color: var(--text-light);
+            text-decoration: none;
             font-weight: 700;
-            transition: 0.3s;
+            transition: 0.4s ease;
         }
 
-        .menu-window ul li a:hover {
-            color: #00d2ff;
+        .menu-window a:hover {
+            color: var(--primary-color);
         }
 
-        /* --- PROFILE & COVER SECTION --- */
+        /* --- Hero Content --- */
         .header-wrapper {
             width: 100%;
-            max-width: 1000px;
-            margin-top: 80px;
-            position: relative;
-            text-align: center;
+            max-width: 1200px;
+            margin: 120px auto 40px;
+            padding: 0 30px;
         }
 
         .cover-photo {
             width: 100%;
-            height: 250px;
-            background: #222;
-            border-radius: 0 0 15px 15px;
+            height: 350px;
+            background: #111;
+            border-radius: 25px;
             overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
             cursor: pointer;
             position: relative;
+        }
+
+        .cover-photo::after {
+            content: 'VIEW COVER';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 234, 255, 0.8);
+            color: #000;
+            padding: 8px 15px;
+            font-weight: 700;
+            border-radius: 5px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .cover-photo:hover::after {
+            opacity: 1;
         }
 
         .cover-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.3s;
+            transition: transform 0.5s ease;
         }
 
         .cover-photo:hover img {
-            opacity: 0.8;
+            transform: scale(1.05);
         }
 
-        .profile-area {
-            position: relative;
-            margin-top: -75px;
-            /* প্রোফাইল পিক অর্ধেক কভারের ওপর থাকবে */
-            display: inline-block;
-        }
-
-        .profile-area img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #0f0f0f;
-            background: #0f0f0f;
-            object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Lightbox for Cover View */
+        /* --- Lightbox UI --- */
         #lightbox {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 3000;
-            cursor: pointer;
+            cursor: zoom-out;
         }
 
         #lightbox img {
             max-width: 90%;
             max-height: 80%;
-            border: 2px solid #00d2ff;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 0 50px rgba(0, 234, 255, 0.3);
         }
 
-        /* Main Content */
+        .profile-area {
+            position: relative;
+            margin-top: 0px;
+            text-align: center;
+        }
+
+        .profile-area img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid var(--bg-dark);
+            box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
+            object-fit: cover;
+        }
+
         .container {
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
+            margin: 0 auto;
             padding: 40px 20px;
         }
 
         h1 {
-            font-size: 3rem;
-            margin: 10px 0;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: #ffffff;
+            background: linear-gradient(to right, #ffffff, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
-        h3 {
-            font-weight: 400;
-            color: #aaa;
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
         .highlight {
-            color: #00d2ff;
-            border-right: 2px solid #00d2ff;
+            color: var(--primary-color);
+            border-right: 3px solid var(--primary-color);
             padding-right: 5px;
         }
 
-        p {
-            color: #888;
-            margin: 20px auto;
-            line-height: 1.6;
+        .social-links {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            width: 55px;
+            height: 55px;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #00d2ff;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             color: #000;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             border-radius: 50px;
-            transition: 0.3s;
+            display: inline-block;
+            transition: 0.4s;
         }
 
         .btn:hover {
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
-            transform: translateY(-3px);
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
-            nav {
-                padding: 15px 20px;
-            }
-
             .cover-photo {
-                height: 180px;
+                height: 200px;
             }
 
-            h1 {
-                font-size: 2.2rem;
+            .profile-area img {
+                width: 130px;
+                height: 130px;
+                margin-top: -65px;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="cursor"></div>
+
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Zoomed Cover">
+    </div>
 
     <nav>
-        <h2 class="logo"><span>Port</span>folio</h2>
+        <div class="logo"><span>P</span>ortfolio</div>
         <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </nav>
 
     <div class="menu-window" id="menu-window">
         <ul>
-            <li><a href="#" class="menu-link">Home</a></li>
-            <li><a href="about.html" class="menu-link">About Me</a></li>
-            <li><a href="service.html" class="menu-link">Services</a></li>
-            <li><a href="contact.html" class="menu-link">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
-    <div class="header-wrapper">
-        <div class="cover-photo" id="cover-click">
-            <img src="2.jpg" alt="Cover Photo" id="main-cover">
+    <section class="hero-section">
+        <div class="header-wrapper">
+            <div class="cover-photo" id="cover-trigger">
+                <img src="2.jpg" alt="Cover Photo">
+            </div>
+            <div class="profile-area">
+                <img src="1.jpg" alt="Abdullah Forhad">
+            </div>
         </div>
-        <div class="profile-area">
-            <img src="1.jpg" alt="Abdullah Forhad">
+
+        <div class="container">
+            <h3 style="color: var(--text-medium); margin-bottom: 10px;">Hi there, I'm</h3>
+            <h1 class="name-reveal">Abdullah Forhad</h1>
+            <h2 class="gsap-reveal">A Professional <span class="highlight"></span></h2>
+
+            <div class="social-links gsap-reveal">
+                <a href="https://www.facebook.com/profile.php?id=61580779565120"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/forhad2008"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+            </div>
+
+            <p class="gsap-reveal" style="color: var(--text-medium); max-width: 600px; margin: 0 auto 30px;">
+                Expert Graphic Designer and Web Developer focused on creating high-impact digital experiences and modern visual
+                identities.
+                .
+            </p>
+
+            <div class="btn-group gsap-reveal" style="display: flex; gap: 15px; justify-content: center;">
+                <a href="contact.html" class="btn">Let's Start a Project</a>
+                <a href="resume.html" class="btn"
+                    style="background: transparent; color: #fff; border: 1px solid var(--primary-color);">View
+                    Resume</a>
+            </div>
         </div>
-    </div>
-
-    <div id="lightbox">
-        <img src="" alt="Full View" id="lightbox-img">
-    </div>
-
-    <div class="container">
-        <h3>Hello, I'm</h3>
-        <h1>Abdullah Forhad</h1>
-        <h2>And I'm a <span class="highlight"></span></h2>
-
-        <p>
-            Expert Graphic Designer and Web Developer focused on creating
-            high-impact digital experiences and modern visual identities.
-        </p>
-
-        <a href="contact.html" class="btn">Hire Me</a>
-    </div>
+    </section>
 
     <script>
-        /* --- COVER PHOTO LIGHTBOX LOGIC --- */
-        const coverClick = document.getElementById('cover-click');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const mainCover = document.getElementById('main-cover');
+        gsap.registerPlugin(ScrollTrigger);
 
-        coverClick.addEventListener('click', () => {
-            lightboxImg.src = mainCover.src;
-            lightbox.style.display = 'flex';
+        // 1. Cursor
+        const cursor = document.querySelector('.cursor');
+        window.addEventListener('mousemove', e => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.3 });
         });
 
-        lightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
+        // 2. Entrance Animation
+        const tl = gsap.timeline();
+        tl.from("nav", { y: -50, opacity: 0, duration: 1 })
+            .from(".cover-photo", { scale: 1.1, opacity: 0, duration: 1.2 }, "-=0.5")
+            .from(".profile-area img", { y: 50, opacity: 0, duration: 0.8 }, "-=0.8")
+            .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
+            .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4");
 
-        /* --- MENU LOGIC --- */
+        // 3. Floating Image
+        gsap.to(".profile-area img", { y: 15, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+        // 4. Typing Effect
+        const textArr = ["Web Developer", "Graphic Designer", "UI/UX Specialist"];
+        let i = 0, j = 0, isDeleting = false;
+
+        function type() {
+            const element = document.querySelector(".highlight");
+            if (!element) return;
+            const current = textArr[i];
+            element.textContent = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
+
+            let speed = isDeleting ? 60 : 120;
+            if (!isDeleting && j === current.length + 1) { speed = 2000; isDeleting = true; }
+            else if (isDeleting && j < 0) { isDeleting = false; i = (i + 1) % textArr.length; j = 0; speed = 500; }
+            setTimeout(type, speed);
+        }
+
+        // 5. Menu
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
-        const menuLinks = document.querySelectorAll('.menu-link');
-
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuWindow.classList.toggle('open');
         });
 
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                menuWindow.classList.remove('open');
+        // 6. Scroll Navbar
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // 7. Lightbox Logic (CLICK COVER PHOTO)
+        const coverTrigger = document.getElementById('cover-trigger');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        coverTrigger.addEventListener('click', () => {
+            const imgSrc = coverTrigger.querySelector('img').src;
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+            gsap.fromTo(lightbox, { opacity: 0 }, { opacity: 1, duration: 0.5 });
+            gsap.fromTo(lightboxImg, { scale: 0.8 }, { scale: 1, duration: 0.5, ease: "back.out(1.7)" });
+        });
+
+        lightbox.addEventListener('click', () => {
+            gsap.to(lightbox, {
+                opacity: 0, duration: 0.3, onComplete: () => {
+                    lightbox.style.display = 'none';
+                }
             });
         });
 
-        /* --- TYPING ANIMATION --- */
-        const textArr = ["Web Developer", "Graphics Designer",];
-        let i = 0, j = 0, currentText = "", isDeleting = false;
-
-        function type() {
-            const element = document.querySelector(".highlight");
-            if (!isDeleting && j <= textArr[i].length) {
-                currentText = textArr[i].substring(0, j++);
-            } else if (isDeleting && j >= 0) {
-                currentText = textArr[i].substring(0, j--);
-            }
-            element.textContent = currentText;
-            if (!isDeleting && j === textArr[i].length + 1) {
-                isDeleting = true;
-                setTimeout(type, 1500);
-                return;
-            }
-            if (isDeleting && j === 0) {
-                isDeleting = false;
-                i = (i + 1) % textArr.length;
-            }
-            setTimeout(type, isDeleting ? 70 : 150);
-        }
         document.addEventListener('DOMContentLoaded', type);
     </script>
-
 </body>
 
-
 </html>
-
