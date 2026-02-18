@@ -188,19 +188,28 @@
         }
 
         /* UPDATED COVER PHOTO WEIGHT */
-        .cover-photo {
-            width: 100%;
-            height: 450px;
-            /* Increased from 350px for more visual weight */
-            background: #111;
-            border-radius: 25px;
-            overflow: hidden;
-            /* Stronger Shadow and a subtle border for "weight" */
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 234, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            position: relative;
-        }
+.cover-photo {
+    /* Use relative to allow the ::after overlay to position correctly */
+    position: relative; 
+    
+    /* Center the element horizontally within its parent */
+    margin: 0 auto; 
+    
+    /* Keep width at 100% so it fits the .header-wrapper container */
+    width: 100%; 
+    
+    /* The "weight" you requested */
+    height: 450px; 
+    
+    background: #111;
+    border-radius: 25px;
+    overflow: hidden;
+    
+    /* Visual depth (Weight) */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 234, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
 
         .cover-photo::after {
             content: 'VIEW COVER';
@@ -488,3 +497,4 @@
 </body>
 
 </html>
+
