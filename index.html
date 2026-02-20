@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forhad's Portfolio website</title>
+    <title>Forhad's Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -19,7 +19,7 @@
             --bg-dark: #000000;
             --card-bg: rgba(255, 255, 255, 0.03);
             --text-light: #e0e0e0;
-            --text-medium: #a0a0a0;
+            --text-medium: #cac5c5;
         }
 
         /* --- 3D Canvas Styling --- */
@@ -284,7 +284,7 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            border: 6px solid var(--bg-dark);
+            border:#00eaff;
             box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
             object-fit: cover;
             margin-top: -90px;
@@ -544,7 +544,7 @@
             .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
             .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4");
 
-        const textArr = ["Web Developer", "Graphic Designer",];
+        const textArr = ["Web Developer", "Graphic Designer"];
         let i = 0, j = 0, isDeleting = false;
         function type() {
             const element = document.querySelector(".highlight");
@@ -581,5 +581,3 @@
 </body>
 
 </html>
-
-
