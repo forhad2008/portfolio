@@ -13,14 +13,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* --- KEEPING YOUR ORIGINAL STYLES --- */
         :root {
             --primary-color: #00eaff;
             --secondary-color: #2b71d3;
             --bg-dark: #000000;
             --card-bg: rgba(255, 255, 255, 0.03);
             --text-light: #e0e0e0;
-            --text-medium: #cac5c5;
+            --text-medium: #e9e2e2;
         }
 
         #canvas-container {
@@ -263,11 +262,9 @@
             margin-bottom: 15px;
         }
 
-        /* --- TITLE SCROLLER FIX (CSS) --- */
         .scroller-window {
             display: inline-block;
             height: 1.2em;
-            /* Ensure it matches line-height */
             overflow: hidden;
             vertical-align: bottom;
         }
@@ -426,7 +423,7 @@
     </section>
 
     <script>
-        // --- MECHANICAL PLATE SNAKE ---
+        // --- MECHANICAL HEXAGONAL PLATE SNAKE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -449,8 +446,14 @@
         }
         const snakeCurve = new THREE.CatmullRomCurve3(points);
 
-        const plateGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.15, 32);
-        const plateMat = new THREE.MeshStandardMaterial({ color: 0xeeeeee, metalness: 1.0, roughness: 0.15 });
+        // সেগমেন্ট ৬ করে এটাকে ষড়ভুজ করা হয়েছে এবং flatShading দিয়ে ধারগুলো স্পষ্ট করা হয়েছে
+        const plateGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.15, 6);
+        const plateMat = new THREE.MeshStandardMaterial({
+            color: 0xeeeeee,
+            metalness: 1.0,
+            roughness: 0.15,
+            flatShading: true
+        });
 
         const segmentCount = 140;
         const plates = [];
@@ -461,11 +464,11 @@
             plates.push(plate);
         }
         scene.add(snakeGroup);
-        camera.position.z = 14;
+        camera.position.z = 12;
 
         function animateSnake() {
             requestAnimationFrame(animateSnake);
-            const time = Date.now() * 0.0004; // Slow metallic speed
+            const time = Date.now() * 0.0004;
             plates.forEach((plate, i) => {
                 const t = (i / segmentCount + time) % 1;
                 const pos = snakeCurve.getPointAt(t);
@@ -483,13 +486,12 @@
         function initTitleScroller() {
             const track = document.getElementById('scroller-track');
             const items = track.querySelectorAll('.highlight');
-            const itemHeight = items[0].offsetHeight;
-
-            const scrollerTl = gsap.timeline({ repeat: -1 });
-
-            // Move to second item, wait 3s, then move back, wait 3s
-            scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
-                .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
+            if (items.length > 0) {
+                const itemHeight = items[0].offsetHeight;
+                const scrollerTl = gsap.timeline({ repeat: -1 });
+                scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
+                    .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
+            }
         }
 
         // --- GSAP ENTRANCE & UI ---
@@ -500,7 +502,7 @@
             .from(".profile-area img", { y: 50, opacity: 0, duration: 0.8 }, "-=0.8")
             .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
             .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4")
-            .add(() => initTitleScroller()); // Start scroller after entrance
+            .add(() => initTitleScroller());
 
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
@@ -539,4 +541,3 @@
 </body>
 
 </html>
-
