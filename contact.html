@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #00d2ff;
+            --accent: #0072ff;
+            --glass: rgba(0, 210, 255, 0.05);
+            --border: rgba(0, 210, 255, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,58 +23,95 @@
         }
 
         body {
-            background-color: #0f0f0f;
+            background-color: #050505;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* Language Switcher */
-        .lang-switch {
+        /* Animated Background Particles */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
+            z-index: -2;
+        }
+
+        .background-blobs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(-10%, -10%);
+            }
+
+            to {
+                transform: translate(20%, 20%);
+            }
+        }
+
+        /* Language Switcher Styling */
+        #google_translate_element {
             position: fixed;
-            top: 25px;
-            right: 25px;
-            z-index: 2001;
-        }
-
-        .lang-btn {
-            background: #00d2ff;
-            color: #000;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
         }
 
         .contact-container {
-            background: #1a1a1a;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             width: 100%;
-            max-width: 500px;
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #333;
+            max-width: 450px;
+            padding: 50px 30px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 210, 255, 0.1);
+            position: relative;
         }
 
         .section-title h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
-            color: #00d2ff;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
         .section-title p {
-            color: #888;
-            margin-bottom: 30px;
+            color: #aaa;
+            margin-bottom: 35px;
+            font-size: 0.9rem;
         }
 
-        /* Contact Cards */
         .contact-method {
             display: flex;
             flex-direction: column;
@@ -78,71 +123,99 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            padding: 15px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 15px;
             text-decoration: none;
             color: #fff;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            border: 1px solid transparent;
+            font-size: 1rem;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* WhatsApp Style */
+        .contact-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
         .whatsapp {
             background: rgba(37, 211, 102, 0.1);
             border-color: #25d366;
             color: #25d366;
         }
+
         .whatsapp:hover {
             background: #25d366;
             color: #000;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
         }
 
-        /* Email Style */
         .email {
             background: rgba(0, 210, 255, 0.1);
             border-color: #00d2ff;
             color: #00d2ff;
         }
+
         .email:hover {
             background: #00d2ff;
             color: #000;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
         }
 
-        /* Facebook Style */
         .facebook {
             background: rgba(24, 119, 242, 0.1);
             border-color: #1877f2;
             color: #1877f2;
         }
+
         .facebook:hover {
             background: #1877f2;
             color: #fff;
+            box-shadow: 0 0 20px rgba(24, 119, 242, 0.4);
         }
 
         .back-home {
-            margin-top: 30px;
-            display: inline-block;
+            margin-top: 35px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             text-decoration: none;
-            color: #888;
+            color: #666;
+            font-size: 0.9rem;
             transition: 0.3s;
         }
 
-        .back-home:hover { color: #00d2ff; }
+        .back-home:hover {
+            color: var(--primary);
+            transform: translateX(-5px);
+        }
 
+        /* Hide Google Translate Bar */
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
     </style>
 </head>
+
 <body>
 
-    <div class="lang-switch">
-        <button class="lang-btn" id="lang-btn" onclick="toggleLanguage()">Bangla</button>
+    <div class="background-blobs">
+        <div class="blob" style="top: 10%; left: 10%;"></div>
+        <div class="blob" style="bottom: 10%; right: 10%; background: #0072ff;"></div>
     </div>
+
+    <div id="google_translate_element"></div>
 
     <div class="contact-container">
         <div class="section-title">
-            <h1 id="c-title">Get In Touch</h1>
-            <p id="c-sub">Feel free to reach out for projects or collaborations.</p>
+            <h1>Get In Touch</h1>
+            <p>Ready to bring your ideas to life? Let's connect and build something amazing together.</p>
         </div>
 
         <div class="contact-method">
@@ -150,47 +223,33 @@
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
 
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=forhadalpha08@gmail.com&su=Inquiry%20from%20Portfolio&body=Hello%20Abdullah,"
-                target="_blank" class="contact-btn email">
-                <i class="far fa-envelope"></i> Email Me     </a>
-     
-            <a href="https://www.facebook.com/profile.php?id=61580779565120" class="contact-btn facebook" target="_blank">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=forhadalpha08@gmail.com" target="_blank"
+                class="contact-btn email">
+                <i class="far fa-envelope"></i> Email Me
+            </a>
+
+            <a href="https://www.facebook.com/profile.php?id=61580779565120" class="contact-btn facebook"
+                target="_blank">
                 <i class="fab fa-facebook-f"></i> Facebook
             </a>
         </div>
 
-        <a href="index.html" class="back-home" id="back-home">
+        <a href="index.html" class="back-home">
             <i class="fas fa-arrow-left"></i> Back to Home
         </a>
     </div>
 
-    <script>
-        let currentLang = 'en';
-
-        const translations = {
-            en: {
-                btn: "Bangla",
-                title: "Get In Touch",
-                sub: "Feel free to reach out for projects or collaborations.",
-                back: "Back to Home"
-            },
-            bn: {
-                btn: "English",
-                title: "যোগাযোগ করুন",
-                sub: "প্রকল্প বা সহযোগিতার জন্য নির্দ্বিধায় যোগাযোগ করুন।",
-                back: "হোমে ফিরে যান"
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'bn' : 'en';
-            const lang = translations[currentLang];
-
-            document.getElementById('lang-btn').innerText = lang.btn;
-            document.getElementById('c-title').innerText = lang.title;
-            document.getElementById('c-sub').innerText = lang.sub;
-            document.getElementById('back-home').innerHTML = `<i class="fas fa-arrow-left"></i> ${lang.back}`;
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
     </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
+
 </html>
