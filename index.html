@@ -127,6 +127,24 @@
             gap: 6px;
         }
 
+        /* Hamburger active state - transformation logic */
+.hamburger.active div:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Ensure smooth transition */
+.hamburger div {
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
         .hamburger div {
             width: 30px;
             height: 3px;
@@ -336,7 +354,48 @@
                 height: 130px;
                 margin-top: -65px;
             }
+        
         }
+        .glass-box {
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03); /* Subtle white overlay */
+    backdrop-filter: blur(15px); /* The "Glass" effect */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle glow effect on the left border */
+.glass-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    background: var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.glass-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.glass-box p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
     </style>
 </head>
 
@@ -416,6 +475,14 @@
                     style="background: transparent; color: #fff; border: 1px solid var(--primary-color);">View
                     Resume</a>
             </div>
+            <div class="glass-box gsap-reveal">
+                <h3>My Journey</h3>
+                <p>
+                    My path into the digital world began with a fascination for how visuals can communicate
+                    emotions, leading me to master Graphic Design. As I shaped brands, I realized the need
+                    to bring those designs to life through code. This sparked my transition into Web Development,
+                    where I now bridge the gap between aesthetic beauty and functional performance.
+                </p>      </div>
         </div>
         <audio id="bg-audio" loop>
             <source src="m.mp4" type="audio/mpeg">
