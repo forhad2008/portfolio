@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
+        /* --- KEEPING YOUR ORIGINAL STYLES --- */
         :root {
             --primary-color: #00eaff;
             --secondary-color: #2b71d3;
@@ -22,7 +23,6 @@
             --text-medium: #cac5c5;
         }
 
-        /* --- 3D Canvas Styling --- */
         #canvas-container {
             position: fixed;
             top: 0;
@@ -30,7 +30,6 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            /* Behind everything */
             pointer-events: none;
         }
 
@@ -43,32 +42,6 @@
             overflow: hidden;
             z-index: -1;
             pointer-events: none;
-        }
-
-        .floating-svg {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 10s infinite ease-in-out;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
-        }
-
-        .bottom-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            line-height: 0;
         }
 
         * {
@@ -135,11 +108,6 @@
             transition: all 0.3s ease;
         }
 
-        nav.scrolled {
-            padding: 12px 8%;
-            background: rgba(0, 0, 0, 0.9);
-        }
-
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
@@ -166,18 +134,6 @@
             background: var(--primary-color);
             transition: 0.4s ease-in-out;
             border-radius: 3px;
-        }
-
-        .hamburger.active div:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active div:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -7px);
         }
 
         .menu-window {
@@ -238,7 +194,7 @@
             background: #111;
             border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 234, 255, 0.1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
             cursor: pointer;
         }
@@ -284,7 +240,6 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            border:#00eaff;
             box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
             object-fit: cover;
             margin-top: -90px;
@@ -308,15 +263,29 @@
             margin-bottom: 15px;
         }
 
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+        /* --- TITLE SCROLLER FIX (CSS) --- */
+        .scroller-window {
+            display: inline-block;
+            height: 1.2em;
+            /* Ensure it matches line-height */
+            overflow: hidden;
+            vertical-align: bottom;
+        }
+
+        #scroller-track {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
         }
 
         .highlight {
             color: var(--primary-color);
+            height: 1.2em;
+            line-height: 1.2em;
+            display: block;
             border-right: 3px solid var(--primary-color);
             padding-right: 5px;
+            white-space: nowrap;
         }
 
         .social-links {
@@ -421,7 +390,16 @@
         <div class="container">
             <h3 style="color: var(--text-medium); margin-bottom: 10px;">Hi , I'm</h3>
             <h1 class="name-reveal">Abdullah Forhad</h1>
-            <h2 class="gsap-reveal">A Professional <span class="highlight"></span></h2>
+
+            <h2 class="gsap-reveal" style="font-size: 2rem; margin-bottom: 20px;">
+                A Professional
+                <span class="scroller-window">
+                    <span id="scroller-track">
+                        <span class="highlight">Web Developer</span>
+                        <span class="highlight">Graphic Designer</span>
+                    </span>
+                </span>
+            </h2>
 
             <div class="social-links gsap-reveal">
                 <a href="https://www.facebook.com/profile.php?id=61580779565120"><i class="fab fa-facebook-f"></i></a>
@@ -442,120 +420,87 @@
                     Resume</a>
             </div>
         </div>
+        <audio id="bg-audio" loop>
+            <source src="m.mp4" type="audio/mpeg">
+        </audio>
     </section>
 
     <script>
-// --- MECHANICAL PLATE SNAKE (VOID STYLE) ---
+        // --- MECHANICAL PLATE SNAKE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        
-        // High-fidelity renderer settings
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // --- STARK MECHANICAL LIGHTING ---
-        // Top-down bright light for sharp highlights
         const rimLight = new THREE.DirectionalLight(0xffffff, 2.5);
         rimLight.position.set(0, 10, 5);
         scene.add(rimLight);
-
-        // Subtle fill light for the metallic shadows
-        const fillLight = new THREE.PointLight(0x00eaff, 0.5); // The theme's cyan
+        const fillLight = new THREE.PointLight(0x00eaff, 0.5);
         fillLight.position.set(-5, -5, -5);
         scene.add(fillLight);
-
         scene.add(new THREE.AmbientLight(0xffffff, 0.2));
 
-        // --- THE PATH ---
         const points = [];
         for (let i = 0; i < 25; i++) {
-            points.push(new THREE.Vector3(
-                Math.sin(i * 0.4) * 3.5,
-                i * 0.7 - 8,
-                Math.cos(i * 0.4) * 3.5
-            ));
+            points.push(new THREE.Vector3(Math.sin(i * 0.4) * 3.5, i * 0.7 - 8, Math.cos(i * 0.4) * 3.5));
         }
         const snakeCurve = new THREE.CatmullRomCurve3(points);
 
-        // --- THE MECHANICAL SEGMENT ---
-        // Using a thin Cylinder to act as a "Plate" or "Disc"
-        const plateGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.15, 32); 
-        const plateMat = new THREE.MeshStandardMaterial({
-            color: 0xeeeeee,      // Near white for that premium look
-            metalness: 1.0,       // Full metal
-            roughness: 0.15,      // Glossy finish
-        });
+        const plateGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.15, 32);
+        const plateMat = new THREE.MeshStandardMaterial({ color: 0xeeeeee, metalness: 1.0, roughness: 0.15 });
 
-        const segmentCount = 140; // High count for the dense "pattern" look
+        const segmentCount = 140;
         const plates = [];
         const snakeGroup = new THREE.Group();
-
         for (let i = 0; i < segmentCount; i++) {
             const plate = new THREE.Mesh(plateGeo, plateMat);
             snakeGroup.add(plate);
             plates.push(plate);
         }
         scene.add(snakeGroup);
+        camera.position.z = 12;
 
-        camera.position.z = 13;
-
-        // --- ANIMATION LOGIC ---
         function animateSnake() {
             requestAnimationFrame(animateSnake);
-            
-            const time = Date.now() * 0.0008; // Slower, more elegant speed
-
+            const time = Date.now() * 0.0004; // Slow metallic speed
             plates.forEach((plate, i) => {
-                // Distributed positions along the curve
                 const t = (i / segmentCount + time) % 1;
                 const pos = snakeCurve.getPointAt(t);
                 plate.position.copy(pos);
-
-                // Align the plate "face" to the curve direction (tangent)
                 const tangent = snakeCurve.getTangentAt(t);
                 plate.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
-                
-                // Add a slight mechanical offset/wobble for extra detail
                 plate.rotation.z += Math.sin(time + i) * 0.01;
             });
-
-            // Rotate the entire spine slowly
             snakeGroup.rotation.y += 0.0015;
-
             renderer.render(scene, camera);
         }
         animateSnake();
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+        // --- FIXED TITLE SCROLLER LOGIC ---
+        function initTitleScroller() {
+            const track = document.getElementById('scroller-track');
+            const items = track.querySelectorAll('.highlight');
+            const itemHeight = items[0].offsetHeight;
 
-        // --- GSAP & UI LOGIC ---
+            const scrollerTl = gsap.timeline({ repeat: -1 });
+
+            // Move to second item, wait 3s, then move back, wait 3s
+            scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
+                .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
+        }
+
+        // --- GSAP ENTRANCE & UI ---
         gsap.registerPlugin(ScrollTrigger);
         const tl = gsap.timeline();
         tl.from("nav", { y: -50, opacity: 0, duration: 1 })
             .from(".cover-photo", { scale: 1.1, opacity: 0, duration: 1.2 }, "-=0.5")
             .from(".profile-area img", { y: 50, opacity: 0, duration: 0.8 }, "-=0.8")
             .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
-            .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4");
-
-        const textArr = ["Web Developer", "Graphic Designer"];
-        let i = 0, j = 0, isDeleting = false;
-        function type() {
-            const element = document.querySelector(".highlight");
-            if (!element) return;
-            const current = textArr[i];
-            element.textContent = isDeleting ? current.substring(0, j--) : current.substring(0, j++);
-            let speed = isDeleting ? 60 : 120;
-            if (!isDeleting && j === current.length + 1) { speed = 2000; isDeleting = true; }
-            else if (isDeleting && j < 0) { isDeleting = false; i = (i + 1) % textArr.length; j = 0; speed = 500; }
-            setTimeout(type, speed);
-        }
+            .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4")
+            .add(() => initTitleScroller()); // Start scroller after entrance
 
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
@@ -576,7 +521,20 @@
             gsap.to(lightbox, { opacity: 0, duration: 0.3, onComplete: () => lightbox.style.display = 'none' });
         });
 
-        document.addEventListener('DOMContentLoaded', type);
+        // --- AUDIO ---
+        const audio = document.getElementById('bg-audio');
+        audio.playbackRate = 0.5;
+        function initAudio() {
+            audio.play().catch(err => console.log("Interaction needed"));
+            document.removeEventListener('click', initAudio);
+        }
+        document.addEventListener('click', initAudio);
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 
