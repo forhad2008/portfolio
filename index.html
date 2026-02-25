@@ -495,7 +495,7 @@
     </section>
 
     <script>
-        // --- 3D METALLIC CHAIN SYSTEM (Slowing 50%) ---
+        // --- 3D PURE SILVER ROBOTIC SERPENT ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -504,15 +504,16 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        const rimLight = new THREE.DirectionalLight(0xffffff, 3);
-        rimLight.position.set(5, 10, 5);
-        scene.add(rimLight);
+        // লাইটিং আরও উজ্জ্বল করা হয়েছে যাতে সিলভার রিফ্লেকশন ভালো আসে
+        const sunLight = new THREE.DirectionalLight(0xffffff, 2);
+        sunLight.position.set(5, 10, 7);
+        scene.add(sunLight);
 
-        const blueLight = new THREE.PointLight(0x00eaff, 2, 20);
-        blueLight.position.set(-5, 5, 5);
-        scene.add(blueLight);
+        const blueFill = new THREE.PointLight(0x00eaff, 1, 30);
+        blueFill.position.set(-5, -5, 5);
+        scene.add(blueFill);
 
-        scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
         const points = [];
         for (let i = 0; i < 25; i++) {
@@ -520,56 +521,76 @@
         }
         const snakeCurve = new THREE.CatmullRomCurve3(points);
 
-        const chainGeo = new THREE.TorusGeometry(0.7, 0.22, 12, 24);
-        const chainMat = new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            metalness: 1.0,
-            roughness: 0.08,
+        // --- PURE SILVER MATERIAL ---
+        const silverMat = new THREE.MeshStandardMaterial({
+            color: 0xffffff,      // Pure White base for Silver look
+            metalness: 1.0,       // Maximum metallicity
+            roughness: 0.1,       // Low roughness for mirror-like polish
+            flatShading: true     // Robotic sharp edges
         });
 
-        const segmentCount = 70;
-        const links = [];
+        const coreGlowMat = new THREE.MeshStandardMaterial({
+            color: 0xffffff,
+            emissive: 0x00eaff,   // সিলভারের সাথে হালকা সায়ান গ্লো
+            emissiveIntensity: 1.5
+        });
+
+        const bodyGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.4, 6);
+        const jointGeo = new THREE.SphereGeometry(0.35, 8, 8);
+
+        const segmentCount = 55;
+        const bodyParts = [];
         const snakeGroup = new THREE.Group();
 
         for (let i = 0; i < segmentCount; i++) {
-            const link = new THREE.Mesh(chainGeo, chainMat);
-            snakeGroup.add(link);
-            links.push(link);
+            const segment = new THREE.Group();
+
+            // Silver Hex Plate
+            const plate = new THREE.Mesh(bodyGeo, silverMat);
+            plate.rotation.x = Math.PI / 2;
+            segment.add(plate);
+
+            // Light Core
+            const core = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.45, 6), coreGlowMat);
+            core.rotation.x = Math.PI / 2;
+            segment.add(core);
+
+            // Silver Joint
+            if (i < segmentCount - 1) {
+                const joint = new THREE.Mesh(jointGeo, silverMat);
+                joint.position.y = 0.5;
+                segment.add(joint);
+            }
+
+            snakeGroup.add(segment);
+            bodyParts.push(segment);
         }
         scene.add(snakeGroup);
         camera.position.z = 12;
 
         function animateSnake() {
             requestAnimationFrame(animateSnake);
+            const time = Date.now() * 0.00025; // 50% slow
 
-            // SPEED REDUCED: Changed from 0.0005 to 0.00025
-            const time = Date.now() * 0.00025;
-
-            links.forEach((link, i) => {
+            bodyParts.forEach((part, i) => {
                 const t = (i / segmentCount + time) % 1;
                 const pos = snakeCurve.getPointAt(t);
-                link.position.copy(pos);
+                part.position.copy(pos);
 
                 const tangent = snakeCurve.getTangentAt(t);
-                link.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
+                part.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
 
-                if (i % 2 === 0) {
-                    link.rotation.y += Math.PI / 2;
-                }
-
-                // SWAY REDUCED: Slowed the vibration to match the speed
-                link.rotation.z += Math.sin(time * 2 + i * 0.2) * 0.3;
-
-                const pulse = 1 + Math.sin(time * 2 + i) * 0.05;
-                link.scale.set(pulse, pulse, pulse);
+                // Robotic jitter and slow rotation
+                part.rotation.y += Math.sin(time * 2 + i * 0.5) * 0.3;
+                part.position.x += Math.sin(time * 8 + i) * 0.015;
             });
 
-            snakeGroup.rotation.y += 0.001; // Slower global rotation
+            snakeGroup.rotation.y += 0.001;
             renderer.render(scene, camera);
         }
         animateSnake();
 
-        // --- UI LOGIC ---
+        // --- Rest of your UI Logic (Keep same as before) ---
         function initTitleScroller() {
             const track = document.getElementById('scroller-track');
             const items = track.querySelectorAll('.highlight');
@@ -580,7 +601,6 @@
                     .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
             }
         }
-
         gsap.registerPlugin(ScrollTrigger);
         const tl = gsap.timeline();
         tl.from("nav", { y: -50, opacity: 0, duration: 1 })
@@ -589,14 +609,12 @@
             .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
             .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4")
             .add(() => initTitleScroller());
-
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuWindow.classList.toggle('open');
         });
-
         const coverTrigger = document.getElementById('cover-trigger');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -608,7 +626,6 @@
         lightbox.addEventListener('click', () => {
             gsap.to(lightbox, { opacity: 0, duration: 0.3, onComplete: () => lightbox.style.display = 'none' });
         });
-
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.5;
         function initAudio() {
@@ -616,7 +633,6 @@
             document.removeEventListener('click', initAudio);
         }
         document.addEventListener('click', initAudio);
-
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
