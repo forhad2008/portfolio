@@ -495,16 +495,34 @@
     </section>
 
     <script>
-        // --- 3D PURE SILVER ROBOTIC SERPENT ---
+
+        // ==============================
+        // 3D REALISTIC PURE SILVER SNAKE
+        // ==============================
+
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        const camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true
+        });
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.physicallyCorrectLights = true;
+        renderer.outputEncoding = THREE.sRGBEncoding;
         container.appendChild(renderer.domElement);
 
-        // লাইটিং আরও উজ্জ্বল করা হয়েছে যাতে সিলভার রিফ্লেকশন ভালো আসে
+
+        // ---------- LIGHTING ----------
         const sunLight = new THREE.DirectionalLight(0xffffff, 2);
         sunLight.position.set(5, 10, 7);
         scene.add(sunLight);
@@ -513,131 +531,164 @@
         blueFill.position.set(-5, -5, 5);
         scene.add(blueFill);
 
-        scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+        scene.add(new THREE.AmbientLight(0xffffff, 0.7));
 
+
+        // ---------- SNAKE CURVE ----------
         const points = [];
         for (let i = 0; i < 25; i++) {
-            points.push(new THREE.Vector3(Math.sin(i * 0.4) * 3.5, i * 0.7 - 8, Math.cos(i * 0.4) * 3.5));
+            points.push(
+                new THREE.Vector3(
+                    Math.sin(i * 0.4) * 3.5,
+                    i * 0.7 - 8,
+                    Math.cos(i * 0.4) * 3.5
+                )
+            );
         }
+
         const snakeCurve = new THREE.CatmullRomCurve3(points);
 
-        // --- PURE SILVER MATERIAL ---
+
+        // ---------- PURE SILVER MATERIAL ----------
         const silverMat = new THREE.MeshStandardMaterial({
-            color: 0xffffff,      // Pure White base for Silver look
-            metalness: 1.0,       // Maximum metallicity
-            roughness: 0.1,       // Low roughness for mirror-like polish
-            flatShading: true     // Robotic sharp edges
+            color: 0xdcdcdc,
+            metalness: 1.0,
+            roughness: 0.15,
+            envMapIntensity: 1.5
         });
 
-        const coreGlowMat = new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            emissive: 0x00eaff,   // সিলভারের সাথে হালকা সায়ান গ্লো
-            emissiveIntensity: 1.5
-        });
 
-        const bodyGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.4, 6);
-        const jointGeo = new THREE.SphereGeometry(0.35, 8, 8);
+        // ---------- SMOOTH ROUND BODY ----------
+        const bodyGeo = new THREE.CylinderGeometry(
+            0.6,
+            0.6,
+            0.8,
+            32
+        );
 
-        const segmentCount = 55;
+
+        const segmentCount = 80;
         const bodyParts = [];
         const snakeGroup = new THREE.Group();
 
         for (let i = 0; i < segmentCount; i++) {
-            const segment = new THREE.Group();
-
-            // Silver Hex Plate
-            const plate = new THREE.Mesh(bodyGeo, silverMat);
-            plate.rotation.x = Math.PI / 2;
-            segment.add(plate);
-
-            // Light Core
-            const core = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.5, 0.45, 6), coreGlowMat);
-            core.rotation.x = Math.PI / 2;
-            segment.add(core);
-
-            // Silver Joint
-            if (i < segmentCount - 1) {
-                const joint = new THREE.Mesh(jointGeo, silverMat);
-                joint.position.y = 0.5;
-                segment.add(joint);
-            }
+            const segment = new THREE.Mesh(bodyGeo, silverMat);
+            segment.castShadow = true;
+            segment.receiveShadow = true;
 
             snakeGroup.add(segment);
             bodyParts.push(segment);
         }
+
         scene.add(snakeGroup);
+
         camera.position.z = 12;
 
+
+        // ---------- ANIMATION ----------
         function animateSnake() {
             requestAnimationFrame(animateSnake);
-            const time = Date.now() * 0.00025; // 50% slow
+
+            const time = Date.now() * 0.00025;
 
             bodyParts.forEach((part, i) => {
                 const t = (i / segmentCount + time) % 1;
+
                 const pos = snakeCurve.getPointAt(t);
                 part.position.copy(pos);
 
                 const tangent = snakeCurve.getTangentAt(t);
-                part.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
-
-                // Robotic jitter and slow rotation
-                part.rotation.y += Math.sin(time * 2 + i * 0.5) * 0.3;
-                part.position.x += Math.sin(time * 8 + i) * 0.015;
+                part.quaternion.setFromUnitVectors(
+                    new THREE.Vector3(0, 1, 0),
+                    tangent
+                );
             });
 
             snakeGroup.rotation.y += 0.001;
+
             renderer.render(scene, camera);
         }
+
         animateSnake();
 
-        // --- Rest of your UI Logic (Keep same as before) ---
+
+        // ==============================
+        // UI & GSAP LOGIC (UNCHANGED)
+        // ==============================
+
         function initTitleScroller() {
             const track = document.getElementById('scroller-track');
             const items = track.querySelectorAll('.highlight');
             if (items.length > 0) {
                 const itemHeight = items[0].offsetHeight;
                 const scrollerTl = gsap.timeline({ repeat: -1 });
-                scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
+                scrollerTl
+                    .to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
                     .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
             }
         }
+
         gsap.registerPlugin(ScrollTrigger);
+
         const tl = gsap.timeline();
+
         tl.from("nav", { y: -50, opacity: 0, duration: 1 })
             .from(".cover-photo", { scale: 1.1, opacity: 0, duration: 1.2 }, "-=0.5")
             .from(".profile-area img", { y: 50, opacity: 0, duration: 0.8 }, "-=0.8")
             .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
             .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4")
             .add(() => initTitleScroller());
+
+
+        // ---------- MENU ----------
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
+
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuWindow.classList.toggle('open');
         });
+
+
+        // ---------- LIGHTBOX ----------
         const coverTrigger = document.getElementById('cover-trigger');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
+
         coverTrigger.addEventListener('click', () => {
             lightboxImg.src = coverTrigger.querySelector('img').src;
             lightbox.style.display = 'flex';
             gsap.fromTo(lightbox, { opacity: 0 }, { opacity: 1, duration: 0.5 });
         });
+
         lightbox.addEventListener('click', () => {
-            gsap.to(lightbox, { opacity: 0, duration: 0.3, onComplete: () => lightbox.style.display = 'none' });
+            gsap.to(lightbox, {
+                opacity: 0,
+                duration: 0.3,
+                onComplete: () => lightbox.style.display = 'none'
+            });
         });
+
+
+        // ---------- AUDIO ----------
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.5;
+
         function initAudio() {
-            audio.play().catch(err => console.log("Interaction needed"));
+            audio.play().catch(() => { });
             document.removeEventListener('click', initAudio);
         }
+
         document.addEventListener('click', initAudio);
+
+
+        // ---------- RESPONSIVE ----------
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
+
     </script>
 </body>
 
