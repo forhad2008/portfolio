@@ -128,24 +128,23 @@
         }
 
         /* Hamburger active state - transformation logic */
-        .hamburger.active div:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
-        }
+.hamburger.active div:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
 
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
 
-        .hamburger.active div:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-        }
+.hamburger.active div:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
 
-        /* Ensure smooth transition */
-        .hamburger div {
-            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-        }
-
+/* Ensure smooth transition */
+.hamburger div {
+    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
         .hamburger div {
             width: 30px;
             height: 3px;
@@ -355,51 +354,48 @@
                 height: 130px;
                 margin-top: -65px;
             }
-
+        
         }
-
         .glass-box {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            /* Subtle white overlay */
-            backdrop-filter: blur(15px);
-            /* The "Glass" effect */
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            text-align: left;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            overflow: hidden;
-        }
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03); /* Subtle white overlay */
+    backdrop-filter: blur(15px); /* The "Glass" effect */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    text-align: left;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+}
 
-        /* Subtle glow effect on the left border */
-        .glass-box::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 20%;
-            height: 60%;
-            width: 3px;
-            background: var(--primary-color);
-            box-shadow: 0 0 15px var(--primary-color);
-        }
+/* Subtle glow effect on the left border */
+.glass-box::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    background: var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
 
-        .glass-box h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
+.glass-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
 
-        .glass-box p {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
+.glass-box p {
+    color: var(--text-medium);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
     </style>
 </head>
 
@@ -486,8 +482,7 @@
                     emotions, leading me to master Graphic Design. As I shaped brands, I realized the need
                     to bring those designs to life through code. This sparked my transition into Web Development,
                     where I now bridge the gap between aesthetic beauty and functional performance.
-                </p>
-            </div>
+                </p>      </div>
         </div>
         <audio id="bg-audio" loop>
             <source src="m.mp4" type="audio/mpeg">
@@ -495,149 +490,80 @@
     </section>
 
     <script>
-
-        // ==============================
-        // 3D REALISTIC STEEL SNAKE (THICK BODY)
-        // ==============================
-
+        // --- MECHANICAL HEXAGONAL PLATE SNAKE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-
-        const camera = new THREE.PerspectiveCamera(
-            75,
-            window.innerWidth / window.innerHeight,
-            0.1,
-            1000
-        );
-
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true,
-            alpha: true
-        });
-
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.physicallyCorrectLights = true;
-        renderer.outputEncoding = THREE.sRGBEncoding;
         container.appendChild(renderer.domElement);
 
+        const rimLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        rimLight.position.set(0, 10, 5);
+        scene.add(rimLight);
+        const fillLight = new THREE.PointLight(0x00eaff, 0.5);
+        fillLight.position.set(-5, -5, -5);
+        scene.add(fillLight);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.2));
 
-        // ---------- LIGHTING ----------
-        const sunLight = new THREE.DirectionalLight(0xffffff, 2.2);
-        sunLight.position.set(5, 10, 7);
-        scene.add(sunLight);
-
-        const blueFill = new THREE.PointLight(0x00eaff, 1.2, 30);
-        blueFill.position.set(-5, -5, 5);
-        scene.add(blueFill);
-
-        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-
-
-        // ---------- SNAKE CURVE ----------
         const points = [];
         for (let i = 0; i < 25; i++) {
-            points.push(
-                new THREE.Vector3(
-                    Math.sin(i * 0.4) * 3.5,
-                    i * 0.7 - 8,
-                    Math.cos(i * 0.4) * 3.5
-                )
-            );
+            points.push(new THREE.Vector3(Math.sin(i * 0.4) * 3.5, i * 0.7 - 8, Math.cos(i * 0.4) * 3.5));
         }
-
         const snakeCurve = new THREE.CatmullRomCurve3(points);
 
-
-        // ---------- STEEL MATERIAL ----------
-        const steelMat = new THREE.MeshStandardMaterial({
-            color: 0x9aa0a6,     // steel gray
+        // সেগমেন্ট ৬ করে এটাকে ষড়ভুজ করা হয়েছে এবং flatShading দিয়ে ধারগুলো স্পষ্ট করা হয়েছে
+        const plateGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.15, 6);
+        const plateMat = new THREE.MeshStandardMaterial({
+            color: 0xeeeeee,
             metalness: 1.0,
-            roughness: 0.35,     // brushed steel feel
-            envMapIntensity: 1.8
+            roughness: 0.15,
+            flatShading: true
         });
 
-
-        // ---------- THICK ROUND BODY ----------
-        const segmentCount = 90;
-        const bodyParts = [];
+        const segmentCount = 140;
+        const plates = [];
         const snakeGroup = new THREE.Group();
-
         for (let i = 0; i < segmentCount; i++) {
-
-            // Taper effect (thicker head, thinner tail)
-            const taper = 1 - (i / segmentCount) * 0.5;
-
-            const radius = 1.1 * taper;   // 👈 BODY WIDTH INCREASED
-
-            const geometry = new THREE.CylinderGeometry(
-                radius,
-                radius,
-                1.2,     // longer segment for stronger body
-                40       // smoother round
-            );
-
-            const segment = new THREE.Mesh(geometry, steelMat);
-
-            segment.castShadow = true;
-            segment.receiveShadow = true;
-
-            snakeGroup.add(segment);
-            bodyParts.push(segment);
+            const plate = new THREE.Mesh(plateGeo, plateMat);
+            snakeGroup.add(plate);
+            plates.push(plate);
         }
-
         scene.add(snakeGroup);
+        camera.position.z = 12;
 
-        camera.position.z = 14; // slightly back for thicker body
-
-
-        // ---------- ANIMATION ----------
         function animateSnake() {
             requestAnimationFrame(animateSnake);
-
-            const time = Date.now() * 0.00025;
-
-            bodyParts.forEach((part, i) => {
+            const time = Date.now() * 0.0004;
+            plates.forEach((plate, i) => {
                 const t = (i / segmentCount + time) % 1;
-
                 const pos = snakeCurve.getPointAt(t);
-                part.position.copy(pos);
-
+                plate.position.copy(pos);
                 const tangent = snakeCurve.getTangentAt(t);
-                part.quaternion.setFromUnitVectors(
-                    new THREE.Vector3(0, 1, 0),
-                    tangent
-                );
+                plate.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
+                plate.rotation.z += Math.sin(time + i) * 0.01;
             });
-
-            snakeGroup.rotation.y += 0.001;
-
+            snakeGroup.rotation.y += 0.0015;
             renderer.render(scene, camera);
         }
-
         animateSnake();
 
-
-        // ==============================
-        // UI & GSAP (UNCHANGED)
-        // ==============================
-
+        // --- FIXED TITLE SCROLLER LOGIC ---
         function initTitleScroller() {
             const track = document.getElementById('scroller-track');
             const items = track.querySelectorAll('.highlight');
             if (items.length > 0) {
                 const itemHeight = items[0].offsetHeight;
                 const scrollerTl = gsap.timeline({ repeat: -1 });
-                scrollerTl
-                    .to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
+                scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
                     .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
             }
         }
 
+        // --- GSAP ENTRANCE & UI ---
         gsap.registerPlugin(ScrollTrigger);
-
         const tl = gsap.timeline();
-
         tl.from("nav", { y: -50, opacity: 0, duration: 1 })
             .from(".cover-photo", { scale: 1.1, opacity: 0, duration: 1.2 }, "-=0.5")
             .from(".profile-area img", { y: 50, opacity: 0, duration: 0.8 }, "-=0.8")
@@ -645,56 +571,39 @@
             .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4")
             .add(() => initTitleScroller());
 
-
-        // ---------- MENU ----------
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
-
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             menuWindow.classList.toggle('open');
         });
 
-
-        // ---------- LIGHTBOX ----------
         const coverTrigger = document.getElementById('cover-trigger');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-
         coverTrigger.addEventListener('click', () => {
             lightboxImg.src = coverTrigger.querySelector('img').src;
             lightbox.style.display = 'flex';
             gsap.fromTo(lightbox, { opacity: 0 }, { opacity: 1, duration: 0.5 });
         });
-
         lightbox.addEventListener('click', () => {
-            gsap.to(lightbox, {
-                opacity: 0,
-                duration: 0.3,
-                onComplete: () => lightbox.style.display = 'none'
-            });
+            gsap.to(lightbox, { opacity: 0, duration: 0.3, onComplete: () => lightbox.style.display = 'none' });
         });
 
-
-        // ---------- AUDIO ----------
+        // --- AUDIO ---
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.5;
-
         function initAudio() {
-            audio.play().catch(() => { });
+            audio.play().catch(err => console.log("Interaction needed"));
             document.removeEventListener('click', initAudio);
         }
-
         document.addEventListener('click', initAudio);
 
-
-        // ---------- RESPONSIVE ----------
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-
     </script>
 </body>
 
