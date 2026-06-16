@@ -14,19 +14,19 @@
 
     <style>
         :root {
-            --primary-color: #1b6fa7;
-            /* Real Horizon Sea Blue */
-            --secondary-color: #0b4471;
-            /* Deep Ocean Water Blue */
-            --accent-blue: #7bbce5;
-            /* Pure Light Sky Blue */
-            --bg-light: #e0f1f9;
-            /* Bright Open Sky Tint from image */
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --text-dark: #05223c;
-            /* Abyssal Deep Blue for clean reading contrast */
-            --text-medium: #165b8c;
-            /* Vibrant marine blue */
+            --primary-color: #990000;
+            /* Vivid Crimson / Blood Red */
+            --secondary-color: #4a0000;
+            /* Deep Maroon / Dried Blood */
+            --accent-blue: #ff4d4d;
+            /* Bright Pure Red Highlight */
+            --bg-light: #1a0505;
+            /* Abyssal Black-Red Tint */
+            --card-bg: rgba(20, 5, 5, 0.85);
+            --text-dark: #fff5f5;
+            /* Off-White with faint pink tint for clean reading contrast */
+            --text-medium: #ff6666;
+            /* Vibrant Crimson Red text */
         }
 
         #canvas-container {
@@ -70,7 +70,7 @@
             min-height: 100vh;
         }
 
-        /* --- DYNAMIC OCEAN GRADIENT BACKGROUND --- */
+        /* --- DYNAMIC BLOODY OCEAN GRADIENT BACKGROUND --- */
         body::before {
             content: '';
             position: fixed;
@@ -78,10 +78,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
+            background: linear-gradient(180deg, #1a0505 0%, #4a0000 40%, #0d0202 100%);
             background-size: 200% 200%;
             animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.85;
+            opacity: 0.95;
             z-index: -4;
         }
 
@@ -95,7 +95,7 @@
             }
         }
 
-        /* --- MOVING OCEAN WATER FLUID WAVES --- */
+        /* --- MOVING BLOODY OCEAN WATER FLUID WAVES --- */
         .ocean-waves {
             position: fixed;
             bottom: 0;
@@ -108,7 +108,7 @@
         }
 
         .wave {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,10 500,60 C650,110 850,10 1000,60 C1150,110 1250,30 1300,60 L1300,120 L0,120 Z" style="stroke: none; fill: rgba(27, 111, 167, 0.15);"></path></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,10 500,60 C650,110 850,10 1000,60 C1150,110 1250,30 1300,60 L1300,120 L0,120 Z" style="stroke: none; fill: rgba(153, 0, 0, 0.15);"></path></svg>');
             position: absolute;
             bottom: 0;
             width: 200%;
@@ -122,7 +122,7 @@
             height: 400px;
             animation: wave-flow 26s linear infinite reverse;
             opacity: 0.6;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,30 350,110 500,60 C650,10 850,110 1000,60 C1150,10 1250,90 1300,60 L1300,120 L0,120 Z" style="stroke: none; fill: rgba(123, 188, 229, 0.25);"></path></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,30 350,110 500,60 C650,10 850,110 1000,60 C1150,10 1250,90 1300,60 L1300,120 L0,120 Z" style="stroke: none; fill: rgba(255, 77, 77, 0.1);"></path></svg>');
         }
 
         .wave:nth-of-type(3) {
@@ -130,7 +130,7 @@
             height: 300px;
             animation: wave-flow 32s linear infinite;
             opacity: 0.4;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,30 C300,5 600,70 900,30 C1050,10 1150,40 1200,30 L1200,120 L0,120 Z" style="stroke: none; fill: rgba(11, 68, 113, 0.1);"></path></svg>');
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,30 C300,5 600,70 900,30 C1050,10 1150,40 1200,30 L1200,120 L0,120 Z" style="stroke: none; fill: rgba(74, 0, 0, 0.2);"></path></svg>');
         }
 
         @keyframes wave-flow {
@@ -156,10 +156,10 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(224, 241, 249, 0.5);
+            background: rgba(26, 5, 5, 0.65);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(27, 111, 167, 0.1);
+            border-bottom: 1px solid rgba(153, 0, 0, 0.2);
             transition: all 0.5s ease;
         }
 
@@ -209,7 +209,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(224, 241, 249, 0.98);
+            background: rgba(13, 2, 2, 0.98);
             backdrop-filter: blur(20px);
             display: flex;
             justify-content: center;
@@ -259,11 +259,11 @@
             margin: 0 auto;
             width: 100%;
             height: 450px;
-            background: #9bcbe6;
+            background: #4a0000;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(27, 111, 167, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(153, 0, 0, 0.3);
             cursor: pointer;
         }
 
@@ -284,7 +284,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(13, 2, 2, 0.96);
             z-index: 3000;
             display: none;
             justify-content: center;
@@ -296,7 +296,7 @@
             max-width: 90%;
             max-height: 80%;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(27, 111, 167, 0.15);
+            box-shadow: 0 10px 40px rgba(153, 0, 0, 0.4);
         }
 
         .profile-area {
@@ -308,7 +308,7 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            box-shadow: 0 15px 35px rgba(27, 111, 167, 0.12);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             object-fit: cover;
             margin-top: -90px;
             border: 5px solid var(--bg-light);
@@ -367,13 +367,13 @@
             font-size: 1.4rem;
             width: 55px;
             height: 55px;
-            background: #ffffff;
+            background: #260a0a;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1px solid rgba(27, 111, 167, 0.15);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(153, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -381,7 +381,7 @@
             color: #ffffff;
             background: var(--primary-color);
             transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(27, 111, 167, 0.25);
+            box-shadow: 0 12px 24px rgba(153, 0, 0, 0.5);
             border-color: var(--primary-color);
         }
 
@@ -394,12 +394,12 @@
             border-radius: 50px;
             display: inline-block;
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 10px 25px rgba(27, 111, 167, 0.25);
+            box-shadow: 0 10px 25px rgba(153, 0, 0, 0.3);
         }
 
         .btn:hover {
             transform: scale(1.04) translateY(-2px);
-            box-shadow: 0 15px 30px rgba(27, 111, 167, 0.4);
+            box-shadow: 0 15px 30px rgba(153, 0, 0, 0.6);
         }
 
         @media (max-width: 768px) {
@@ -418,10 +418,10 @@
         .glass-box {
             margin-top: 40px;
             padding: 35px;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(26, 5, 5, 0.75);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(27, 111, 167, 0.08);
+            border: 1px solid rgba(153, 0, 0, 0.2);
             border-radius: 24px;
             text-align: left;
             max-width: 700px;
@@ -429,7 +429,7 @@
             margin-right: auto;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(27, 111, 167, 0.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
         .glass-box::before {
@@ -457,69 +457,66 @@
         }
 
         /* REAL WATER BACKGROUND */
+        .water-ripple {
+            position: fixed;
+            inset: 0;
+            z-index: -5;
+            overflow: hidden;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 0, 0, 0.08), transparent 25%),
+                radial-gradient(circle at 80% 30%, rgba(153, 0, 0, 0.12), transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(255, 102, 102, 0.05), transparent 25%),
+                linear-gradient(180deg,
+                    #1a0505 0%,
+                    #380000 40%,
+                    #0d0202 100%);
+        }
 
-.water-ripple{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    overflow:hidden;
-    pointer-events:none;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.18), transparent 25%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,.12), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(255,255,255,.15), transparent 25%),
-        linear-gradient(
-            180deg,
-            #dff4ff 0%,
-            #8bc4e6 40%,
-            #4f95c2 100%
-        );
-}
+        .water-ripple::before,
+        .water-ripple::after {
+            content: "";
+            position: absolute;
+            width: 250%;
+            height: 250%;
+            left: -75%;
+            top: -75%;
+            background:
+                repeating-radial-gradient(circle,
+                    rgba(153, 0, 0, 0.15) 0px,
+                    rgba(74, 0, 0, 0.1) 2px,
+                    transparent 12px,
+                    transparent 24px);
+        }
 
-.water-ripple::before,
-.water-ripple::after{
-    content:"";
-    position:absolute;
-    width:250%;
-    height:250%;
-    left:-75%;
-    top:-75%;
-    background:
-    repeating-radial-gradient(
-        circle,
-        rgba(255,255,255,.12) 0px,
-        rgba(255,255,255,.08) 2px,
-        transparent 12px,
-        transparent 24px
-    );
-}
+        .water-ripple::before {
+            animation: rippleMove1 20s linear infinite;
+        }
 
-.water-ripple::before{
-    animation:rippleMove1 20s linear infinite;
-}
+        .water-ripple::after {
+            animation: rippleMove2 28s linear infinite reverse;
+            opacity: .6;
+        }
 
-.water-ripple::after{
-    animation:rippleMove2 28s linear infinite reverse;
-    opacity:.6;
-}
+        @keyframes rippleMove1 {
+            from {
+                transform: rotate(0deg) scale(1);
+            }
 
-@keyframes rippleMove1{
-    from{
-        transform:rotate(0deg) scale(1);
-    }
-    to{
-        transform:rotate(360deg) scale(1.15);
-    }
-}
+            to {
+                transform: rotate(360deg) scale(1.15);
+            }
+        }
 
-@keyframes rippleMove2{
-    from{
-        transform:rotate(360deg) scale(1.1);
-    }
-    to{
-        transform:rotate(0deg) scale(1.25);
-    }
-}
+        @keyframes rippleMove2 {
+            from {
+                transform: rotate(360deg) scale(1.1);
+            }
+
+            to {
+                transform: rotate(0deg) scale(1.25);
+            }
+        }
     </style>
 </head>
 
@@ -535,9 +532,9 @@
 
     <div class="svg-decor">
         <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"
-            style="position: absolute; width: 100%; height: 100%; filter: blur(120px); opacity: 0.4;">
-            <circle cx="15%" cy="25%" r="300" fill="rgba(123, 188, 229, 0.4)" />
-            <circle cx="85%" cy="55%" r="350" fill="rgba(27, 111, 167, 0.3)" />
+            style="position: absolute; width: 100%; height: 100%; filter: blur(120px); opacity: 0.3;">
+            <circle cx="15%" cy="25%" r="300" fill="rgba(153, 0, 0, 0.3)" />
+            <circle cx="85%" cy="55%" r="350" fill="rgba(74, 0, 0, 0.4)" />
         </svg>
     </div>
 
@@ -625,7 +622,7 @@
     </section>
 
     <script>
-        // --- REAL PHYSICS HIGH-VISIBILITY OCEAN BLUE BUBBLE ENGINE ---
+        // --- REAL PHYSICS HIGH-VISIBILITY DEEP RED FLUID ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -649,27 +646,27 @@
 
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
-        // --- RE-ENGINEERED 3X DEEPER HIGH-CONTRAST MATERIAL GENERATOR ---
+        // --- RE-ENGINEERED HIGH-CONTRAST MATERIAL FOR BLOOD DROPLETS ---
         function createBubbleMaterial(scaleFactor = 1) {
             const isBigBubble = scaleFactor > 1;
 
             return new THREE.MeshPhysicalMaterial({
-                color: isBigBubble ? 0x05223c : 0x0b4471,
-                emissive: isBigBubble ? 0x021120 : 0x05223c,
-                emissiveIntensity: 0.6,
+                color: isBigBubble ? 0x380000 : 0x7a0000,
+                emissive: isBigBubble ? 0x1a0202 : 0x380000,
+                emissiveIntensity: 0.7,
                 roughness: 0.05,
-                metalness: 0.4,
+                metalness: 0.3,
                 clearcoat: 1.0,
                 clearcoatRoughness: 0.01,
-                transmission: 0.25,
-                ior: 1.9,
-                thickness: 8.0 * scaleFactor,
+                transmission: 0.3,
+                ior: 1.8,
+                thickness: 7.0 * scaleFactor,
                 transparent: true,
                 opacity: isBigBubble ? 0.95 : 0.85
             });
         }
 
-        // Initialize ambient bubbles
+        // Initialize ambient crimson fluid droplets
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
 
@@ -695,45 +692,42 @@
         scene.add(bubbleGroup);
 
 
-        // --- UPDATED BUBBLE FLING ENGINE (50% SMALLER BUBBLES ON CLICK/TOUCH) ---
-            function triggerBigBubbleFling() {
-                const flingCount = 8;
-                for (let i = 0; i < flingCount; i++) {
-                    // Reduced material scale factor from 2 to 1 for smaller highlights
-                    const bigMesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
+        // --- DEEP RED FLUID UPWARD BURST ENGINE ---
+        function triggerBigBubbleFling() {
+            const flingCount = 8;
+            for (let i = 0; i < flingCount; i++) {
+                const bigMesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
+                const scale = (Math.random() * 2.0 + 3.5) * 0.5;
+                bigMesh.scale.set(scale, scale, scale);
 
-                    // ORIGINAL: Math.random() * 2.0 + 3.5; 
-                    // UPDATED: Multiplied by 0.5 to make them exactly 50% smaller
-                    const scale = (Math.random() * 2.0 + 3.5) * 0.5;
-                    bigMesh.scale.set(scale, scale, scale);
+                bigMesh.position.x = (Math.random() - 0.5) * 50;
+                bigMesh.position.y = -28;
+                bigMesh.position.z = (Math.random() - 0.5) * 12;
 
-                    bigMesh.position.x = (Math.random() - 0.5) * 50;
-                    bigMesh.position.y = -28;
-                    bigMesh.position.z = (Math.random() - 0.5) * 12;
+                bigMesh.userData = {
+                    speedY: Math.random() * 0.35 + 0.5,
+                    wobbleSpeed: Math.random() * 0.12 + 0.08,
+                    phaseX: Math.random() * Math.PI * 2,
+                    phaseZ: Math.random() * Math.PI * 2,
+                    baseScale: scale,
+                    isExtra: true
+                };
 
-                    bigMesh.userData = {
-                        speedY: Math.random() * 0.35 + 0.5,
-                        wobbleSpeed: Math.random() * 0.12 + 0.08,
-                        phaseX: Math.random() * Math.PI * 2,
-                        phaseZ: Math.random() * Math.PI * 2,
-                        baseScale: scale,
-                        isExtra: true
-                    };
-
-                    bubbleGroup.add(bigMesh);
-                    bubbles.push(bigMesh);
-                }
+                bubbleGroup.add(bigMesh);
+                bubbles.push(bigMesh);
             }
+        }
 
-        const skySunLight = new THREE.DirectionalLight(0xffffff, 2.5);
+        // Adapted lighting vectors to illuminate red fluid dynamically
+        const skySunLight = new THREE.DirectionalLight(0xffcccc, 2.5);
         skySunLight.position.set(10, 20, 8);
         scene.add(skySunLight);
 
-        const oceanBaseLight = new THREE.DirectionalLight(0x7bbce5, 1.2);
+        const oceanBaseLight = new THREE.DirectionalLight(0x990000, 1.5);
         oceanBaseLight.position.set(-10, -5, -5);
         scene.add(oceanBaseLight);
 
-        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.9);
+        const fillLight = new THREE.AmbientLight(0x380000, 0.9);
         scene.add(fillLight);
 
         function animateOceanEngine() {
@@ -826,10 +820,10 @@
             gsap.to(lightbox, { opacity: 0, duration: 0.4, onComplete: () => lightbox.style.display = 'none' });
         });
 
-        // --- AUDIO CONFIGURATION AND GLOBAL BUBBLE FLING INTERACTION ---
+        // --- AUDIO CONFIGURATION AND GLOBAL BURST INTERACTION ---
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.3;
-        audio.volume = 0.3; // Set volume to low volume
+        audio.volume = 0.3;
 
         function globalClickManager() {
             audio.play().catch(err => console.log("Audio waiting for core interaction context"));
@@ -844,24 +838,18 @@
         });
 
         // REAL WATER MOTION
+        const water = document.querySelector('.water-ripple');
+        let waterTime = 0;
 
-            const water = document.querySelector('.water-ripple');
-
-            let waterTime = 0;
-
-            function animateWater() {
-
-                waterTime += 0.01;
-
-                water.style.filter =
-                    `brightness(${1 + Math.sin(waterTime) * 0.05})
-         contrast(1.08)
-         saturate(1.15)`;
-
-                requestAnimationFrame(animateWater);
-            }
-
-            animateWater();
+        function animateWater() {
+            waterTime += 0.01;
+            water.style.filter =
+                `brightness(${1 + Math.sin(waterTime) * 0.05})
+                 contrast(1.1)
+                 saturate(1.2)`;
+            requestAnimationFrame(animateWater);
+        }
+        animateWater();
     </script>
 </body>
 
