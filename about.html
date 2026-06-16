@@ -7,15 +7,35 @@
     <title>About Abdullah Forhad</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         :root {
-            --primary-blue: #00d2ff;
-            --glass-bg: rgba(0, 210, 255, 0.07);
-            /* হালকা নীল স্বচ্ছ ব্যাকগ্রাউন্ড */
-            --glass-border: rgba(0, 210, 255, 0.2);
-            --bg-dark: #050505;
+            --primary-color: #1b6fa7;
+            /* Real Horizon Sea Blue */
+            --secondary-color: #0b4471;
+            /* Deep Ocean Water Blue */
+            --accent-blue: #7bbce5;
+            /* Pure Light Sky Blue */
+            --bg-light: #e0f1f9;
+            /* Bright Open Sky Tint */
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-dark: #05223c;
+            /* Abyssal Deep Blue */
+            --text-medium: #165b8c;
+            /* Vibrant marine blue */
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
         }
 
         * {
@@ -26,8 +46,8 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: #ffffff;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -37,117 +57,137 @@
             position: relative;
         }
 
-        /* Background Glows */
-        .glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: var(--primary-blue);
-            filter: blur(120px);
-            opacity: 0.12;
+        /* Ambient background color blending mimicking the main page */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
+            background-size: 200% 200%;
+            animation: ocean-current 15s ease-in-out infinite alternate;
+            opacity: 0.85;
             z-index: -1;
         }
 
-        .glow-1 {
-            top: -100px;
-            left: -100px;
+        @keyframes ocean-current {
+            0% {
+                background-position: 50% 0%;
+            }
+
+            100% {
+                background-position: 50% 100%;
+            }
         }
 
-        .glow-2 {
-            bottom: -100px;
-            right: -100px;
-            background: #0072ff;
-        }
-
-        /* --- BLUE GLASS BOX EFFECT --- */
+        /* --- MATCHED BLUE GLASS BOX EFFECT --- */
         .about-card {
-            background: var(--glass-bg);
+            background: var(--card-bg);
             backdrop-filter: blur(25px);
-            /* কাঁচের মতো ঘোলাটে ভাব */
             -webkit-backdrop-filter: blur(25px);
             width: 100%;
             max-width: 500px;
-            padding: 50px 40px;
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            /* নীল বর্ডার */
-            box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                inset 0 0 20px rgba(0, 210, 255, 0.1);
-            /* ভেতরের দিকে নীল আভা */
+            padding: 45px 35px;
+            border-radius: 24px;
+            border: 1px solid rgba(27, 111, 167, 0.08);
+            box-shadow: 0 15px 35px rgba(27, 111, 167, 0.05);
             z-index: 10;
             position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 25%;
+            height: 50%;
+            width: 4px;
+            background: var(--primary-color);
+            border-radius: 0 4px 4px 0;
         }
 
         h1 {
             font-size: 2.2rem;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             text-align: center;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            background: linear-gradient(to right, #ffffff, var(--primary-blue));
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--text-dark), var(--primary-color));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: var(--text-dark);
         }
 
         .info-grid {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 15px;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            border: 1px solid rgba(0, 210, 255, 0.05);
-            transition: 0.3s ease;
+            align-items: center;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 14px;
+            border: 1px solid rgba(27, 111, 167, 0.06);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .info-item:hover {
-            background: rgba(0, 210, 255, 0.1);
-            transform: scale(1.02);
-            border-color: var(--primary-blue);
+            background: #ffffff;
+            transform: translateY(-3px) scale(1.01);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.08);
         }
 
         .info-item h3 {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 400;
+            color: var(--text-medium);
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .info-item span {
-            color: #ffffff;
+            color: var(--text-dark);
             font-weight: 600;
+            font-size: 1rem;
         }
 
         .highlight-text {
-            color: var(--primary-blue) !important;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+            color: var(--primary-color) !important;
         }
 
         .back-btn {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             margin-top: 35px;
-            color: var(--primary-blue);
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 500;
-            transition: 0.4s;
-            opacity: 0.8;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .back-btn:hover {
-            opacity: 1;
-            letter-spacing: 1px;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.2);
         }
 
         .reveal {
@@ -157,8 +197,7 @@
 </head>
 
 <body>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+    <div id="canvas-container"></div>
 
     <div class="about-card">
         <h1 class="reveal">About Me</h1>
@@ -171,10 +210,6 @@
             <div class="info-item reveal">
                 <h3>Last Name</h3>
                 <span>Forhad</span>
-            </div>
-                        <div class="info-item reveal">
-                <h3>Born on</h3>
-                <span>20 November 2008</span>
             </div>
             <div class="info-item reveal">
                 <h3>Country</h3>
@@ -200,18 +235,115 @@
     </div>
 
     <script>
+        // --- 3D OCEAN BUBBLE ENGINE ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        camera.position.z = 30;
+
+        const bubbleCount = 35; // Lightened for standard sub-pages
+        const bubbles = [];
+        const bubbleGroup = new THREE.Group();
+        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
+
+        function createBubbleMaterial() {
+            return new THREE.MeshPhysicalMaterial({
+                color: 0x0b4471,
+                emissive: 0x05223c,
+                emissiveIntensity: 0.5,
+                roughness: 0.05,
+                metalness: 0.4,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.01,
+                transmission: 0.3,
+                ior: 1.8,
+                thickness: 6.0,
+                transparent: true,
+                opacity: 0.8
+            });
+        }
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
+            const scale = Math.random() * 1.0 + 0.3;
+            mesh.scale.set(scale, scale, scale);
+            mesh.position.x = (Math.random() - 0.5) * 55;
+            mesh.position.y = (Math.random() - 0.5) * 45;
+            mesh.position.z = (Math.random() - 0.5) * 15;
+
+            mesh.userData = {
+                speedY: (scale * 0.03) + 0.015,
+                wobbleSpeed: Math.random() * 0.04 + 0.02,
+                phaseX: Math.random() * Math.PI * 2,
+                phaseZ: Math.random() * Math.PI * 2,
+                baseScale: scale
+            };
+            bubbleGroup.add(mesh);
+            bubbles.push(mesh);
+        }
+        scene.add(bubbleGroup);
+
+        // Lights
+        const skyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+        skyLight.position.set(10, 20, 8);
+        scene.add(skyLight);
+
+        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.8);
+        scene.add(fillLight);
+
+        // Mouse tracking for parallax
+        const mouse = { x: 0, y: 0 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = Date.now();
+
+            bubbles.forEach(bubble => {
+                const p = bubble.userData;
+                bubble.position.y += p.speedY;
+                bubble.position.x += Math.sin(time * 0.002 + p.phaseX) * 0.02;
+
+                if (bubble.position.y > 25) {
+                    bubble.position.y = -25;
+                    bubble.position.x = (Math.random() - 0.5) * 55;
+                }
+            });
+
+            bubbleGroup.rotation.y += (mouse.x * 0.05 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.05 - bubbleGroup.rotation.x) * 0.05;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // --- GSAP REVEAL ANIMATION ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 1,
-                stagger: 0.15,
-                ease: "power3.out",
-                startAt: { y: 30 }
+                duration: 1.2,
+                stagger: 0.12,
+                ease: "power4.out",
+                startAt: { y: 40 }
             });
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
 
 </html>
-
