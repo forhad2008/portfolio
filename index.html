@@ -14,12 +14,19 @@
 
     <style>
         :root {
-            --primary-color: #00eaff;
-            --secondary-color: #2b71d3;
-            --bg-dark: #000000;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --text-light: #e0e0e0;
-            --text-medium: #e9e2e2;
+            --primary-color: #008080;
+            /* Rich Ocean Teal */
+            --secondary-color: #005f60;
+            /* Dark Deep Marine Teal */
+            --accent-blue: #20b2aa;
+            /* Light Sea Green */
+            --bg-light: #f3f8f8;
+            /* Soft oceanic ice mist */
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --text-dark: #002d30;
+            /* Dark Abyssal Teal for ultra-sharp typography */
+            --text-medium: #006666;
+            /* Vibrant mid-water teal */
         }
 
         #canvas-container {
@@ -55,14 +62,15 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
             position: relative;
             min-height: 100vh;
         }
 
+        /* Underwater ocean current & light beam ambiance */
         body::before {
             content: '';
             position: fixed;
@@ -70,24 +78,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a1a);
-            background-size: 400% 400%;
-            animation: aurora-glow 20s ease infinite;
-            opacity: 0.4;
+            background: linear-gradient(180deg, #e0f2f1 0%, #b2dfdb 50%, #e0f2f1 100%);
+            background-size: 200% 200%;
+            animation: ocean-current 15s ease-in-out infinite alternate;
+            opacity: 0.8;
             z-index: -1;
         }
 
-        @keyframes aurora-glow {
+        @keyframes ocean-current {
             0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
+                background-position: 50% 0%;
             }
 
             100% {
-                background-position: 0% 50%;
+                background-position: 50% 100%;
             }
         }
 
@@ -100,23 +104,22 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
+            background: rgba(224, 242, 241, 0.5);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(0, 81, 128, 0.1);
+            transition: all 0.5s ease;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
             letter-spacing: 1px;
-            color: var(--text-light);
+            color: var(--text-dark);
         }
 
         .logo span {
             color: var(--primary-color);
-            text-shadow: 0 0 15px rgba(0, 234, 255, 0.7);
         }
 
         .hamburger {
@@ -127,29 +130,24 @@
             gap: 6px;
         }
 
-        /* Hamburger active state - transformation logic */
-.hamburger.active div:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
+        .hamburger.active div:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
 
-.hamburger.active div:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-20px);
-}
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
 
-.hamburger.active div:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-}
+        .hamburger.active div:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
 
-/* Ensure smooth transition */
-.hamburger div {
-    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-}
         .hamburger div {
             width: 30px;
             height: 3px;
             background: var(--primary-color);
-            transition: 0.4s ease-in-out;
+            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
             border-radius: 3px;
         }
 
@@ -159,7 +157,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(243, 248, 248, 0.98);
             backdrop-filter: blur(20px);
             display: flex;
             justify-content: center;
@@ -186,7 +184,7 @@
 
         .menu-window a {
             font-size: 2.5rem;
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             font-weight: 700;
             transition: 0.4s ease;
@@ -194,6 +192,7 @@
 
         .menu-window a:hover {
             color: var(--primary-color);
+            padding-left: 10px;
         }
 
         .header-wrapper {
@@ -208,11 +207,11 @@
             margin: 0 auto;
             width: 100%;
             height: 450px;
-            background: #111;
-            border-radius: 25px;
+            background: #b2dfdb;
+            border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 128, 128, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             cursor: pointer;
         }
 
@@ -220,11 +219,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .cover-photo:hover img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         #lightbox {
@@ -233,7 +232,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(255, 255, 255, 0.96);
             z-index: 3000;
             display: none;
             justify-content: center;
@@ -244,8 +243,8 @@
         #lightbox img {
             max-width: 90%;
             max-height: 80%;
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(0, 234, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 77, 128, 0.15);
         }
 
         .profile-area {
@@ -257,9 +256,10 @@
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 128, 128, 0.12);
             object-fit: cover;
             margin-top: -90px;
+            border: 5px solid var(--bg-light);
         }
 
         .container {
@@ -271,8 +271,8 @@
 
         h1 {
             font-size: clamp(2.5rem, 8vw, 4rem);
-            color: #ffffff;
-            background: linear-gradient(to right, #ffffff, var(--primary-color), var(--secondary-color));
+            color: var(--text-dark);
+            background: linear-gradient(to right, var(--text-dark), var(--secondary-color));
             -webkit-background-clip: text;
             background-clip: text;
             font-weight: 700;
@@ -311,42 +311,49 @@
         }
 
         .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
+            color: var(--text-dark);
+            font-size: 1.4rem;
             width: 55px;
             height: 55px;
-            background: var(--card-bg);
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: 0.4s;
+            border: 1px solid rgba(0, 128, 128, 0.12);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 234, 255, 0.5);
+            color: #ffffff;
+            background: var(--primary-color);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 128, 128, 0.25);
+            border-color: var(--primary-color);
         }
 
         .btn {
             padding: 15px 35px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            color: #000;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: #ffffff;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             border-radius: 50px;
             display: inline-block;
-            transition: 0.4s;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 10px 25px rgba(0, 128, 128, 0.25);
         }
 
         .btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 128, 128, 0.4);
         }
 
         @media (max-width: 768px) {
             .cover-photo {
                 height: 250px;
+                border-radius: 20px;
             }
 
             .profile-area img {
@@ -354,48 +361,48 @@
                 height: 130px;
                 margin-top: -65px;
             }
-        
         }
+
         .glass-box {
-    margin-top: 40px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.03); /* Subtle white overlay */
-    backdrop-filter: blur(15px); /* The "Glass" effect */
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    text-align: left;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    overflow: hidden;
-}
+            margin-top: 40px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(0, 128, 128, 0.08);
+            border-radius: 24px;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 128, 128, 0.03);
+        }
 
-/* Subtle glow effect on the left border */
-.glass-box::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 20%;
-    height: 60%;
-    width: 3px;
-    background: var(--primary-color);
-    box-shadow: 0 0 15px var(--primary-color);
-}
+        .glass-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 25%;
+            height: 50%;
+            width: 3px;
+            background: var(--primary-color);
+            border-radius: 0 4px 4px 0;
+        }
 
-.glass-box h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.4rem;
-    font-weight: 600;
-}
+        .glass-box h3 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
 
-.glass-box p {
-    color: var(--text-medium);
-    font-size: 0.95rem;
-    line-height: 1.8;
-}
+        .glass-box p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
     </style>
 </head>
 
@@ -404,9 +411,9 @@
 
     <div class="svg-decor">
         <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"
-            style="position: absolute; width: 100%; height: 100%; filter: blur(50px); opacity: 0.3;">
-            <circle cx="20%" cy="20%" r="200" fill="var(--primary-color)" />
-            <circle cx="80%" cy="30%" r="250" fill="var(--secondary-color)" />
+            style="position: absolute; width: 100%; height: 100%; filter: blur(120px); opacity: 0.35;">
+            <circle cx="15%" cy="25%" r="300" fill="rgba(32, 178, 170, 0.35)" />
+            <circle cx="85%" cy="55%" r="350" fill="rgba(0, 128, 128, 0.25)" />
         </svg>
     </div>
 
@@ -444,10 +451,11 @@
         </div>
 
         <div class="container">
-            <h3 style="color: var(--text-medium); margin-bottom: 10px;">Hi , I'm</h3>
+            <h3 style="color: var(--text-medium); margin-bottom: 10px; font-weight: 400; letter-spacing: 1px;">Hi, I'm
+            </h3>
             <h1 class="name-reveal">Abdullah Forhad</h1>
 
-            <h2 class="gsap-reveal" style="font-size: 2rem; margin-bottom: 20px;">
+            <h2 class="gsap-reveal" style="font-size: 2rem; margin-bottom: 25px; font-weight: 500;">
                 A Professional
                 <span class="scroller-window">
                     <span id="scroller-track">
@@ -464,15 +472,17 @@
                 <a href="#"><i class="fab fa-behance"></i></a>
             </div>
 
-            <p class="gsap-reveal" style="color: var(--text-medium); max-width: 600px; margin: 0 auto 30px;">
+            <p class="gsap-reveal"
+                style="color: var(--text-medium); max-width: 600px; margin: 0 auto 35px; font-size: 1.05rem; font-weight: 400;">
                 Expert Graphic Designer and Web Developer focused on creating high-impact digital experiences and modern
                 visual identities.
             </p>
 
-            <div class="btn-group gsap-reveal" style="display: flex; gap: 15px; justify-content: center;">
+            <div class="btn-group gsap-reveal"
+                style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                 <a href="contact.html" class="btn">Let's Start a Project</a>
                 <a href="resume.html" class="btn"
-                    style="background: transparent; color: #fff; border: 1px solid var(--primary-color);">View
+                    style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); box-shadow: none; font-weight: 600;">View
                     Resume</a>
             </div>
             <div class="glass-box gsap-reveal">
@@ -482,7 +492,8 @@
                     emotions, leading me to master Graphic Design. As I shaped brands, I realized the need
                     to bring those designs to life through code. This sparked my transition into Web Development,
                     where I now bridge the gap between aesthetic beauty and functional performance.
-                </p>      </div>
+                </p>
+            </div>
         </div>
         <audio id="bg-audio" loop>
             <source src="m.mp4" type="audio/mpeg">
@@ -490,64 +501,129 @@
     </section>
 
     <script>
-        // --- MECHANICAL HEXAGONAL PLATE SNAKE ---
+        // --- REAL PHYSICS HIGH-VISIBILITY TEAL BUBBLE ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        // Support shadows and complex physically-based rendering parameters
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        const rimLight = new THREE.DirectionalLight(0xffffff, 2.5);
-        rimLight.position.set(0, 10, 5);
-        scene.add(rimLight);
-        const fillLight = new THREE.PointLight(0x00eaff, 0.5);
-        fillLight.position.set(-5, -5, -5);
-        scene.add(fillLight);
-        scene.add(new THREE.AmbientLight(0xffffff, 0.2));
+        camera.position.z = 30;
 
-        const points = [];
-        for (let i = 0; i < 25; i++) {
-            points.push(new THREE.Vector3(Math.sin(i * 0.4) * 3.5, i * 0.7 - 8, Math.cos(i * 0.4) * 3.5));
-        }
-        const snakeCurve = new THREE.CatmullRomCurve3(points);
-
-        // সেগমেন্ট ৬ করে এটাকে ষড়ভুজ করা হয়েছে এবং flatShading দিয়ে ধারগুলো স্পষ্ট করা হয়েছে
-        const plateGeo = new THREE.CylinderGeometry(1.6, 1.6, 0.15, 6);
-        const plateMat = new THREE.MeshStandardMaterial({
-            color: 0xeeeeee,
-            metalness: 1.0,
-            roughness: 0.15,
-            flatShading: true
+        // Interactive mouse current monitoring
+        const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+        window.addEventListener('mousemove', (event) => {
+            mouse.targetX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.targetY = -(event.clientY / window.innerHeight) * 2 + 1;
         });
 
-        const segmentCount = 140;
-        const plates = [];
-        const snakeGroup = new THREE.Group();
-        for (let i = 0; i < segmentCount; i++) {
-            const plate = new THREE.Mesh(plateGeo, plateMat);
-            snakeGroup.add(plate);
-            plates.push(plate);
-        }
-        scene.add(snakeGroup);
-        camera.position.z = 12;
+        const bubbleCount = 50;
+        const bubbles = [];
+        const bubbleGroup = new THREE.Group();
 
-        function animateSnake() {
-            requestAnimationFrame(animateSnake);
-            const time = Date.now() * 0.0004;
-            plates.forEach((plate, i) => {
-                const t = (i / segmentCount + time) % 1;
-                const pos = snakeCurve.getPointAt(t);
-                plate.position.copy(pos);
-                const tangent = snakeCurve.getTangentAt(t);
-                plate.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
-                plate.rotation.z += Math.sin(time + i) * 0.01;
+        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
+
+        for (let i = 0; i < bubbleCount; i++) {
+            // HIGH-VISIBILITY PHYSICAL REFRACTION MATERIAL
+            const bubbleMat = new THREE.MeshPhysicalMaterial({
+                color: 0x008080,                // Ocean Teal base tint
+                emissive: 0x002d30,             // Dark backdrop occlusion definition
+                roughness: 0.05,
+                metalness: 0.1,
+                clearcoat: 1.0,                 // Super glossy surface layer
+                clearcoatRoughness: 0.05,
+                transmission: 0.6,              // High visibility light passage transparency
+                ior: 1.5,                       // Glass/Water index of refraction index
+                thickness: 2.0,                 // Thick walls to make outer edges clearly visible on white
+                transparent: true,
+                opacity: Math.random() * 0.45 + 0.25 // Highly visible and distinct mapping values
             });
-            snakeGroup.rotation.y += 0.0015;
+
+            const mesh = new THREE.Mesh(bubbleGeo, bubbleMat);
+
+            // Natural organic physical size variations
+            const scale = Math.random() * 1.3 + 0.3;
+            mesh.scale.set(scale, scale, scale);
+
+            mesh.position.x = (Math.random() - 0.5) * 55;
+            mesh.position.y = (Math.random() - 0.5) * 45;
+            mesh.position.z = (Math.random() - 0.5) * 15;
+
+            mesh.userData = {
+                // Larger bubbles climb significantly faster due to water volume displacement
+                speedY: (scale * 0.035) + 0.02,
+                wobbleSpeed: Math.random() * 0.04 + 0.02,
+                phaseX: Math.random() * Math.PI * 2,
+                phaseZ: Math.random() * Math.PI * 2,
+                baseScale: scale
+            };
+
+            bubbleGroup.add(mesh);
+            bubbles.push(mesh);
+        }
+        scene.add(bubbleGroup);
+
+        // Advanced multi-point studio lighting setup to guarantee visibility on light backgrounds
+        const overheadSun = new THREE.DirectionalLight(0xffffff, 2.0);
+        overheadSun.position.set(5, 20, 10);
+        scene.add(overheadSun);
+
+        const tealGlowLight = new THREE.DirectionalLight(0x20b2aa, 1.2);
+        tealGlowLight.position.set(-5, -10, -5);
+        scene.add(tealGlowLight);
+
+        const environmentLight = new THREE.AmbientLight(0xe0f2f1, 0.9);
+        scene.add(environmentLight);
+
+        function animateOceanEngine() {
+            requestAnimationFrame(animateOceanEngine);
+
+            const time = Date.now();
+
+            // Smoothly track mouse movements
+            mouse.x += (mouse.targetX - mouse.x) * 0.06;
+            mouse.y += (mouse.targetY - mouse.y) * 0.06;
+
+            bubbles.forEach((bubble) => {
+                const physics = bubble.userData;
+
+                // 1. Upward buoyancy climb velocity
+                bubble.position.y += physics.speedY;
+
+                // 2. Dual-axis ocean wave sways
+                bubble.position.x += Math.sin(time * 0.002 + physics.phaseX) * 0.025;
+                bubble.position.z += Math.cos(time * 0.001 + physics.phaseZ) * 0.015;
+
+                // 3. Fluid drag shape compression (wobbles and squishes while climbing)
+                const currentWobble = 1 + Math.sin(time * physics.wobbleSpeed) * 0.09;
+                bubble.scale.set(
+                    physics.baseScale * currentWobble,
+                    physics.baseScale * (1 / currentWobble),
+                    physics.baseScale
+                );
+
+                // 4. Parallax current drift shift based on mouse interaction
+                bubble.position.x += mouse.x * 0.02;
+
+                // Loop and recycle bubbles cleanly once they float past the top boundary
+                if (bubble.position.y > 24) {
+                    bubble.position.y = -24;
+                    bubble.position.x = (Math.random() - 0.5) * 55;
+                    bubble.position.z = (Math.random() - 0.5) * 15;
+                }
+            });
+
+            // Parallax underwater visual tilt shifts
+            bubbleGroup.rotation.y = mouse.x * 0.08;
+            bubbleGroup.rotation.x = -mouse.y * 0.05;
+
             renderer.render(scene, camera);
         }
-        animateSnake();
+        animateOceanEngine();
 
         // --- FIXED TITLE SCROLLER LOGIC ---
         function initTitleScroller() {
@@ -556,21 +632,23 @@
             if (items.length > 0) {
                 const itemHeight = items[0].offsetHeight;
                 const scrollerTl = gsap.timeline({ repeat: -1 });
-                scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power3.inOut", delay: 3 })
-                    .to(track, { y: 0, duration: 0.8, ease: "power3.inOut", delay: 3 });
+                scrollerTl.to(track, { y: -itemHeight, duration: 0.9, ease: "power4.inOut", delay: 2.5 })
+                    .to(track, { y: 0, duration: 0.9, ease: "power4.inOut", delay: 2.5 });
             }
         }
 
-        // --- GSAP ENTRANCE & UI ---
+        // --- GSAP REVEALS ---
         gsap.registerPlugin(ScrollTrigger);
         const tl = gsap.timeline();
-        tl.from("nav", { y: -50, opacity: 0, duration: 1 })
-            .from(".cover-photo", { scale: 1.1, opacity: 0, duration: 1.2 }, "-=0.5")
-            .from(".profile-area img", { y: 50, opacity: 0, duration: 0.8 }, "-=0.8")
-            .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8 })
-            .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 }, "-=0.4")
+
+        tl.from("nav", { y: -60, opacity: 0, duration: 1.2, ease: "power3.out" })
+            .from(".cover-photo", { y: 40, scale: 1.02, opacity: 0, duration: 1.4, ease: "power3.out" }, "-=0.7")
+            .from(".profile-area img", { scale: 0.9, opacity: 0, duration: 1, ease: "back.out(1.1)" }, "-=0.9")
+            .from(".name-reveal", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+            .from(".gsap-reveal", { y: 30, opacity: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }, "-=0.6")
             .add(() => initTitleScroller());
 
+        // --- UI INTERACTION LOGIC ---
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
         hamburger.addEventListener('click', () => {
@@ -587,7 +665,7 @@
             gsap.fromTo(lightbox, { opacity: 0 }, { opacity: 1, duration: 0.5 });
         });
         lightbox.addEventListener('click', () => {
-            gsap.to(lightbox, { opacity: 0, duration: 0.3, onComplete: () => lightbox.style.display = 'none' });
+            gsap.to(lightbox, { opacity: 0, duration: 0.4, onComplete: () => lightbox.style.display = 'none' });
         });
 
         // --- AUDIO ---
