@@ -8,14 +8,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <style>
         :root {
-            --primary: #007bff;
-            --secondary: #00d2ff;
-            --dark: #1a1a1a;
-            --light: #f4f7f6;
-            --text-dark: #333;
-            --text-muted: #666;
+            --primary-color: #1b6fa7;
+            /* Real Horizon Sea Blue */
+            --secondary-color: #0b4471;
+            /* Deep Ocean Water Blue */
+            --accent-blue: #7bbce5;
+            /* Pure Light Sky Blue */
+            --bg-light: #e0f1f9;
+            /* Bright Open Sky Tint */
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-dark: #05223c;
+            /* Abyssal Deep Blue */
+            --text-medium: #165b8c;
+            /* Vibrant marine blue */
+            --text-muted: #4b6b88;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
         }
 
         * {
@@ -26,54 +47,71 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1e2020, #114f81c4, #082631);
-            ;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            position: relative;
         }
 
+        /* Ambient background current */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
+            background-size: 200% 200%;
+            animation: ocean-current 15s ease-in-out infinite alternate;
+            opacity: 0.85;
+            z-index: -1;
+        }
+
+        @keyframes ocean-current {
+            0% { background-position: 50% 0%; }
+            100% { background-position: 50% 100%; }
+        }
+
+        /* --- MODERN GLASSMORPHISM RESUME CARD --- */
         .resume-card {
             width: 1000px;
-            background: #fff;
+            max-width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             display: grid;
-            grid-template-columns: 350px 1fr;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
+            grid-template-columns: 320px 1fr;
+            box-shadow: 0 20px 45px rgba(27, 111, 167, 0.08);
+            border-radius: 24px;
+            border: 1px solid rgba(27, 111, 167, 0.08);
             overflow: hidden;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            z-index: 10;
+            position: relative;
         }
 
         /* --- Left Sidebar --- */
         .sidebar {
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
-            color: #fff;
+            background: rgba(27, 111, 167, 0.04);
+            border-right: 1px solid rgba(27, 111, 167, 0.08);
+            color: var(--text-dark);
             padding: 40px 30px;
             text-align: center;
         }
 
         .profile-img-container {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 30px;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
             border-radius: 50%;
-            border: 6px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid var(--accent-blue);
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.15);
         }
 
         .profile-img-container img {
@@ -83,160 +121,243 @@
         }
 
         .sidebar h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 5px;
-            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-dark);
         }
 
         .sidebar p {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            color: var(--text-medium);
             margin-bottom: 30px;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         .info-section {
             text-align: left;
-            margin-top: 40px;
+            margin-top: 35px;
         }
 
         .info-title {
-            font-size: 1.1rem;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            font-size: 1rem;
+            border-bottom: 2px solid rgba(27, 111, 167, 0.15);
+            color: var(--secondary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         .contact-link {
             display: flex;
             align-items: center;
-            gap: 15px;
-            color: #fff;
+            gap: 12px;
+            color: var(--text-dark);
             text-decoration: none;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-color);
         }
 
         .contact-link i {
-            font-size: 1.1rem;
-            width: 25px;
+            font-size: 1rem;
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .sidebar .personal-txt {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
         }
 
         /* --- Right Content --- */
         .main-content {
-            padding: 50px;
-            color: var(--text-dark);
+            padding: 45px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .resume-section {
+            margin-bottom: 35px;
         }
 
         .section-header {
-            font-size: 1.4rem;
-            color: var(--primary);
+            font-size: 1.3rem;
+            color: var(--secondary-color);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(27, 111, 167, 0.1);
+            padding-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .section-header i {
+            color: var(--primary-color);
         }
 
         .profile-summary {
             color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 40px;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         .experience-item {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
             padding-left: 20px;
-            border-left: 2px solid #eee;
+            border-left: 2px solid var(--accent-blue);
         }
 
         .experience-item h4 {
             font-size: 1.1rem;
-            color: #222;
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
         .experience-item span {
             font-size: 0.85rem;
-            color: var(--primary);
+            color: var(--primary-color);
             font-weight: 600;
             display: block;
-            margin: 5px 0;
+            margin: 4px 0;
         }
 
         .experience-item p {
             font-size: 0.9rem;
             color: var(--text-muted);
+            line-height: 1.6;
         }
 
-        /* Skills Progress Bar */
+        /* Skills Layout */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 15px 25px;
         }
 
         .skill-item {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         .skill-label {
-            font-size: 0.9rem;
-            margin-bottom: 8px;
+            font-size: 0.88rem;
+            margin-bottom: 6px;
             display: flex;
             justify-content: space-between;
+            color: var(--text-dark);
+            font-weight: 600;
         }
 
         .progress-bg {
-            background: #eee;
-            height: 10px;
-            border-radius: 5px;
+            background: rgba(27, 111, 167, 0.1);
+            height: 8px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .progress-fill {
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
             height: 100%;
-            border-radius: 5px;
+            border-radius: 4px;
             width: 0;
-            transition: width 1.5s ease-in-out;
+            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Action Button */
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-top: 30px;
-            background: var(--primary);
-            color: #fff;
-            padding: 12px 25px;
+            margin-top: 10px;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 12px 28px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
         }
 
         .download-btn:hover {
-            background: var(--dark);
-            transform: scale(1.05);
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.2);
         }
 
+        /* Responsive Layout */
         @media (max-width: 850px) {
             .resume-card {
                 grid-template-columns: 1fr;
-                width: 100%;
             }
 
             .sidebar {
-                padding: 50px 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(27, 111, 167, 0.08);
+                padding: 40px 20px;
+            }
+
+            .main-content {
+                padding: 35px 25px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- PRINT CRITICAL OVERRIDES --- */
+        @media print {
+            body {
+                background: #fff !important;
+                color: #000 !important;
+                padding: 0 !important;
+            }
+            #canvas-container, .download-btn, body::before {
+                display: none !important;
+            }
+            .resume-card {
+                width: 100% !important;
+                box-shadow: none !important;
+                border: none !important;
+                background: #fff !important;
+                grid-template-columns: 280px 1fr !important;
+                backdrop-filter: none !important;
+            }
+            .sidebar {
+                background: #f5f9fc !important;
+                border-right: 1px solid #ddd !important;
+            }
+            .progress-bg {
+                background: #ddd !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .progress-fill {
+                background: #165b8c !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <div id="canvas-container"></div>
 
     <div class="resume-card">
         <aside class="sidebar">
@@ -248,22 +369,26 @@
 
             <div class="info-section">
                 <h3 class="info-title">Contact Me</h3>
-                <a href="mailto:jane.doe@example.com" class="contact-link"><i class="fas fa-envelope"></i>
-                    forhadalpha08@gmail.com</a>
-                <a href="tel:+1234567890" class="contact-link"><i class="fas fa-phone"></i> +880 1342 900364</a>
-                <a href="#" class="contact-link"><i class="fas fa-globe"></i>https://forhad2008.github.io/portfolio/ </a>
-                <a href="#" class="contact-link"><i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh</a>
+                <a href="mailto:forhadalpha08@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> forhadalpha08@gmail.com
+                </a>
+                <a href="tel:+8801342900364" class="contact-link">
+                    <i class="fas fa-phone"></i> +880 1342 900364
+                </a>
+                <a href="chittagong" class="contact-link">
+                    <i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh
+                </a>
             </div>
 
             <div class="info-section">
                 <h3 class="info-title">Personal Info</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 10px;"><b>Date of Birth:</b> 20 November 2008</p>
-                <p style="font-size: 0.9rem;"><b>Nationality:</b> Bangladeshi</p>
+                <p class="personal-txt"><b>Date of Birth:</b> 20 November 2008</p>
+                <p class="personal-txt"><b>Nationality:</b> Bangladeshi</p>
             </div>
         </aside>
 
         <main class="main-content">
-            <section>
+            <section class="resume-section">
                 <h3 class="section-header"><i class="fas fa-user-circle"></i> Profile</h3>
                 <p class="profile-summary">
                     Creative Frontend Developer and Graphics Designer with 3+ years of experience building responsive
@@ -272,7 +397,7 @@
                 </p>
             </section>
 
-            <section>
+            <section class="resume-section">
                 <h3 class="section-header"><i class="fas fa-briefcase"></i> Experience</h3>
 
                 <div class="experience-item">
@@ -283,13 +408,14 @@
                 </div>
 
                 <div class="experience-item">
-                    <h4>Graphics Design — WebWorks</h4>
-                    <span>Jun 2020 – Dec 2022</span>
-                    <p>Design Business Card, Banner, Resume, Poster, Web theme, Logo etc. for clients.</p>
+                    <h4>Junior Developer — WebWorks</h4>
+                    <span>Jun 2020 – Dec 2021</span>
+                    <p>Built interactive web features with HTML, CSS, and JavaScript. Assisted in maintaining company
+                        CMS and enhancing website accessibility.</p>
                 </div>
             </section>
 
-            <section>
+            <section class="resume-section">
                 <h3 class="section-header"><i class="fas fa-tools"></i> Skills</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
@@ -319,31 +445,124 @@
                 </div>
             </section>
 
-            <section>
+            <section class="resume-section">
                 <h3 class="section-header"><i class="fas fa-graduation-cap"></i> Education</h3>
                 <div class="experience-item">
-                    <h4>Diploma. in Computer Science</h4>
-                    <span>2026 – 2030</span>
-                    <p>University of Comilla Polytechnic Institute — Focused on Software Engineering and Digital Design.</p>
+                    <h4>B.Sc. in Computer Science</h4>
+                    <span>2016 – 2020</span>
+                    <p>University of XYZ — Focused on Software Engineering and Digital Design.</p>
                 </div>
             </section>
 
-
+            <button onclick="window.print()" class="download-btn">
+                <i class="fas fa-print"></i> Print / Save as PDF
+            </button>
         </main>
     </div>
 
     <script>
-        // Progress bar animation on load
-        window.onload = () => {
+        // --- 3D OCEAN BUBBLE ENGINE ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        camera.position.z = 30;
+
+        const bubbleCount = 30; 
+        const bubbles = [];
+        const bubbleGroup = new THREE.Group();
+        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
+
+        function createBubbleMaterial() {
+            return new THREE.MeshPhysicalMaterial({
+                color: 0x0b4471,
+                emissive: 0x05223c,
+                emissiveIntensity: 0.5,
+                roughness: 0.05,
+                metalness: 0.4,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.01,
+                transmission: 0.3,
+                ior: 1.8,
+                thickness: 6.0,
+                transparent: true,
+                opacity: 0.8
+            });
+        }
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
+            const scale = Math.random() * 0.8 + 0.3;
+            mesh.scale.set(scale, scale, scale);
+            mesh.position.x = (Math.random() - 0.5) * 55;
+            mesh.position.y = (Math.random() - 0.5) * 45;
+            mesh.position.z = (Math.random() - 0.5) * 15;
+
+            mesh.userData = {
+                speedY: (scale * 0.025) + 0.01,
+                phaseX: Math.random() * Math.PI * 2,
+            };
+            bubbleGroup.add(mesh);
+            bubbles.push(mesh);
+        }
+        scene.add(bubbleGroup);
+
+        const skyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+        skyLight.position.set(10, 20, 8);
+        scene.add(skyLight);
+
+        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.8);
+        scene.add(fillLight);
+
+        const mouse = { x: 0, y: 0 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = Date.now();
+
+            bubbles.forEach(bubble => {
+                bubble.position.y += bubble.userData.speedY;
+                bubble.position.x += Math.sin(time * 0.002 + bubble.userData.phaseX) * 0.015;
+
+                if (bubble.position.y > 25) {
+                    bubble.position.y = -25;
+                    bubble.position.x = (Math.random() - 0.5) * 55;
+                }
+            });
+
+            bubbleGroup.rotation.y += (mouse.x * 0.03 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.03 - bubbleGroup.rotation.x) * 0.05;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Progress bar dynamic build
+        window.addEventListener('DOMContentLoaded', () => {
             const progressFills = document.querySelectorAll('.progress-fill');
             progressFills.forEach(fill => {
                 const targetWidth = fill.style.width;
                 fill.style.width = '0';
                 setTimeout(() => {
                     fill.style.width = targetWidth;
-                }, 200);
+                }, 300);
             });
-        };
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 
