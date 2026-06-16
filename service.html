@@ -8,15 +8,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         :root {
-            --primary: #00d2ff;
-            --accent: #3a7bd5;
-            --bg-dark: #050505;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --shine: rgba(255, 255, 255, 0.1);
+            --primary-color: #1b6fa7;
+            /* Real Horizon Sea Blue */
+            --secondary-color: #0b4471;
+            /* Deep Ocean Water Blue */
+            --accent-blue: #7bbce5;
+            /* Pure Light Sky Blue */
+            --bg-light: #e0f1f9;
+            /* Bright Open Sky Tint */
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --text-dark: #05223c;
+            /* Abyssal Deep Blue */
+            --text-medium: #165b8c;
+            /* Vibrant marine blue */
+            --text-muted: #4b6b88;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
         }
 
         * {
@@ -27,8 +48,8 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: #ffffff;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -38,18 +59,29 @@
             position: relative;
         }
 
-        /* Ambient Background Mesh */
+        /* Ambient background color blending mimicking the main page */
         body::before {
-            content: "";
-            position: absolute;
+            content: '';
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background:
-                radial-gradient(circle at 50% -20%, rgba(0, 210, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 0% 100%, rgba(58, 123, 213, 0.1) 0%, transparent 40%);
+            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
+            background-size: 200% 200%;
+            animation: ocean-current 15s ease-in-out infinite alternate;
+            opacity: 0.85;
             z-index: -1;
+        }
+
+        @keyframes ocean-current {
+            0% {
+                background-position: 50% 0%;
+            }
+
+            100% {
+                background-position: 50% 100%;
+            }
         }
 
         .section-title {
@@ -61,9 +93,10 @@
             font-size: 3.5rem;
             font-weight: 700;
             letter-spacing: -2px;
-            background: linear-gradient(to right, #fff, var(--primary), #fff);
+            background: linear-gradient(to right, var(--text-dark), var(--primary-color), var(--text-dark));
             background-size: 200% auto;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: textShine 4s linear infinite;
         }
@@ -81,31 +114,33 @@
             gap: 40px;
             max-width: 1150px;
             width: 100%;
+            z-index: 10;
         }
 
-        /* --- THE SHINING CARD --- */
+        /* --- THE MATCHED BLUE SHINING CARD --- */
         .service-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             padding: 60px 40px;
             border-radius: 30px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(27, 111, 167, 0.08);
+            box-shadow: 0 15px 35px rgba(27, 111, 167, 0.04);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
-        /* Border Shine Animation on Hover */
+        /* Border Shine & Lift on Hover */
         .service-card:hover {
             transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(27, 111, 167, 0.15);
         }
 
-        /* Animated Inner Reflection (The Swipe Shine) */
+        /* Swipe Shine Effect */
         .service-card::before {
             content: "";
             position: absolute;
@@ -115,7 +150,7 @@
             height: 100%;
             background: linear-gradient(90deg,
                     transparent,
-                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.4),
                     transparent);
             transform: skewX(-20deg);
             transition: 0.6s;
@@ -125,14 +160,14 @@
             left: 150%;
         }
 
-        /* Dynamic Spotlight Glow */
+        /* Dynamic Light Spotlight Glow */
         .glow-point {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 210, 255, 0.15) 0%, transparent 60%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(27, 111, 167, 0.12) 0%, transparent 60%);
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.3s;
@@ -144,21 +179,25 @@
 
         .icon-box {
             font-size: 50px;
-            color: #fff;
+            color: var(--primary-color);
             margin-bottom: 25px;
-            filter: drop-shadow(0 0 10px var(--primary));
+            filter: drop-shadow(0 4px 10px rgba(27, 111, 167, 0.2));
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .icon-box {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .service-card h2 {
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             margin-bottom: 15px;
-            background: linear-gradient(to bottom, #fff, #bbb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-dark);
+            font-weight: 700;
         }
 
         .service-card p {
-            color: #999;
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.8;
             margin-bottom: 30px;
@@ -167,38 +206,42 @@
         /* Premium Button */
         .service-btn {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 10px 28px;
             background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
             border-radius: 50px;
             text-decoration: none;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             position: relative;
             z-index: 2;
         }
 
         .service-btn:hover {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 0 20px var(--primary);
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.2);
         }
 
         .back-home {
             margin-top: 80px;
             text-decoration: none;
-            color: #666;
-            display: flex;
+            color: var(--text-medium);
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.3s;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            z-index: 10;
         }
 
         .back-home:hover {
-            color: var(--primary);
+            color: var(--primary-color);
+            transform: translateX(-5px);
         }
 
         .reveal {
@@ -208,6 +251,8 @@
 </head>
 
 <body>
+
+    <div id="canvas-container"></div>
 
     <div class="section-title">
         <h1 class="reveal">The Future of <span>Design</span></h1>
@@ -247,6 +292,91 @@
     </a>
 
     <script>
+        // --- 3D OCEAN BUBBLE ENGINE ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        camera.position.z = 30;
+
+        const bubbleCount = 30;
+        const bubbles = [];
+        const bubbleGroup = new THREE.Group();
+        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
+
+        function createBubbleMaterial() {
+            return new THREE.MeshPhysicalMaterial({
+                color: 0x0b4471,
+                emissive: 0x05223c,
+                emissiveIntensity: 0.5,
+                roughness: 0.05,
+                metalness: 0.4,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.01,
+                transmission: 0.3,
+                ior: 1.8,
+                thickness: 6.0,
+                transparent: true,
+                opacity: 0.8
+            });
+        }
+
+        for (let i = 0; i < bubbleCount; i++) {
+            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
+            const scale = Math.random() * 0.9 + 0.3;
+            mesh.scale.set(scale, scale, scale);
+            mesh.position.x = (Math.random() - 0.5) * 55;
+            mesh.position.y = (Math.random() - 0.5) * 45;
+            mesh.position.z = (Math.random() - 0.5) * 15;
+
+            mesh.userData = {
+                speedY: (scale * 0.025) + 0.01,
+                phaseX: Math.random() * Math.PI * 2,
+            };
+            bubbleGroup.add(mesh);
+            bubbles.push(mesh);
+        }
+        scene.add(bubbleGroup);
+
+        const skyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+        skyLight.position.set(10, 20, 8);
+        scene.add(skyLight);
+
+        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.8);
+        scene.add(fillLight);
+
+        const mouse = { x: 0, y: 0 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = Date.now();
+
+            bubbles.forEach(bubble => {
+                bubble.position.y += bubble.userData.speedY;
+                bubble.position.x += Math.sin(time * 0.002 + bubble.userData.phaseX) * 0.015;
+
+                if (bubble.position.y > 25) {
+                    bubble.position.y = -25;
+                    bubble.position.x = (Math.random() - 0.5) * 55;
+                }
+            });
+
+            bubbleGroup.rotation.y += (mouse.x * 0.04 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.04 - bubbleGroup.rotation.x) * 0.05;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
         // JS for Spotlight Mouse Effect
         const cards = document.querySelectorAll('.service-card');
         cards.forEach(card => {
@@ -264,9 +394,15 @@
             opacity: 1,
             y: 0,
             duration: 1,
-            stagger: 0.2,
+            stagger: 0.15,
             ease: "power4.out",
             startAt: { y: 50 }
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
