@@ -694,32 +694,36 @@
         }
         scene.add(bubbleGroup);
 
-        // --- RE-ENGINEERED HIGH-VISIBILITY BIG BUBBLE FLING ENGINE ---
-        function triggerBigBubbleFling() {
-            const flingCount = 8;
-            for (let i = 0; i < flingCount; i++) {
-                const bigMesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(2));
 
-                const scale = Math.random() * 2.0 + 3.5;
-                bigMesh.scale.set(scale, scale, scale);
+        // --- UPDATED BUBBLE FLING ENGINE (50% SMALLER BUBBLES ON CLICK/TOUCH) ---
+            function triggerBigBubbleFling() {
+                const flingCount = 8;
+                for (let i = 0; i < flingCount; i++) {
+                    // Reduced material scale factor from 2 to 1 for smaller highlights
+                    const bigMesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
 
-                bigMesh.position.x = (Math.random() - 0.5) * 50;
-                bigMesh.position.y = -28;
-                bigMesh.position.z = (Math.random() - 0.5) * 12;
+                    // ORIGINAL: Math.random() * 2.0 + 3.5; 
+                    // UPDATED: Multiplied by 0.5 to make them exactly 50% smaller
+                    const scale = (Math.random() * 2.0 + 3.5) * 0.5;
+                    bigMesh.scale.set(scale, scale, scale);
 
-                bigMesh.userData = {
-                    speedY: Math.random() * 0.35 + 0.5,
-                    wobbleSpeed: Math.random() * 0.12 + 0.08,
-                    phaseX: Math.random() * Math.PI * 2,
-                    phaseZ: Math.random() * Math.PI * 2,
-                    baseScale: scale,
-                    isExtra: true
-                };
+                    bigMesh.position.x = (Math.random() - 0.5) * 50;
+                    bigMesh.position.y = -28;
+                    bigMesh.position.z = (Math.random() - 0.5) * 12;
 
-                bubbleGroup.add(bigMesh);
-                bubbles.push(bigMesh);
+                    bigMesh.userData = {
+                        speedY: Math.random() * 0.35 + 0.5,
+                        wobbleSpeed: Math.random() * 0.12 + 0.08,
+                        phaseX: Math.random() * Math.PI * 2,
+                        phaseZ: Math.random() * Math.PI * 2,
+                        baseScale: scale,
+                        isExtra: true
+                    };
+
+                    bubbleGroup.add(bigMesh);
+                    bubbles.push(bigMesh);
+                }
             }
-        }
 
         const skySunLight = new THREE.DirectionalLight(0xffffff, 2.5);
         skySunLight.position.set(10, 20, 8);
@@ -824,8 +828,8 @@
 
         // --- AUDIO CONFIGURATION AND GLOBAL BUBBLE FLING INTERACTION ---
         const audio = document.getElementById('bg-audio');
-        audio.playbackRate = 0.1;
-        audio.volume = 0.1; // Set volume to low volume
+        audio.playbackRate = 0.3;
+        audio.volume = 0.3; // Set volume to low volume
 
         function globalClickManager() {
             audio.play().catch(err => console.log("Audio waiting for core interaction context"));
