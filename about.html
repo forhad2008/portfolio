@@ -13,19 +13,20 @@
 
     <style>
         :root {
-            --primary-color: #1b6fa7;
-            /* Real Horizon Sea Blue */
-            --secondary-color: #0b4471;
-            /* Deep Ocean Water Blue */
-            --accent-blue: #7bbce5;
-            /* Pure Light Sky Blue */
-            --bg-light: #e0f1f9;
-            /* Bright Open Sky Tint */
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --text-dark: #05223c;
-            /* Abyssal Deep Blue */
-            --text-medium: #165b8c;
-            /* Vibrant marine blue */
+            --primary-color: #b30000;
+            /* Crimson Red */
+            --secondary-color: #4a0000;
+            /* Deep Blood Velvet */
+            --accent-blue: #ff4d4d;
+            /* Vivid Light Red / Coral Spark */
+            --bg-light: #1a0303;
+            /* Abyssal Crimson Night */
+            --card-bg: rgba(20, 5, 5, 0.85);
+            /* Dark Glass Tint */
+            --text-dark: #fff5f5;
+            /* Pure Ghostly White */
+            --text-medium: #ff6666;
+            /* Vibrant Crimson Rose */
         }
 
         #canvas-container {
@@ -57,7 +58,7 @@
             position: relative;
         }
 
-        /* Ambient background color blending mimicking the main page */
+        /* Ambient background color blending mimicking a bloody ocean tide */
         body::before {
             content: '';
             position: fixed;
@@ -65,10 +66,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
+            background: linear-gradient(180deg, #1a0303 0%, #5c0606 40%, rgb(139, 0, 0) 100%);
             background-size: 200% 200%;
             animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.85;
+            opacity: 0.9;
             z-index: -1;
         }
 
@@ -82,7 +83,7 @@
             }
         }
 
-        /* --- MATCHED BLUE GLASS BOX EFFECT --- */
+        /* --- MATCHED BLOODY GLASS BOX EFFECT --- */
         .about-card {
             background: var(--card-bg);
             backdrop-filter: blur(25px);
@@ -91,8 +92,8 @@
             max-width: 500px;
             padding: 45px 35px;
             border-radius: 24px;
-            border: 1px solid rgba(27, 111, 167, 0.08);
-            box-shadow: 0 15px 35px rgba(27, 111, 167, 0.05);
+            border: 1px solid rgba(179, 0, 0, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             z-index: 10;
             position: relative;
             overflow: hidden;
@@ -115,7 +116,7 @@
             text-align: center;
             font-weight: 700;
             letter-spacing: 2px;
-            background: linear-gradient(to right, var(--text-dark), var(--primary-color));
+            background: linear-gradient(to right, var(--text-dark), var(--accent-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -133,17 +134,17 @@
             justify-content: space-between;
             align-items: center;
             padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(40, 10, 10, 0.5);
             border-radius: 14px;
-            border: 1px solid rgba(27, 111, 167, 0.06);
+            border: 1px solid rgba(179, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .info-item:hover {
-            background: #ffffff;
+            background: rgba(74, 0, 0, 0.4);
             transform: translateY(-3px) scale(1.01);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.08);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.2);
         }
 
         .info-item h3 {
@@ -161,7 +162,8 @@
         }
 
         .highlight-text {
-            color: var(--primary-color) !important;
+            color: var(--accent-blue) !important;
+            text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
         }
 
         .back-btn {
@@ -173,7 +175,7 @@
             width: 100%;
             padding: 14px;
             background: transparent;
-            color: var(--primary-color);
+            color: var(--accent-blue);
             border: 2px solid var(--primary-color);
             text-decoration: none;
             font-size: 0.95rem;
@@ -187,7 +189,7 @@
             color: #ffffff;
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.2);
+            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
         }
 
         .reveal {
@@ -235,7 +237,7 @@
     </div>
 
     <script>
-        // --- 3D OCEAN BUBBLE ENGINE ---
+        // --- 3D BLOOD DROPLET / BUBBLE ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -247,25 +249,25 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 35; // Lightened for standard sub-pages
+        const bubbleCount = 35;
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x0b4471,
-                emissive: 0x05223c,
-                emissiveIntensity: 0.5,
-                roughness: 0.05,
-                metalness: 0.4,
+                color: 0x4a0000,           // Crimson blood base
+                emissive: 0x1a0303,        // Deep dark core
+                emissiveIntensity: 0.6,
+                roughness: 0.08,
+                metalness: 0.1,
                 clearcoat: 1.0,
-                clearcoatRoughness: 0.01,
-                transmission: 0.3,
-                ior: 1.8,
-                thickness: 6.0,
+                clearcoatRoughness: 0.02,
+                transmission: 0.4,          // Fluid liquid depth
+                ior: 1.4,
+                thickness: 5.0,
                 transparent: true,
-                opacity: 0.8
+                opacity: 0.85
             });
         }
 
@@ -278,7 +280,7 @@
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.03) + 0.015,
+                speedY: (scale * 0.025) + 0.012,
                 wobbleSpeed: Math.random() * 0.04 + 0.02,
                 phaseX: Math.random() * Math.PI * 2,
                 phaseZ: Math.random() * Math.PI * 2,
@@ -289,12 +291,12 @@
         }
         scene.add(bubbleGroup);
 
-        // Lights
-        const skyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+        // Lights tuned for dark crimson visibility
+        const skyLight = new THREE.DirectionalLight(0xffcccc, 2.5); // Soft red-white top light
         skyLight.position.set(10, 20, 8);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.8);
+        const fillLight = new THREE.AmbientLight(0x3a0000, 1.2); // Red fill light
         scene.add(fillLight);
 
         // Mouse tracking for parallax
