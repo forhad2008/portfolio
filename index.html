@@ -78,7 +78,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, #4693cb 100%);
+            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
             background-size: 200% 200%;
             animation: ocean-current 15s ease-in-out infinite alternate;
             opacity: 0.85;
@@ -525,23 +525,30 @@
 
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
-        for (let i = 0; i < bubbleCount; i++) {
-            // MATCHED GRAPHIC PHYSICAL MATERIAL LOOK BASED ON IMAGE COLORS
-            const bubbleMat = new THREE.MeshPhysicalMaterial({
-                color: 0x4693cb,                // Natural core blue matching ocean surface depth
-                emissive: 0x0b4471,             // Distinct dark tracking silhouette border
-                roughness: 0.02,
-                metalness: 0.1,
-                clearcoat: 1.0,                 // Pristine surface gloss
-                clearcoatRoughness: 0.02,
-                transmission: 0.65,             // Translucent glass fluid look
-                ior: 1.45,                      // Fluid light refraction
-                thickness: 2.5,                 // Defined perimeter structure to pop clearly on light layouts
-                transparent: true,
-                opacity: Math.random() * 0.4 + 0.3
-            });
+        // --- UPDATED: RE-ENGINEERED 3X DEEPER HIGH-CONTRAST MATERIAL GENERATOR ---
+        function createBubbleMaterial(scaleFactor = 1) {
+            const isBigBubble = scaleFactor > 1;
 
-            const mesh = new THREE.Mesh(bubbleGeo, bubbleMat);
+            return new THREE.MeshPhysicalMaterial({
+                // Shifted to rich, deep ocean tones matching your --text-dark and --secondary-color
+                color: isBigBubble ? 0x05223c : 0x0b4471,
+                emissive: isBigBubble ? 0x021120 : 0x05223c,
+                emissiveIntensity: 0.6,
+                roughness: 0.05,
+                metalness: 0.4,                    // Increased reflection catching to gleam against dark shapes
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.01,
+                transmission: 0.25,                // Dropped significantly to make bubbles substantially more solid/opaque
+                ior: 1.9,                          // Maximum intense fluid refraction edge line
+                thickness: 8.0 * scaleFactor,      // 3x thicker heavy outline framing to separate from white cards
+                transparent: true,
+                opacity: isBigBubble ? 0.95 : 0.85 // High opacity baseline makes them impossible to miss
+            });
+        }
+
+        // Initialize ambient bubbles
+        for (let i = 0; i < bubbleCount; i++) {
+            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
 
             const scale = Math.random() * 1.2 + 0.35;
             mesh.scale.set(scale, scale, scale);
@@ -555,7 +562,8 @@
                 wobbleSpeed: Math.random() * 0.04 + 0.02,
                 phaseX: Math.random() * Math.PI * 2,
                 phaseZ: Math.random() * Math.PI * 2,
-                baseScale: scale
+                baseScale: scale,
+                isExtra: false
             };
 
             bubbleGroup.add(mesh);
@@ -563,16 +571,43 @@
         }
         scene.add(bubbleGroup);
 
+        // --- RE-ENGINEERED HIGH-VISIBILITY BIG BUBBLE FLING ENGINE ---
+        function triggerBigBubbleFling() {
+            const flingCount = 8;
+            for (let i = 0; i < flingCount; i++) {
+                const bigMesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(2));
+
+                const scale = Math.random() * 2.0 + 3.5;
+                bigMesh.scale.set(scale, scale, scale);
+
+                bigMesh.position.x = (Math.random() - 0.5) * 50;
+                bigMesh.position.y = -28;
+                bigMesh.position.z = (Math.random() - 0.5) * 12;
+
+                bigMesh.userData = {
+                    speedY: Math.random() * 0.35 + 0.5,
+                    wobbleSpeed: Math.random() * 0.12 + 0.08,
+                    phaseX: Math.random() * Math.PI * 2,
+                    phaseZ: Math.random() * Math.PI * 2,
+                    baseScale: scale,
+                    isExtra: true
+                };
+
+                bubbleGroup.add(bigMesh);
+                bubbles.push(bigMesh);
+            }
+        }
+
         // Sunlight orientation illuminating water droplets from the top-right horizon corner
-        const skySunLight = new THREE.DirectionalLight(0xffffff, 2.2);
+        const skySunLight = new THREE.DirectionalLight(0xffffff, 2.5);
         skySunLight.position.set(10, 20, 8);
         scene.add(skySunLight);
 
-        const oceanBaseLight = new THREE.DirectionalLight(0x7bbce5, 1.0);
+        const oceanBaseLight = new THREE.DirectionalLight(0x7bbce5, 1.2);
         oceanBaseLight.position.set(-10, -5, -5);
         scene.add(oceanBaseLight);
 
-        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.85);
+        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.9);
         scene.add(fillLight);
 
         function animateOceanEngine() {
@@ -583,17 +618,15 @@
             mouse.x += (mouse.targetX - mouse.x) * 0.06;
             mouse.y += (mouse.targetY - mouse.y) * 0.06;
 
-            bubbles.forEach((bubble) => {
+            for (let i = bubbles.length - 1; i >= 0; i--) {
+                const bubble = bubbles[i];
                 const physics = bubble.userData;
 
-                // 1. Upward buoyant ascent
                 bubble.position.y += physics.speedY;
 
-                // 2. Transverse fluid wave sways
                 bubble.position.x += Math.sin(time * 0.002 + physics.phaseX) * 0.025;
                 bubble.position.z += Math.cos(time * 0.001 + physics.phaseZ) * 0.015;
 
-                // 3. Fluid drag shape dynamic deformity (Wobbles)
                 const currentWobble = 1 + Math.sin(time * physics.wobbleSpeed) * 0.08;
                 bubble.scale.set(
                     physics.baseScale * currentWobble,
@@ -601,18 +634,20 @@
                     physics.baseScale
                 );
 
-                // 4. Parallax structural responsive mouse tracking shift
                 bubble.position.x += mouse.x * 0.02;
 
-                // Recycling loop when passing the screen crest boundary limit
-                if (bubble.position.y > 24) {
-                    bubble.position.y = -24;
-                    bubble.position.x = (Math.random() - 0.5) * 55;
-                    bubble.position.z = (Math.random() - 0.5) * 15;
+                if (bubble.position.y > 26) {
+                    if (physics.isExtra) {
+                        bubbleGroup.remove(bubble);
+                        bubbles.splice(i, 1);
+                    } else {
+                        bubble.position.y = -24;
+                        bubble.position.x = (Math.random() - 0.5) * 55;
+                        bubble.position.z = (Math.random() - 0.5) * 15;
+                    }
                 }
-            });
+            }
 
-            // Parallax underwater visual tilt shifts
             bubbleGroup.rotation.y = mouse.x * 0.08;
             bubbleGroup.rotation.x = -mouse.y * 0.05;
 
@@ -654,23 +689,26 @@
         const coverTrigger = document.getElementById('cover-trigger');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        coverTrigger.addEventListener('click', () => {
+        coverTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
             lightboxImg.src = coverTrigger.querySelector('img').src;
             lightbox.style.display = 'flex';
             gsap.fromTo(lightbox, { opacity: 0 }, { opacity: 1, duration: 0.5 });
         });
-        lightbox.addEventListener('click', () => {
+        lightbox.addEventListener('click', (e) => {
+            e.stopPropagation();
             gsap.to(lightbox, { opacity: 0, duration: 0.4, onComplete: () => lightbox.style.display = 'none' });
         });
 
-        // --- AUDIO ---
+        // --- AUDIO AND GLOBAL BUBBLE FLING INTERACTION ---
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.5;
-        function initAudio() {
-            audio.play().catch(err => console.log("Interaction needed"));
-            document.removeEventListener('click', initAudio);
+
+        function globalClickManager() {
+            audio.play().catch(err => console.log("Audio waiting for core interaction context"));
+            triggerBigBubbleFling();
         }
-        document.addEventListener('click', initAudio);
+        document.addEventListener('click', globalClickManager);
 
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
