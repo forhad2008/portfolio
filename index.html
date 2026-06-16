@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forhad's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -530,19 +530,18 @@
             const isBigBubble = scaleFactor > 1;
 
             return new THREE.MeshPhysicalMaterial({
-                // Shifted to rich, deep ocean tones matching your --text-dark and --secondary-color
                 color: isBigBubble ? 0x05223c : 0x0b4471,
                 emissive: isBigBubble ? 0x021120 : 0x05223c,
                 emissiveIntensity: 0.6,
                 roughness: 0.05,
-                metalness: 0.4,                    // Increased reflection catching to gleam against dark shapes
+                metalness: 0.4,
                 clearcoat: 1.0,
                 clearcoatRoughness: 0.01,
-                transmission: 0.25,                // Dropped significantly to make bubbles substantially more solid/opaque
-                ior: 1.9,                          // Maximum intense fluid refraction edge line
-                thickness: 8.0 * scaleFactor,      // 3x thicker heavy outline framing to separate from white cards
+                transmission: 0.25,
+                ior: 1.9,
+                thickness: 8.0 * scaleFactor,
                 transparent: true,
-                opacity: isBigBubble ? 0.95 : 0.85 // High opacity baseline makes them impossible to miss
+                opacity: isBigBubble ? 0.95 : 0.85
             });
         }
 
@@ -598,7 +597,6 @@
             }
         }
 
-        // Sunlight orientation illuminating water droplets from the top-right horizon corner
         const skySunLight = new THREE.DirectionalLight(0xffffff, 2.5);
         skySunLight.position.set(10, 20, 8);
         scene.add(skySunLight);
@@ -700,9 +698,10 @@
             gsap.to(lightbox, { opacity: 0, duration: 0.4, onComplete: () => lightbox.style.display = 'none' });
         });
 
-        // --- AUDIO AND GLOBAL BUBBLE FLING INTERACTION ---
+        // --- AUDIO CONFIGURATION AND GLOBAL BUBBLE FLING INTERACTION ---
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.5;
+        audio.volume = 0.5; // Set volume to 50% low volume
 
         function globalClickManager() {
             audio.play().catch(err => console.log("Audio waiting for core interaction context"));
