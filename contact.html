@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me | Abdullah Forhad</title>
+    <title>Contact Abdullah Forhad</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -13,19 +13,20 @@
 
     <style>
         :root {
-            --primary-color: #1b6fa7;
-            /* Real Horizon Sea Blue */
-            --secondary-color: #0b4471;
-            /* Deep Ocean Water Blue */
-            --accent-blue: #7bbce5;
-            /* Pure Light Sky Blue */
-            --bg-light: #e0f1f9;
-            /* Bright Open Sky Tint */
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --text-dark: #05223c;
-            /* Abyssal Deep Blue */
-            --text-medium: #165b8c;
-            /* Vibrant marine blue */
+            --primary-color: #b30000;
+            /* Crimson Red */
+            --secondary-color: #4a0000;
+            /* Deep Blood Velvet */
+            --accent-blue: #ff4d4d;
+            /* Vivid Light Red / Coral Spark */
+            --bg-light: #1a0303;
+            /* Abyssal Crimson Night */
+            --card-bg: rgba(20, 5, 5, 0.85);
+            /* Dark Glass Tint */
+            --text-dark: #fff5f5;
+            /* Pure Ghostly White */
+            --text-medium: #ff6666;
+            /* Vibrant Crimson Rose */
         }
 
         #canvas-container {
@@ -53,11 +54,11 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* Ambient background color blending mimicking the main page */
+        /* Ambient background color blending mimicking a bloody ocean tide */
         body::before {
             content: '';
             position: fixed;
@@ -65,36 +66,40 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, #e0f1f9 0%, #9bcbe6 40%, rgb(119, 169, 204) 100%);
+            background: linear-gradient(180deg, #1a0303 0%, #5c0606 40%, rgb(139, 0, 0) 100%);
             background-size: 200% 200%;
             animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.85;
+            opacity: 0.9;
             z-index: -1;
         }
 
         @keyframes ocean-current {
-            0% { background-position: 50% 0%; }
-            100% { background-position: 50% 100%; }
+            0% {
+                background-position: 50% 0%;
+            }
+
+            100% {
+                background-position: 50% 100%;
+            }
         }
 
-        /* --- MATCHED BLUE GLASS BOX EFFECT --- */
-        .contact-container {
+        /* --- MATCHED BLOODY GLASS BOX EFFECT --- */
+        .contact-card {
             background: var(--card-bg);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             padding: 45px 35px;
             border-radius: 24px;
-            border: 1px solid rgba(27, 111, 167, 0.08);
-            box-shadow: 0 15px 35px rgba(27, 111, 167, 0.05);
-            text-align: center;
+            border: 1px solid rgba(179, 0, 0, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             z-index: 10;
             position: relative;
             overflow: hidden;
         }
 
-        .contact-container::before {
+        .contact-card::before {
             content: '';
             position: absolute;
             left: 0;
@@ -105,104 +110,108 @@
             border-radius: 0 4px 4px 0;
         }
 
-        .section-title h1 {
+        h1 {
             font-size: 2.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 35px;
+            text-align: center;
             font-weight: 700;
-            background: linear-gradient(to right, var(--text-dark), var(--primary-color));
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--text-dark), var(--accent-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             color: var(--text-dark);
         }
 
-        .section-title p {
-            color: var(--text-medium);
-            margin-bottom: 35px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .contact-method {
+        .contact-grid {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .contact-btn {
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            padding: 16px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
+            gap: 20px;
+            padding: 14px 18px;
+            background: rgba(40, 10, 10, 0.5);
+            border-radius: 14px;
+            border: 1px solid rgba(179, 0, 0, 0.1);
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            border: 1px solid rgba(27, 111, 167, 0.15);
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .contact-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-        }
-
-        /* Vibrant Marine Themed Brand Actions */
-        .whatsapp {
-            color: #1ebd56;
-            border-color: rgba(30, 189, 86, 0.3);
-            background: rgba(30, 189, 86, 0.04);
-        }
-
-        .whatsapp:hover {
-            background: #1ebd56;
-            color: #ffffff;
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(30, 189, 86, 0.25);
-        }
-
-        .email {
-            color: var(--primary-color);
-            border-color: rgba(27, 111, 167, 0.3);
-            background: rgba(27, 111, 167, 0.04);
-        }
-
-        .email:hover {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            color: #ffffff;
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(27, 111, 167, 0.25);
-        }
-
-        .facebook {
-            color: #1877f2;
-            border-color: rgba(24, 119, 242, 0.3);
-            background: rgba(24, 119, 242, 0.04);
-        }
-
-        .facebook:hover {
-            background: #1877f2;
-            color: #ffffff;
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(24, 119, 242, 0.25);
-        }
-
-        .back-home {
-            margin-top: 35px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             text-decoration: none;
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            font-weight: 500;
+            color: inherit;
+        }
+
+        .contact-item:hover {
+            background: rgba(74, 0, 0, 0.4);
+            transform: translateY(-3px) scale(1.01);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.2);
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            background: rgba(179, 0, 0, 0.15);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
-        .back-home:hover {
-            color: var(--primary-color);
-            transform: translateX(-5px);
+        .contact-item:hover .icon-box {
+            background: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(179, 0, 0, 0.4);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-details h3 {
+            font-size: 0.85rem;
+            color: var(--text-medium);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-details span {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 35px;
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--primary-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            color: #ffffff;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
         }
 
         .reveal {
@@ -212,68 +221,80 @@
 </head>
 
 <body>
-
     <div id="canvas-container"></div>
 
-    <div class="contact-container">
-        <div class="section-title">
-            <h1 class="reveal">Get In Touch</h1>
-            <p class="reveal">Ready to bring your ideas to life? Let's connect and build something amazing together.</p>
+    <div class="contact-card">
+        <h1 class="reveal">Contact Me</h1>
+
+        <div class="contact-grid">
+            <a href="mailto:abdullahforhad@email.com" class="contact-item reveal">
+                <div class="icon-box">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Email</h3>
+                    <span>abdullahforhad@email.com</span>
+                </div>
+            </a>
+
+            <div class="contact-item reveal">
+                <div class="icon-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Location</h3>
+                    <span>Chittagong, Bangladesh</span>
+                </div>
+            </div>
+
+            <a href="https://github.com" target="_blank" class="contact-item reveal">
+                <div class="icon-box">
+                    <i class="fab fa-github"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>GitHub</h3>
+                    <span>github.com/abdullahforhad</span>
+                </div>
+            </a>
         </div>
 
-        <div class="contact-method">
-            <a href="https://wa.me/+8801342900364" class="contact-btn whatsapp reveal" target="_blank">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=forhadalpha08@gmail.com" target="_blank"
-                class="contact-btn email reveal">
-                <i class="far fa-envelope"></i> Email Me
-            </a>
-
-            <a href="https://www.facebook.com/profile.php?id=61580779565120" class="contact-btn facebook reveal"
-                target="_blank">
-                <i class="fab fa-facebook-f"></i> Facebook
-            </a>
-        </div>
-
-        <a href="index.html" class="back-home reveal">
-            <i class="fas fa-arrow-left"></i> Back to Home
+        <a href="index.html" class="back-btn reveal">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
         </a>
     </div>
 
     <script>
-        // --- 3D OCEAN BUBBLE ENGINE ---
+        // --- 3D BLOOD DROPLET / BUBBLE ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        
+
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
         camera.position.z = 30;
 
-        const bubbleCount = 35; 
+        const bubbleCount = 35;
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x0b4471,
-                emissive: 0x05223c,
-                emissiveIntensity: 0.5,
-                roughness: 0.05,
-                metalness: 0.4,
+                color: 0x4a0000,           // Deep crimson blood base
+                emissive: 0x1a0303,        // Dark abyssal core
+                emissiveIntensity: 0.6,
+                roughness: 0.08,
+                metalness: 0.1,
                 clearcoat: 1.0,
-                clearcoatRoughness: 0.01,
-                transmission: 0.3,
-                ior: 1.8,
-                thickness: 6.0,
+                clearcoatRoughness: 0.02,
+                transmission: 0.4,          // Liquid fluid density
+                ior: 1.4,
+                thickness: 5.0,
                 transparent: true,
-                opacity: 0.8
+                opacity: 0.85
             });
         }
 
@@ -286,7 +307,7 @@
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.03) + 0.015,
+                speedY: (scale * 0.025) + 0.012,
                 wobbleSpeed: Math.random() * 0.04 + 0.02,
                 phaseX: Math.random() * Math.PI * 2,
                 phaseZ: Math.random() * Math.PI * 2,
@@ -297,15 +318,15 @@
         }
         scene.add(bubbleGroup);
 
-        // Lights
-        const skyLight = new THREE.DirectionalLight(0xffffff, 2.0);
+        // Lights tuned for crimson visibility
+        const skyLight = new THREE.DirectionalLight(0xffcccc, 2.5); // Soft red-white top reflection
         skyLight.position.set(10, 20, 8);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0xe0f1f9, 0.8);
+        const fillLight = new THREE.AmbientLight(0x3a0000, 1.2); // Warm dark-red ambient layer
         scene.add(fillLight);
 
-        // Mouse interaction parallax
+        // Mouse tracking for parallax
         const mouse = { x: 0, y: 0 };
         window.addEventListener('mousemove', (e) => {
             mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
