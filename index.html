@@ -15,18 +15,12 @@
     <style>
         :root {
             --primary-color: #af0505;
-            /* Vivid Crimson / Blood Red */
             --secondary-color: #680404;
-            /* Deep Maroon / Dried Blood */
             --accent-blue: #ff4d4d;
-            /* Bright Pure Red Highlight */
             --bg-light: rgb(139, 1, 1);
-            /* Abyssal Black-Red Tint */
             --card-bg: rgba(20, 5, 5, 0.85);
             --text-dark: #fff5f5;
-            /* Off-White with faint pink tint for clean reading contrast */
             --text-medium: #ff6666;
-            /* Vibrant Crimson Red text */
         }
 
         #canvas-container {
@@ -70,7 +64,7 @@
             min-height: 100vh;
         }
 
-        /* --- DYNAMIC BLOODY OCEAN GRADIENT BACKGROUND --- */
+        /* --- RESTORED DYNAMIC BLOODY OCEAN GRADIENT BACKGROUND --- */
         body::before {
             content: '';
             position: fixed;
@@ -95,7 +89,7 @@
             }
         }
 
-        /* --- MOVING BLOODY OCEAN WATER FLUID WAVES --- */
+        /* --- RESTORED MOVING BLOODY OCEAN WATER FLUID WAVES --- */
         .ocean-waves {
             position: fixed;
             bottom: 0;
@@ -247,118 +241,98 @@
             padding-left: 10px;
         }
 
-        /* --- STABLE INTERACTIVE PROFILE HUB CONTAINER --- */
+        /* --- COOL CYBERPUNK PROFILE SYSTEM --- */
         .profile-hub-container {
             position: relative;
-            width: 280px;
-            height: 280px;
-            margin: 150px auto 35px;
+            width: 260px;
+            height: 260px;
+            margin: 110px auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            perspective: 1000px;
             opacity: 1 !important;
-            /* Forces the structure to remain anchored without vanishing */
             visibility: visible !important;
         }
 
-        /* Outer tech/geometric rotating ring */
-        .profile-hub-ring-outer {
+        /* Tech Bracket Trim Layers */
+        .cyber-bracket {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 2px dashed rgba(168, 6, 6, 0.25);
-            animation: spinRingOuter 40s linear infinite;
+            width: 240px;
+            height: 240px;
+            border: 2px solid rgba(255, 77, 77, 0.25);
+            border-radius: 24px;
+            pointer-events: none;
+            z-index: 1;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Inner glowing tracking compass ring */
-        .profile-hub-ring-inner {
-            position: absolute;
-            width: 86%;
-            height: 86%;
-            border-radius: 50%;
-            border: 1px solid rgba(216, 75, 75, 0.3);
-            animation: spinRingInner 20s linear infinite reverse;
+        .cyber-bracket.b1 {
+            border-bottom: none;
+            border-right: none;
+            top: 0;
+            left: 0;
+            transform: translate(-6px, -6px);
         }
 
-        .profile-hub-ring-inner::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 15px var(--accent-blue), 0 0 30px var(--accent-blue);
+        .cyber-bracket.b2 {
+            border-top: none;
+            border-left: none;
+            bottom: 0;
+            right: 0;
+            transform: translate(6px, 6px);
         }
 
-        @keyframes spinRingOuter {
-            100% {
-                transform: rotate(360deg);
-            }
+        .profile-hub-container:hover .cyber-bracket.b1 {
+            transform: translate(-12px, -12px);
+            border-color: var(--accent-blue);
         }
 
-        @keyframes spinRingInner {
-            100% {
-                transform: rotate(360deg);
-            }
+        .profile-hub-container:hover .cyber-bracket.b2 {
+            transform: translate(12px, 12px);
+            border-color: var(--accent-blue);
         }
 
-        /* Core wrapper managing ambient pulsing aura */
+        /* Rounded Tech Cyber Frame Wrapper */
         .profile-avatar-wrapper {
             position: relative;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            padding: 6px;
-            background: linear-gradient(135deg, var(--primary-color), #ff3333);
-            box-shadow: 0 0 40px rgba(175, 5, 5, 0.5);
-            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
-            cursor: pointer;
+            width: 210px;
+            height: 210px;
+            border-radius: 20px;
+            padding: 3px;
+            background: linear-gradient(135deg, rgba(175, 5, 5, 0.6) 0%, rgba(255, 77, 77, 0.3) 100%);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(175, 5, 5, 0.2);
             z-index: 2;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
-        /* Pulsing core shadow ring effect */
+        /* Glass Lens Glare overlay */
         .profile-avatar-wrapper::after {
             content: '';
             position: absolute;
-            inset: -10px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            opacity: 0.4;
-            animation: corePulse 3s ease-out infinite;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, transparent 40%, rgba(175, 5, 5, 0.3) 100%);
+            z-index: 3;
             pointer-events: none;
-        }
-
-        @keyframes corePulse {
-            0% {
-                transform: scale(0.95);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1.15);
-                opacity: 0;
-            }
-        }
-
-        .profile-avatar-wrapper:hover {
-            transform: scale(1.08) rotate(2deg);
-            box-shadow: 0 0 50px rgba(255, 77, 77, 0.85);
         }
 
         .profile-avatar-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #1a0505;
-            transition: border-color 0.4s ease;
+            border-radius: 17px;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .profile-avatar-wrapper:hover {
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 77, 77, 0.4);
         }
 
         .profile-avatar-wrapper:hover img {
-            border-color: #0d0202;
+            transform: scale(1.08);
         }
 
         .container {
@@ -451,14 +425,19 @@
 
         @media (max-width: 768px) {
             .profile-hub-container {
-                width: 220px;
-                height: 220px;
-                margin-top: 120px;
+                width: 210px;
+                height: 210px;
+                margin-top: 100px;
             }
 
             .profile-avatar-wrapper {
-                width: 150px;
-                height: 150px;
+                width: 175px;
+                height: 175px;
+            }
+
+            .cyber-bracket {
+                width: 195px;
+                height: 195px;
             }
 
             .logo {
@@ -510,7 +489,7 @@
             line-height: 1.9;
         }
 
-        /* REAL WATER BACKGROUND */
+        /* RESTORED WATER PATTERN OVERLAYS */
         .water-ripple {
             position: fixed;
             inset: 0;
@@ -521,10 +500,7 @@
                 radial-gradient(circle at 20% 20%, rgba(255, 0, 0, 0.08), transparent 25%),
                 radial-gradient(circle at 80% 30%, rgba(153, 0, 0, 0.12), transparent 25%),
                 radial-gradient(circle at 50% 80%, rgba(255, 102, 102, 0.05), transparent 25%),
-                linear-gradient(180deg,
-                    #1a0505 0%,
-                    #380000 40%,
-                    #0d0202 100%);
+                linear-gradient(180deg, #1a0505 0%, #380000 40%, #0d0202 100%);
         }
 
         .water-ripple::before,
@@ -613,11 +589,11 @@
 
     <section class="hero-section">
         <div class="profile-hub-container">
-            <div class="profile-hub-ring-outer"></div>
-            <div class="profile-hub-ring-inner"></div>
+            <div class="cyber-bracket b1"></div>
             <div class="profile-avatar-wrapper" id="avatar-trigger">
                 <img src="1.jpg" alt="Abdullah Forhad">
             </div>
+            <div class="cyber-bracket b2"></div>
         </div>
 
         <div class="container">
@@ -671,7 +647,7 @@
     </section>
 
     <script>
-        // --- REAL PHYSICS HIGH-VISIBILITY DEEP RED FLUID ENGINE ---
+        // --- ORIGINAL PHYSICS FLUID BUBBLE ENGINE RESTORED ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -687,6 +663,27 @@
         window.addEventListener('mousemove', (event) => {
             mouse.targetX = (event.clientX / window.innerWidth) * 2 - 1;
             mouse.targetY = -(event.clientY / window.innerHeight) * 2 + 1;
+
+            // Modern Fluid Dynamic 3D Card Tilting Matrix
+            const avatarWrapper = document.getElementById('avatar-trigger');
+            if (avatarWrapper) {
+                const xDeg = mouse.targetY * 15;
+                const yDeg = mouse.targetX * 15;
+                gsap.to(avatarWrapper, {
+                    rotateX: xDeg,
+                    rotateY: yDeg,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    overwrite: "auto"
+                });
+            }
+        });
+
+        window.addEventListener('mouseleave', () => {
+            const avatarWrapper = document.getElementById('avatar-trigger');
+            if (avatarWrapper) {
+                gsap.to(avatarWrapper, { rotateX: 0, rotateY: 0, duration: 0.6, ease: "power2.out" });
+            }
         });
 
         const bubbleCount = 50;
@@ -697,7 +694,6 @@
 
         function createBubbleMaterial(scaleFactor = 1) {
             const isBigBubble = scaleFactor > 1;
-
             return new THREE.MeshPhysicalMaterial({
                 color: isBigBubble ? 0x380000 : 0x7a0000,
                 emissive: isBigBubble ? 0x1a0202 : 0x380000,
@@ -716,7 +712,6 @@
 
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
-
             const scale = Math.random() * 1.2 + 0.35;
             mesh.scale.set(scale, scale, scale);
 
@@ -737,7 +732,6 @@
             bubbles.push(mesh);
         }
         scene.add(bubbleGroup);
-
 
         function triggerBigBubbleFling() {
             const flingCount = 8;
@@ -777,7 +771,6 @@
 
         function animateOceanEngine() {
             requestAnimationFrame(animateOceanEngine);
-
             const time = Date.now();
 
             mouse.x += (mouse.targetX - mouse.x) * 0.06;
@@ -788,7 +781,6 @@
                 const physics = bubble.userData;
 
                 bubble.position.y += physics.speedY;
-
                 bubble.position.x += Math.sin(time * 0.002 + physics.phaseX) * 0.025;
                 bubble.position.z += Math.cos(time * 0.001 + physics.phaseZ) * 0.015;
 
@@ -820,7 +812,7 @@
         }
         animateOceanEngine();
 
-        // --- FIXED TITLE SCROLLER LOGIC ---
+        // --- TITLE SCROLLER TRACKER ---
         function initTitleScroller() {
             const track = document.getElementById('scroller-track');
             const items = track.querySelectorAll('.highlight');
@@ -832,16 +824,17 @@
             }
         }
 
-        // --- GSAP REVEALS (EXCLUDING THE PROFILE HUBCONTAINER TO KEEP IT PERMANENTLY ANCHORED) ---
+        // --- GSAP REVEALS ---
         gsap.registerPlugin(ScrollTrigger);
         const tl = gsap.timeline();
 
         tl.from("nav", { y: -60, opacity: 0, duration: 1.2, ease: "power3.out" })
-            .from(".name-reveal", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.3")
+            .from(".profile-hub-container", { scale: 0.8, opacity: 0, duration: 1.2, ease: "back.out(1.5)" }, "-=0.8")
+            .from(".name-reveal", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
             .from(".gsap-reveal", { y: 30, opacity: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }, "-=0.6")
             .add(() => initTitleScroller());
 
-        // --- UI INTERACTION LOGIC ---
+        // --- GLOBAL INTERACTIVITY ---
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
         hamburger.addEventListener('click', () => {
@@ -849,37 +842,25 @@
             menuWindow.classList.toggle('open');
         });
 
-        // --- ENHANCED INTERACTIVE AVATAR CLICK EXPLOSION WITH ACCELERATED RING ROTATION ---
         const avatarTrigger = document.getElementById('avatar-trigger');
-        const outerRing = document.querySelector('.profile-hub-ring-outer');
-        const innerRing = document.querySelector('.profile-hub-ring-inner');
-
         avatarTrigger.addEventListener('click', (e) => {
             e.stopPropagation();
-
-            // Multiple background fluid bubble flings triggered on tap
             triggerBigBubbleFling();
             triggerBigBubbleFling();
-            triggerBigBubbleFling();
-
-            // Direct GSAP pop transformation on the avatar ring holder
-            gsap.fromTo(avatarTrigger, { scale: 0.88 }, { scale: 1, duration: 0.4, ease: "back.out(2.5)" });
-
-            // Momentary hyper-spin boost layout reaction on geometric layout components
-            gsap.fromTo(outerRing, { rotation: "+=45" }, { rotation: "+=0", duration: 1, ease: "power2.out" });
-            gsap.fromTo(innerRing, { rotation: "-=90" }, { rotation: "-=0", duration: 1, ease: "power2.out" });
+            gsap.fromTo(avatarTrigger,
+                { scale: 0.92, filter: "brightness(1.5)" },
+                { scale: 1, filter: "brightness(1)", duration: 0.5, ease: "back.out(2)" }
+            );
         });
 
-        // --- AUDIO CONFIGURATION AND GLOBAL BURST INTERACTION ---
         const audio = document.getElementById('bg-audio');
         audio.playbackRate = 0.3;
-        audio.volume = 0.3;
+        audio.volume = 0.2;
 
-        function globalClickManager() {
-            audio.play().catch(err => console.log("Audio waiting for core interaction context"));
+        document.addEventListener('click', () => {
+            audio.play().catch(err => console.log("Audio contexts assigned."));
             triggerBigBubbleFling();
-        }
-        document.addEventListener('click', globalClickManager);
+        });
 
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
@@ -887,16 +868,12 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // REAL WATER MOTION
+        // ORIGINAL WATER MOTION RESTORED
         const water = document.querySelector('.water-ripple');
         let waterTime = 0;
-
         function animateWater() {
             waterTime += 0.01;
-            water.style.filter =
-                `brightness(${1 + Math.sin(waterTime) * 0.05})
-                 contrast(1.1)
-                 saturate(1.2)`;
+            water.style.filter = `brightness(${1 + Math.sin(waterTime) * 0.05}) contrast(1.1) saturate(1.2)`;
             requestAnimationFrame(animateWater);
         }
         animateWater();
