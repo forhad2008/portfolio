@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Abdullah Forhad</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
+        /* --- BOLD & EDITORIAL DESIGN MATRIX (Matched to Home) --- */
         :root {
-            --primary-color: #b30000;
-            /* Crimson Red */
-            --secondary-color: #4a0000;
-            /* Deep Blood Velvet */
-            --accent-blue: #ff4d4d;
-            /* Vivid Light Red / Coral Spark */
-            --bg-light: #1a0303;
-            /* Abyssal Crimson Night */
-            --card-bg: rgba(20, 5, 5, 0.85);
-            /* Dark Glass Tint */
-            --text-dark: #fff5f5;
-            /* Pure Ghostly White */
-            --text-medium: #ff6666;
-            /* Vibrant Crimson Rose */
+            --bg-cream: #FFFDF9;
+            --text-espresso: #2C1E1A;
+            --text-muted: #6E5D58;
+            --accent-terracotta: #C25A3F;
+            --accent-hover: #A44830;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --border-color: rgba(44, 30, 26, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
         }
 
         #canvas-container {
@@ -39,133 +46,107 @@
             pointer-events: none;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            color: var(--text-espresso);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Ambient background color blending mimicking a bloody ocean tide */
+        /* Fixed Minimal Editorial Guide Line */
         body::before {
             content: '';
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 10%;
+            width: 1px;
             height: 100%;
-            background: linear-gradient(180deg, #1a0303 0%, #5c0606 40%, rgb(139, 0, 0) 100%);
-            background-size: 200% 200%;
-            animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.9;
+            background: var(--border-color);
             z-index: -1;
+            pointer-events: none;
         }
 
-        @keyframes ocean-current {
-            0% {
-                background-position: 50% 0%;
-            }
-
-            100% {
-                background-position: 50% 100%;
-            }
-        }
-
-        /* --- MATCHED BLOODY GLASS BOX EFFECT --- */
+        /* --- EDITORIAL CONTAINER --- */
         .contact-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: #FFFFFF;
             width: 100%;
-            max-width: 500px;
-            padding: 45px 35px;
-            border-radius: 24px;
-            border: 1px solid rgba(179, 0, 0, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            max-width: 550px;
+            padding: 50px 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.02);
             z-index: 10;
             position: relative;
-            overflow: hidden;
         }
 
+        /* Left Editorial Focus Accent Accent Border */
         .contact-card::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 25%;
-            height: 50%;
+            top: 0;
+            height: 100%;
             width: 4px;
-            background: var(--primary-color);
-            border-radius: 0 4px 4px 0;
+            background: var(--accent-terracotta);
         }
 
         h1 {
-            font-size: 2.2rem;
-            margin-bottom: 35px;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, var(--text-dark), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: var(--text-dark);
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            margin-bottom: 40px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            color: var(--text-espresso);
+            line-height: 1.1;
         }
 
         .contact-grid {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 20px;
-            padding: 14px 18px;
-            background: rgba(40, 10, 10, 0.5);
-            border-radius: 14px;
-            border: 1px solid rgba(179, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 16px 20px;
+            background: #FFFDF9;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             color: inherit;
         }
 
         .contact-item:hover {
-            background: rgba(74, 0, 0, 0.4);
-            transform: translateY(-3px) scale(1.01);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.2);
+            border-color: var(--accent-terracotta);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(44, 30, 26, 0.04);
         }
 
         .icon-box {
-            width: 45px;
-            height: 45px;
-            background: rgba(179, 0, 0, 0.15);
-            border-radius: 10px;
+            width: 46px;
+            height: 46px;
+            background: rgba(194, 90, 63, 0.08);
+            border-radius: 0px;
+            /* Kept blocky and clean */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--accent-blue);
-            font-size: 1.2rem;
+            color: var(--accent-terracotta);
+            font-size: 1.1rem;
             transition: all 0.3s ease;
+            border: 1px solid rgba(194, 90, 63, 0.15);
         }
 
         .contact-item:hover .icon-box {
-            background: var(--primary-color);
+            background: var(--accent-terracotta);
             color: #ffffff;
-            box-shadow: 0 0 10px rgba(179, 0, 0, 0.4);
+            border-color: transparent;
         }
 
         .contact-details {
@@ -174,17 +155,19 @@
         }
 
         .contact-details h3 {
-            font-size: 0.85rem;
-            color: var(--text-medium);
-            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 2px;
         }
 
         .contact-details span {
-            color: var(--text-dark);
+            color: var(--text-espresso);
+            font-family: var(--font-serif);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             word-break: break-word;
         }
 
@@ -193,29 +176,44 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-top: 35px;
+            margin-top: 40px;
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--primary-color);
+            color: var(--accent-terracotta);
+            border: 1px solid var(--accent-terracotta);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .back-btn:hover {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            background: var(--text-espresso);
             color: #ffffff;
-            border-color: transparent;
+            border-color: var(--text-espresso);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
         }
 
         .reveal {
             opacity: 0;
+        }
+
+        @media (max-width: 480px) {
+            .contact-card {
+                padding: 35px 20px;
+            }
+
+            .contact-item {
+                gap: 15px;
+                padding: 14px 16px;
+            }
+
+            .contact-details span {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -227,7 +225,7 @@
         <h1 class="reveal">Contact Me</h1>
 
         <div class="contact-grid">
-            <a href="mailto:forhadalpha08@gmail.com" class="contact-item reveal">
+            <a href="mailto:forhadalpha08@email.com" class="contact-item reveal">
                 <div class="icon-box">
                     <i class="fas fa-envelope"></i>
                 </div>
@@ -236,7 +234,7 @@
                     <span>Send Email</span>
                 </div>
             </a>
-        
+
             <div class="contact-item reveal">
                 <div class="icon-box">
                     <i class="fas fa-map-marker-alt"></i>
@@ -246,7 +244,7 @@
                     <span>Bangladesh</span>
                 </div>
             </div>
-        
+
             <a href="https://wa.me/8801342900364" class="contact-item reveal" target="_blank">
                 <div class="icon-box">
                     <i class="fab fa-whatsapp"></i>
@@ -256,8 +254,9 @@
                     <span>Contact On WhatsApp</span>
                 </div>
             </a>
-        
-            <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank" class="contact-item reveal">
+
+            <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank"
+                class="contact-item reveal">
                 <div class="icon-box">
                     <i class="fab fa-facebook"></i>
                 </div>
@@ -269,12 +268,12 @@
         </div>
 
         <a href="index.html" class="back-btn reveal">
-            <i class="fas fa-arrow-left"></i> Back to Portfolio
+            <i class="fas fa-arrow-left"></i> Return to Home
         </a>
     </div>
 
     <script>
-        // --- 3D BLOOD DROPLET / BUBBLE ENGINE ---
+        // --- 3D AMBIENT SILK FLOATING ENGINE (Editorial Update) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -286,41 +285,39 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 35;
+        const bubbleCount = 20; // Lower count for subtle minimalism
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x4a0000,           // Deep crimson blood base
-                emissive: 0x1a0303,        // Dark abyssal core
-                emissiveIntensity: 0.6,
-                roughness: 0.08,
-                metalness: 0.1,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.02,
-                transmission: 0.4,          // Liquid fluid density
-                ior: 1.4,
-                thickness: 5.0,
+                color: 0xC25A3F,           // Terracotta accent core
+                emissive: 0xFFFDF9,        // Cream reflection glow
+                emissiveIntensity: 0.1,
+                roughness: 0.1,
+                metalness: 0.05,
+                clearcoat: 0.8,
+                clearcoatRoughness: 0.1,
+                transmission: 0.6,          // Sleek glass depth transparency
+                ior: 1.2,
+                thickness: 2.0,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.25               // Barely visible mesh layer
             });
         }
 
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 1.0 + 0.3;
+            const scale = Math.random() * 1.5 + 0.5;
             mesh.scale.set(scale, scale, scale);
             mesh.position.x = (Math.random() - 0.5) * 55;
             mesh.position.y = (Math.random() - 0.5) * 45;
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.025) + 0.012,
-                wobbleSpeed: Math.random() * 0.04 + 0.02,
+                speedY: (scale * 0.01) + 0.005,
                 phaseX: Math.random() * Math.PI * 2,
-                phaseZ: Math.random() * Math.PI * 2,
                 baseScale: scale
             };
             bubbleGroup.add(mesh);
@@ -328,15 +325,15 @@
         }
         scene.add(bubbleGroup);
 
-        // Lights tuned for crimson visibility
-        const skyLight = new THREE.DirectionalLight(0xffcccc, 2.5); // Soft red-white top reflection
+        // Warm directional lightning setup
+        const skyLight = new THREE.DirectionalLight(0xFFFDF9, 2.0);
         skyLight.position.set(10, 20, 8);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x3a0000, 1.2); // Warm dark-red ambient layer
+        const fillLight = new THREE.AmbientLight(0xC25A3F, 0.4);
         scene.add(fillLight);
 
-        // Mouse tracking for parallax
+        // Mouse vector tracking for soft parallax
         const mouse = { x: 0, y: 0 };
         window.addEventListener('mousemove', (e) => {
             mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -350,7 +347,7 @@
             bubbles.forEach(bubble => {
                 const p = bubble.userData;
                 bubble.position.y += p.speedY;
-                bubble.position.x += Math.sin(time * 0.002 + p.phaseX) * 0.02;
+                bubble.position.x += Math.sin(time * 0.001 + p.phaseX) * 0.01;
 
                 if (bubble.position.y > 25) {
                     bubble.position.y = -25;
@@ -358,8 +355,8 @@
                 }
             });
 
-            bubbleGroup.rotation.y += (mouse.x * 0.05 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.05 - bubbleGroup.rotation.x) * 0.05;
+            bubbleGroup.rotation.y += (mouse.x * 0.03 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.03 - bubbleGroup.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
         }
@@ -370,10 +367,10 @@
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                stagger: 0.12,
-                ease: "power4.out",
-                startAt: { y: 40 }
+                duration: 1,
+                stagger: 0.08,
+                ease: "power3.out",
+                startAt: { y: 30 }
             });
         });
 
