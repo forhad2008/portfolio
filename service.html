@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shining Services | Abdullah Forhad</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -14,22 +18,20 @@
 
     <style>
         :root {
-            --primary-color: #b30000;
-            /* Crimson Red */
-            --secondary-color: #4a0000;
-            /* Deep Blood Velvet */
-            --accent-blue: #ff4d4d;
-            /* Vivid Light Red / Coral Spark */
-            --bg-light: #1a0303;
-            /* Abyssal Crimson Night */
-            --card-bg: rgba(20, 5, 5, 0.75);
-            /* Dark Glass Tint */
-            --text-dark: #fff5f5;
-            /* Pure Ghostly White */
-            --text-medium: #ff6666;
-            /* Vibrant Crimson Rose */
-            --text-muted: #cca3a3;
-            /* Muted Crimson Ash */
+            --bg-cream: #FFFDF9;
+            --text-espresso: #2C1E1A;
+            --text-muted: #6E5D58;
+            --accent-terracotta: #C25A3F;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --border-color: rgba(44, 30, 26, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
         }
 
         #canvas-container {
@@ -42,16 +44,9 @@
             pointer-events: none;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            color: var(--text-espresso);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -61,112 +56,74 @@
             position: relative;
         }
 
-        /* Ambient background color blending mimicking a deep crimson tide */
         body::before {
             content: '';
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 15%;
+            width: 1px;
             height: 100%;
-            background: linear-gradient(180deg, #1a0303 0%, #5c0606 40%, rgb(139, 0, 0) 100%);
-            background-size: 200% 200%;
-            animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.9;
+            background: var(--border-color);
             z-index: -1;
-        }
-
-        @keyframes ocean-current {
-            0% {
-                background-position: 50% 0%;
-            }
-
-            100% {
-                background-position: 50% 100%;
-            }
+            pointer-events: none;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 70px;
         }
 
         .section-title h1 {
+            font-family: var(--font-serif);
             font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -2px;
-            background: linear-gradient(to right, var(--text-dark), var(--primary-color), var(--text-dark));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textShine 4s linear infinite;
+            font-weight: 600;
+            letter-spacing: -1px;
+            color: var(--text-espresso);
         }
 
-        /* Services Grid */
+        .section-title h1 span {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-terracotta);
+        }
+
         .services-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            gap: 30px;
             max-width: 1150px;
             width: 100%;
             z-index: 10;
         }
 
-        /* --- THE MATCHED CRIMSON SHINING CARD --- */
         .service-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            padding: 60px 40px;
-            border-radius: 30px;
-            text-align: center;
-            border: 1px solid rgba(179, 0, 0, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            background: #FFFFFF;
+            padding: 50px 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 50px rgba(44, 30, 26, 0.02);
+            text-align: left;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
             cursor: pointer;
         }
 
-        /* Border Shine & Lift on Hover */
         .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(179, 0, 0, 0.3);
+            transform: translateY(-8px);
+            border-color: var(--accent-terracotta);
+            box-shadow: 0 30px 60px rgba(194, 90, 63, 0.08);
         }
 
-        /* Swipe Shine Effect */
-        .service-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 204, 204, 0.3),
-                    transparent);
-            transform: skewX(-20deg);
-            transition: 0.6s;
-        }
-
-        .service-card:hover::before {
-            left: 150%;
-        }
-
-        /* Dynamic Light Spotlight Glow */
         .glow-point {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 77, 77, 0.15) 0%, transparent 60%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(194, 90, 63, 0.04) 0%, transparent 60%);
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.3s;
+            transition: opacity 0.4s;
         }
 
         .service-card:hover .glow-point {
@@ -174,70 +131,84 @@
         }
 
         .icon-box {
-            font-size: 50px;
-            color: var(--accent-blue);
-            margin-bottom: 25px;
-            filter: drop-shadow(0 4px 10px rgba(179, 0, 0, 0.4));
-            transition: transform 0.4s ease;
+            font-size: 32px;
+            color: var(--accent-terracotta);
+            margin-bottom: 30px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-block;
         }
 
         .service-card:hover .icon-box {
-            transform: scale(1.1) rotate(5deg);
+            transform: translateY(-2px) scale(1.05);
         }
 
         .service-card h2 {
-            font-size: 1.6rem;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--text-dark);
-            font-weight: 700;
+            color: var(--text-espresso);
+            font-weight: 600;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
+            font-size: 0.92rem;
+            line-height: 1.75;
+            margin-bottom: 35px;
         }
 
-        /* Premium Button */
         .service-btn {
-            display: inline-block;
-            padding: 10px 28px;
-            background: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--primary-color);
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
             text-decoration: none;
+            color: var(--text-espresso);
             font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             position: relative;
             z-index: 2;
         }
 
-        .service-btn:hover {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            color: #fff;
-            border-color: transparent;
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
+        .service-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--accent-terracotta);
+            transform: scaleX(0.3);
+            transform-origin: left;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card:hover .service-btn {
+            color: var(--accent-terracotta);
+        }
+
+        .service-card:hover .service-btn::after {
+            transform: scaleX(1);
         }
 
         .back-home {
             margin-top: 80px;
             text-decoration: none;
-            color: var(--text-medium);
+            color: var(--text-muted);
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            font-size: 0.85rem;
             font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             transition: all 0.3s ease;
             z-index: 10;
         }
 
         .back-home:hover {
-            color: var(--accent-blue);
-            transform: translateX(-5px);
+            color: var(--accent-terracotta);
+            transform: translateX(-4px);
         }
 
         .reveal {
@@ -261,7 +232,7 @@
             <h2>Architecture & Code</h2>
             <p>Mastering performance and scalability with high-end backend logic and clean, modular frontend systems.
             </p>
-            <a href="#" class="service-btn">DETAILS</a>
+            <a href="#" class="service-btn">Details</a>
         </div>
 
         <div class="service-card reveal">
@@ -270,7 +241,7 @@
             <h2>Visual Strategy</h2>
             <p>Creating immersive brand languages that utilize light, shadow, and geometry to tell a compelling story.
             </p>
-            <a href="#" class="service-btn">DETAILS</a>
+            <a href="#" class="service-btn">Details</a>
         </div>
 
         <div class="service-card reveal">
@@ -279,16 +250,16 @@
             <h2>Experience Design</h2>
             <p>Analyzing human behavior to build frictionless interfaces that feel intuitive and technologically
                 superior.</p>
-            <a href="#" class="service-btn">DETAILS</a>
+            <a href="#" class="service-btn">Details</a>
         </div>
     </div>
 
     <a href="index.html" class="back-home reveal">
-        <i class="fas fa-arrow-left"></i> BACK TO HOME
+        <i class="fas fa-arrow-left"></i> Back to Home
     </a>
 
     <script>
-        // --- 3D BLOOD DROPLET / BUBBLE ENGINE ---
+        // --- 3D AMBIENT GEOMETRIC PLANES ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -300,51 +271,61 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 30;
-        const bubbles = [];
-        const bubbleGroup = new THREE.Group();
-        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
+        const planeCount = 25;
+        const planes = [];
+        const planeGroup = new THREE.Group();
 
-        function createBubbleMaterial() {
+        // চারকোনা ফ্ল্যাট প্লেন জিওমেট্রি (প্রস্থ: ১.২, উচ্চতা: ১.৮)
+        const planeGeo = new THREE.PlaneGeometry(1.2, 1.8);
+
+        function createPlaneMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x4a0000,           // Deep crimson fluid base
-                emissive: 0x1a0303,        // Dark core
-                emissiveIntensity: 0.6,
-                roughness: 0.08,
-                metalness: 0.1,
+                color: 0xC25A3F,           // Terracotta accent
+                emissive: 0xFFFDF9,        // Cream glow
+                emissiveIntensity: 0.05,
+                roughness: 0.1,
+                metalness: 0.02,
                 clearcoat: 1.0,
-                clearcoatRoughness: 0.02,
-                transmission: 0.4,          // Translucent properties
-                ior: 1.4,
-                thickness: 5.0,
+                transmission: 0.85,        // হাই ট্রান্সমিশন যাতে কাঁচের মতো স্বচ্ছ দেখায়
+                ior: 1.15,
+                thickness: 1.0,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.18,
+                side: THREE.DoubleSide     // প্লেনের দুই পাশই যেন দেখা যায়
             });
         }
 
-        for (let i = 0; i < bubbleCount; i++) {
-            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 0.9 + 0.3;
+        for (let i = 0; i < planeCount; i++) {
+            const mesh = new THREE.Mesh(planeGeo, createPlaneMaterial());
+            const scale = Math.random() * 1.2 + 0.5;
             mesh.scale.set(scale, scale, scale);
-            mesh.position.x = (Math.random() - 0.5) * 55;
-            mesh.position.y = (Math.random() - 0.5) * 45;
-            mesh.position.z = (Math.random() - 0.5) * 15;
+
+            // র্যান্ডম পজিশন সেটআপ
+            mesh.position.x = (Math.random() - 0.5) * 60;
+            mesh.position.y = (Math.random() - 0.5) * 50;
+            mesh.position.z = (Math.random() - 0.5) * 20;
+
+            // শুরুর দিকে ইউনিক রোটেশন কোণ
+            mesh.rotation.x = Math.random() * Math.PI;
+            mesh.rotation.y = Math.random() * Math.PI;
 
             mesh.userData = {
-                speedY: (scale * 0.025) + 0.01,
+                speedY: (scale * 0.006) + 0.003,
+                rotSpeedX: (Math.random() - 0.5) * 0.005,
+                rotSpeedY: (Math.random() - 0.5) * 0.008,
                 phaseX: Math.random() * Math.PI * 2,
             };
-            bubbleGroup.add(mesh);
-            bubbles.push(mesh);
+            planeGroup.add(mesh);
+            planes.push(mesh);
         }
-        scene.add(bubbleGroup);
+        scene.add(planeGroup);
 
-        // Illuminations configured for deep red rendering
-        const skyLight = new THREE.DirectionalLight(0xffcccc, 2.5); 
-        skyLight.position.set(10, 20, 8);
+        // সফট স্টুডিও লাইটিং
+        const skyLight = new THREE.DirectionalLight(0xFFFDF9, 2.5);
+        skyLight.position.set(15, 25, 10);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x3a0000, 1.2); 
+        const fillLight = new THREE.AmbientLight(0xC25A3F, 0.35);
         scene.add(fillLight);
 
         const mouse = { x: 0, y: 0 };
@@ -357,24 +338,31 @@
             requestAnimationFrame(animate);
             const time = Date.now();
 
-            bubbles.forEach(bubble => {
-                bubble.position.y += bubble.userData.speedY;
-                bubble.position.x += Math.sin(time * 0.002 + bubble.userData.phaseX) * 0.015;
+            planes.forEach(plane => {
+                // ওপরে ওঠার মুভমেন্ট
+                plane.position.y += plane.userData.speedY;
+                plane.position.x += Math.sin(time * 0.0008 + plane.userData.phaseX) * 0.008;
 
-                if (bubble.position.y > 25) {
-                    bubble.position.y = -25;
-                    bubble.position.x = (Math.random() - 0.5) * 55;
+                // প্লেনগুলোকে মাল্টি-অক্ষে আলতো করে ঘোরানো হচ্ছে
+                plane.rotation.x += plane.userData.rotSpeedX;
+                plane.rotation.y += plane.userData.rotSpeedY;
+
+                // স্ক্রিন থেকে বাইরে চলে গেলে আবার নিচে ফেরত পাঠানো
+                if (plane.position.y > 28) {
+                    plane.position.y = -28;
+                    plane.position.x = (Math.random() - 0.5) * 60;
                 }
             });
 
-            bubbleGroup.rotation.y += (mouse.x * 0.04 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.04 - bubbleGroup.rotation.x) * 0.05;
+            // মাউস ট্র্যাকিং প্যারালাক্স ইফেক্ট
+            planeGroup.rotation.y += (mouse.x * 0.015 - planeGroup.rotation.y) * 0.05;
+            planeGroup.rotation.x += (-mouse.y * 0.015 - planeGroup.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // Spotlight Mouse tracking logic
+        // কার্ড স্পটলাইট ইফেক্ট
         const cards = document.querySelectorAll('.service-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -386,14 +374,14 @@
             });
         });
 
-        // Entrance GSAP Stagger Reveal
+        // GSAP অ্যানিমেশন এন্ট্রেন্স
         gsap.to(".reveal", {
             opacity: 1,
             y: 0,
-            duration: 1,
+            duration: 1.2,
             stagger: 0.15,
             ease: "power4.out",
-            startAt: { y: 50 }
+            startAt: { y: 40 }
         });
 
         window.addEventListener('resize', () => {
