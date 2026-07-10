@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Abdullah Forhad</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>About Me | Abdullah Forhad</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
+        /* --- BOLD & EDITORIAL DESIGN MATRIX (Matched to Home) --- */
         :root {
-            --primary-color: #b30000;
-            /* Crimson Red */
-            --secondary-color: #4a0000;
-            /* Deep Blood Velvet */
-            --accent-blue: #ff4d4d;
-            /* Vivid Light Red / Coral Spark */
-            --bg-light: #1a0303;
-            /* Abyssal Crimson Night */
-            --card-bg: rgba(20, 5, 5, 0.85);
-            /* Dark Glass Tint */
-            --text-dark: #fff5f5;
-            /* Pure Ghostly White */
-            --text-medium: #ff6666;
-            /* Vibrant Crimson Rose */
+            --bg-cream: #FFFDF9;
+            --text-espresso: #2C1E1A;
+            --text-muted: #6E5D58;
+            --accent-terracotta: #C25A3F;
+            --accent-hover: #A44830;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --border-color: rgba(44, 30, 26, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
         }
 
         #canvas-container {
@@ -39,170 +46,172 @@
             pointer-events: none;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            min-height: 100vh;
+            background-color: var(--bg-cream);
+            color: var(--text-espresso);
+            line-height: 1.6;
+            padding: 80px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            overflow: hidden;
+            min-height: 100vh;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* Ambient background color blending mimicking a bloody ocean tide */
+        /* Fixed Editorial Guideline */
         body::before {
             content: '';
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 10%;
+            width: 1px;
             height: 100%;
-            background: linear-gradient(180deg, #1a0303 0%, #5c0606 40%, rgb(139, 0, 0) 100%);
-            background-size: 200% 200%;
-            animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.9;
+            background: var(--border-color);
             z-index: -1;
+            pointer-events: none;
         }
 
-        @keyframes ocean-current {
-            0% {
-                background-position: 50% 0%;
-            }
-
-            100% {
-                background-position: 50% 100%;
-            }
-        }
-
-        /* --- MATCHED BLOODY GLASS BOX EFFECT --- */
-        .about-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+        .preview-container {
+            max-width: 650px;
             width: 100%;
-            max-width: 500px;
-            padding: 45px 35px;
-            border-radius: 24px;
-            border: 1px solid rgba(179, 0, 0, 0.15);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-            z-index: 10;
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.02);
             position: relative;
-            overflow: hidden;
         }
 
-        .about-card::before {
+        /* Editorial Vertical Accent Bar */
+        .preview-container::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 25%;
-            height: 50%;
+            top: 0;
+            height: 100%;
             width: 4px;
-            background: var(--primary-color);
-            border-radius: 0 4px 4px 0;
+            background: var(--accent-terracotta);
         }
 
-        h1 {
-            font-size: 2.2rem;
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 35px;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, var(--text-dark), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: var(--text-dark);
+            transition: color 0.3s, transform 0.3s;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: var(--accent-terracotta);
+            transform: translateX(-3px);
+        }
+
+        .project-header {
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--text-espresso);
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .project-category {
+            color: var(--accent-terracotta);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
         }
 
         .info-grid {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 16px;
+            margin-bottom: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 35px;
         }
 
         .info-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 18px;
-            background: rgba(40, 10, 10, 0.5);
-            border-radius: 14px;
-            border: 1px solid rgba(179, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 16px 20px;
+            background: #FFFDF9;
+            border: 1px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .info-item:hover {
-            background: rgba(74, 0, 0, 0.4);
-            transform: translateY(-3px) scale(1.01);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.2);
+            border-color: var(--accent-terracotta);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(44, 30, 26, 0.04);
         }
 
         .info-item h3 {
-            font-size: 0.85rem;
-            color: var(--text-medium);
-            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .info-item span {
-            color: var(--text-dark);
+            color: var(--text-espresso);
+            font-family: var(--font-serif);
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .highlight-text {
-            color: var(--accent-blue) !important;
-            text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 35px;
-            width: 100%;
-            padding: 14px;
-            background: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--primary-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .back-btn:hover {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            color: #ffffff;
-            border-color: transparent;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
+            color: var(--accent-terracotta) !important;
+            font-style: italic;
+            font-weight: 500 !important;
         }
 
         .reveal {
             opacity: 0;
         }
+
+        @media (max-width: 480px) {
+            .preview-container {
+                padding: 35px 20px;
+            }
+
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+        }
     </style>
 </head>
 
 <body>
+
     <div id="canvas-container"></div>
 
-    <div class="about-card">
-        <h1 class="reveal">About Me</h1>
+    <div class="preview-container">
+        <a href="index.html" class="back-link reveal">
+            <i class="fas fa-arrow-left"></i> Return to Home
+        </a>
+
+        <header class="project-header">
+            <span class="project-category reveal">Personal Profile</span>
+            <h1 class="project-title reveal">About Me</h1>
+        </header>
 
         <div class="info-grid">
             <div class="info-item reveal">
@@ -230,14 +239,10 @@
                 <span>Boxing</span>
             </div>
         </div>
-
-        <a href="index.html" class="back-btn reveal">
-            <i class="fas fa-arrow-left"></i> Back to Portfolio
-        </a>
     </div>
 
     <script>
-        // --- 3D BLOOD DROPLET / BUBBLE ENGINE ---
+        // --- 3D AMBIENT SILK FLOATING ENGINE (Adapted to Editorial Theme) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -249,41 +254,39 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 35;
+        const bubbleCount = 20; // Reduced count for a cleaner, cleaner look
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x4a0000,           // Crimson blood base
-                emissive: 0x1a0303,        // Deep dark core
-                emissiveIntensity: 0.6,
-                roughness: 0.08,
-                metalness: 0.1,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.02,
-                transmission: 0.4,          // Fluid liquid depth
-                ior: 1.4,
-                thickness: 5.0,
+                color: 0xC25A3F,           // Terracotta base
+                emissive: 0xFFFDF9,        // Soft cream glow core
+                emissiveIntensity: 0.1,
+                roughness: 0.1,
+                metalness: 0.05,
+                clearcoat: 0.8,
+                clearcoatRoughness: 0.1,
+                transmission: 0.6,          // High transparency elegant mesh
+                ior: 1.2,
+                thickness: 2.0,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.25               // Kept very subtle for light mode
             });
         }
 
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 1.0 + 0.3;
+            const scale = Math.random() * 1.5 + 0.5;
             mesh.scale.set(scale, scale, scale);
             mesh.position.x = (Math.random() - 0.5) * 55;
             mesh.position.y = (Math.random() - 0.5) * 45;
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.025) + 0.012,
-                wobbleSpeed: Math.random() * 0.04 + 0.02,
+                speedY: (scale * 0.01) + 0.005,
                 phaseX: Math.random() * Math.PI * 2,
-                phaseZ: Math.random() * Math.PI * 2,
                 baseScale: scale
             };
             bubbleGroup.add(mesh);
@@ -291,15 +294,15 @@
         }
         scene.add(bubbleGroup);
 
-        // Lights tuned for dark crimson visibility
-        const skyLight = new THREE.DirectionalLight(0xffcccc, 2.5); // Soft red-white top light
+        // Studio warm lightning rigs
+        const skyLight = new THREE.DirectionalLight(0xFFFDF9, 2.0);
         skyLight.position.set(10, 20, 8);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x3a0000, 1.2); // Red fill light
+        const fillLight = new THREE.AmbientLight(0xC25A3F, 0.4);
         scene.add(fillLight);
 
-        // Mouse tracking for parallax
+        // Parallax Mouse tracking
         const mouse = { x: 0, y: 0 };
         window.addEventListener('mousemove', (e) => {
             mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -313,7 +316,7 @@
             bubbles.forEach(bubble => {
                 const p = bubble.userData;
                 bubble.position.y += p.speedY;
-                bubble.position.x += Math.sin(time * 0.002 + p.phaseX) * 0.02;
+                bubble.position.x += Math.sin(time * 0.001 + p.phaseX) * 0.01;
 
                 if (bubble.position.y > 25) {
                     bubble.position.y = -25;
@@ -321,22 +324,22 @@
                 }
             });
 
-            bubbleGroup.rotation.y += (mouse.x * 0.05 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.05 - bubbleGroup.rotation.x) * 0.05;
+            bubbleGroup.rotation.y += (mouse.x * 0.03 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.03 - bubbleGroup.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // --- GSAP REVEAL ANIMATION ---
+        // --- GSAP REVEAL ANIMATION (Smooth Entry) ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 1.2,
-                stagger: 0.12,
-                ease: "power4.out",
-                startAt: { y: 40 }
+                duration: 1,
+                stagger: 0.08,
+                ease: "power3.out",
+                startAt: { y: 30 }
             });
         });
 
