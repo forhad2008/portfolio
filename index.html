@@ -4,51 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forhad's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Forhad's Portfolio | Editorial Concept</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
+        /* --- BOLD & EDITORIAL DESIGN MATRIX --- */
         :root {
-            --primary-color: #af0505;
-            --secondary-color: #680404;
-            --accent-blue: #ff4d4d;
-            --bg-light: rgb(139, 1, 1);
-            --card-bg: rgba(20, 5, 5, 0.85);
-            --text-dark: #fff5f5;
-            --text-medium: #ff6666;
-        }
-
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        .svg-decor {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-            pointer-events: none;
+            --bg-cream: #FFFDF9;
+            --text-espresso: #2C1E1A;
+            --text-muted: #6E5D58;
+            --accent-terracotta: #C25A3F;
+            --accent-hover: #A44830;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --border-color: rgba(44, 30, 26, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-sans);
         }
 
         html {
@@ -56,116 +41,57 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            color: var(--text-espresso);
             overflow-x: hidden;
             line-height: 1.6;
             position: relative;
             min-height: 100vh;
         }
 
-        /* --- RESTORED DYNAMIC BLOODY OCEAN GRADIENT BACKGROUND --- */
+        /* সূক্ষ্ম এডিটোরিয়াল ব্যাকগ্রাউন্ড লাইন */
         body::before {
             content: '';
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 10%;
+            width: 1px;
             height: 100%;
-            background: linear-gradient(180deg, #1a0505 0%, #4a0000 40%, #0d0202 100%);
-            background-size: 200% 200%;
-            animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.95;
-            z-index: -4;
-        }
-
-        @keyframes ocean-current {
-            0% {
-                background-position: 50% 0%;
-            }
-
-            100% {
-                background-position: 50% 100%;
-            }
-        }
-
-        /* --- RESTORED MOVING BLOODY OCEAN WATER FLUID WAVES --- */
-        .ocean-waves {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -3;
-            overflow: hidden;
+            background: var(--border-color);
+            z-index: -1;
             pointer-events: none;
         }
 
-        .wave {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,90 350,10 500,60 C650,110 850,10 1000,60 C1150,110 1250,30 1300,60 L1300,120 L0,120 Z" style="stroke: none; fill: rgba(153, 0, 0, 0.15);"></path></svg>');
-            position: absolute;
-            bottom: 0;
-            width: 200%;
-            height: 350px;
-            animation: wave-flow 18s linear infinite;
-            transform: translate3d(0, 0, 0);
-        }
-
-        .wave:nth-of-type(2) {
-            bottom: -10px;
-            height: 400px;
-            animation: wave-flow 26s linear infinite reverse;
-            opacity: 0.6;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0 C150,30 350,110 500,60 C650,10 850,110 1000,60 C1150,10 1250,90 1300,60 L1300,120 L0,120 Z" style="stroke: none; fill: rgba(255, 77, 77, 0.1);"></path></svg>');
-        }
-
-        .wave:nth-of-type(3) {
-            bottom: -20px;
-            height: 300px;
-            animation: wave-flow 32s linear infinite;
-            opacity: 0.4;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,30 C300,5 600,70 900,30 C1050,10 1150,40 1200,30 L1200,120 L0,120 Z" style="stroke: none; fill: rgba(74, 0, 0, 0.2);"></path></svg>');
-        }
-
-        @keyframes wave-flow {
-            0% {
-                transform: translateX(0);
-            }
-
-            50% {
-                transform: translateX(-25%);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 8%;
+            padding: 30px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(26, 5, 5, 0.65);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-bottom: 1px solid rgba(153, 0, 0, 0.2);
+            background: rgba(255, 253, 249, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
             transition: all 0.5s ease;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            color: var(--text-espresso);
         }
 
         .logo span {
-            color: var(--primary-color);
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-terracotta);
         }
 
         .hamburger {
@@ -176,25 +102,25 @@
             gap: 6px;
         }
 
+        .hamburger div {
+            width: 28px;
+            height: 2px;
+            background: var(--text-espresso);
+            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
         .hamburger.active div:nth-child(1) {
-            transform: translateY(9px) rotate(45deg);
+            transform: translateY(8px) rotate(45deg);
+            background: var(--bg-cream);
         }
 
         .hamburger.active div:nth-child(2) {
             opacity: 0;
-            transform: translateX(-20px);
         }
 
         .hamburger.active div:nth-child(3) {
-            transform: translateY(-9px) rotate(-45deg);
-        }
-
-        .hamburger div {
-            width: 30px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-            border-radius: 3px;
+            transform: translateY(-8px) rotate(-45deg);
+            background: var(--bg-cream);
         }
 
         .menu-window {
@@ -203,8 +129,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(13, 2, 2, 0.98);
-            backdrop-filter: blur(20px);
+            background: var(--text-espresso);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -225,46 +150,43 @@
         }
 
         .menu-window li {
-            margin: 30px 0;
+            margin: 25px 0;
         }
 
         .menu-window a {
+            font-family: var(--font-serif);
             font-size: 2.5rem;
-            color: var(--text-dark);
+            color: var(--bg-cream);
             text-decoration: none;
-            font-weight: 700;
+            font-weight: 600;
             transition: 0.4s ease;
         }
 
         .menu-window a:hover {
-            color: var(--primary-color);
-            padding-left: 10px;
+            color: var(--accent-terracotta);
+            padding-left: 15px;
         }
 
-        /* --- COOL CYBERPUNK PROFILE SYSTEM --- */
+        /* --- PROFILE AVATAR / FRAMING --- */
         .profile-hub-container {
             position: relative;
-            width: 260px;
-            height: 260px;
-            margin: 110px auto 20px;
+            width: 240px;
+            height: 240px;
+            margin: 140px auto 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             perspective: 1000px;
-            opacity: 1 !important;
-            visibility: visible !important;
         }
 
-        /* Tech Bracket Trim Layers */
         .cyber-bracket {
             position: absolute;
-            width: 240px;
-            height: 240px;
-            border: 2px solid rgba(255, 77, 77, 0.25);
-            border-radius: 24px;
+            width: 250px;
+            height: 250px;
+            border: 1px solid var(--accent-terracotta);
             pointer-events: none;
             z-index: 1;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .cyber-bracket.b1 {
@@ -272,7 +194,7 @@
             border-right: none;
             top: 0;
             left: 0;
-            transform: translate(-6px, -6px);
+            transform: translate(-8px, -8px);
         }
 
         .cyber-bracket.b2 {
@@ -280,77 +202,58 @@
             border-left: none;
             bottom: 0;
             right: 0;
-            transform: translate(6px, 6px);
+            transform: translate(8px, 8px);
         }
 
         .profile-hub-container:hover .cyber-bracket.b1 {
-            transform: translate(-12px, -12px);
-            border-color: var(--accent-blue);
+            transform: translate(-14px, -14px);
         }
 
         .profile-hub-container:hover .cyber-bracket.b2 {
-            transform: translate(12px, 12px);
-            border-color: var(--accent-blue);
+            transform: translate(14px, 14px);
         }
 
-        /* Rounded Tech Cyber Frame Wrapper */
         .profile-avatar-wrapper {
             position: relative;
-            width: 210px;
-            height: 210px;
-            border-radius: 20px;
-            padding: 3px;
-            background: linear-gradient(135deg, rgba(175, 5, 5, 0.6) 0%, rgba(255, 77, 77, 0.3) 100%);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(175, 5, 5, 0.2);
+            width: 220px;
+            height: 220px;
+            padding: 5px;
+            background: var(--bg-cream);
+            border: 1px solid var(--border-color);
             z-index: 2;
             overflow: hidden;
-            transform-style: preserve-3d;
-            transition: transform 0.15s ease, box-shadow 0.3s ease;
+            box-shadow: 0 15px 35px rgba(44, 30, 26, 0.05);
             cursor: pointer;
-        }
-
-        /* Glass Lens Glare overlay */
-        .profile-avatar-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, transparent 40%, rgba(175, 5, 5, 0.3) 100%);
-            z-index: 3;
-            pointer-events: none;
         }
 
         .profile-avatar-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 17px;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .profile-avatar-wrapper:hover {
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 77, 77, 0.4);
+            filter: grayscale(20%);
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .profile-avatar-wrapper:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
+        /* --- TYPOGRAPHY & LAYOUT --- */
         .container {
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px 20px 40px;
+            padding: 0 20px 60px;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            color: var(--text-dark);
-            background: linear-gradient(to right, var(--text-dark), var(--primary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            font-weight: 700;
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            color: var(--text-espresso);
+            font-weight: 600;
             line-height: 1.1;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
         .scroller-window {
@@ -367,12 +270,13 @@
         }
 
         .highlight {
-            color: var(--primary-color);
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent-terracotta);
             height: 1.2em;
             line-height: 1.2em;
             display: block;
-            border-right: 3px solid var(--primary-color);
-            padding-right: 5px;
             white-space: nowrap;
         }
 
@@ -380,196 +284,307 @@
             margin: 30px 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .social-links a {
-            color: var(--text-dark);
-            font-size: 1.4rem;
-            width: 55px;
-            height: 55px;
-            background: #260a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(153, 0, 0, 0.3);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #ffffff;
-            background: var(--primary-color);
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(153, 0, 0, 0.5);
-            border-color: var(--primary-color);
+            color: var(--accent-terracotta);
+            transform: translateY(-3px);
         }
 
+        /* --- BUTTONS --- */
         .btn {
-            padding: 15px 35px;
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            color: #ffffff;
+            padding: 14px 32px;
+            background: var(--text-espresso);
+            color: var(--bg-cream);
             text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             display: inline-block;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 10px 25px rgba(153, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid var(--text-espresso);
+            cursor: pointer;
         }
 
         .btn:hover {
-            transform: scale(1.04) translateY(-2px);
-            box-shadow: 0 15px 30px rgba(153, 0, 0, 0.6);
+            background: var(--accent-terracotta);
+            border-color: var(--accent-terracotta);
         }
 
-        @media (max-width: 768px) {
-            .profile-hub-container {
-                width: 210px;
-                height: 210px;
-                margin-top: 100px;
-            }
-
-            .profile-avatar-wrapper {
-                width: 175px;
-                height: 175px;
-            }
-
-            .cyber-bracket {
-                width: 195px;
-                height: 195px;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-                font-weight: 800;
-                letter-spacing: 1px;
-                color: var(--text-dark);
-            }
-        }
-
+        /* --- EDITORIAL JOURNAL BOX --- */
         .glass-box {
-            margin-top: 40px;
-            padding: 35px;
-            background: rgba(26, 5, 5, 0.75);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(153, 0, 0, 0.2);
-            border-radius: 24px;
+            margin: 60px auto 0;
+            padding: 45px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
             text-align: left;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 750px;
+            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.02);
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
         .glass-box::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 25%;
-            height: 50%;
-            width: 3px;
-            background: var(--primary-color);
-            border-radius: 0 4px 4px 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--accent-terracotta);
         }
 
         .glass-box h3 {
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-family: var(--font-serif);
+            color: var(--text-espresso);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
             font-weight: 600;
         }
 
         .glass-box p {
-            color: var(--text-medium);
-            font-size: 0.95rem;
-            line-height: 1.9;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
-        /* RESTORED WATER PATTERN OVERLAYS */
-        .water-ripple {
-            position: fixed;
-            inset: 0;
-            z-index: -5;
+        /* --- PORTFOLIO SHOWCASE --- */
+        .design-showcase {
+            width: 85%;
+            max-width: 1200px;
+            margin: 80px auto 120px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 60px;
+            color: var(--text-espresso);
+            font-weight: 600;
+        }
+
+        /* Updated Modern Preview Grid Base Structuring */
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 40px;
+        }
+
+        @media (min-width: 600px) {
+            .design-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .design-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Card Link Wrapper to keep entire asset block interactive */
+        .design-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        /* Custom Editorial Design Preview Box Elements */
+        .design-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3;
             overflow: hidden;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at 20% 20%, rgba(255, 0, 0, 0.08), transparent 25%),
-                radial-gradient(circle at 80% 30%, rgba(153, 0, 0, 0.12), transparent 25%),
-                radial-gradient(circle at 50% 80%, rgba(255, 102, 102, 0.05), transparent 25%),
-                linear-gradient(180deg, #1a0505 0%, #380000 40%, #0d0202 100%);
+            position: relative;
+            background: #f5f5f5;
         }
 
-        .water-ripple::before,
-        .water-ripple::after {
-            content: "";
+        .design-card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Image Hover Text & Tags Overlay Box Matrix */
+        .card-overlay {
             position: absolute;
-            width: 250%;
-            height: 250%;
-            left: -75%;
-            top: -75%;
-            background:
-                repeating-radial-gradient(circle,
-                    rgba(153, 0, 0, 0.15) 0px,
-                    rgba(74, 0, 0, 0.1) 2px,
-                    transparent 12px,
-                    transparent 24px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 30, 26, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(4px);
         }
 
-        .water-ripple::before {
-            animation: rippleMove1 20s linear infinite;
+        .card-overlay h4 {
+            font-family: var(--font-serif);
+            color: var(--bg-cream);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            transform: translateY(15px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
         }
 
-        .water-ripple::after {
-            animation: rippleMove2 28s linear infinite reverse;
-            opacity: .6;
+        .card-overlay span {
+            color: var(--accent-terracotta);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(15px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
         }
 
-        @keyframes rippleMove1 {
+        .card-meta-info {
+            margin-top: 15px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-espresso);
+        }
+
+        .card-stats {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+        }
+
+        /* Card Interactive Hover Frameworks */
+        .design-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-terracotta);
+            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.08);
+        }
+
+        .design-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .design-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .design-card:hover .card-overlay h4,
+        .design-card:hover .card-overlay span {
+            transform: translateY(0);
+        }
+
+        /* Safe dynamic toggle parameters for 'See More' grid flow additions */
+        .hidden-card-wrapper {
+            display: none;
+            opacity: 0;
+            grid-column: 1 / -1;
+        }
+
+        .hidden-card-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 40px;
+            width: 100%;
+        }
+
+        @media (min-width: 600px) {
+            .hidden-card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .hidden-card-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .show-card-wrapper {
+            display: block;
+            animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideUpFade {
             from {
-                transform: rotate(0deg) scale(1);
+                opacity: 0;
+                transform: translateY(40px);
             }
 
             to {
-                transform: rotate(360deg) scale(1.15);
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @keyframes rippleMove2 {
-            from {
-                transform: rotate(360deg) scale(1.1);
+        .see-more-wrap {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px 6%;
             }
 
-            to {
-                transform: rotate(0deg) scale(1.25);
+            .profile-hub-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .profile-avatar-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+
+            .cyber-bracket {
+                width: 205px;
+                height: 205px;
+            }
+
+            .glass-box {
+                padding: 30px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="water-ripple"></div>
-    <div id="canvas-container"></div>
-
-    <div class="ocean-waves">
-        <div class="wave"></div>
-        <div class="wave"></div>
-        <div class="wave"></div>
-    </div>
-
-    <div class="svg-decor">
-        <svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg"
-            style="position: absolute; width: 100%; height: 100%; filter: blur(120px); opacity: 0.3;">
-            <circle cx="15%" cy="25%" r="300" fill="rgba(153, 0, 0, 0.3)" />
-            <circle cx="85%" cy="55%" r="350" fill="rgba(74, 0, 0, 0.4)" />
-        </svg>
-    </div>
 
     <nav>
-        <div class="logo">Portfolio <span>(Bloody </span>Ocean)</div>
+        <div class="logo">Profile <span></span></div>
         <div class="hamburger" id="hamburger">
             <div></div>
             <div></div>
@@ -590,292 +605,247 @@
     <section class="hero-section">
         <div class="profile-hub-container">
             <div class="cyber-bracket b1"></div>
-            <div class="profile-avatar-wrapper" id="avatar-trigger">
+            <div class="profile-avatar-wrapper">
                 <img src="1.jpg" alt="Abdullah Forhad">
             </div>
             <div class="cyber-bracket b2"></div>
         </div>
 
         <div class="container">
-            <h3 style="color: var(--text-medium); margin-bottom: 10px; font-weight: 400; letter-spacing: 1px;">Hi, I'm
-            </h3>
             <h1 class="name-reveal">Abdullah Forhad</h1>
 
-            <h2 class="gsap-reveal" style="font-size: 2rem; margin-bottom: 25px; font-weight: 500;">
+            <h2 class="gsap-reveal"
+                style="font-size: 1.8rem; margin-bottom: 25px; font-weight: 400; font-family: var(--font-serif);">
                 A Professional
                 <span class="scroller-window">
                     <span id="scroller-track">
-                        <span class="highlight">Web Developer</span>
                         <span class="highlight">Graphic Designer</span>
+                        <span class="highlight">Web Developer</span>
                     </span>
                 </span>
             </h2>
 
             <div class="social-links gsap-reveal">
                 <a href="https://www.facebook.com/profile.php?id=61580779565120"><i class="fab fa-facebook-f"></i></a>
-               <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#"><i class="fab fa-behance"></i></a>
             </div>
 
             <p class="gsap-reveal"
-                style="color: var(--text-medium); max-width: 600px; margin: 0 auto 35px; font-size: 1.05rem; font-weight: 400;">
+                style="color: var(--text-muted); max-width: 600px; margin: 0 auto 35px; font-size: 1.05rem;">
                 Expert Graphic Designer and Web Developer focused on creating high-impact digital experiences and modern
                 visual identities.
             </p>
 
             <div class="btn-group gsap-reveal"
                 style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="contact.html" class="btn">Let's Start a Project</a>
-                <a href="resume.html" class="btn"
-                    style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); box-shadow: none; font-weight: 600;">View
+                <a href="contact.html" class="btn">Start A Project</a>
+                <a href="resume.html" class="btn" style="background: transparent; color: var(--text-espresso);">View
                     Resume</a>
             </div>
+
             <div class="glass-box gsap-reveal">
                 <h3>My Journey</h3>
                 <p>
-                    My path into the digital world began with a fascination for how visuals can communicate
-                    emotions, leading me to master Graphic Design. As I shaped brands, I realized the need
-                    to bring those designs to life through code. This sparked my transition into Web Development,
-                    where I now bridge the gap between aesthetic beauty and functional performance.
+                    My path into the digital world began with a fascination for how visuals can communicate emotions,
+                    leading me to master Graphic Design. As I shaped brands, I realized the need to bring those designs
+                    to life through code. This sparked my transition into Web Development, where I now bridge the gap
+                    between aesthetic beauty and functional performance.
                 </p>
             </div>
         </div>
-        <audio id="bg-audio" loop>
-            <source src="m.mp4" type="audio/mpeg">
-        </audio>
+    </section>
+
+    <section class="design-showcase gsap-reveal">
+        <h2 class="section-title">Selected Works</h2>
+
+        <div class="design-grid">
+            <a href="1.html" class="design-card-link">
+                <div class="design-card">
+                    <div class="card-img-wrapper">
+                        <img src="19.2.webp" alt="Business Card Design 1">
+                        <div class="card-overlay">
+                            <h4>Minimalist Card</h4>
+                            <span>Business Card</span>
+                        </div>
+                    </div>
+                    <div class="card-meta-info">
+                        <span class="card-title">Business Card Design</span>
+                        <div class="card-stats">
+                            <span><i class="far fa-eye"></i> 420</span>
+                            <span><i class="far fa-heart"></i> 89</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="2.html" class="design-card-link">
+                <div class="design-card">
+                    <div class="card-img-wrapper">
+                        <img src="24.2.webp" alt="Business Card Design 2">
+                        <div class="card-overlay">
+                            <h4>Modern Corporate</h4>
+                            <span>Business Card</span>
+                        </div>
+                    </div>
+                    <div class="card-meta-info">
+                        <span class="card-title">Corporate Identity Card</span>
+                        <div class="card-stats">
+                            <span><i class="far fa-eye"></i> 312</span>
+                            <span><i class="far fa-heart"></i> 64</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="3.html" class="design-card-link">
+                <div class="design-card">
+                    <div class="card-img-wrapper">
+                        <img src="27.2.webp" alt="Business Card Design 3">
+                        <div class="card-overlay">
+                            <h4>Premium Creative</h4>
+                            <span>Business Card</span>
+                        </div>
+                    </div>
+                    <div class="card-meta-info">
+                        <span class="card-title">Creative Agency Card</span>
+                        <div class="card-stats">
+                            <span><i class="far fa-eye"></i> 580</span>
+                            <span><i class="far fa-heart"></i> 142</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="hidden-card-wrapper" id="expandedGridWrapper">
+                <div class="hidden-card-grid">
+                    <a href="4.html" class="design-card-link">
+                        <div class="design-card">
+                            <div class="card-img-wrapper">
+                                <img src="28.2.webp" alt="Business Card Design 4">
+                                <div class="card-overlay">
+                                    <h4>Abstract Geometric</h4>
+                                    <span>Business Card</span>
+                                </div>
+                            </div>
+                            <div class="card-meta-info">
+                                <span class="card-title">Geometric Pattern Card</span>
+                                <div class="card-stats">
+                                    <span><i class="far fa-eye"></i> 290</span>
+                                    <span><i class="far fa-heart"></i> 55</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="5.html" class="design-card-link">
+                        <div class="design-card">
+                            <div class="card-img-wrapper">
+                                <img src="29.2.webp" alt="Business Card Design 5">
+                                <div class="card-overlay">
+                                    <h4>Luxury Elegant</h4>
+                                    <span>Business Card</span>
+                                </div>
+                            </div>
+                            <div class="card-meta-info">
+                                <span class="card-title">Premium Finished Card</span>
+                                <div class="card-stats">
+                                    <span><i class="far fa-eye"></i> 740</span>
+                                    <span><i class="far fa-heart"></i> 210</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="6.html" class="design-card-link">
+                        <div class="design-card">
+                            <div class="card-img-wrapper">
+                                <img src="30.2.webp" alt="Business Card Design 6">
+                                <div class="card-overlay">
+                                    <h4>Neo-Brutalist Typo</h4>
+                                    <span>Business Card</span>
+                                </div>
+                            </div>
+                            <div class="card-meta-info">
+                                <span class="card-title">Typographic Layout Card</span>
+                                <div class="card-stats">
+                                    <span><i class="far fa-eye"></i> 395</span>
+                                    <span><i class="far fa-heart"></i> 118</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="see-more-wrap">
+            <button id="seeMoreBtn" class="btn" style="background: transparent; color: var(--text-espresso);">See
+                More</button>
+        </div>
     </section>
 
     <script>
-        // --- ORIGINAL PHYSICS FLUID BUBBLE ENGINE RESTORED ---
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        // --- হস্মবার্গার মেনু ফংশন ---
+        const hamburger = document.getElementById('hamburger');
+        const menuWindow = document.getElementById('menu-window');
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
-
-        camera.position.z = 30;
-
-        const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
-        window.addEventListener('mousemove', (event) => {
-            mouse.targetX = (event.clientX / window.innerWidth) * 2 - 1;
-            mouse.targetY = -(event.clientY / window.innerHeight) * 2 + 1;
-
-            // Modern Fluid Dynamic 3D Card Tilting Matrix
-            const avatarWrapper = document.getElementById('avatar-trigger');
-            if (avatarWrapper) {
-                const xDeg = mouse.targetY * 15;
-                const yDeg = mouse.targetX * 15;
-                gsap.to(avatarWrapper, {
-                    rotateX: xDeg,
-                    rotateY: yDeg,
-                    duration: 0.3,
-                    ease: "power2.out",
-                    overwrite: "auto"
-                });
-            }
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            menuWindow.classList.toggle('open');
         });
 
-        window.addEventListener('mouseleave', () => {
-            const avatarWrapper = document.getElementById('avatar-trigger');
-            if (avatarWrapper) {
-                gsap.to(avatarWrapper, { rotateX: 0, rotateY: 0, duration: 0.6, ease: "power2.out" });
-            }
-        });
-
-        const bubbleCount = 50;
-        const bubbles = [];
-        const bubbleGroup = new THREE.Group();
-
-        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
-
-        function createBubbleMaterial(scaleFactor = 1) {
-            const isBigBubble = scaleFactor > 1;
-            return new THREE.MeshPhysicalMaterial({
-                color: isBigBubble ? 0x380000 : 0x7a0000,
-                emissive: isBigBubble ? 0x1a0202 : 0x380000,
-                emissiveIntensity: 0.7,
-                roughness: 0.05,
-                metalness: 0.3,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.01,
-                transmission: 0.3,
-                ior: 1.8,
-                thickness: 7.0 * scaleFactor,
-                transparent: true,
-                opacity: isBigBubble ? 0.95 : 0.85
+        // মেনু লিঙ্ক ক্লিকের পর মেনু বন্ধ হওয়া
+        document.querySelectorAll('.menu-window a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                menuWindow.classList.remove('open');
             });
-        }
+        });
 
-        for (let i = 0; i < bubbleCount; i++) {
-            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
-            const scale = Math.random() * 1.2 + 0.35;
-            mesh.scale.set(scale, scale, scale);
-
-            mesh.position.x = (Math.random() - 0.5) * 55;
-            mesh.position.y = (Math.random() - 0.5) * 45;
-            mesh.position.z = (Math.random() - 0.5) * 15;
-
-            mesh.userData = {
-                speedY: (scale * 0.035) + 0.02,
-                wobbleSpeed: Math.random() * 0.04 + 0.02,
-                phaseX: Math.random() * Math.PI * 2,
-                phaseZ: Math.random() * Math.PI * 2,
-                baseScale: scale,
-                isExtra: false
-            };
-
-            bubbleGroup.add(mesh);
-            bubbles.push(mesh);
-        }
-        scene.add(bubbleGroup);
-
-        function triggerBigBubbleFling() {
-            const flingCount = 8;
-            for (let i = 0; i < flingCount; i++) {
-                const bigMesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial(1));
-                const scale = (Math.random() * 2.0 + 3.5) * 0.5;
-                bigMesh.scale.set(scale, scale, scale);
-
-                bigMesh.position.x = (Math.random() - 0.5) * 50;
-                bigMesh.position.y = -28;
-                bigMesh.position.z = (Math.random() - 0.5) * 12;
-
-                bigMesh.userData = {
-                    speedY: Math.random() * 0.35 + 0.5,
-                    wobbleSpeed: Math.random() * 0.12 + 0.08,
-                    phaseX: Math.random() * Math.PI * 2,
-                    phaseZ: Math.random() * Math.PI * 2,
-                    baseScale: scale,
-                    isExtra: true
-                };
-
-                bubbleGroup.add(bigMesh);
-                bubbles.push(bigMesh);
-            }
-        }
-
-        const skySunLight = new THREE.DirectionalLight(0xffcccc, 2.5);
-        skySunLight.position.set(10, 20, 8);
-        scene.add(skySunLight);
-
-        const oceanBaseLight = new THREE.DirectionalLight(0x990000, 1.5);
-        oceanBaseLight.position.set(-10, -5, -5);
-        scene.add(oceanBaseLight);
-
-        const fillLight = new THREE.AmbientLight(0x380000, 0.9);
-        scene.add(fillLight);
-
-        function animateOceanEngine() {
-            requestAnimationFrame(animateOceanEngine);
-            const time = Date.now();
-
-            mouse.x += (mouse.targetX - mouse.x) * 0.06;
-            mouse.y += (mouse.targetY - mouse.y) * 0.06;
-
-            for (let i = bubbles.length - 1; i >= 0; i--) {
-                const bubble = bubbles[i];
-                const physics = bubble.userData;
-
-                bubble.position.y += physics.speedY;
-                bubble.position.x += Math.sin(time * 0.002 + physics.phaseX) * 0.025;
-                bubble.position.z += Math.cos(time * 0.001 + physics.phaseZ) * 0.015;
-
-                const currentWobble = 1 + Math.sin(time * physics.wobbleSpeed) * 0.08;
-                bubble.scale.set(
-                    physics.baseScale * currentWobble,
-                    physics.baseScale * (1 / currentWobble),
-                    physics.baseScale
-                );
-
-                bubble.position.x += mouse.x * 0.02;
-
-                if (bubble.position.y > 26) {
-                    if (physics.isExtra) {
-                        bubbleGroup.remove(bubble);
-                        bubbles.splice(i, 1);
-                    } else {
-                        bubble.position.y = -24;
-                        bubble.position.x = (Math.random() - 0.5) * 55;
-                        bubble.position.z = (Math.random() - 0.5) * 15;
-                    }
-                }
-            }
-
-            bubbleGroup.rotation.y = mouse.x * 0.08;
-            bubbleGroup.rotation.x = -mouse.y * 0.05;
-
-            renderer.render(scene, camera);
-        }
-        animateOceanEngine();
-
-        // --- TITLE SCROLLER TRACKER ---
+        // --- টাইটেল স্ক্রলার ট্র্যাকার (Text Animation) ---
         function initTitleScroller() {
             const track = document.getElementById('scroller-track');
             const items = track.querySelectorAll('.highlight');
             if (items.length > 0) {
                 const itemHeight = items[0].offsetHeight;
                 const scrollerTl = gsap.timeline({ repeat: -1 });
-                scrollerTl.to(track, { y: -itemHeight, duration: 0.9, ease: "power4.inOut", delay: 2.5 })
-                    .to(track, { y: 0, duration: 0.9, ease: "power4.inOut", delay: 2.5 });
+                scrollerTl.to(track, { y: -itemHeight, duration: 0.8, ease: "power4.inOut", delay: 2.5 })
+                    .to(track, { y: 0, duration: 0.8, ease: "power4.inOut", delay: 2.5 });
             }
         }
 
-        // --- GSAP REVEALS ---
-        gsap.registerPlugin(ScrollTrigger);
-        const tl = gsap.timeline();
+        // --- গ্রিড 'See More' ফাংশন ---
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        const expandedGridWrapper = document.getElementById('expandedGridWrapper');
 
-        tl.from("nav", { y: -60, opacity: 0, duration: 1.2, ease: "power3.out" })
-            .from(".profile-hub-container", { scale: 0.8, opacity: 0, duration: 1.2, ease: "back.out(1.5)" }, "-=0.8")
-            .from(".name-reveal", { y: 30, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.5")
-            .from(".gsap-reveal", { y: 30, opacity: 0, stagger: 0.15, duration: 0.8, ease: "power3.out" }, "-=0.6")
-            .add(() => initTitleScroller());
+        seeMoreBtn.addEventListener('click', () => {
+            expandedGridWrapper.classList.toggle('show-card-wrapper');
 
-        // --- GLOBAL INTERACTIVITY ---
-        const hamburger = document.getElementById('hamburger');
-        const menuWindow = document.getElementById('menu-window');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            menuWindow.classList.toggle('open');
+            if (seeMoreBtn.innerText === "SEE MORE") {
+                seeMoreBtn.innerText = "SEE LESS";
+            } else {
+                seeMoreBtn.innerText = "SEE MORE";
+                // Smooth scroll reset to avoid viewport jump after closing grid
+                window.scrollTo({
+                    top: document.querySelector('.design-showcase').offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
         });
 
-        const avatarTrigger = document.getElementById('avatar-trigger');
-        avatarTrigger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            triggerBigBubbleFling();
-            triggerBigBubbleFling();
-            gsap.fromTo(avatarTrigger,
-                { scale: 0.92, filter: "brightness(1.5)" },
-                { scale: 1, filter: "brightness(1)", duration: 0.5, ease: "back.out(2)" }
-            );
+        // --- GSAP প্রফেশনাল অ্যানিমেশন রিলিজ ---
+        window.addEventListener('DOMContentLoaded', () => {
+            initTitleScroller();
+
+            gsap.registerPlugin(ScrollTrigger);
+            const tl = gsap.timeline();
+
+            tl.from("nav", { y: -40, opacity: 0, duration: 1, ease: "power3.out" })
+                .from(".profile-hub-container", { scale: 0.95, opacity: 0, duration: 1, ease: "power2.out" }, "-=0.6")
+                .from(".name-reveal", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.4")
+                .from(".gsap-reveal", { y: 20, opacity: 0, stagger: 0.1, duration: 0.8, ease: "power3.out" }, "-=0.4");
         });
-
-        const audio = document.getElementById('bg-audio');
-        audio.playbackRate = 0.3;
-        audio.volume = 0.2;
-
-        document.addEventListener('click', () => {
-            audio.play().catch(err => console.log("Audio contexts assigned."));
-            triggerBigBubbleFling();
-        });
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // ORIGINAL WATER MOTION RESTORED
-        const water = document.querySelector('.water-ripple');
-        let waterTime = 0;
-        function animateWater() {
-            waterTime += 0.01;
-            water.style.filter = `brightness(${1 + Math.sin(waterTime) * 0.05}) contrast(1.1) saturate(1.2)`;
-            requestAnimationFrame(animateWater);
-        }
-        animateWater();
     </script>
 </body>
 
