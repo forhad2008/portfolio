@@ -5,30 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdullah Forhad | Creative Resume</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
+        /* --- MODERN EDITORIAL MATRIX --- */
         :root {
-            --primary-color: #b30000;
-            /* Crimson Red */
-            --secondary-color: #4a0000;
-            /* Deep Blood Velvet */
-            --accent-blue: #aa0606;
-            /* Vivid Light Red / Coral Spark */
-            --bg-light: #1a0303;
-            /* Abyssal Crimson Night */
-            --card-bg: rgba(20, 5, 5, 0.85);
-            /* Dark Glass Tint */
-            --text-dark: #fff5f5;
-            /* Pure Ghostly White */
-            --text-medium: #ff6666;
-            /* Vibrant Crimson Rose */
-            --text-muted: #cca3a3;
-            /* Muted Crimson Ash */
+            --bg-cream: #FFFDF9;
+            --text-espresso: #2C1E1A;
+            --text-muted: #6E5D58;
+            --accent-terracotta: #C25A3F;
+            --accent-hover: #A44830;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --border-color: rgba(44, 30, 26, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
         }
 
         #canvas-container {
@@ -41,16 +44,9 @@
             pointer-events: none;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-cream);
+            color: var(--text-espresso);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -60,65 +56,47 @@
             position: relative;
         }
 
-        /* Ambient background color blending mimicking a bloody ocean tide */
+        /* Subtle Background Guide Line */
         body::before {
             content: '';
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 10%;
+            width: 1px;
             height: 100%;
-            background: linear-gradient(180deg, #1a0303 0%, #5c0606 40%, rgb(139, 0, 0) 100%);
-            background-size: 200% 200%;
-            animation: ocean-current 15s ease-in-out infinite alternate;
-            opacity: 0.9;
+            background: var(--border-color);
             z-index: -1;
+            pointer-events: none;
         }
 
-        @keyframes ocean-current {
-            0% {
-                background-position: 50% 0%;
-            }
-
-            100% {
-                background-position: 50% 100%;
-            }
-        }
-
-        /* --- MODERN GLASSMORPHISM RESUME CARD --- */
+        /* --- EDITORIAL RESUME CONTAINER --- */
         .resume-card {
             width: 1000px;
             max-width: 100%;
-            background: var(--card-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: #FFFFFF;
             display: grid;
             grid-template-columns: 320px 1fr;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
-            border-radius: 24px;
-            border: 1px solid rgba(179, 0, 0, 0.15);
-            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 30px 60px rgba(44, 30, 26, 0.03);
             z-index: 10;
             position: relative;
         }
 
         /* --- Left Sidebar --- */
         .sidebar {
-            background: rgba(179, 0, 0, 0.04);
-            border-right: 1px solid rgba(179, 0, 0, 0.15);
-            color: var(--text-dark);
-            padding: 40px 30px;
-            text-align: center;
+            background: #FAF7F2;
+            border-right: 1px solid var(--border-color);
+            padding: 45px 35px;
         }
 
         .profile-img-container {
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            border: 4px solid var(--accent-blue);
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.25);
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            border-radius: 0px; /* Modern block layout */
+            border: 1px solid var(--border-color);
+            padding: 6px;
+            background: #FFFFFF;
         }
 
         .profile-img-container img {
@@ -128,127 +106,142 @@
         }
 
         .sidebar h2 {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-            color: var(--text-dark);
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-espresso);
+            margin-bottom: 6px;
+            letter-spacing: -0.5px;
         }
 
         .sidebar p {
-            font-size: 0.9rem;
-            color: var(--text-medium);
-            margin-bottom: 30px;
-            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-terracotta);
+            margin-bottom: 35px;
+            font-weight: 600;
         }
 
         .info-section {
             text-align: left;
-            margin-top: 35px;
+            margin-top: 40px;
         }
 
         .info-title {
-            font-size: 1rem;
-            border-bottom: 2px solid rgba(179, 0, 0, 0.25);
-            color: var(--text-medium);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--text-espresso);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+            font-weight: 600;
         }
 
         .contact-link {
             display: flex;
             align-items: center;
             gap: 12px;
-            color: var(--text-dark);
+            color: var(--text-muted);
             text-decoration: none;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 400;
             transition: color 0.3s ease;
         }
 
         .contact-link:hover {
-            color: var(--accent-blue);
+            color: var(--accent-terracotta);
         }
 
         .contact-link i {
-            font-size: 1rem;
+            font-size: 0.9rem;
             width: 20px;
-            color: var(--accent-blue);
+            color: var(--accent-terracotta);
         }
 
         .sidebar .personal-txt {
             font-size: 0.85rem;
-            margin-bottom: 8px;
-            color: var(--text-dark);
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            line-height: 1.5;
         }
 
-        /* --- Right Content --- */
+        .sidebar .personal-txt b {
+            color: var(--text-espresso);
+            font-weight: 500;
+        }
+
+        /* --- Right Main Content --- */
         .main-content {
-            padding: 45px;
-            background: rgba(20, 5, 5, 0.2);
+            padding: 55px 50px;
+            background: #FFFFFF;
         }
 
         .resume-section {
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .section-header {
-            font-size: 1.3rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-espresso);
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            border-bottom: 2px solid rgba(179, 0, 0, 0.2);
-            padding-bottom: 8px;
-            font-weight: 700;
+            gap: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            font-weight: 600;
         }
 
         .section-header i {
-            color: var(--accent-blue);
+            color: var(--accent-terracotta);
+            font-size: 1.1rem;
         }
 
         .profile-summary {
             color: var(--text-muted);
-            line-height: 1.7;
+            line-height: 1.75;
             font-size: 0.95rem;
         }
 
         .experience-item {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             position: relative;
-            padding-left: 20px;
-            border-left: 2px solid var(--primary-color);
+            padding-left: 24px;
+            border-left: 1px solid var(--accent-terracotta);
         }
 
         .experience-item h4 {
-            font-size: 1.1rem;
-            color: var(--text-dark);
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--text-espresso);
             font-weight: 600;
         }
 
         .experience-item span {
-            font-size: 0.85rem;
-            color: var(--text-medium);
+            font-size: 0.8rem;
+            color: var(--accent-terracotta);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             display: block;
-            margin: 4px 0;
+            margin: 4px 0 8px;
         }
 
         .experience-item p {
             font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
-        /* Skills Layout */
+        /* Skills Matrix */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px 25px;
+            gap: 20px 35px;
         }
 
         .skill-item {
@@ -256,27 +249,25 @@
         }
 
         .skill-label {
-            font-size: 0.88rem;
-            margin-bottom: 6px;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
-            color: var(--text-dark);
-            font-weight: 600;
+            color: var(--text-espresso);
+            font-weight: 500;
         }
 
         .progress-bg {
-            background: rgba(179, 0, 0, 0.15);
-            height: 8px;
-            border-radius: 4px;
+            background: rgba(44, 30, 26, 0.05);
+            height: 4px; /* Thin, minimal modern track */
             overflow: hidden;
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            background: var(--accent-terracotta);
             height: 100%;
-            border-radius: 4px;
             width: 0;
-            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* Action Button */
@@ -284,28 +275,27 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 15px;
             background: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--primary-color);
-            padding: 12px 28px;
-            border-radius: 50px;
-            text-decoration: none;
+            color: var(--accent-terracotta);
+            border: 1px solid var(--accent-terracotta);
+            padding: 14px 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            font-size: 0.85rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
         }
 
         .download-btn:hover {
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-            color: #fff;
-            border-color: transparent;
+            background: var(--text-espresso);
+            color: #FFFFFF;
+            border-color: var(--text-espresso);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(179, 0, 0, 0.4);
         }
 
-        /* Responsive Layout */
+        /* Responsive Adapters */
         @media (max-width: 850px) {
             .resume-card {
                 grid-template-columns: 1fr;
@@ -313,12 +303,12 @@
 
             .sidebar {
                 border-right: none;
-                border-bottom: 1px solid rgba(179, 0, 0, 0.15);
-                padding: 40px 20px;
+                border-bottom: 1px solid var(--border-color);
+                padding: 45px 25px;
             }
 
             .main-content {
-                padding: 35px 25px;
+                padding: 45px 25px;
             }
 
             .skills-grid {
@@ -326,11 +316,11 @@
             }
         }
 
-        /* --- PRINT CRITICAL OVERRIDES --- */
+        /* --- CLEAN PRINT ENGINE --- */
         @media print {
             body {
-                background: #fff !important;
-                color: #000 !important;
+                background: #FFFFFF !important;
+                color: #000000 !important;
                 padding: 0 !important;
             }
 
@@ -344,24 +334,25 @@
                 width: 100% !important;
                 box-shadow: none !important;
                 border: none !important;
-                background: #fff !important;
-                grid-template-columns: 280px 1fr !important;
-                backdrop-filter: none !important;
+                background: #FFFFFF !important;
+                grid-template-columns: 260px 1fr !important;
             }
 
             .sidebar {
-                background: #fff5f5 !important;
-                border-right: 1px solid #ddd !important;
+                background: #FAF7F2 !important;
+                border-right: 1px solid #E5E0D8 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
 
             .progress-bg {
-                background: #ddd !important;
+                background: #E5E0D8 !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
 
             .progress-fill {
-                background: #b30000 !important;
+                background: #C25A3F !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -379,7 +370,7 @@
                 <img src="1.jpg" alt="Abdullah Forhad">
             </div>
             <h2>Abdullah Forhad</h2>
-            <p>Graphics Designer & Frontend Developer</p>
+            <p>Designer & Developer</p>
 
             <div class="info-section">
                 <h3 class="info-title">Contact Me</h3>
@@ -389,7 +380,7 @@
                 <a href="tel:+8801342900364" class="contact-link">
                     <i class="fas fa-phone"></i> +880 1342 900364
                 </a>
-                <a href="chittagong" class="contact-link">
+                <a href="#" class="contact-link">
                     <i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh
                 </a>
             </div>
@@ -475,7 +466,7 @@
     </div>
 
     <script>
-        // --- 3D BLOOD DROPLET / BUBBLE ENGINE ---
+        // --- 3D AMBIENT SILK FLOATING ENGINE (Minimal Editorial Mix) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -487,38 +478,38 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 30;
+        const bubbleCount = 20; 
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x4a0000,           // Deep crimson blood base
-                emissive: 0x1a0303,        // Dark abyssal core
-                emissiveIntensity: 0.6,
-                roughness: 0.08,
-                metalness: 0.1,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.02,
-                transmission: 0.4,          // Liquid fluid density
-                ior: 1.4,
-                thickness: 5.0,
+                color: 0xC25A3F,           // Terracotta Accent Matrix
+                emissive: 0xFFFDF9,        // Cream reflection glow
+                emissiveIntensity: 0.1,
+                roughness: 0.1,
+                metalness: 0.05,
+                clearcoat: 0.8,
+                clearcoatRoughness: 0.1,
+                transmission: 0.7,          
+                ior: 1.2,
+                thickness: 1.5,
                 transparent: true,
-                opacity: 0.85
+                opacity: 0.2
             });
         }
 
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 0.8 + 0.3;
+            const scale = Math.random() * 1.2 + 0.4;
             mesh.scale.set(scale, scale, scale);
             mesh.position.x = (Math.random() - 0.5) * 55;
             mesh.position.y = (Math.random() - 0.5) * 45;
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.025) + 0.01,
+                speedY: (scale * 0.008) + 0.004,
                 phaseX: Math.random() * Math.PI * 2,
             };
             bubbleGroup.add(mesh);
@@ -526,12 +517,12 @@
         }
         scene.add(bubbleGroup);
 
-        // Lights tuned for crimson visibility
-        const skyLight = new THREE.DirectionalLight(0xffcccc, 2.5); // Soft red-white top reflection
+        // Soft, editorial lighting profiles
+        const skyLight = new THREE.DirectionalLight(0xFFFDF9, 2.0);
         skyLight.position.set(10, 20, 8);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x3a0000, 1.2); // Warm dark-red ambient layer
+        const fillLight = new THREE.AmbientLight(0xC25A3F, 0.3);
         scene.add(fillLight);
 
         const mouse = { x: 0, y: 0 };
@@ -546,7 +537,7 @@
 
             bubbles.forEach(bubble => {
                 bubble.position.y += bubble.userData.speedY;
-                bubble.position.x += Math.sin(time * 0.002 + bubble.userData.phaseX) * 0.015;
+                bubble.position.x += Math.sin(time * 0.001 + bubble.userData.phaseX) * 0.01;
 
                 if (bubble.position.y > 25) {
                     bubble.position.y = -25;
@@ -554,14 +545,14 @@
                 }
             });
 
-            bubbleGroup.rotation.y += (mouse.x * 0.03 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.03 - bubbleGroup.rotation.x) * 0.05;
+            bubbleGroup.rotation.y += (mouse.x * 0.02 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.02 - bubbleGroup.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // Progress bar dynamic build
+        // Progress bar lazy trigger
         window.addEventListener('DOMContentLoaded', () => {
             const progressFills = document.querySelectorAll('.progress-fill');
             progressFills.forEach(fill => {
