@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Business Card | Abdullah Forhad</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-canvas: #F9F8F4;
+            --bg-card: #FFFFFF;
+            --text-main: #1C1512;
+            --text-muted: #655954;
+            --accent-brand: #B84A2E;
+            --accent-bg-light: #FDF9F7;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+            --border-subtle: rgba(28, 21, 18, 0.06);
+            --radius-main: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .portfolio-wrapper {
+            max-width: 1100px;
+            width: 100%;
+            background: var(--bg-card);
+            border-radius: var(--radius-main);
+            box-shadow: 0 30px 60px rgba(28, 21, 18, 0.05);
+            border: 1px solid var(--border-subtle);
+            padding: 40px;
+        }
+
+        .back-navigation {
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.25s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-brand);
+        }
+
+        /* Responsive Professional Layout Grid */
+        .main-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (min-width: 850px) {
+            .main-layout-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 50px;
+            }
+        }
+
+        /* Left Side: Sticky Image Box Showcase */
+        .image-showcase-container {
+            background: var(--bg-canvas);
+            border-radius: calc(var(--radius-main) - 4px);
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.01);
+        }
+
+        @media (min-width: 850px) {
+            .image-showcase-container {
+                position: sticky;
+                top: 40px;
+            }
+        }
+
+        .presentation-graphic {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image-showcase-container:hover .presentation-graphic {
+            transform: scale(1.015);
+        }
+
+        /* Right Side: Structured Details Content */
+        .details-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-meta-category {
+            color: var(--accent-brand);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .project-headline {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .h3 {
+            font-size: 10px;
+        }
+
+        .section-block {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .project-paragraph {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            line-height: 1.8;
+        }
+
+        /* Tech Specs Grid */
+        .specs-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-subtle);
+            font-size: 0.95rem;
+        }
+
+        .spec-label {
+            color: var(--text-muted);
+        }
+
+        .spec-value {
+            font-weight: 600;
+            color: var(--text-main);
+            background: var(--accent-bg-light);
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(184, 74, 46, 0.08);
+        }
+
+        /* Sticky Bottom Mobile/Standard Desktop CTA Hub */
+        .interactive-cta-hub {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 480px) {
+            .interactive-cta-hub {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .action-button {
+            padding: 16px 24px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border-radius: 6px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .action-button-primary {
+            background: var(--text-main);
+            color: #FFFFFF;
+            border: 1px solid var(--text-main);
+            box-shadow: 0 4px 12px rgba(28, 21, 18, 0.08);
+        }
+
+        .action-button-primary:hover {
+            background: var(--accent-brand);
+            border-color: var(--accent-brand);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(184, 74, 46, 0.15);
+        }
+
+        .action-button-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
+        }
+
+        .action-button-secondary:hover {
+            border-color: var(--accent-brand);
+            color: var(--accent-brand);
+            background: var(--accent-bg-light);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+            }
+
+            .portfolio-wrapper {
+                padding: 24px;
+            }
+
+            .project-headline {
+                font-size: 1.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="portfolio-wrapper">
+        <nav class="back-navigation">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back To Home
+            </a>
+        </nav>
+
+        <main class="main-layout-grid">
+
+            <div class="image-showcase-container">
+                <img src="11.webp" alt="Minimalist Royal Blue Business Card Concept Design Showcase"
+                    class="presentation-graphic">
+            </div>
+
+            <div class="details-panel">
+                <header>
+                    <span class="project-meta-category">Creative & Professional</span>
+                    <h1 class="project-headline">Creative Logo</h1>
+                    <h1 class="project-headline">Price: 25$/1</h1>
+
+                </header>
+                <br>
+
+                <div class="section-block">
+                    <h2 class="section-title">Design Execution</h2>
+                    <p class="project-paragraph">
+                        A premium logo made for branding made by letter & shape. Designed specifically for modern
+                        creators, corporate professionals, and independent executives looking to build an identity.
+                    </p>
+                </div>
+
+                <div class="section-block">
+                    <h2 class="section-title">Specifications</h2>
+                    <div class="specs-group">
+                        <div class="spec-item">
+                            <span class="spec-label">Dimensions</span>
+                            <span class="spec-value">2.0" × 2.0" (Standard)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Color Profile</span>
+                            <span class="spec-value">Print Ready (CMYK)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Tools Used</span>
+                            <span class="spec-value">Ai / Ps</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-cta-hub">
+                    <a href="https://wa.me/8801342900364" target="_blank" class="action-button action-button-primary">
+                        <i class="fab fa-whatsapp"></i> Order On WhatsApp
+                    </a>
+                    <a href="mailto:forhadalpha08@gmail.com?subject=Inquiry%20about%20Business%20Card%20Design"
+                        class="action-button action-button-secondary">
+                        <i class="far fa-envelope"></i> Order On Email
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+
+</html>
