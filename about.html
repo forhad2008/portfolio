@@ -8,32 +8,33 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- BOLD & EDITORIAL DESIGN MATRIX (Matched to Home) --- */
+        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM (Matched to Home) --- */
         :root {
-            --bg-cream: #FFFDF9;
-            --text-espresso: #2C1E1A;
-            --text-muted: #6E5D58;
-            --accent-terracotta: #C25A3F;
-            --accent-hover: #A44830;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --border-color: rgba(44, 30, 26, 0.1);
+            --bg-dark: #FFFFFF;              /* Pure Gallery White */
+            --bg-card: #F8F9FA;              /* Minimalist Light Gray */
+            --text-primary: #0A0A0C;         /* Rich Ink Black */
+            --text-muted: #6B7280;           /* Mid Neutral Gray */
+            --accent-neon: #0284C7;          /* High-Contrast Sky Blue */
+            --accent-glow: rgba(2, 132, 199, 0.1);
+            --border-color: rgba(10, 10, 12, 0.08);
+            --font-accent: 'Syne', sans-serif;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-sans);
+            font-family: var(--font-main);
         }
 
         #canvas-container {
@@ -47,10 +48,10 @@
         }
 
         body {
-            background-color: var(--bg-cream);
-            color: var(--text-espresso);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             line-height: 1.6;
-            padding: 80px 20px;
+            padding: 120px 20px 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,8 +60,21 @@
             position: relative;
         }
 
-        /* Fixed Editorial Guideline */
+        /* Ambient Blue Background Glow */
         body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.04) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Structural Grid Line */
+        body::after {
             content: '';
             position: fixed;
             top: 0;
@@ -72,25 +86,77 @@
             pointer-events: none;
         }
 
+        /* --- SLEEK LIGHT GLASS NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-neon);
+        }
+
+        .desktop-nav {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition-tactile);
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav li.active a {
+            color: var(--accent-neon);
+        }
+
+        /* --- MODERN ABOUT BOX --- */
         .preview-container {
             max-width: 650px;
             width: 100%;
-            background: #FFFFFF;
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
+            border-radius: 16px;
             padding: 50px 40px;
-            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.02);
+            box-shadow: 0 30px 60px rgba(10, 10, 12, 0.03);
             position: relative;
+            overflow: hidden;
         }
 
-        /* Editorial Vertical Accent Bar */
-        .preview-container::before {
+        /* Subtle Accent Border */
+        .preview-container::after {
             content: '';
             position: absolute;
-            left: 0;
             top: 0;
+            right: 0;
+            width: 3px;
             height: 100%;
-            width: 4px;
-            background: var(--accent-terracotta);
+            background: linear-gradient(180deg, var(--accent-neon), transparent);
         }
 
         .back-link {
@@ -101,14 +167,14 @@
             text-decoration: none;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             margin-bottom: 35px;
-            transition: color 0.3s, transform 0.3s;
-            font-weight: 500;
+            transition: var(--transition-tactile);
+            font-weight: 600;
         }
 
         .back-link:hover {
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
             transform: translateX(-3px);
         }
 
@@ -117,24 +183,25 @@
         }
 
         .project-title {
-            font-family: var(--font-serif);
+            font-family: var(--font-accent);
             font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 600;
-            color: var(--text-espresso);
+            font-weight: 800;
+            color: var(--text-primary);
             line-height: 1.1;
-            letter-spacing: -1px;
+            letter-spacing: -1.5px;
         }
 
         .project-category {
-            color: var(--accent-terracotta);
-            font-size: 0.85rem;
+            color: var(--accent-neon);
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            letter-spacing: 2px;
+            font-weight: 700;
             display: block;
             margin-bottom: 8px;
         }
 
+        /* --- ASYMMETRIC METRIC LIST --- */
         .info-grid {
             display: flex;
             flex-direction: column;
@@ -148,37 +215,36 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
-            background: #FFFDF9;
+            padding: 18px 24px;
+            background: var(--bg-dark);
             border: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 8px;
+            transition: var(--transition-tactile);
         }
 
         .info-item:hover {
-            border-color: var(--accent-terracotta);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(44, 30, 26, 0.04);
+            border-color: rgba(10, 10, 12, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(10, 10, 12, 0.04);
         }
 
         .info-item h3 {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .info-item span {
-            color: var(--text-espresso);
-            font-family: var(--font-serif);
+            color: var(--text-primary);
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .highlight-text {
-            color: var(--accent-terracotta) !important;
-            font-style: italic;
-            font-weight: 500 !important;
+            color: var(--accent-neon) !important;
+            font-weight: 700 !important;
         }
 
         .reveal {
@@ -202,6 +268,16 @@
 <body>
 
     <div id="canvas-container"></div>
+
+    <nav>
+        <div class="logo">Abdullah<span>.</span></div>
+        <ul class="desktop-nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <div class="preview-container">
         <a href="index.html" class="back-link reveal">
@@ -242,7 +318,7 @@
     </div>
 
     <script>
-        // --- 3D AMBIENT SILK FLOATING ENGINE (Adapted to Editorial Theme) ---
+        // --- 3D AMBIENT SILK FLOATING ENGINE (High-Tech Glass Aesthetic) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -254,38 +330,38 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 20; // Reduced count for a cleaner, cleaner look
+        const bubbleCount = 15; // Kept low for high performance
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0xC25A3F,           // Terracotta base
-                emissive: 0xFFFDF9,        // Soft cream glow core
+                color: 0x0284C7,             // Sky Blue Tint
+                emissive: 0xFFFFFF,          // Clear glass core
                 emissiveIntensity: 0.1,
-                roughness: 0.1,
-                metalness: 0.05,
-                clearcoat: 0.8,
-                clearcoatRoughness: 0.1,
-                transmission: 0.6,          // High transparency elegant mesh
-                ior: 1.2,
-                thickness: 2.0,
+                roughness: 0.05,
+                metalness: 0.1,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.05,
+                transmission: 0.85,          // Clean glass transmission
+                ior: 1.5,
+                thickness: 1.5,
                 transparent: true,
-                opacity: 0.25               // Kept very subtle for light mode
+                opacity: 0.12                // Clean, elegant structural visual density
             });
         }
 
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 1.5 + 0.5;
+            const scale = Math.random() * 2.0 + 0.5;
             mesh.scale.set(scale, scale, scale);
             mesh.position.x = (Math.random() - 0.5) * 55;
             mesh.position.y = (Math.random() - 0.5) * 45;
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.01) + 0.005,
+                speedY: (scale * 0.008) + 0.003,
                 phaseX: Math.random() * Math.PI * 2,
                 baseScale: scale
             };
@@ -294,15 +370,15 @@
         }
         scene.add(bubbleGroup);
 
-        // Studio warm lightning rigs
-        const skyLight = new THREE.DirectionalLight(0xFFFDF9, 2.0);
-        skyLight.position.set(10, 20, 8);
+        // Studio Cool-Toned Lights
+        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 1.8);
+        skyLight.position.set(10, 20, 10);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0xC25A3F, 0.4);
+        const fillLight = new THREE.AmbientLight(0x0284C7, 0.3);
         scene.add(fillLight);
 
-        // Parallax Mouse tracking
+        // Dynamic Mouse Tracking Parallax
         const mouse = { x: 0, y: 0 };
         window.addEventListener('mousemove', (e) => {
             mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -316,7 +392,7 @@
             bubbles.forEach(bubble => {
                 const p = bubble.userData;
                 bubble.position.y += p.speedY;
-                bubble.position.x += Math.sin(time * 0.001 + p.phaseX) * 0.01;
+                bubble.position.x += Math.sin(time * 0.0008 + p.phaseX) * 0.01;
 
                 if (bubble.position.y > 25) {
                     bubble.position.y = -25;
@@ -324,22 +400,22 @@
                 }
             });
 
-            bubbleGroup.rotation.y += (mouse.x * 0.03 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.03 - bubbleGroup.rotation.x) * 0.05;
+            bubbleGroup.rotation.y += (mouse.x * 0.02 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.02 - bubbleGroup.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // --- GSAP REVEAL ANIMATION (Smooth Entry) ---
+        // --- GSAP REVEAL ANIMATION (Matching Homepage Fluid Transitions) ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 1,
-                stagger: 0.08,
+                duration: 0.8,
+                stagger: 0.06,
                 ease: "power3.out",
-                startAt: { y: 30 }
+                startAt: { y: 25 }
             });
         });
 
