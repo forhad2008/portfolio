@@ -4,37 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Forhad | Portfolio</title>
+    <title>Abdullah Forhad | Creative Technologist</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
-        /* --- BOLD & EDITORIAL DESIGN MATRIX --- */
+        /* --- INVERTED MINIMALIST LIGHT COLOR SYSTEM --- */
         :root {
-            --bg-cream: #FFFDF9;
-            --text-espresso: #2C1E1A;
-            --text-muted: #6E5D58;
-            --accent-terracotta: #A36406;
-            --accent-hover: #925402;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --border-color: rgba(44, 30, 26, 0.055);
+            --bg-dark: #FFFFFF;
+            /* Inverted to Pure White */
+            --bg-card: #F8F9FA;
+            /* Inverted to Light Warm Gray */
+            --text-primary: #0A0A0C;
+            /* Inverted to Deep Ink Black */
+            --text-muted: #6B7280;
+            /* Inverted to Mid Gray */
+            --accent-neon: #0284C7;
+            /* High-Contrast Sky Blue */
+            --accent-glow: rgba(2, 132, 199, 0.1);
+            --border-color: rgba(10, 10, 12, 0.08);
+            /* Dark subtle border */
+            --font-accent: 'Syne', sans-serif;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-sans);
+            font-family: var(--font-main);
         }
 
         html {
@@ -42,96 +49,92 @@
         }
 
         body {
-            background-color: var(--bg-cream);
-            color: var(--text-espresso);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
-            position: relative;
-            min-height: 100vh;
         }
 
-        /* Editorial Line Background Background Styling */
+        /* --- AMBIENT DECORATIVE GLOW --- */
         body::before {
             content: '';
-            position: fixed;
-            top: 0;
-            left: 10%;
-            width: 1px;
-            height: 100%;
-            background: var(--border-color);
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- SLEEK LIGHT GLASS NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 25px 10%;
+            padding: 24px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(255, 253, 249, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-espresso);
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
         }
 
         .logo span {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-weight: 400;
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
         }
 
-        /* Desktop Nav Menu Links */
         .desktop-nav {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 40px;
         }
 
         .desktop-nav a {
             text-decoration: none;
-            color: var(--text-espresso);
+            color: var(--text-muted);
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition-tactile);
         }
 
-        .desktop-nav a:hover {
-            color: var(--accent-terracotta);
+        .desktop-nav a:hover,
+        .desktop-nav li.active a {
+            color: var(--accent-neon);
         }
 
+        /* Hamburger Menu */
         .hamburger {
             cursor: pointer;
             z-index: 2100;
             display: none;
-            /* Hidden by default on desktop screen sizes */
             flex-direction: column;
             gap: 6px;
         }
 
         .hamburger div {
-            width: 28px;
+            width: 25px;
             height: 2px;
-            background: var(--text-espresso);
-            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            background: var(--text-primary);
+            transition: var(--transition-tactile);
         }
 
         .hamburger.active div:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
-            background: var(--bg-cream);
         }
 
         .hamburger.active div:nth-child(2) {
@@ -140,28 +143,27 @@
 
         .hamburger.active div:nth-child(3) {
             transform: translateY(-8px) rotate(-45deg);
-            background: var(--bg-cream);
         }
 
+        /* Mobile Nav Window */
         .menu-window {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--text-espresso);
+            height: 100vh;
+            background: var(--bg-dark);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1500;
-            clip-path: circle(0% at 90% 5%);
-            transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-            pointer-events: none;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .menu-window.open {
-            clip-path: circle(150% at 90% 5%);
-            pointer-events: all;
+            transform: translateY(0);
         }
 
         .menu-window ul {
@@ -170,120 +172,89 @@
         }
 
         .menu-window li {
-            margin: 25px 0;
+            margin: 30px 0;
         }
 
         .menu-window a {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            color: var(--bg-cream);
+            font-family: var(--font-accent);
+            font-size: 2.2rem;
+            color: var(--text-primary);
             text-decoration: none;
-            font-weight: 600;
-            transition: 0.4s ease;
+            font-weight: 700;
+            transition: var(--transition-tactile);
         }
 
         .menu-window a:hover {
-            color: var(--accent-terracotta);
-            padding-left: 15px;
+            color: var(--accent-neon);
         }
 
-        /* --- HERO SECTIONS --- */
+        /* --- ASYMMETRIC HERO SECTION --- */
         .hero-section {
-            padding-top: 60px;
-        }
-
-        /* Adjusted profile container margin to sit 10% higher */
-        .profile-hub-container {
-            position: relative;
-            width: 240px;
-            height: 240px;
-            margin: 95px auto 30px;
-            /* Reduced from 140px to elevate profile unit */
+            padding: 180px 8% 100px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            perspective: 1000px;
         }
 
-        .cyber-bracket {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border: 1px solid var(--accent-terracotta);
-            pointer-events: none;
-            z-index: 1;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .cyber-bracket.b1 {
-            border-bottom: none;
-            border-right: none;
-            top: 0;
-            left: 0;
-            transform: translate(-8px, -8px);
-        }
-
-        .cyber-bracket.b2 {
-            border-top: none;
-            border-left: none;
-            bottom: 0;
-            right: 0;
-            transform: translate(8px, 8px);
-        }
-
-        .profile-hub-container:hover .cyber-bracket.b1 {
-            transform: translate(-14px, -14px);
-        }
-
-        .profile-hub-container:hover .cyber-bracket.b2 {
-            transform: translate(14px, 14px);
-        }
-
-        .profile-avatar-wrapper {
-            position: relative;
-            width: 220px;
-            height: 220px;
-            padding: 5px;
-            background: var(--bg-cream);
-            border: 1px solid var(--border-color);
-            z-index: 2;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(44, 30, 26, 0.034);
-        }
-
-        .profile-avatar-wrapper img {
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            align-items: center;
         }
 
-        .profile-avatar-wrapper:hover img {
-            transform: scale(1.05);
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
         }
 
-        .container {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px 40px;
+        .hero-text {
+            text-align: left;
+        }
+
+        .hero-badge {
+            background: rgba(10, 10, 12, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-neon);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge .ping {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-neon);
         }
 
         h1 {
-            font-family: var(--font-serif);
-            font-size: clamp(2.8rem, 7vw, 4.5rem);
-            color: var(--text-espresso);
-            font-weight: 600;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+            font-family: var(--font-accent);
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            color: var(--text-primary);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
         }
 
+        /* Dynamic Text Scroller */
         .scroller-window {
             display: inline-block;
-            height: 1.2em;
+            height: 1.15em;
             overflow: hidden;
             vertical-align: bottom;
+            color: var(--accent-neon);
         }
 
         #scroller-track {
@@ -293,133 +264,173 @@
         }
 
         .highlight {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-weight: 400;
-            color: var(--accent-terracotta);
-            height: 1.2em;
-            line-height: 1.2em;
+            height: 1.15em;
+            line-height: 1.15em;
             display: block;
             white-space: nowrap;
         }
 
-        .social-links {
-            margin: 30px 0;
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 580px;
+            margin-bottom: 40px;
+        }
+
+        /* Hero Avatar Hub */
+        .hero-visual {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            align-items: center;
+            position: relative;
         }
 
-        .social-links a {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+        .profile-container {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            background: #FFFFFF;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 40px 80px rgba(10, 10, 12, 0.05);
+            transition: var(--transition-tactile);
         }
 
-        .social-links a:hover {
-            color: var(--accent-terracotta);
-            transform: translateY(-3px);
+        .profile-container:hover {
+            transform: scale(1.02) rotate(1deg);
+            border-color: var(--accent-neon);
+            box-shadow: 0 40px 80px rgba(2, 132, 199, 0.15);
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
         }
 
         /* --- BUTTONS --- */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            padding: 14px 32px;
-            background: var(--text-espresso);
-            color: var(--bg-cream);
+            padding: 16px 32px;
+            background: var(--text-primary);
+            color: var(--bg-dark);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            display: inline-block;
-            transition: all 0.3s ease;
-            border: 1px solid var(--text-espresso);
+            letter-spacing: 0.5px;
+            border-radius: 8px;
+            transition: var(--transition-tactile);
+            border: 1px solid var(--text-primary);
             cursor: pointer;
         }
 
         .btn:hover {
-            background: var(--accent-terracotta);
-            border-color: var(--accent-terracotta);
+            background: var(--accent-neon);
+            border-color: var(--accent-neon);
             color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px var(--accent-glow);
         }
 
-        .glass-box {
-            margin: 60px auto 0;
-            padding: 45px;
-            background: #FFFFFF;
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(10, 10, 12, 0.03);
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            box-shadow: none;
+        }
+
+        /* --- EXPERIENTIAL BOX --- */
+        .statement-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 80px;
+            width: 100%;
             text-align: left;
-            max-width: 750px;
-            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.02);
             position: relative;
+            overflow: hidden;
         }
 
-        .glass-box::before {
+        .statement-card::after {
             content: '';
             position: absolute;
-            left: 0;
             top: 0;
+            right: 0;
+            width: 2px;
             height: 100%;
-            width: 4px;
-            background: var(--accent-terracotta);
+            background: linear-gradient(180deg, var(--accent-neon), transparent);
         }
 
-        .glass-box h3 {
-            font-family: var(--font-serif);
-            color: var(--text-espresso);
-            margin-bottom: 20px;
-            font-size: 1.6rem;
-            font-weight: 600;
+        .statement-card h3 {
+            font-family: var(--font-accent);
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
         }
 
-        .glass-box p {
+        .statement-card p {
             color: var(--text-muted);
             font-size: 1rem;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
-        /* --- SHOWCASE GENERAL LAYOUT --- */
+        /* --- PORTFOLIO SYSTEM --- */
         .design-showcase {
-            width: 85%;
-            max-width: 1200px;
-            margin: 60px auto 100px;
+            padding: 120px 8%;
             border-top: 1px solid var(--border-color);
-            padding-top: 80px;
         }
 
         .section-header {
-            text-align: center;
-            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 2.6rem);
-            color: var(--text-espresso);
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-family: var(--font-accent);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 15px;
         }
 
         .section-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+            font-size: 0.8rem;
+            color: var(--accent-neon);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 500;
+            font-weight: 700;
         }
 
         .design-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            gap: 35px;
+            gap: 30px;
         }
 
-        @media (min-width: 600px) {
+        @media (min-width: 768px) {
             .design-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (min-width: 992px) {
+        @media (min-width: 1100px) {
             .design-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -428,103 +439,104 @@
         .design-card-link {
             text-decoration: none;
             color: inherit;
-            display: block;
         }
 
         .design-card {
-            background: #FFFFFF;
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
+            border-radius: 16px;
             padding: 12px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
+            transition: var(--transition-tactile);
+            position: relative;
         }
 
         .card-img-wrapper {
             width: 100%;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 16 / 11;
             overflow: hidden;
             position: relative;
-            background: #f5f5f5;
+            border-radius: 10px;
+            background: #EEEEEE;
         }
 
         .design-card img {
             width: 100%;
             height: 100%;
-            display: block;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: var(--transition-tactile);
         }
 
+        /* Card Interactive Overlay */
         .card-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 30, 26, 0.616);
+            background: rgba(255, 255, 255, 0.95);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 24px;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            backdrop-filter: blur(4px);
+            transition: var(--transition-tactile);
         }
 
         .card-overlay h4 {
-            font-family: var(--font-serif);
-            color: var(--bg-cream);
+            font-family: var(--font-accent);
+            color: var(--text-primary);
             font-size: 1.3rem;
             margin-bottom: 8px;
             transform: translateY(15px);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            text-align: center;
+            transition: var(--transition-tactile);
         }
 
         .card-overlay span {
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
             font-size: 0.8rem;
-            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
             transform: translateY(15px);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+            transition: var(--transition-tactile);
         }
 
+        /* Meta Row */
         .card-meta-info {
-            margin-top: 15px;
-            padding-top: 12px;
-            border-top: 1px solid var(--border-color);
+            margin-top: 16px;
+            padding: 8px 12px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .card-title {
-            font-family: var(--font-serif);
-            font-size: 1.05rem;
+            font-family: var(--font-main);
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--text-espresso);
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .card-stats {
             font-size: 0.8rem;
             color: var(--text-muted);
             display: flex;
-            gap: 12px;
+            gap: 15px;
         }
 
-        /* Interactive Hover Animations Matrix */
+        /* Hover States */
         .design-card:hover {
+            border-color: rgba(10, 10, 12, 0.2);
             transform: translateY(-8px);
-            border-color: var(--accent-terracotta);
-            box-shadow: 0 20px 40px rgba(44, 30, 26, 0.06);
+            box-shadow: 0 30px 60px rgba(10, 10, 12, 0.05);
         }
 
         .design-card:hover img {
-            transform: scale(1.06);
+            transform: scale(1.05);
         }
 
         .design-card:hover .card-overlay {
@@ -536,7 +548,7 @@
             transform: translateY(0);
         }
 
-        /* See More Toggling Configuration */
+        /* Expandable Elements */
         .hidden-card-wrapper {
             display: none;
             opacity: 0;
@@ -547,17 +559,17 @@
         .hidden-card-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            gap: 35px;
+            gap: 30px;
             width: 100%;
         }
 
-        @media (min-width: 600px) {
+        @media (min-width: 768px) {
             .hidden-card-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (min-width: 992px) {
+        @media (min-width: 1100px) {
             .hidden-card-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
@@ -565,10 +577,10 @@
 
         .show-card-wrapper {
             display: block !important;
-            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: gridReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        @keyframes slideUpFade {
+        @keyframes gridReveal {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -581,46 +593,33 @@
         }
 
         .see-more-wrap {
-            margin-top: 50px;
+            margin-top: 60px;
             text-align: center;
         }
 
-        /* --- RESPONSIVE MEDIA QUERIES --- */
+        /* --- RESPONSIVENESS OVERRIDES --- */
         @media (max-width: 991px) {
             .desktop-nav {
                 display: none;
-                /* Hide real menu links on small screen viewports */
             }
 
             .hamburger {
                 display: flex;
-                /* Show dynamic interactive responsive toggle switch */
             }
         }
 
         @media (max-width: 768px) {
             nav {
-                padding: 20px 6%;
+                padding: 16px 6%;
             }
 
-            .profile-hub-container {
-                width: 200px;
-                height: 200px;
-                margin-top: 75px;
+            .hero-section {
+                padding: 140px 6% 60px;
             }
 
-            .profile-avatar-wrapper {
-                width: 180px;
-                height: 180px;
-            }
-
-            .cyber-bracket {
-                width: 205px;
-                height: 205px;
-            }
-
-            .glass-box {
-                padding: 30px;
+            .profile-container {
+                width: 260px;
+                height: 260px;
             }
         }
     </style>
@@ -629,13 +628,12 @@
 <body>
 
     <nav>
-        <div class="logo">Pro<span>file</span></div>
+        <div class="logo">Profile</div>
 
         <ul class="desktop-nav">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="service.html">Services</a></li>
-            <li><a href="#">Projects</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
 
@@ -651,81 +649,69 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Me</a></li>
             <li><a href="service.html">Services</a></li>
-            <li><a href="#">Projects</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
     <section class="hero-section">
-        <div class="profile-hub-container">
-            <div class="cyber-bracket b1"></div>
-            <div class="profile-avatar-wrapper">
-                <img src="1.jpg" alt="Abdullah Forhad">
-            </div>
-            <div class="cyber-bracket b2"></div>
-        </div>
-
-        <div class="container">
-            <h1 class="name-reveal">Abdullah Forhad</h1>
-
-            <h2 class="gsap-reveal"
-                style="font-size: 1.8rem; margin-bottom: 25px; font-weight: 400; font-family: var(--font-serif);">
-                A Professional
-                <span class="scroller-window">
-                    <span id="scroller-track">
-                        <span class="highlight">Graphic Designer</span>
-                        <span class="highlight">Web Developer</span>
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <div class="ping"></div> Available for Projects
+                </div>
+                <h1>
+                    Building the Next<br>
+                    <span class="scroller-window">
+                        <span id="scroller-track">
+                            <span class="highlight">Visual Identity.</span>
+                            <span class="highlight">Web Experience.</span>
+                        </span>
                     </span>
-                </span>
-            </h2>
-
-            <div class="social-links gsap-reveal">
-                <a href="https://www.facebook.com/profile.php?id=61580779565120"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-            </div>
-
-            <p class="gsap-reveal"
-                style="color: var(--text-muted); max-width: 600px; margin: 0 auto 35px; font-size: 1.05rem;">
-                Expert Graphic Designer and Web Developer focused on creating high-impact digital experiences and modern
-                visual identities.
-            </p>
-
-            <div class="btn-group gsap-reveal"
-                style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="contact.html" class="btn">Start A Project</a>
-                <a href="resume.html" class="btn" style="background: transparent; color: var(--text-espresso);">View
-                    Resume</a>
-            </div>
-
-            <div class="glass-box gsap-reveal">
-                <h3>My Journey</h3>
-                <p>
-                    My path into the digital world began with a fascination for how visuals can communicate emotions,
-                    leading me to master Graphic Design. As I shaped brands, I realized the need to bring those designs
-                    to life through code. This sparked my transition into Web Development, where I now bridge the gap
-                    between aesthetic beauty and functional performance.
+                </h1>
+                <p class="hero-desc">
+                    I am Abdullah Forhad, a graphic designer and web developer bridging the space between stunning
+                    visual aesthetics and production-grade software performance.
                 </p>
+                <div class="btn-group">
+                    <a href="contact.html" class="btn">Start Project</a>
+                    <a href="resume.html" class="btn btn-secondary">Resume</a>
+                </div>
+
+                <div class="statement-card">
+                    <h3>My Journey</h3>
+                    <p>
+                        My journey began with a curiosity for graphic expression, designing modern systems that speak to
+                        audiences. Translating complex identity concepts into scalable and interactive layouts sparked
+                        my drive into front-end development. I design complete digital solutions from concept to
+                        production.
+                    </p>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <img src="1.jpg" alt="Abdullah Forhad"
+                        onerror="this.src='https://placehold.co/400x400/eeeeee/000000?text=Abdullah'">
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="design-showcase gsap-reveal">
+    <section class="design-showcase">
         <div class="section-header">
-            <h2 class="section-title">Business Card Design</h2>
-            <p class="section-subtitle">Premium Corporate Identity</p>
+            <span class="section-subtitle">Identity Units</span>
+            <h2 class="section-title">Business Cards</h2>
         </div>
-    
+
         <div class="design-grid">
-    
-            <!-- Card 1 -->
             <a href="1.html" class="design-card-link">
                 <div class="design-card">
                     <div class="card-img-wrapper">
-                        <img src="19.2.webp" alt="Business Card Design 1">
+                        <img src="19.2.webp" alt="Minimalist Card"
+                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Minimalist+Design'">
                         <div class="card-overlay">
                             <h4>Minimalist Card</h4>
-                            <span>Business Card</span>
+                            <span>Identity Unit</span>
                         </div>
                     </div>
                     <div class="card-meta-info">
@@ -737,15 +723,15 @@
                     </div>
                 </div>
             </a>
-    
-            <!-- Card 2 -->
+
             <a href="2.html" class="design-card-link">
                 <div class="design-card">
                     <div class="card-img-wrapper">
-                        <img src="24.2.webp" alt="Business Card Design 2">
+                        <img src="24.2.webp" alt="Abstract Geometric"
+                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Geometric+Design'">
                         <div class="card-overlay">
                             <h4>Abstract Geometric</h4>
-                            <span>Business Card</span>
+                            <span>Identity Unit</span>
                         </div>
                     </div>
                     <div class="card-meta-info">
@@ -757,15 +743,15 @@
                     </div>
                 </div>
             </a>
-    
-            <!-- Card 3 -->
+
             <a href="3.html" class="design-card-link">
                 <div class="design-card">
                     <div class="card-img-wrapper">
-                        <img src="27.2.webp" alt="Business Card Design 3">
+                        <img src="27.2.webp" alt="Premium Creative"
+                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Creative+Design'">
                         <div class="card-overlay">
                             <h4>Premium Creative</h4>
-                            <span>Business Card</span>
+                            <span>Identity Unit</span>
                         </div>
                     </div>
                     <div class="card-meta-info">
@@ -777,69 +763,69 @@
                     </div>
                 </div>
             </a>
-    
-            <!-- Hidden Cards -->
+
             <div class="hidden-card-wrapper" id="bcGridWrapper">
-    
                 <div class="hidden-card-grid">
-    
                     <a href="4.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
-                                <img src="28.2.webp" alt="">
+                                <img src="28.2.webp" alt="Modern Corporate"
+                                    onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Corporate+Design'">
                                 <div class="card-overlay">
                                     <h4>Modern Corporate</h4>
-                                    <span>Business Card</span>
+                                    <span>Identity Unit</span>
                                 </div>
                             </div>
                             <div class="card-meta-info">
-                                <span class="card-title">Vintage Luxury Business Card</span>
+                                <span class="card-title">Vintage Luxury Card</span>
                                 <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>290</span>
-                                    <span><i class="far fa-heart"></i>55</span>
+                                    <span><i class="far fa-eye"></i> 290</span>
+                                    <span><i class="far fa-heart"></i> 55</span>
                                 </div>
                             </div>
                         </div>
                     </a>
-    
+
                     <a href="5.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
-                                <img src="29.2.webp" alt="">
+                                <img src="29.2.webp" alt="Luxury Elegant"
+                                    onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Luxury+Design'">
                                 <div class="card-overlay">
                                     <h4>Luxury Elegant</h4>
-                                    <span>Business Card</span>
+                                    <span>Identity Unit</span>
                                 </div>
                             </div>
                             <div class="card-meta-info">
                                 <span class="card-title">Premium Finished Card</span>
                                 <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>740</span>
-                                    <span><i class="far fa-heart"></i>210</span>
+                                    <span><i class="far fa-eye"></i> 740</span>
+                                    <span><i class="far fa-heart"></i> 210</span>
                                 </div>
                             </div>
                         </div>
                     </a>
-    
+
                     <a href="6.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
-                                <img src="30.2.webp" alt="">
+                                <img src="30.2.webp" alt="Executive Design"
+                                    onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Executive+Design'">
                                 <div class="card-overlay">
                                     <h4>Executive Design</h4>
-                                    <span>Business Card</span>
+                                    <span>Identity Unit</span>
                                 </div>
                             </div>
                             <div class="card-meta-info">
-                                <span class="card-title">Premium Corporate Identity Card</span>
+                                <span class="card-title">Corporate Card</span>
                                 <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>395</span>
-                                    <span><i class="far fa-heart"></i>118</span>
+                                    <span><i class="far fa-eye"></i> 395</span>
+                                    <span><i class="far fa-heart"></i> 118</span>
                                 </div>
                             </div>
                         </div>
                     </a>
-    
+                    
                     <a href="7.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
@@ -858,7 +844,7 @@
                             </div>
                         </div>
                     </a>
-    
+                    
                     <a href="8.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
@@ -877,7 +863,7 @@
                             </div>
                         </div>
                     </a>
-    
+                    
                     <a href="9.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
@@ -896,7 +882,7 @@
                             </div>
                         </div>
                     </a>
-    
+                    
                     <a href="10.html" class="design-card-link">
                         <div class="design-card">
                             <div class="card-img-wrapper">
@@ -915,40 +901,34 @@
                             </div>
                         </div>
                     </a>
-    
                 </div>
             </div>
-    
         </div>
-    
+
         <div class="see-more-wrap">
-            <button data-target="bcGridWrapper" class="btn global-see-more-btn"
-                style="background: transparent; color: var(--text-espresso);">
-                See More
-            </button>
+            <button data-target="bcGridWrapper" class="btn btn-secondary global-see-more-btn">See More</button>
         </div>
-    
-        </section>
-        
-    <section class="design-showcase gsap-reveal">
+    </section>
+
+    <section class="design-showcase">
         <div class="section-header">
-            <h2 class="section-title">Logo & Brand Identity</h2>
-            <p class="section-subtitle">Visual Trademarks</p>
+            <span class="section-subtitle">Visual Trademarks</span>
+            <h2 class="section-title">Logo & System Identities</h2>
         </div>
 
         <div class="design-grid">
             <a href="11.html" class="design-card-link">
                 <div class="design-card">
                     <div class="card-img-wrapper">
-                        <img src="26.webp" alt="Logo Design 1"
-                            onerror="this.src='https://placehold.co/600x450/fffdf9/2c1e1a?text=Logo+Concept+1'">
+                        <img src="26.webp" alt="Modern Monogram"
+                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Monogram+Design'">
                         <div class="card-overlay">
                             <h4>Modern Monogram</h4>
-                            <span>View Logo</span>
+                            <span>System Logo</span>
                         </div>
                     </div>
                     <div class="card-meta-info">
-                        <span class="card-title">Fashion Logo</span>
+                        <span class="card-title">Fashion Logo Concept</span>
                         <div class="card-stats">
                             <span><i class="far fa-eye"></i> 610</span>
                             <span><i class="far fa-heart"></i> 180</span>
@@ -957,14 +937,14 @@
                 </div>
             </a>
 
-            <a href="https://forhad2008.github.io/boraldo-store/" class="design-card-link">
+            <a href="https://forhad2008.github.io/boraldo-store/" class="design-card-link" target="_blank">
                 <div class="design-card">
                     <div class="card-img-wrapper">
-                        <img src="bag2.webp" alt="Logo Design 2"
-                            onerror="this.src='https://placehold.co/600x450/fffdf9/2c1e1a?text=Logo+Concept+2'">
+                        <img src="bag2.webp" alt="Lifestyle Branding"
+                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Brand+Identity'">
                         <div class="card-overlay">
                             <h4>Identity & Branding</h4>
-                            <span>View Branding</span>
+                            <span>System Logo</span>
                         </div>
                     </div>
                     <div class="card-meta-info">
@@ -977,14 +957,14 @@
                 </div>
             </a>
 
-            <a href="12" class="design-card-link">
+            <a href="12.html" class="design-card-link">
                 <div class="design-card">
                     <div class="card-img-wrapper">
-                        <img src="3.webp" alt="Logo Design 3"
-                            onerror="this.src='https://placehold.co/600x450/fffdf9/2c1e1a?text=Logo+Concept+3'">
+                        <img src="3.webp" alt="Modern Logo"
+                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Modern+Logo'">
                         <div class="card-overlay">
                             <h4>Modern Logo</h4>
-                            <span>View Logo</span>
+                            <span>System Logo</span>
                         </div>
                     </div>
                     <div class="card-meta-info">
@@ -996,40 +976,11 @@
                     </div>
                 </div>
             </a>
-
-            <div class="hidden-card-wrapper" id="logoGridWrapper">
-                <div class="hidden-card-grid">
-                    <a href="13" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="4.webp" alt="Logo Design 4"
-                                    onerror="this.src='https://placehold.co/600x450/fffdf9/2c1e1a?text=Logo+Concept+4'">
-                                <div class="card-overlay">
-                                    <h4>Luxury Emblem</h4>
-                                    <span>View Logo</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Premium Hotel Icon</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i> 340</span>
-                                    <span><i class="far fa-heart"></i> 95</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="see-more-wrap">
-            <button data-target="logoGridWrapper" class="btn global-see-more-btn"
-                style="background: transparent; color: var(--text-espresso);">See More</button>
         </div>
     </section>
 
     <script>
-        // Toggle Mobile Menu window overlays
+        // Toggle Mobile Navigation
         const hamburger = document.getElementById('hamburger');
         const menuWindow = document.getElementById('menu-window');
 
@@ -1039,7 +990,6 @@
                 menuWindow.classList.toggle('open');
             });
 
-            // Close layout toggle on specific navigation selections
             menuWindow.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
@@ -1048,7 +998,7 @@
             });
         }
 
-        // Global Grid Expanders ("See More" functionalities logic)
+        // Handle Expandable Grid Lists
         document.querySelectorAll('.global-see-more-btn').forEach(btn => {
             btn.addEventListener('click', function () {
                 const targetId = this.getAttribute('data-target');
@@ -1058,17 +1008,22 @@
                     targetWrapper.classList.toggle('show-card-wrapper');
                     if (targetWrapper.classList.contains('show-card-wrapper')) {
                         this.textContent = "See Less";
+                        this.style.background = "var(--text-primary)";
+                        this.style.color = "var(--bg-dark)";
                     } else {
                         this.textContent = "See More";
+                        this.style.background = "transparent";
+                        this.style.color = "var(--text-primary)";
+                        targetWrapper.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 }
             });
         });
 
-        // Basic GSAP Text Loop Scroller Animations Setup
+        // Dynamic Text Switcher (GSAP Integration)
         gsap.timeline({ repeat: -1 })
-            .to("#scroller-track", { y: "-50%", duration: 2, delay: 2, ease: "power2.inOut" })
-            .to("#scroller-track", { y: "0%", duration: 2, delay: 2, ease: "power2.inOut" });
+            .to("#scroller-track", { y: "-50%", duration: 1.6, delay: 2.2, ease: "power4.inOut" })
+            .to("#scroller-track", { y: "0%", duration: 1.6, delay: 2.2, ease: "power4.inOut" });
     </script>
 </body>
 
