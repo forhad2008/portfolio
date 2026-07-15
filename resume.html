@@ -8,30 +8,33 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- MODERN EDITORIAL MATRIX --- */
+        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM (Cohesive with Main Site) --- */
         :root {
-            --bg-cream: #FFFDF9;
-            --text-espresso: #2C1E1A;
-            --text-muted: #6E5D58;
-            --accent-terracotta: #C25A3F;
-            --accent-hover: #A44830;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
-            --border-color: rgba(44, 30, 26, 0.1);
+            --bg-dark: #FFFFFF;              /* Pure Gallery White */
+            --bg-card: #F8F9FA;              /* Minimalist Light Gray */
+            --text-primary: #0A0A0C;         /* Rich Ink Black */
+            --text-muted: #6B7280;           /* Mid Neutral Gray */
+            --accent-neon: #0284C7;          /* High-Contrast Sky Blue */
+            --accent-glow: rgba(2, 132, 199, 0.08);
+            --border-color: rgba(10, 10, 12, 0.08);
+            --font-accent: 'Syne', sans-serif;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-sans);
+            font-family: var(--font-main);
         }
 
         #canvas-container {
@@ -45,19 +48,32 @@
         }
 
         body {
-            background-color: var(--bg-cream);
-            color: var(--text-espresso);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 140px 24px 80px;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Subtle Background Guide Line */
+        /* Ambient Blue Background Glow */
         body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.04) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Structural Editorial Guide Line */
+        body::after {
             content: '';
             position: fixed;
             top: 0;
@@ -69,7 +85,56 @@
             pointer-events: none;
         }
 
-        /* --- EDITORIAL RESUME CONTAINER --- */
+        /* --- SLEEK LIGHT GLASS NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 24px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-neon);
+        }
+
+        .desktop-nav {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition-tactile);
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav li.active a {
+            color: var(--accent-neon);
+        }
+
+        /* --- EDITORIAL RESUME CARD --- */
         .resume-card {
             width: 1000px;
             max-width: 100%;
@@ -77,39 +142,43 @@
             display: grid;
             grid-template-columns: 320px 1fr;
             border: 1px solid var(--border-color);
-            box-shadow: 0 30px 60px rgba(44, 30, 26, 0.03);
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(10, 10, 12, 0.02);
             z-index: 10;
             position: relative;
+            overflow: hidden;
         }
 
         /* --- Left Sidebar --- */
         .sidebar {
-            background: #FAF7F2;
+            background: var(--bg-card);
             border-right: 1px solid var(--border-color);
-            padding: 45px 35px;
+            padding: 55px 35px;
         }
 
         .profile-img-container {
             width: 150px;
             height: 150px;
             margin: 0 auto 30px;
-            border-radius: 0px; /* Modern block layout */
+            border-radius: 16px;
             border: 1px solid var(--border-color);
             padding: 6px;
             background: #FFFFFF;
+            overflow: hidden;
         }
 
         .profile-img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 10px;
         }
 
         .sidebar h2 {
-            font-family: var(--font-serif);
+            font-family: var(--font-accent);
             font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--text-espresso);
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 6px;
             letter-spacing: -0.5px;
         }
@@ -118,9 +187,9 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
             margin-bottom: 35px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .info-section {
@@ -129,14 +198,15 @@
         }
 
         .info-title {
-            font-size: 0.8rem;
+            font-family: var(--font-accent);
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: var(--text-espresso);
+            color: var(--text-primary);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 8px;
             margin-bottom: 18px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .contact-link {
@@ -147,18 +217,18 @@
             text-decoration: none;
             margin-bottom: 14px;
             font-size: 0.85rem;
-            font-weight: 400;
-            transition: color 0.3s ease;
+            font-weight: 500;
+            transition: var(--transition-tactile);
         }
 
         .contact-link:hover {
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
         }
 
         .contact-link i {
             font-size: 0.9rem;
             width: 20px;
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
         }
 
         .sidebar .personal-txt {
@@ -169,8 +239,8 @@
         }
 
         .sidebar .personal-txt b {
-            color: var(--text-espresso);
-            font-weight: 500;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         /* --- Right Main Content --- */
@@ -180,30 +250,31 @@
         }
 
         .resume-section {
-            margin-bottom: 40px;
+            margin-bottom: 45px;
         }
 
         .section-header {
-            font-family: var(--font-serif);
+            font-family: var(--font-accent);
             font-size: 1.4rem;
-            color: var(--text-espresso);
+            color: var(--text-primary);
             margin-bottom: 25px;
             display: flex;
             align-items: center;
             gap: 12px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .section-header i {
-            color: var(--accent-terracotta);
+            color: var(--accent-neon);
             font-size: 1.1rem;
         }
 
         .profile-summary {
             color: var(--text-muted);
-            line-height: 1.75;
+            line-height: 1.8;
             font-size: 0.95rem;
         }
 
@@ -211,20 +282,20 @@
             margin-bottom: 30px;
             position: relative;
             padding-left: 24px;
-            border-left: 1px solid var(--accent-terracotta);
+            border-left: 2px solid var(--accent-neon);
         }
 
         .experience-item h4 {
-            font-family: var(--font-serif);
+            font-family: var(--font-accent);
             font-size: 1.15rem;
-            color: var(--text-espresso);
-            font-weight: 600;
+            color: var(--text-primary);
+            font-weight: 700;
         }
 
         .experience-item span {
             font-size: 0.8rem;
-            color: var(--accent-terracotta);
-            font-weight: 600;
+            color: var(--accent-neon);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             display: block;
@@ -237,7 +308,7 @@
             line-height: 1.65;
         }
 
-        /* Skills Matrix */
+        /* Skills Matrix Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -253,49 +324,52 @@
             margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
-            color: var(--text-espresso);
-            font-weight: 500;
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         .progress-bg {
-            background: rgba(44, 30, 26, 0.05);
-            height: 4px; /* Thin, minimal modern track */
+            background: rgba(10, 10, 12, 0.05);
+            height: 6px;
+            border-radius: 10px;
             overflow: hidden;
         }
 
         .progress-fill {
-            background: var(--accent-terracotta);
+            background: var(--accent-neon);
             height: 100%;
             width: 0;
+            border-radius: 10px;
             transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Action Button */
+        /* Actions Custom Layout */
         .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             margin-top: 15px;
             background: transparent;
-            color: var(--accent-terracotta);
-            border: 1px solid var(--accent-terracotta);
+            color: var(--accent-neon);
+            border: 1px solid var(--accent-neon);
             padding: 14px 32px;
+            border-radius: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: var(--transition-tactile);
             cursor: pointer;
         }
 
         .download-btn:hover {
-            background: var(--text-espresso);
+            background: var(--accent-neon);
             color: #FFFFFF;
-            border-color: var(--text-espresso);
             transform: translateY(-2px);
+            box-shadow: 0 15px 30px var(--accent-glow);
         }
 
-        /* Responsive Adapters */
+        /* Responsive Breakpoints */
         @media (max-width: 850px) {
             .resume-card {
                 grid-template-columns: 1fr;
@@ -316,7 +390,7 @@
             }
         }
 
-        /* --- CLEAN PRINT ENGINE --- */
+        /* --- STYLED PRINT ENGINE ENGINE --- */
         @media print {
             body {
                 background: #FFFFFF !important;
@@ -326,7 +400,9 @@
 
             #canvas-container,
             .download-btn,
-            body::before {
+            nav,
+            body::before,
+            body::after {
                 display: none !important;
             }
 
@@ -339,23 +415,27 @@
             }
 
             .sidebar {
-                background: #FAF7F2 !important;
-                border-right: 1px solid #E5E0D8 !important;
+                background: #F8F9FA !important;
+                border-right: 1px solid #E5E7EB !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
 
             .progress-bg {
-                background: #E5E0D8 !important;
+                background: #E5E7EB !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
 
             .progress-fill {
-                background: #C25A3F !important;
+                background: #0284C7 !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
+        }
+
+        .reveal {
+            opacity: 0;
         }
     </style>
 </head>
@@ -364,7 +444,12 @@
 
     <div id="canvas-container"></div>
 
-    <div class="resume-card">
+    <nav>
+        <div class="logo">Resume</div>
+        
+    </nav>
+
+    <div class="resume-card reveal">
         <aside class="sidebar">
             <div class="profile-img-container">
                 <img src="1.jpg" alt="Abdullah Forhad">
@@ -466,7 +551,7 @@
     </div>
 
     <script>
-        // --- 3D AMBIENT SILK FLOATING ENGINE (Minimal Editorial Mix) ---
+        // --- 3D AMBIENT SILK FLOATING ENGINE (Upgraded High-Tech Glass Bubble Mix) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -485,18 +570,18 @@
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0xC25A3F,           // Terracotta Accent Matrix
-                emissive: 0xFFFDF9,        // Cream reflection glow
-                emissiveIntensity: 0.1,
-                roughness: 0.1,
-                metalness: 0.05,
-                clearcoat: 0.8,
+                color: 0x0284C7,             // Sky Blue Core Tint
+                emissive: 0xFFFFFF,          // Bright clean shine
+                emissiveIntensity: 0.05,
+                roughness: 0.05,
+                metalness: 0.1,
+                clearcoat: 1.0,
                 clearcoatRoughness: 0.1,
-                transmission: 0.7,          
-                ior: 1.2,
+                transmission: 0.85,          // Glass look
+                ior: 1.25,
                 thickness: 1.5,
                 transparent: true,
-                opacity: 0.2
+                opacity: 0.15
             });
         }
 
@@ -509,7 +594,7 @@
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.008) + 0.004,
+                speedY: (scale * 0.007) + 0.003,
                 phaseX: Math.random() * Math.PI * 2,
             };
             bubbleGroup.add(mesh);
@@ -517,12 +602,12 @@
         }
         scene.add(bubbleGroup);
 
-        // Soft, editorial lighting profiles
-        const skyLight = new THREE.DirectionalLight(0xFFFDF9, 2.0);
+        // Soft Studio Lighting
+        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
         skyLight.position.set(10, 20, 8);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0xC25A3F, 0.3);
+        const fillLight = new THREE.AmbientLight(0x0284C7, 0.25);
         scene.add(fillLight);
 
         const mouse = { x: 0, y: 0 };
@@ -537,7 +622,7 @@
 
             bubbles.forEach(bubble => {
                 bubble.position.y += bubble.userData.speedY;
-                bubble.position.x += Math.sin(time * 0.001 + bubble.userData.phaseX) * 0.01;
+                bubble.position.x += Math.sin(time * 0.0008 + bubble.userData.phaseX) * 0.01;
 
                 if (bubble.position.y > 25) {
                     bubble.position.y = -25;
@@ -552,7 +637,7 @@
         }
         animate();
 
-        // Progress bar lazy trigger
+        // Progress bar dynamic visual lazy trigger
         window.addEventListener('DOMContentLoaded', () => {
             const progressFills = document.querySelectorAll('.progress-fill');
             progressFills.forEach(fill => {
@@ -562,6 +647,15 @@
                     fill.style.width = targetWidth;
                 }, 300);
             });
+        });
+
+        // GSAP Clean Page Animations
+        gsap.to(".reveal", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            startAt: { y: 30 }
         });
 
         window.addEventListener('resize', () => {
