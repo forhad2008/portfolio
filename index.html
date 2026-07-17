@@ -11,27 +11,19 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         /* --- INVERTED MINIMALIST LIGHT COLOR SYSTEM --- */
         :root {
             --bg-dark: #FFFFFF;
-            /* Inverted to Pure White */
             --bg-card: #F8F9FA;
-            /* Inverted to Light Warm Gray */
             --text-primary: #0A0A0C;
-            /* Inverted to Deep Ink Black */
             --text-muted: #6B7280;
-            /* Inverted to Mid Gray */
             --accent-neon: #0284C7;
-            /* High-Contrast Sky Blue */
             --accent-glow: rgba(2, 132, 199, 0.1);
             --border-color: rgba(10, 10, 12, 0.08);
-            /* Dark subtle border */
             --font-accent: 'Syne', sans-serif;
             --font-main: 'Plus Jakarta Sans', sans-serif;
             --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -68,7 +60,7 @@
             pointer-events: none;
         }
 
-        /* --- SLEEK LIGHT GLASS NAVIGATION --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
@@ -248,7 +240,6 @@
             margin-bottom: 24px;
         }
 
-        /* Dynamic Text Scroller */
         .scroller-window {
             display: inline-block;
             height: 1.15em;
@@ -277,7 +268,6 @@
             margin-bottom: 40px;
         }
 
-        /* Hero Avatar Hub */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -352,7 +342,6 @@
             box-shadow: none;
         }
 
-        /* --- EXPERIENTIAL BOX --- */
         .statement-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -388,6 +377,33 @@
             line-height: 1.7;
         }
 
+        /* --- FILTER SYSTEM STYLE --- */
+        .showcase-filter-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-tactile);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border-color: var(--text-primary);
+        }
+
         /* --- PORTFOLIO SYSTEM --- */
         .design-showcase {
             padding: 120px 8%;
@@ -398,7 +414,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .section-title {
@@ -439,6 +455,10 @@
         .design-card-link {
             text-decoration: none;
             color: inherit;
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .design-card {
@@ -548,50 +568,6 @@
             transform: translateY(0);
         }
 
-        /* Expandable Elements */
-        .hidden-card-wrapper {
-            display: none;
-            opacity: 0;
-            grid-column: 1 / -1;
-            width: 100%;
-        }
-
-        .hidden-card-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 30px;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .hidden-card-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1100px) {
-            .hidden-card-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .show-card-wrapper {
-            display: block !important;
-            animation: gridReveal 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        @keyframes gridReveal {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .see-more-wrap {
             margin-top: 60px;
             text-align: center;
@@ -645,12 +621,7 @@
     </nav>
 
     <div class="menu-window" id="menu-window">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <ul id="mobile-nav-links"></ul>
     </div>
 
     <section class="hero-section">
@@ -699,331 +670,211 @@
 
     <section class="design-showcase">
         <div class="section-header">
-            <span class="section-subtitle">Identity Units</span>
-            <h2 class="section-title">Business Cards</h2>
+            <span class="section-subtitle">Creatives Gallery</span>
+            <h2 class="section-title">My Works</h2>
         </div>
 
-        <div class="design-grid">
-            <a href="1.html" class="design-card-link">
-                <div class="design-card">
-                    <div class="card-img-wrapper">
-                        <img src="19.2.webp" alt="Minimalist Card"
-                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Minimalist+Design'">
-                        <div class="card-overlay">
-                            <h4>Minimalist Card</h4>
-                            <span>Identity Unit</span>
-                        </div>
-                    </div>
-                    <div class="card-meta-info">
-                        <span class="card-title">Business Card Design</span>
-                        <div class="card-stats">
-                            <span><i class="far fa-eye"></i> 420</span>
-                            <span><i class="far fa-heart"></i> 89</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <div class="showcase-filter-nav" id="filterNav"></div>
 
-            <a href="2.html" class="design-card-link">
-                <div class="design-card">
-                    <div class="card-img-wrapper">
-                        <img src="24.2.webp" alt="Abstract Geometric"
-                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Geometric+Design'">
-                        <div class="card-overlay">
-                            <h4>Abstract Geometric</h4>
-                            <span>Identity Unit</span>
-                        </div>
-                    </div>
-                    <div class="card-meta-info">
-                        <span class="card-title">Geometric Pattern Card</span>
-                        <div class="card-stats">
-                            <span><i class="far fa-eye"></i> 312</span>
-                            <span><i class="far fa-heart"></i> 64</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="3.html" class="design-card-link">
-                <div class="design-card">
-                    <div class="card-img-wrapper">
-                        <img src="27.2.webp" alt="Premium Creative"
-                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Creative+Design'">
-                        <div class="card-overlay">
-                            <h4>Premium Creative</h4>
-                            <span>Identity Unit</span>
-                        </div>
-                    </div>
-                    <div class="card-meta-info">
-                        <span class="card-title">Creative Agency Card</span>
-                        <div class="card-stats">
-                            <span><i class="far fa-eye"></i> 580</span>
-                            <span><i class="far fa-heart"></i> 142</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <div class="hidden-card-wrapper" id="bcGridWrapper">
-                <div class="hidden-card-grid">
-                    <a href="4.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="28.2.webp" alt="Modern Corporate"
-                                    onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Corporate+Design'">
-                                <div class="card-overlay">
-                                    <h4>Modern Corporate</h4>
-                                    <span>Identity Unit</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Vintage Luxury Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i> 290</span>
-                                    <span><i class="far fa-heart"></i> 55</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="5.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="29.2.webp" alt="Luxury Elegant"
-                                    onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Luxury+Design'">
-                                <div class="card-overlay">
-                                    <h4>Luxury Elegant</h4>
-                                    <span>Identity Unit</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Premium Finished Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i> 740</span>
-                                    <span><i class="far fa-heart"></i> 210</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="6.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="30.2.webp" alt="Executive Design"
-                                    onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Executive+Design'">
-                                <div class="card-overlay">
-                                    <h4>Executive Design</h4>
-                                    <span>Identity Unit</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Corporate Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i> 395</span>
-                                    <span><i class="far fa-heart"></i> 118</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="7.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="33.2.webp" alt="">
-                                <div class="card-overlay">
-                                    <h4>Luxury Elegant</h4>
-                                    <span>Business Card</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Premium Finished Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>650</span>
-                                    <span><i class="far fa-heart"></i>210</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="8.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="1.2.webp" alt="">
-                                <div class="card-overlay">
-                                    <h4>Creative Elegant</h4>
-                                    <span>Business Card</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Professional Business Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>540</span>
-                                    <span><i class="far fa-heart"></i>310</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="9.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="7.1.webp" alt="">
-                                <div class="card-overlay">
-                                    <h4>Bold Creative</h4>
-                                    <span>Business Card</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Radio Creative Business Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>740</span>
-                                    <span><i class="far fa-heart"></i>320</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    
-                    <a href="10.html" class="design-card-link">
-                        <div class="design-card">
-                            <div class="card-img-wrapper">
-                                <img src="14.2.webp" alt="">
-                                <div class="card-overlay">
-                                    <h4>Creative Design</h4>
-                                    <span>Business Card</span>
-                                </div>
-                            </div>
-                            <div class="card-meta-info">
-                                <span class="card-title">Premium Creative Business Card</span>
-                                <div class="card-stats">
-                                    <span><i class="far fa-eye"></i>656</span>
-                                    <span><i class="far fa-heart"></i>203</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div class="design-grid" id="designGrid"></div>
 
         <div class="see-more-wrap">
-            <button data-target="bcGridWrapper" class="btn btn-secondary global-see-more-btn">See More</button>
-        </div>
-    </section>
-
-    <section class="design-showcase">
-        <div class="section-header">
-            <span class="section-subtitle">Visual Trademarks</span>
-            <h2 class="section-title">Logo & System Identities</h2>
-        </div>
-
-        <div class="design-grid">
-            <a href="11.html" class="design-card-link">
-                <div class="design-card">
-                    <div class="card-img-wrapper">
-                        <img src="26.webp" alt="Modern Monogram"
-                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Monogram+Design'">
-                        <div class="card-overlay">
-                            <h4>Modern Monogram</h4>
-                            <span>System Logo</span>
-                        </div>
-                    </div>
-                    <div class="card-meta-info">
-                        <span class="card-title">Fashion Logo Concept</span>
-                        <div class="card-stats">
-                            <span><i class="far fa-eye"></i> 610</span>
-                            <span><i class="far fa-heart"></i> 180</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://forhad2008.github.io/boraldo-store/" class="design-card-link" target="_blank">
-                <div class="design-card">
-                    <div class="card-img-wrapper">
-                        <img src="bag2.webp" alt="Lifestyle Branding"
-                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Brand+Identity'">
-                        <div class="card-overlay">
-                            <h4>Identity & Branding</h4>
-                            <span>System Logo</span>
-                        </div>
-                    </div>
-                    <div class="card-meta-info">
-                        <span class="card-title">Aesthetic Lifestyle Branding</span>
-                        <div class="card-stats">
-                            <span><i class="far fa-eye"></i> 4280</span>
-                            <span><i class="far fa-heart"></i> 2714</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="12.html" class="design-card-link">
-                <div class="design-card">
-                    <div class="card-img-wrapper">
-                        <img src="3.webp" alt="Modern Logo"
-                            onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=Modern+Logo'">
-                        <div class="card-overlay">
-                            <h4>Modern Logo</h4>
-                            <span>System Logo</span>
-                        </div>
-                    </div>
-                    <div class="card-meta-info">
-                        <span class="card-title">Letter & Shape Logo Design</span>
-                        <div class="card-stats">
-                            <span><i class="far fa-eye"></i> 720</span>
-                            <span><i class="far fa-heart"></i> 215</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            <button id="showcaseSeeMoreBtn" class="btn btn-secondary">See More</button>
         </div>
     </section>
 
     <script>
-        // Toggle Mobile Navigation
-        const hamburger = document.getElementById('hamburger');
-        const menuWindow = document.getElementById('menu-window');
+    // =========================================================================
+        // SECTION 1: CORE ENGINE & DATA STORE (মেইন গ্যালারি এবং আর্কিটেকচার)
+        // =========================================================================
+        document.addEventListener("DOMContentLoaded", () => {
 
-        if (hamburger && menuWindow) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                menuWindow.classList.toggle('open');
-            });
+            // ১. সেন্ট্রালাইজড ডাটা স্টোর
+            const menuItems = [
+                { label: "Home", url: "index.html" },
+                { label: "About Me", url: "about.html" },
+                { label: "Services", url: "service.html" },
+                { label: "Contact", url: "contact.html" }
+            ];
 
-            menuWindow.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    menuWindow.classList.remove('open');
-                });
-            });
-        }
+            const projectData = [
+                { id: 1, category: "business-card", title: "Business Card Design", subtitle: "Identity Unit", img: "19.2.webp", alt: "Minimalist Card", views: 420, hearts: 89, target: "_self", themeColor: "#FF5733" },
+                { id: 2, category: "business-card", title: "Geometric Pattern Card", subtitle: "Identity Unit", img: "24.2.webp", alt: "Abstract Geometric", views: 312, hearts: 64, target: "_self", themeColor: "#6366F1" },
+                { id: 3, category: "business-card", title: "Creative Agency Card", subtitle: "Identity Unit", img: "27.2.webp", alt: "Premium Creative", views: 580, hearts: 142, target: "_self", themeColor: "#0EA5E9" },
+                { id: 4, category: "business-card", title: "Vintage Luxury Card", subtitle: "Identity Unit", img: "28.2.webp", alt: "Modern Corporate", views: 290, hearts: 55, target: "_self", themeColor: "#B45309" },
+                { id: 5, category: "business-card", title: "Premium Finished Card", subtitle: "Identity Unit", img: "29.2.webp", alt: "Luxury Elegant", views: 740, hearts: 210, target: "_self", themeColor: "#111827" },
+                { id: 6, category: "business-card", title: "Corporate Card", subtitle: "Identity Unit", img: "30.2.webp", alt: "Executive Design", views: 395, hearts: 118, target: "_self", themeColor: "#374151" },
+                { id: 7, category: "business-card", title: "Premium Finished Card", subtitle: "Business Card", img: "33.2.webp", alt: "Luxury Elegant", views: 650, hearts: 210, target: "_self", themeColor: "#059669" },
+                { id: 8, category: "business-card", title: "Professional Business Card", subtitle: "Business Card", img: "1.2.webp", alt: "Creative Elegant", views: 540, hearts: 310, target: "_self", themeColor: "#2563EB" },
+                { id: 9, category: "business-card", title: "Radio Creative Business Card", subtitle: "Business Card", img: "7.1.webp", alt: "Bold Creative", views: 740, hearts: 320, target: "_self", themeColor: "#DC2626" },
+                { id: 10, category: "business-card", title: "Premium Creative Business Card", subtitle: "Business Card", img: "14.2.webp", alt: "Creative Design", views: 656, hearts: 203, target: "_self", themeColor: "#7C3AED" },
+                { id: 11, category: "logo", title: "Fashion Logo Concept", subtitle: "System Logo", img: "26.webp", alt: "Modern Monogram", views: 610, hearts: 180, target: "_self", themeColor: "#EC4899" },
+                { id: 12, category: "logo", title: "Letter & Shape Logo Design", subtitle: "System Logo", img: "3.webp", alt: "Modern Logo", views: 720, hearts: 215, target: "_self", themeColor: "#F59E0B" },
+                { id: 13, category: "website", title: "Aesthetic Lifestyle Branding", subtitle: "Identity & Branding", img: "bag2.webp", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/boraldo-store/", target: "_blank", themeColor: "#10B981" },
+                { id: 14, category: "website", title: "Aesthetic Lifestyle Branding", subtitle: "Identity & Branding", img: "res.png", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/restaurant1-/", target: "_blank", themeColor: "#10B981" },
+           ];
 
-        // Handle Expandable Grid Lists
-        document.querySelectorAll('.global-see-more-btn').forEach(btn => {
-            btn.addEventListener('click', function () {
-                const targetId = this.getAttribute('data-target');
-                const targetWrapper = document.getElementById(targetId);
+            const filterCategories = [
+                { slug: "all", label: "All Designs" },
+                { slug: "business-card", label: "Business Cards" },
+                { slug: "logo", label: "Logos" },
+                { slug: "website", label: "Websites" }
+            ];
 
-                if (targetWrapper) {
-                    targetWrapper.classList.toggle('show-card-wrapper');
-                    if (targetWrapper.classList.contains('show-card-wrapper')) {
-                        this.textContent = "See Less";
-                        this.style.background = "var(--text-primary)";
-                        this.style.color = "var(--bg-dark)";
-                    } else {
-                        this.textContent = "See More";
-                        this.style.background = "transparent";
-                        this.style.color = "var(--text-primary)";
-                        targetWrapper.parentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
+            let currentFilter = 'all';
+
+            // গ্লোবাল ভেরিয়েবল যা নিচের কন্ট্রোলার সেকশন দ্বারা নিয়ন্ত্রিত হবে
+            window.allowedProjectIds = [];
+
+            // ২. মেইন পেজ ডিজাইন কন্ট্রোলার ফাংশন
+            function applyMainPageDesign(targetId) {
+                const targetProject = projectData.find(project => project.id === targetId);
+                if (!targetProject) return;
+
+                if (targetProject.themeColor) {
+                    document.documentElement.style.setProperty('--accent-neon', targetProject.themeColor);
                 }
-            });
+                const profileImg = document.querySelector('.profile-container img');
+                if (profileImg) {
+                    profileImg.src = targetProject.img;
+                    profileImg.alt = targetProject.alt;
+                }
+                const heroDesc = document.querySelector('.hero-desc');
+                if (heroDesc) {
+                    heroDesc.innerHTML = `Featuring our project: <strong>${targetProject.title}</strong>. I am Abdullah Forhad, a graphic designer and web developer bridging the space between stunning visual aesthetics and production-grade software performance.`;
+                }
+            }
+
+            window.changeMainPageDesignById = applyMainPageDesign;
+
+            // ৩. মোবাইল সাবমেনু রেন্ডার
+            const hamburger = document.getElementById('hamburger');
+            const menuWindow = document.getElementById('menu-window');
+            const mobileNavLinksContainer = document.getElementById('mobile-nav-links');
+
+            if (mobileNavLinksContainer) {
+                mobileNavLinksContainer.innerHTML = menuItems.map(item => `
+            <li><a href="${item.url}">${item.label}</a></li>
+        `).join('');
+            }
+
+            if (hamburger && menuWindow) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    menuWindow.classList.toggle('open');
+                });
+                menuWindow.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        menuWindow.classList.remove('open');
+                    });
+                });
+            }
+
+            // ৪. GSAP অ্যানিমেশন
+            if (typeof gsap !== "undefined") {
+                gsap.timeline({ repeat: -1 })
+                    .to("#scroller-track", { y: "-50%", duration: 1.6, delay: 2.2, ease: "power4.inOut" })
+                    .to("#scroller-track", { y: "0%", duration: 1.6, delay: 2.2, ease: "power4.inOut" });
+            }
+
+            // ৫. ফিল্টার বাটন জেনারেট
+            const filterNav = document.getElementById('filterNav');
+            if (filterNav) {
+                filterNav.innerHTML = filterCategories.map(cat => `
+            <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
+                ${cat.label}
+            </button>
+        `).join('');
+            }
+
+            // ৬. গ্যালারি রেন্ডার ইঞ্জিন (See More বাটন রিমুভড এবং আইডি ফিল্টারিং যুক্ত)
+            const designGrid = document.getElementById('designGrid');
+            const seeMoreBtn = document.getElementById('showcaseSeeMoreBtn');
+
+            // See More বাটনটি চিরতরে হাইড করে দেওয়া হলো
+            if (seeMoreBtn) seeMoreBtn.style.display = 'none';
+
+            function renderShowcase() {
+                // প্রথমে ক্যাটাগরি অনুযায়ী ফিল্টার করা হবে
+                let filteredProjects = projectData.filter(project => currentFilter === 'all' || project.category === currentFilter);
+
+                // 🌟 কাস্টম লজিক: যদি "All" ফিল্টারে থাকে, তবে শুধুমাত্র কন্ট্রোলারের দেওয়া নির্দিষ্ট আইডিগুলোই দেখাবে
+                if (currentFilter === 'all' && window.allowedProjectIds.length > 0) {
+                    filteredProjects = filteredProjects.filter(project => window.allowedProjectIds.includes(project.id));
+                }
+
+                designGrid.innerHTML = filteredProjects.map(project => {
+                    const detailUrl = project.url ? project.url : `${project.id}.html`;
+                    const fallbackText = encodeURIComponent(project.title);
+
+                    return `
+                <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
+                    <div class="design-card">
+                        <div class="card-img-wrapper">
+                            <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=${fallbackText}'">
+                            <div class="card-overlay">
+                                <h4>${project.alt}</h4>
+                                <span>${project.subtitle}</span>
+                            </div>
+                        </div>
+                        <div class="card-meta-info">
+                            <span class="card-title">${project.title}</span>
+                            <div class="card-stats">
+                                <span><i class="far fa-eye"></i> ${project.views}</span>
+                                <span><i class="far fa-heart"></i> ${project.hearts}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `;
+                }).join('');
+            }
+
+            window.refreshShowcaseGallery = renderShowcase;
+
+            if (filterNav) {
+                filterNav.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        filterNav.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        currentFilter = this.getAttribute('data-filter');
+
+                        if (typeof gsap !== "undefined") {
+                            gsap.fromTo("#designGrid", { opacity: 0.2, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+                        }
+
+                        renderShowcase();
+                    });
+                });
+            }
+
+            renderShowcase();
         });
 
-        // Dynamic Text Switcher (GSAP Integration)
-        gsap.timeline({ repeat: -1 })
-            .to("#scroller-track", { y: "-50%", duration: 1.6, delay: 2.2, ease: "power4.inOut" })
-            .to("#scroller-track", { y: "0%", duration: 1.6, delay: 2.2, ease: "power4.inOut" });
+
+        // =========================================================================
+        // SECTION 2: THE CONTROLLER (এই অংশটিই এখন সবকিছু নিয়ন্ত্রণ করবে)
+        // =========================================================================
+        window.addEventListener('load', () => {
+
+            // 🌟 ১. অল ডিজাইন মেনুতে (All Designs) কোন কোন প্রজেক্ট শো করবে, তাদের ID এখানে অ্যারে আকারে লিখুন:
+            // যেমন: শুধু প্রজেক্ট ১, ৫, ১১ এবং ১৩ নাম্বার শো করাতে চাইলে নিচের মতো লিখবেন।
+            window.allowedProjectIds = [1, 5, 11, 13];
+
+            // 🌟 ২. মেইন পেজের (Hero Section) থিম ও ব্যানার কোন আইডির মতো হবে তা এখানে লিখুন:
+            const ACTIVE_HERO_ID = 13;
+
+            // কন্ট্রোলার এক্সিকিউট করা
+            if (typeof window.changeMainPageDesignById === 'function') {
+                window.changeMainPageDesignById(ACTIVE_HERO_ID);
+            }
+
+            if (typeof window.refreshShowcaseGallery === 'function') {
+                window.refreshShowcaseGallery();
+            }
+        });
     </script>
 </body>
 
