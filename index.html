@@ -15,15 +15,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- INVERTED MINIMALIST LIGHT COLOR SYSTEM --- */
+        /* --- MINIMALIST OCEAN BLUE SYSTEM --- */
         :root {
             --bg-dark: #FFFFFF;
-            --bg-card: #F8F9FA;
-            --text-primary: #0A0A0C;
-            --text-muted: #6B7280;
+            --bg-card: #F4F7FA;
+            --text-primary: #0F172A;
+            --text-muted: #64748B;
             --accent-neon: #0284C7;
-            --accent-glow: rgba(2, 132, 199, 0.1);
-            --border-color: rgba(10, 10, 12, 0.08);
+            /* Ocean Blue Base */
+            --accent-glow: rgba(2, 132, 199, 0.15);
+            --border-color: rgba(15, 23, 42, 0.08);
             --font-accent: 'Syne', sans-serif;
             --font-main: 'Plus Jakarta Sans', sans-serif;
             --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -47,7 +48,7 @@
             line-height: 1.6;
         }
 
-        /* --- AMBIENT DECORATIVE GLOW --- */
+        /* --- AMBIENT DECORATIVE OCEAN GLOW --- */
         body::before {
             content: '';
             position: absolute;
@@ -55,7 +56,7 @@
             left: -10%;
             width: 50vw;
             height: 50vw;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -109,7 +110,6 @@
             color: var(--accent-neon);
         }
 
-        /* Hamburger Menu */
         .hamburger {
             cursor: pointer;
             z-index: 2100;
@@ -137,7 +137,6 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* Mobile Nav Window */
         .menu-window {
             position: fixed;
             top: 0;
@@ -180,7 +179,7 @@
             color: var(--accent-neon);
         }
 
-        /* --- ASYMMETRIC HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero-section {
             padding: 180px 8% 100px;
             min-height: 100vh;
@@ -207,7 +206,7 @@
         }
 
         .hero-badge {
-            background: rgba(10, 10, 12, 0.03);
+            background: rgba(2, 132, 199, 0.05);
             border: 1px solid var(--border-color);
             padding: 6px 14px;
             border-radius: 100px;
@@ -283,14 +282,14 @@
             background: #FFFFFF;
             padding: 10px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 40px 80px rgba(10, 10, 12, 0.05);
+            box-shadow: 0 40px 80px rgba(15, 23, 42, 0.05);
             transition: var(--transition-tactile);
         }
 
         .profile-container:hover {
             transform: scale(1.02) rotate(1deg);
             border-color: var(--accent-neon);
-            box-shadow: 0 40px 80px rgba(2, 132, 199, 0.15);
+            box-shadow: 0 40px 80px var(--accent-glow);
         }
 
         .profile-container img {
@@ -336,7 +335,7 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(10, 10, 12, 0.03);
+            background: rgba(15, 23, 42, 0.03);
             border-color: var(--text-primary);
             color: var(--text-primary);
             box-shadow: none;
@@ -377,33 +376,6 @@
             line-height: 1.7;
         }
 
-        /* --- FILTER SYSTEM STYLE --- */
-        .showcase-filter-nav {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 10px 24px;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: var(--transition-tactile);
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--text-primary);
-            color: var(--bg-dark);
-            border-color: var(--text-primary);
-        }
-
         /* --- PORTFOLIO SYSTEM --- */
         .design-showcase {
             padding: 120px 8%;
@@ -434,6 +406,32 @@
             font-weight: 700;
         }
 
+        .showcase-filter-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-tactile);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border-color: var(--text-primary);
+        }
+
         .design-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
@@ -456,9 +454,6 @@
             text-decoration: none;
             color: inherit;
             display: block;
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 0.4s ease, transform 0.4s ease;
         }
 
         .design-card {
@@ -486,7 +481,6 @@
             transition: var(--transition-tactile);
         }
 
-        /* Card Interactive Overlay */
         .card-overlay {
             position: absolute;
             top: 0;
@@ -522,7 +516,6 @@
             transition: var(--transition-tactile);
         }
 
-        /* Meta Row */
         .card-meta-info {
             margin-top: 16px;
             padding: 8px 12px 12px;
@@ -532,7 +525,6 @@
         }
 
         .card-title {
-            font-family: var(--font-main);
             font-size: 1rem;
             font-weight: 600;
             color: var(--text-primary);
@@ -548,11 +540,10 @@
             gap: 15px;
         }
 
-        /* Hover States */
         .design-card:hover {
-            border-color: rgba(10, 10, 12, 0.2);
+            border-color: rgba(15, 23, 42, 0.15);
             transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(10, 10, 12, 0.05);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.05);
         }
 
         .design-card:hover img {
@@ -571,6 +562,167 @@
         .see-more-wrap {
             margin-top: 60px;
             text-align: center;
+        }
+
+        /* --- PROFESSIONAL ADJUSTED FOOTER --- */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 8% 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+        }
+
+        .footer-brand h2 {
+            font-family: var(--font-accent);
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 340px;
+        }
+
+        .footer-column h3 {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-tactile);
+        }
+
+        .contact-item:hover {
+            transform: translateX(4px);
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-neon);
+            background: #FFFFFF;
+        }
+
+        .contact-details h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .contact-details span {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .social-vertical-list {
+            margin-bottom: 16px;
+        }
+
+        .social-link-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: #FFFFFF;
+            transition: var(--transition-tactile);
+        }
+
+        .social-link-card:hover {
+            border-color: var(--accent-neon);
+            color: var(--accent-neon);
+        }
+
+        .social-row-round {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-round-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-tactile);
+        }
+
+        .social-round-btn:hover {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border-color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-tactile);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent-neon);
         }
 
         /* --- RESPONSIVENESS OVERRIDES --- */
@@ -604,13 +756,13 @@
 <body>
 
     <nav>
-        <div class="logo">Profile</div>
+        <div class="logo">Profile<span>.</span></div>
 
         <ul class="desktop-nav">
             <li class="active"><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="service.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
 
         <div class="hamburger" id="hamburger">
@@ -644,7 +796,7 @@
                     visual aesthetics and production-grade software performance.
                 </p>
                 <div class="btn-group">
-                    <a href="contact.html" class="btn">Start Project</a>
+                    <a href="#contact" class="btn">Start Project</a>
                     <a href="resume.html" class="btn btn-secondary">Resume</a>
                 </div>
 
@@ -653,8 +805,7 @@
                     <p>
                         My journey began with a curiosity for graphic expression, designing modern systems that speak to
                         audiences. Translating complex identity concepts into scalable and interactive layouts sparked
-                        my drive into front-end development. I design complete digital solutions from concept to
-                        production.
+                        my drive into front-end development.
                     </p>
                 </div>
             </div>
@@ -662,7 +813,7 @@
             <div class="hero-visual">
                 <div class="profile-container">
                     <img src="1.jpg" alt="Abdullah Forhad"
-                        onerror="this.src='https://placehold.co/400x400/eeeeee/000000?text=Abdullah'">
+                        onerror="this.src='https://placehold.co/400x400/eeeeee/0284C7?text=Abdullah'">
                 </div>
             </div>
         </div>
@@ -675,7 +826,6 @@
         </div>
 
         <div class="showcase-filter-nav" id="filterNav"></div>
-
         <div class="design-grid" id="designGrid"></div>
 
         <div class="see-more-wrap">
@@ -683,36 +833,107 @@
         </div>
     </section>
 
-    <script>
-    // =========================================================================
-        // SECTION 1: CORE ENGINE & DATA STORE (মেইন গ্যালারি এবং আর্কিটেকচার)
-        // =========================================================================
-        document.addEventListener("DOMContentLoaded", () => {
+    <footer id="contact">
+        <div class="footer-grid">
 
-            // ১. সেন্ট্রালাইজড ডাটা স্টোর
+            <div class="footer-brand">
+                <h2>Abdullah Forhad</h2>
+                <p>Creative Technologist bridging the space between stunning visual aesthetics and production-grade
+                    software performance.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Inquiries</h3>
+                <div class="footer-links">
+
+                    <a href="mailto:forhadalpha08@gmail.com" class="contact-item">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Communications</h4>
+                            <span>forhadalpha08@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/8801342900364" class="contact-item">
+                        <div class="icon-box">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Direct Line</h4>
+                            <span>@abdullah.theLegend</span>
+                        </div>
+                    </a>
+
+                    <div class="contact-item">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <span>Chittagong Division, Bangladesh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <div class="social-vertical-list">
+                    <a href="https://www.facebook.com/profile.php?id=61580779565120" class="social-link-card">
+                        <i class="fa-brands fa-facebook"></i>
+                        <span>Facebook Profile</span>
+                    </a>
+                </div>
+                <div class="social-row-round">
+                    <a href="https://www.facebook.com/profile.php?id=61580779565120" class="social-round-btn"
+                        title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" class="social-round-btn" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; @abdullah.theLegend</span>
+            <div class="footer-bottom-links">
+                <a href="about.html">Privacy Policy</a>
+                <a href="about.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. DATA STORE
             const menuItems = [
                 { label: "Home", url: "index.html" },
                 { label: "About Me", url: "about.html" },
                 { label: "Services", url: "service.html" },
-                { label: "Contact", url: "contact.html" }
+                { label: "Contact", url: "#contact" }
             ];
 
             const projectData = [
-                { id: 1, category: "business-card", title: "Business Card Design", subtitle: "Identity Unit", img: "19.2.webp", alt: "Minimalist Card", views: 420, hearts: 89, target: "_self", themeColor: "#FF5733" },
-                { id: 2, category: "business-card", title: "Geometric Pattern Card", subtitle: "Identity Unit", img: "24.2.webp", alt: "Abstract Geometric", views: 312, hearts: 64, target: "_self", themeColor: "#6366F1" },
+                { id: 1, category: "business-card", title: "Business Card Design", subtitle: "Identity Unit", img: "19.2.webp", alt: "Minimalist Card", views: 420, hearts: 89, target: "_self", themeColor: "#0284C7" },
+                { id: 2, category: "business-card", title: "Geometric Pattern Card", subtitle: "Identity Unit", img: "24.2.webp", alt: "Abstract Geometric", views: 312, hearts: 64, target: "_self", themeColor: "#0369A1" },
                 { id: 3, category: "business-card", title: "Creative Agency Card", subtitle: "Identity Unit", img: "27.2.webp", alt: "Premium Creative", views: 580, hearts: 142, target: "_self", themeColor: "#0EA5E9" },
                 { id: 4, category: "business-card", title: "Vintage Luxury Card", subtitle: "Identity Unit", img: "28.2.webp", alt: "Modern Corporate", views: 290, hearts: 55, target: "_self", themeColor: "#B45309" },
-                { id: 5, category: "business-card", title: "Premium Finished Card", subtitle: "Identity Unit", img: "29.2.webp", alt: "Luxury Elegant", views: 740, hearts: 210, target: "_self", themeColor: "#111827" },
-                { id: 6, category: "business-card", title: "Corporate Card", subtitle: "Identity Unit", img: "30.2.webp", alt: "Executive Design", views: 395, hearts: 118, target: "_self", themeColor: "#374151" },
+                { id: 5, category: "business-card", title: "Premium Finished Card", subtitle: "Identity Unit", img: "29.2.webp", alt: "Luxury Elegant", views: 740, hearts: 210, target: "_self", themeColor: "#0F172A" },
+                { id: 6, category: "business-card", title: "Corporate Card", subtitle: "Identity Unit", img: "30.2.webp", alt: "Executive Design", views: 395, hearts: 118, target: "_self", themeColor: "#334155" },
                 { id: 7, category: "business-card", title: "Premium Finished Card", subtitle: "Business Card", img: "33.2.webp", alt: "Luxury Elegant", views: 650, hearts: 210, target: "_self", themeColor: "#059669" },
                 { id: 8, category: "business-card", title: "Professional Business Card", subtitle: "Business Card", img: "1.2.webp", alt: "Creative Elegant", views: 540, hearts: 310, target: "_self", themeColor: "#2563EB" },
                 { id: 9, category: "business-card", title: "Radio Creative Business Card", subtitle: "Business Card", img: "7.1.webp", alt: "Bold Creative", views: 740, hearts: 320, target: "_self", themeColor: "#DC2626" },
                 { id: 10, category: "business-card", title: "Premium Creative Business Card", subtitle: "Business Card", img: "14.2.webp", alt: "Creative Design", views: 656, hearts: 203, target: "_self", themeColor: "#7C3AED" },
                 { id: 11, category: "logo", title: "Fashion Logo Concept", subtitle: "System Logo", img: "26.webp", alt: "Modern Monogram", views: 610, hearts: 180, target: "_self", themeColor: "#EC4899" },
                 { id: 12, category: "logo", title: "Letter & Shape Logo Design", subtitle: "System Logo", img: "3.webp", alt: "Modern Logo", views: 720, hearts: 215, target: "_self", themeColor: "#F59E0B" },
-                { id: 13, category: "website", title: "Aesthetic Lifestyle Branding", subtitle: "Identity & Branding", img: "bag2.webp", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/boraldo-store/", target: "_blank", themeColor: "#10B981" },
-                { id: 14, category: "website", title: "Aesthetic Lifestyle Branding", subtitle: "Identity & Branding", img: "res.png", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/restaurant1-/", target: "_blank", themeColor: "#10B981" },
-           ];
+                { id: 13, category: "website", title: "Aesthetic Lifestyle Branding", subtitle: "Identity & Branding", img: "bag2.webp", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/boraldo-store/", target: "_self", themeColor: "#0284C7" },
+                { id: 14, category: "website", title: "Custom Dashboard Concept", subtitle: "Web Experience", img: "res.png", alt: "Software Interface", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/boraldo-store/", target: "_self", themeColor: "#0369A1" }
+            ];
 
             const filterCategories = [
                 { slug: "all", label: "All Designs" },
@@ -722,11 +943,9 @@
             ];
 
             let currentFilter = 'all';
+            window.allowedProjectIds = [1, 2, 13, 14];
 
-            // গ্লোবাল ভেরিয়েবল যা নিচের কন্ট্রোলার সেকশন দ্বারা নিয়ন্ত্রিত হবে
-            window.allowedProjectIds = [];
-
-            // ২. মেইন পেজ ডিজাইন কন্ট্রোলার ফাংশন
+            // 2. CONTROLLER LOGIC
             function applyMainPageDesign(targetId) {
                 const targetProject = projectData.find(project => project.id === targetId);
                 if (!targetProject) return;
@@ -747,15 +966,15 @@
 
             window.changeMainPageDesignById = applyMainPageDesign;
 
-            // ৩. মোবাইল সাবমেনু রেন্ডার
+            // 3. MOBILE INTERFACE POPULATION
             const hamburger = document.getElementById('hamburger');
             const menuWindow = document.getElementById('menu-window');
             const mobileNavLinksContainer = document.getElementById('mobile-nav-links');
 
             if (mobileNavLinksContainer) {
                 mobileNavLinksContainer.innerHTML = menuItems.map(item => `
-            <li><a href="${item.url}">${item.label}</a></li>
-        `).join('');
+                    <li><a href="${item.url}">${item.label}</a></li>
+                `).join('');
             }
 
             if (hamburger && menuWindow) {
@@ -771,35 +990,32 @@
                 });
             }
 
-            // ৪. GSAP অ্যানিমেশন
+            // 4. TICKER ANIMATION
             if (typeof gsap !== "undefined") {
                 gsap.timeline({ repeat: -1 })
                     .to("#scroller-track", { y: "-50%", duration: 1.6, delay: 2.2, ease: "power4.inOut" })
                     .to("#scroller-track", { y: "0%", duration: 1.6, delay: 2.2, ease: "power4.inOut" });
             }
 
-            // ৫. ফিল্টার বাটন জেনারেট
+            // 5. RENDERING DYNAMIC FILTERS
             const filterNav = document.getElementById('filterNav');
             if (filterNav) {
                 filterNav.innerHTML = filterCategories.map(cat => `
-            <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
-                ${cat.label}
-            </button>
-        `).join('');
+                    <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
+                        ${cat.label}
+                    </button>
+                `).join('');
             }
 
-            // ৬. গ্যালারি রেন্ডার ইঞ্জিন (See More বাটন রিমুভড এবং আইডি ফিল্টারিং যুক্ত)
+            // 6. GALLERY RENDER ENGINE
             const designGrid = document.getElementById('designGrid');
             const seeMoreBtn = document.getElementById('showcaseSeeMoreBtn');
 
-            // See More বাটনটি চিরতরে হাইড করে দেওয়া হলো
             if (seeMoreBtn) seeMoreBtn.style.display = 'none';
 
             function renderShowcase() {
-                // প্রথমে ক্যাটাগরি অনুযায়ী ফিল্টার করা হবে
                 let filteredProjects = projectData.filter(project => currentFilter === 'all' || project.category === currentFilter);
 
-                // 🌟 কাস্টম লজিক: যদি "All" ফিল্টারে থাকে, তবে শুধুমাত্র কন্ট্রোলারের দেওয়া নির্দিষ্ট আইডিগুলোই দেখাবে
                 if (currentFilter === 'all' && window.allowedProjectIds.length > 0) {
                     filteredProjects = filteredProjects.filter(project => window.allowedProjectIds.includes(project.id));
                 }
@@ -809,25 +1025,25 @@
                     const fallbackText = encodeURIComponent(project.title);
 
                     return `
-                <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
-                    <div class="design-card">
-                        <div class="card-img-wrapper">
-                            <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=${fallbackText}'">
-                            <div class="card-overlay">
-                                <h4>${project.alt}</h4>
-                                <span>${project.subtitle}</span>
+                        <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
+                            <div class="design-card">
+                                <div class="card-img-wrapper">
+                                    <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x412/eeeeee/0284C7?text=${fallbackText}'">
+                                    <div class="card-overlay">
+                                        <h4>${project.alt}</h4>
+                                        <span>${project.subtitle}</span>
+                                    </div>
+                                </div>
+                                <div class="card-meta-info">
+                                    <span class="card-title">${project.title}</span>
+                                    <div class="card-stats">
+                                        <span><i class="far fa-eye"></i> ${project.views}</span>
+                                        <span><i class="far fa-heart"></i> ${project.hearts}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-meta-info">
-                            <span class="card-title">${project.title}</span>
-                            <div class="card-stats">
-                                <span><i class="far fa-eye"></i> ${project.views}</span>
-                                <span><i class="far fa-heart"></i> ${project.hearts}</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            `;
+                        </a>
+                    `;
                 }).join('');
             }
 
@@ -838,42 +1054,19 @@
                     btn.addEventListener('click', function () {
                         filterNav.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                         this.classList.add('active');
-
                         currentFilter = this.getAttribute('data-filter');
 
                         if (typeof gsap !== "undefined") {
                             gsap.fromTo("#designGrid", { opacity: 0.2, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
                         }
-
                         renderShowcase();
                     });
                 });
             }
 
+            // EXECUTE PAGE DECORATIVE CONFIGURATIONS
+            applyMainPageDesign(13);
             renderShowcase();
-        });
-
-
-        // =========================================================================
-        // SECTION 2: THE CONTROLLER (এই অংশটিই এখন সবকিছু নিয়ন্ত্রণ করবে)
-        // =========================================================================
-        window.addEventListener('load', () => {
-
-            // 🌟 ১. অল ডিজাইন মেনুতে (All Designs) কোন কোন প্রজেক্ট শো করবে, তাদের ID এখানে অ্যারে আকারে লিখুন:
-            // যেমন: শুধু প্রজেক্ট ১, ৫, ১১ এবং ১৩ নাম্বার শো করাতে চাইলে নিচের মতো লিখবেন।
-            window.allowedProjectIds = [1, 5, 11, 13];
-
-            // 🌟 ২. মেইন পেজের (Hero Section) থিম ও ব্যানার কোন আইডির মতো হবে তা এখানে লিখুন:
-            const ACTIVE_HERO_ID = 13;
-
-            // কন্ট্রোলার এক্সিকিউট করা
-            if (typeof window.changeMainPageDesignById === 'function') {
-                window.changeMainPageDesignById(ACTIVE_HERO_ID);
-            }
-
-            if (typeof window.refreshShowcaseGallery === 'function') {
-                window.refreshShowcaseGallery();
-            }
         });
     </script>
 </body>
