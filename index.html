@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Abdullah Forhad</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,6 +37,13 @@
             font-family: var(--font-main);
         }
 
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -44,7 +51,6 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-primary);
-            overflow-x: hidden;
             line-height: 1.6;
         }
 
@@ -65,6 +71,7 @@
         nav {
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
             padding: 24px 8%;
             display: flex;
@@ -75,6 +82,7 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-color);
+            box-sizing: border-box;
         }
 
         .logo {
@@ -116,6 +124,7 @@
             display: none;
             flex-direction: column;
             gap: 6px;
+            padding: 4px;
         }
 
         .hamburger div {
@@ -137,11 +146,12 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
+        /* --- STABLE 100% WIDTH MOBILE SCREEN COHERENCE --- */
         .menu-window {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 100vw;
             height: 100vh;
             background: var(--bg-dark);
             display: flex;
@@ -151,6 +161,8 @@
             transform: translateY(-100%);
             transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
             border-bottom: 1px solid var(--border-color);
+            box-sizing: border-box;
+            overflow: hidden;
         }
 
         .menu-window.open {
@@ -160,19 +172,23 @@
         .menu-window ul {
             list-style: none;
             text-align: center;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .menu-window li {
-            margin: 30px 0;
+            margin: 24px 0;
         }
 
         .menu-window a {
             font-family: var(--font-accent);
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 700;
             transition: var(--transition-tactile);
+            display: block;
         }
 
         .menu-window a:hover {
@@ -181,16 +197,17 @@
 
         /* --- HERO SECTION --- */
         .hero-section {
-            padding: 180px 8% 100px;
+            padding: 160px 8% 80px;
             min-height: 100vh;
             display: flex;
             align-items: center;
+            box-sizing: border-box;
         }
 
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 60px;
+            gap: 40px;
             width: 100%;
             align-items: center;
         }
@@ -198,6 +215,7 @@
         @media (min-width: 992px) {
             .hero-grid {
                 grid-template-columns: 1.2fr 0.8fr;
+                gap: 60px;
             }
         }
 
@@ -231,11 +249,11 @@
 
         h1 {
             font-family: var(--font-accent);
-            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-size: clamp(2.4rem, 5.5vw, 4.8rem);
             color: var(--text-primary);
             font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -2px;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
             margin-bottom: 24px;
         }
 
@@ -262,9 +280,9 @@
 
         .hero-desc {
             color: var(--text-muted);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             max-width: 580px;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .hero-visual {
@@ -272,12 +290,13 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            width: 100%;
         }
 
         .profile-container {
             position: relative;
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 300px;
             border-radius: 24px;
             background: #FFFFFF;
             padding: 10px;
@@ -307,7 +326,7 @@
         }
 
         .btn {
-            padding: 16px 32px;
+            padding: 14px 28px;
             background: var(--text-primary);
             color: var(--bg-dark);
             text-decoration: none;
@@ -348,12 +367,13 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 40px;
-            margin-top: 80px;
+            padding: 32px;
+            margin-top: 60px;
             width: 100%;
             text-align: left;
             position: relative;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .statement-card::after {
@@ -368,37 +388,38 @@
 
         .statement-card h3 {
             font-family: var(--font-accent);
-            font-size: 1.4rem;
-            margin-bottom: 16px;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
             color: var(--text-primary);
         }
 
         .statement-card p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
         /* --- PORTFOLIO SYSTEM --- */
         .design-showcase {
-            padding: 120px 8%;
+            padding: 100px 8%;
             border-top: 1px solid var(--border-color);
+            box-sizing: border-box;
         }
 
         .section-header {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .section-title {
             font-family: var(--font-accent);
-            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
             font-weight: 800;
-            letter-spacing: -1.5px;
+            letter-spacing: -1px;
             line-height: 1.1;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .section-subtitle {
@@ -412,12 +433,12 @@
         .showcase-filter-nav {
             display: flex;
             gap: 12px;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            padding: 10px 24px;
+            padding: 10px 20px;
             background: transparent;
             border: 1px solid var(--border-color);
             color: var(--text-muted);
@@ -438,7 +459,7 @@
         .design-grid {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            gap: 30px;
+            gap: 24px;
         }
 
         @media (min-width: 768px) {
@@ -563,7 +584,7 @@
         }
 
         .see-more-wrap {
-            margin-top: 60px;
+            margin-top: 48px;
             text-align: center;
         }
 
@@ -572,12 +593,13 @@
             padding: 80px 8% 60px;
             background: var(--bg-card);
             border-top: 1px solid var(--border-color);
+            box-sizing: border-box;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 30px;
             margin-top: 30px;
             align-items: start;
         }
@@ -586,7 +608,6 @@
             .contact-grid {
                 grid-template-columns: 1.1fr 0.9fr;
                 align-items: end;
-                /* Pulls details down to form base level on large layouts */
             }
         }
 
@@ -601,6 +622,7 @@
             max-width: 440px;
             justify-self: start;
             text-align: left;
+            box-sizing: border-box;
         }
 
         .form-group-row {
@@ -681,6 +703,7 @@
             width: 100%;
             text-align: left;
             align-items: flex-start;
+            box-sizing: border-box;
         }
 
         @media (min-width: 992px) {
@@ -689,7 +712,6 @@
                 align-items: flex-end;
                 justify-self: end;
                 padding-bottom: 5px;
-                /* Fine-tune precise optical baseline match */
             }
         }
 
@@ -700,7 +722,6 @@
 
         .minimal-underlined-link {
             font-size: 12px;
-            /* Enforced 12px typography size limit */
             font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
@@ -775,7 +796,6 @@
         .minimal-icon-link {
             color: var(--text-primary);
             font-size: 1.05rem;
-            /* Downscaled small visual size profile */
             text-decoration: none;
             transition: var(--transition-tactile);
             display: inline-flex;
@@ -793,6 +813,7 @@
             background: var(--bg-dark);
             border-top: 1px solid var(--border-color);
             padding: 40px 8%;
+            box-sizing: border-box;
         }
 
         .footer-bottom {
@@ -828,6 +849,10 @@
 
         /* --- RESPONSIVENESS OVERRIDES --- */
         @media (max-width: 991px) {
+            nav {
+                padding: 16px 6%;
+            }
+
             .desktop-nav {
                 display: none;
             }
@@ -835,20 +860,28 @@
             .hamburger {
                 display: flex;
             }
+
+            .contact-section {
+                padding: 60px 6% 40px;
+            }
+
+            .contact-grid {
+                gap: 24px;
+            }
         }
 
         @media (max-width: 768px) {
-            nav {
-                padding: 16px 6%;
-            }
-
             .hero-section {
-                padding: 140px 6% 60px;
+                padding: 120px 6% 60px;
             }
 
             .profile-container {
                 width: 260px;
                 height: 260px;
+            }
+
+            .design-showcase {
+                padding: 60px 6%;
             }
         }
     </style>
@@ -982,11 +1015,12 @@
 
             <div class="info-minimal-container">
                 <div class="minimal-text-block">
-                    <a href="mailto:forhadalpha08@gmail.com" class="minimal-underlined-link">Email</a>
+                    <a href="mailto:forhadalpha08@gmail.com" class="minimal-underlined-link">email</a>
                 </div>
 
                 <div class="minimal-text-block">
-                    <a href="https://wa.me/8801342900364" target="_blank" class="minimal-underlined-link">WhatsApp</a>
+                    <a href="https://wa.me/8801342900364" target="_blank" class="minimal-underlined-link">whatsApp
+                        </a>
                 </div>
 
                 <div class="social-connect-block">
@@ -1023,7 +1057,7 @@
 
     <footer>
         <div class="footer-bottom">
-            <span>&copy; 2026 @abdullah.theLegend.</span>
+            <span>&copy; 2026 @abdullah.theLegend All rights reserved.</span>
             <div class="footer-bottom-links">
                 <a href="about.html">Privacy Policy</a>
                 <a href="about.html">Terms of Service</a>
@@ -1045,7 +1079,7 @@
                 { id: 1, category: "business-card", title: "Business Card Design", subtitle: "Identity Unit", img: "19.2.webp", alt: "Minimalist Card", views: 420, hearts: 89, target: "_self", themeColor: "#0284C7" },
                 { id: 2, category: "business-card", title: "Geometric Pattern Card", subtitle: "Identity Unit", img: "24.2.webp", alt: "Abstract Geometric", views: 312, hearts: 64, target: "_self", themeColor: "#0369A1" },
                 { id: 3, category: "business-card", title: "Creative Agency Card", subtitle: "Identity Unit", img: "27.2.webp", alt: "Premium Creative", views: 580, hearts: 142, target: "_self", themeColor: "#0EA5E9" },
-                { id: 4, category: "business-card", title: "Vintage Luxury Card", subtitle: "Identity Unit", img: "28.2.webp", alt: "Modern Corporate", views: 290, hearts: 55, target: "_self", themeColor: "#B45309" },
+                { id: 4, category: "business-card", title: "Vintage Luxury Card", subtitle: "Identity Unit", img: "28.2.webp", alt: "Modern Corporate", views: 290, hearts: 55, target: "#B45309" },
                 { id: 5, category: "business-card", title: "Premium Finished Card", subtitle: "Identity Unit", img: "29.2.webp", alt: "Luxury Elegant", views: 740, hearts: 210, target: "_self", themeColor: "#0F172A" },
                 { id: 6, category: "business-card", title: "Corporate Card", subtitle: "Identity Unit", img: "30.2.webp", alt: "Executive Design", views: 395, hearts: 118, target: "_self", themeColor: "#334155" },
                 { id: 7, category: "business-card", title: "Premium Finished Card", subtitle: "Business Card", img: "33.2.webp", alt: "Luxury Elegant", views: 650, hearts: 210, target: "_self", themeColor: "#059669" },
