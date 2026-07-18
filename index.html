@@ -721,10 +721,12 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.01);
             width: 100%;
-            max-width: 440px;
-            justify-self: start;
+    max-width:650px;
+    justify-self: start;
             text-align: left;
             box-sizing: border-box;
+            margin:auto;
+
         }
 
         .form-group-row {
@@ -789,7 +791,15 @@
             font-size: 0.78rem;
             border-radius: 6px;
         }
+        .button-wrapper{
+    display:flex;
+    align-items:flex-end;
+}
 
+.button-wrapper .btn{
+    width:100%;
+    height:54px;
+}
         .form-status {
             font-size: 0.75rem;
             font-weight: 600;
@@ -799,17 +809,19 @@
             gap: 6px;
         }
 
-        .info-minimal-container {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            width: 100%;
-            text-align: left;
-            align-items: flex-start;
-            box-sizing: border-box;
-        }
+
+        .info-minimal-container{
+    margin-top:40px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    text-align:center;
+}
 
         @media (min-width: 992px) {
+            
             .info-minimal-container {
                 text-align: right;
                 align-items: flex-end;
@@ -859,77 +871,177 @@
             }
         }
 
-        @media (max-width: 991px) {
-            .minimal-underlined-link::after {
-                left: 0;
-            }
+        @media (max-width:991px){
 
-            .minimal-underlined-link:hover {
-                transform: translateX(3px);
-            }
+            /* ---------- INFO CONTAINER ---------- */
 
-            .minimal-underlined-link:hover::after {
-                background-color: var(--accent-neon);
-                width: 50%;
-            }
-        }
+.info-minimal-container{
+    margin-top:40px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
 
-        .social-connect-block {
-            margin-top: 6px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 12px;
-            width: 100%;
-        }
+.minimal-text-block{
+    display:flex;
+    flex-direction:column;
+}
 
-        .minimal-icon-row {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
+.minimal-underlined-link{
+    font-size:12.9px;
+    font-weight:325;
+    color:var(--text-primary);
+    text-decoration:none;
+    display:inline-block;
+    position:relative;
+    padding-bottom:2px;
+    transition:var(--transition-tactile);
+}
 
-        @media (min-width: 992px) {
-            .minimal-icon-row {
-                justify-content: flex-end;
-            }
-        }
+.minimal-underlined-link::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:1.5px;
+    background-color:var(--text-primary);
+    transition:var(--transition-tactile);
+}
 
-        .minimal-icon-link {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: var(--transition-tactile);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* ---------- DESKTOP ---------- */
 
-        .minimal-icon-link:hover {
-            color: var(--accent-neon);
-            transform: translateY(-2px);
-        }
+@media (min-width:992px){
 
-        /* --- FOOTER --- */
-        footer {
-            background: var(--bg-dark);
-            border-top: 1px solid var(--border-color);
-            padding: 40px 8%;
-            box-sizing: border-box;
-            width: 100%;
-        }
+    .info-minimal-container{
+        align-items:flex-end;
+        text-align:right;
+        justify-self:end;
+        padding-bottom:5px;
+    }
 
-        .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            width: 100%;
-        }
+    .minimal-text-block{
+        width:auto;
+        display:flex;
+        justify-content:flex-end;
+        align-items:flex-end;
+    }
 
+    .minimal-underlined-link::after{
+        right:0;
+    }
+
+    .minimal-underlined-link:hover{
+        transform:translateX(-3px);
+    }
+
+    .minimal-underlined-link:hover::after{
+        background-color:var(--accent-neon);
+        width:50%;
+    }
+
+    .social-connect-block{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    .minimal-icon-row{
+        display:flex;
+        justify-content:flex-end;
+        gap:18px;
+        flex-wrap:wrap;
+        width:100%;
+    }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width:991px){
+
+    .info-minimal-container{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-end;
+        text-align:right;
+        margin-top:40px;
+        gap:20px;
+    }
+
+    .minimal-text-block{
+        width:auto;
+        display:flex;
+        justify-content:flex-end;
+        align-items:flex-end;
+    }
+
+    .minimal-underlined-link::after{
+        right:0;
+        left:auto;
+    }
+
+    .minimal-underlined-link:hover{
+        transform:translateX(-3px);
+    }
+
+    .minimal-underlined-link:hover::after{
+        background-color:var(--accent-neon);
+        width:50%;
+    }
+
+    .social-connect-block{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+    }
+
+    .minimal-icon-row{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+        gap:18px;
+        flex-wrap:wrap;
+    }
+}
+
+/* ---------- ICONS ---------- */
+
+.minimal-icon-link{
+    color:var(--text-primary);
+    font-size:1.2rem;
+    text-decoration:none;
+    transition:var(--transition-tactile);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.minimal-icon-link:hover{
+    color:var(--accent-neon);
+    transform:translateY(-2px);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+    background:var(--bg-dark);
+    border-top:1px solid var(--border-color);
+    padding:14px 6%;
+    box-sizing:border-box;
+    width:100%;
+}
+
+.footer-bottom{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    font-size:0.85rem;
+    color:var(--text-muted);
+    width:100%;
+}}
         @media (min-width: 768px) {
             .footer-bottom {
                 flex-direction: row;
@@ -938,7 +1050,7 @@
 
         .footer-bottom-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
         }
 
         .footer-bottom-links a {
@@ -976,7 +1088,7 @@
             }
 
             footer {
-                padding: 40px 16px;
+                padding: 12px 12px;
             }
         }
     </style>
@@ -1095,64 +1207,76 @@
         id="meetingDate"
         name="meeting_date">
 </div>
-                      
-                    <div class="input-group">
-                        <label>Project Message *</label>
-                        <textarea name="message"
-                            placeholder="Tell me a bit about your ideas, targets, and timeline details..."
-                            required></textarea>
-                    </div>
 
-                    <button type="submit" id="submitFormBtn" class="btn btn-small">
-                        <span>Send Message</span> &nbsp;<i class="fa-solid fa-paper-plane"></i>
-                    </button>
+<div class="input-group full-width">
+    <label>Project Message *</label>
 
-                    <div id="formStatusMessage" class="form-status"></div>
+    <textarea name="message" placeholder="Tell me a bit about your ideas..." required>
+    </textarea>
+
+    <button type="submit" id="submitFormBtn" class="btn btn-small">
+        <span>Send Message</span>
+        <i class="fa-solid fa-paper-plane"></i>
+    </button>
+</div>
+
+
+
                 </form>
             </div>
 
-            <div class="info-minimal-container">
-                <div class="minimal-text-block">
-                    <a href="mailto:forhadalpha08@gmail.com" class="minimal-underlined-link">email</a>
-                </div>
 
-                <div class="minimal-text-block">
-                    <a href="https://wa.me/8801342900364" target="_blank" class="minimal-underlined-link">whatsApp</a>
-                </div>
+        </div> <!-- contact-grid শেষ -->
 
-                <div class="social-connect-block">
-                    <div class="minimal-icon-row">
-                        <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank" class="minimal-icon-link"
-                            title="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@abdullah.thelegen?_r=1&_t=ZS-988bupiVj1w" target="_blank" class="minimal-icon-link"
-                            title="TikTok">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank"
-                            class="minimal-icon-link" title="Facebook">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank"
-                            class="minimal-icon-link" title="YouTube">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                        <a href="https://www.reddit.com/user/Alternative_One7727/" target="_blank"
-                            class="minimal-icon-link" title="Reddit">
-                            <i class="fa-brands fa-reddit-alien"></i>
-                        </a>
-                        <a href="https://pin.it/30WdMXBOi" target="_blank" class="minimal-icon-link"
-                            title="Pinterest">
-                            <i class="fa-brands fa-pinterest"></i>
-                        </a>
-                        <a href="https://x.com/" target="_blank" class="minimal-icon-link" title="X (Twitter)">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </a>
-                    </div>
+        <div class="info-minimal-container">
+        
+            <div class="minimal-text-block">
+                <a href="mailto:forhadalpha08@gmail.com"
+                    class="minimal-underlined-link">
+                    Email
+                </a>
+            </div>
+        
+            <div class="minimal-text-block">
+                <a href="https://wa.me/8801342900364"
+                    class="minimal-underlined-link"
+                    target="_blank">
+                    WhatsApp
+                </a>
+            </div>
+         
+                   <div class="social-connect-block">
+                        <div class="minimal-icon-row">
+                            <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank"
+                                class="minimal-icon-link" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@abdullah.thelegen?_r=1&_t=ZS-988bupiVj1w" target="_blank"
+                                class="minimal-icon-link" title="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank" class="minimal-icon-link"
+                                title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank" class="minimal-icon-link"
+                                title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="https://www.reddit.com/user/Alternative_One7727/" target="_blank" class="minimal-icon-link"
+                                title="Reddit">
+                                <i class="fa-brands fa-reddit-alien"></i>
+                            </a>
+                            <a href="https://pin.it/30WdMXBOi" target="_blank" class="minimal-icon-link" title="Pinterest">
+                                <i class="fa-brands fa-pinterest"></i>
+                            </a>
+                            <a href="https://github.com/forhad2008" target="_blank" class="minimal-icon-link" title="GitHub">
+                                <i class="fa-brands fa-github"></i>                     </a>
+                            </div>
+        
                 </div>
             </div>
-        </div>
+    
     </section>
 
     <footer>
