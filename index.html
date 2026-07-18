@@ -1324,10 +1324,18 @@
             }
 
             // 7. FORM SUBMISSION GATEWAY CONTROLLER (FIXED & OPTIMIZED)
-            const meetingDate = document.getElementById("meetingDate");
+// Prevent selecting past dates
+const meetingDate = document.getElementById("meetingDate");
 
 if (meetingDate) {
-    meetingDate.min = new Date().toISOString().split("T")[0];
+    const today = new Date();
+
+    // Format as YYYY-MM-DD
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    meetingDate.min = `${year}-${month}-${day}`;
 }
             const contactForm = document.getElementById('portfolioContactForm');
             const submitBtn = document.getElementById('submitFormBtn');
