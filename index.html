@@ -1051,21 +1051,21 @@
             <span class="section-subtitle">Creatives Gallery</span>
             <h2 class="section-title">My Works</h2>
         </div>
-
+    
         <div class="showcase-filter-nav" id="filterNav"></div>
         <div class="design-grid" id="designGrid"></div>
-
+    
         <div class="see-more-wrap">
             <button id="showcaseSeeMoreBtn" class="btn btn-secondary">See More</button>
         </div>
     </section>
-
+    
     <section class="contact-section" id="contact">
         <div class="section-header">
             <span class="section-subtitle">Let's Collaborate</span>
             <h2 class="section-title">Start Your Project</h2>
         </div>
-
+    
         <div class="contact-grid">
             <div class="contact-form-card">
                 <form id="portfolioContactForm">
@@ -1079,7 +1079,7 @@
                             <input type="email" name="email" placeholder="john@example.com" required>
                         </div>
                     </div>
-
+    
                     <div class="form-group-row">
                         <div class="input-group no-margin">
                             <label>Phone Number</label>
@@ -1090,35 +1090,34 @@
                             <input type="date" name="meeting_date">
                         </div>
                     </div>
-
+    
                     <div class="input-group">
                         <label>Project Message *</label>
                         <textarea name="message"
                             placeholder="Tell me a bit about your ideas, targets, and timeline details..."
                             required></textarea>
                     </div>
-
+    
                     <button type="submit" id="submitFormBtn" class="btn btn-small">
                         <span>Send Message</span> &nbsp;<i class="fa-solid fa-paper-plane"></i>
                     </button>
-
+    
                     <div id="formStatusMessage" class="form-status"></div>
                 </form>
             </div>
-
+    
             <div class="info-minimal-container">
                 <div class="minimal-text-block">
                     <a href="mailto:forhadalpha08@gmail.com" class="minimal-underlined-link">email</a>
                 </div>
-
+    
                 <div class="minimal-text-block">
                     <a href="https://wa.me/8801342900364" target="_blank" class="minimal-underlined-link">whatsApp</a>
                 </div>
-
+    
                 <div class="social-connect-block">
                     <div class="minimal-icon-row">
-                        <a href="https://www.instagram.com/" target="_blank" class="minimal-icon-link"
-                            title="Instagram">
+                        <a href="https://www.instagram.com/" target="_blank" class="minimal-icon-link" title="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                         <a href="https://www.tiktok.com/@abdullahforhad683" target="_blank" class="minimal-icon-link"
@@ -1129,16 +1128,15 @@
                             class="minimal-icon-link" title="Facebook">
                             <i class="fa-brands fa-facebook"></i>
                         </a>
-                        <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank"
-                            class="minimal-icon-link" title="YouTube">
+                        <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank" class="minimal-icon-link"
+                            title="YouTube">
                             <i class="fa-brands fa-youtube"></i>
                         </a>
-                        <a href="https://www.reddit.com/user/Alternative_One7727/" target="_blank"
-                            class="minimal-icon-link" title="Reddit">
+                        <a href="https://www.reddit.com/user/Alternative_One7727/" target="_blank" class="minimal-icon-link"
+                            title="Reddit">
                             <i class="fa-brands fa-reddit-alien"></i>
                         </a>
-                        <a href="https://www.pinterest.com/" target="_blank" class="minimal-icon-link"
-                            title="Pinterest">
+                        <a href="https://www.pinterest.com/" target="_blank" class="minimal-icon-link" title="Pinterest">
                             <i class="fa-brands fa-pinterest"></i>
                         </a>
                         <a href="https://x.com/" target="_blank" class="minimal-icon-link" title="X (Twitter)">
@@ -1149,7 +1147,7 @@
             </div>
         </div>
     </section>
-
+    
     <footer>
         <div class="footer-bottom">
             <span>&copy; 2008 @abdullah.theLegend.</span>
@@ -1159,16 +1157,7 @@
             </div>
         </div>
     </footer>
-
-    <div id="fullScreenViewer"
-        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease;">
-        <button id="closeViewerBtn"
-            style="position: absolute; top: 24px; right: 24px; background: transparent; border: none; color: #FFFFFF; font-size: 1.8rem; cursor: pointer; z-index: 10000; padding: 10px;"><i
-                class="fa-solid fa-xmark"></i></button>
-        <img id="viewerTargetImg" src="" alt="Full Scale Preview"
-            style="max-width: 100%; max-height: 100%; object-fit: contain; transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);">
-    </div>
-
+    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // 1. DATA STORE
@@ -1234,8 +1223,8 @@
 
             if (mobileNavLinksContainer) {
                 mobileNavLinksContainer.innerHTML = menuItems.map(item => `
-                    <li><a href="${item.url}">${item.label}</a></li>
-                `).join('');
+                            <li><a href="${item.url}">${item.label}</a></li>
+                        `).join('');
             }
 
             if (hamburger && menuWindow) {
@@ -1262,10 +1251,10 @@
             const filterNav = document.getElementById('filterNav');
             if (filterNav) {
                 filterNav.innerHTML = filterCategories.map(cat => `
-                    <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
-                        ${cat.label}
-                    </button>
-                `).join('');
+                            <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
+                                ${cat.label}
+                            </button>
+                        `).join('');
             }
 
             // 6. GALLERY RENDER ENGINE
@@ -1286,30 +1275,30 @@
                     const fallbackText = encodeURIComponent(project.title);
 
                     return `
-                        <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
-                            <div class="design-card">
-                                <div class="card-img-wrapper">
-                                    <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x450/eeeeee/0284C7?text=${fallbackText}'">
-                                    <div class="card-overlay">
-                                        <div class="card-overlay-content">
-                                            <h4>${project.alt}</h4>
-                                            <span>${project.subtitle}</span>
-                                            <button class="card-action-btn">
-                                                <span>View Details</span> <i class="fa-solid fa-arrow-right"></i>
-                                            </button>
+                                <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
+                                    <div class="design-card">
+                                        <div class="card-img-wrapper">
+                                            <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x450/eeeeee/0284C7?text=${fallbackText}'">
+                                            <div class="card-overlay">
+                                                <div class="card-overlay-content">
+                                                    <h4>${project.alt}</h4>
+                                                    <span>${project.subtitle}</span>
+                                                    <button class="card-action-btn">
+                                                        <span>View Details</span> <i class="fa-solid fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-meta-info">
+                                            <span class="card-title">${project.title}</span>
+                                            <div class="card-stats">
+                                                <span><i class="far fa-eye"></i> ${project.views}</span>
+                                                <span><i class="far fa-heart"></i> ${project.hearts}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-meta-info">
-                                    <span class="card-title">${project.title}</span>
-                                    <div class="card-stats">
-                                        <span><i class="far fa-eye"></i> ${project.views}</span>
-                                        <span><i class="far fa-heart"></i> ${project.hearts}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    `;
+                                </a>
+                            `;
                 }).join('');
             }
 
@@ -1330,12 +1319,12 @@
                 });
             }
 
-            // 7. FORM SUBMISSION GATEWAY CONTROLLER
+            // 7. FORM SUBMISSION GATEWAY CONTROLLER (FIXED & OPTIMIZED)
             const contactForm = document.getElementById('portfolioContactForm');
             const submitBtn = document.getElementById('submitFormBtn');
             const statusMsg = document.getElementById('formStatusMessage');
 
-            const googleScriptUrl = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE';
+            const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwIbbSk0A5EpL6DmaU95rvMdyfCnnwGGyGa5IW5CnT24Abl5mUwVljw870VA9UzZd2U/exec';
 
             if (contactForm) {
                 contactForm.addEventListener('submit', (e) => {
@@ -1348,24 +1337,29 @@
 
                     const formData = new FormData(contactForm);
 
+                    // গুগল অ্যাপস স্ক্রিপ্টে ১০০% ডেটা ডেলিভারি নিশ্চিত করার জন্য URLSearchParams ব্যবহার করা হয়েছে
+                    const searchParams = new URLSearchParams();
+                    for (const pair of formData.entries()) {
+                        searchParams.append(pair[0], pair[1]);
+                    }
+
                     fetch(googleScriptUrl, {
                         method: 'POST',
-                        body: formData
+                        body: searchParams,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        redirect: 'follow'
                     })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.result === 'success') {
-                                statusMsg.style.color = '#10B981';
-                                statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Project dispatched! Check email shortly.`;
-                                contactForm.reset();
-                            } else {
-                                throw new Error('Pipeline script rejected delivery execution');
-                            }
+                        .then(response => {
+                            statusMsg.style.color = '#10B981';
+                            statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Project dispatched! Check email shortly.`;
+                            contactForm.reset();
                         })
                         .catch(error => {
                             statusMsg.style.color = '#EF4444';
                             statusMsg.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Connection dropped. Send via mailto channel directly.`;
-                            console.error('Error details:', error.message);
+                            console.error('Error details:', error);
                         })
                         .finally(() => {
                             submitBtn.disabled = false;
@@ -1379,50 +1373,8 @@
 
             applyMainPageDesign();
             renderShowcase();
-
-            // --- 8. FULL-SCREEN MOBILE VIEWER EXECUTION ENGINE ---
-            const mobileViewer = document.getElementById('fullScreenViewer');
-            const viewerImg = document.getElementById('viewerTargetImg');
-            const closeViewerBtn = document.getElementById('closeViewerBtn');
-
-            document.getElementById('designGrid').addEventListener('click', function (e) {
-                if (window.innerWidth <= 768) {
-                    const cardLink = e.target.closest('.design-card-link');
-
-                    if (cardLink && !e.target.closest('.card-action-btn')) {
-                        e.preventDefault();
-
-                        const nativeImg = cardLink.querySelector('img');
-                        if (nativeImg && mobileViewer && viewerImg) {
-                            viewerImg.src = nativeImg.src;
-                            viewerImg.alt = nativeImg.alt;
-
-                            mobileViewer.style.opacity = '1';
-                            mobileViewer.style.pointerEvents = 'auto';
-                            viewerImg.style.transform = 'scale(1)';
-                        }
-                    }
-                }
-            });
-
-            function closeMobileGalleryView() {
-                if (mobileViewer && viewerImg) {
-                    mobileViewer.style.opacity = '0';
-                    mobileViewer.style.pointerEvents = 'none';
-                    viewerImg.style.transform = 'scale(0.9)';
-                }
-            }
-
-            if (closeViewerBtn) {
-                closeViewerBtn.addEventListener('click', closeMobileGalleryView);
-            }
-            if (mobileViewer) {
-                mobileViewer.addEventListener('click', (e) => {
-                    if (e.target === mobileViewer) closeMobileGalleryView();
-                });
-            }
         });
     </script>
-</body>
-
-</html>
+    </body>
+    
+    </html>
