@@ -1324,6 +1324,11 @@
             }
 
             // 7. FORM SUBMISSION GATEWAY CONTROLLER (FIXED & OPTIMIZED)
+            const meetingDate = document.getElementById("meetingDate");
+
+if (meetingDate) {
+    meetingDate.min = new Date().toISOString().split("T")[0];
+}
             const contactForm = document.getElementById('portfolioContactForm');
             const submitBtn = document.getElementById('submitFormBtn');
             const statusMsg = document.getElementById('formStatusMessage');
