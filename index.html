@@ -318,6 +318,9 @@
             transition: var(--transition-tactile);
             border: 1px solid var(--text-primary);
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn:hover {
@@ -564,137 +567,235 @@
             text-align: center;
         }
 
-        /* --- PROFESSIONAL ADJUSTED FOOTER --- */
-        footer {
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            padding: 80px 8% 60px;
             background: var(--bg-card);
             border-top: 1px solid var(--border-color);
-            padding: 80px 8% 40px;
         }
 
-        .footer-grid {
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 40px;
-            margin-bottom: 60px;
+            margin-top: 30px;
+            align-items: start;
         }
 
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1.5fr 1fr 1fr;
+        @media (min-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                align-items: end;
+                /* Pulls details down to form base level on large layouts */
             }
         }
 
-        .footer-brand h2 {
-            font-family: var(--font-accent);
-            letter-spacing: -1px;
-            margin-bottom: 16px;
+        /* Left Aligned Shrunk Form */
+        .contact-form-card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.01);
+            width: 100%;
+            max-width: 440px;
+            justify-self: start;
+            text-align: left;
         }
 
-        .footer-brand p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 340px;
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
-        .footer-column h3 {
-            font-family: var(--font-accent);
-            font-size: 1.1rem;
-            margin-bottom: 24px;
+        @media (min-width: 576px) {
+            .form-group-row {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        .footer-links {
+        .input-group {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 4px;
+            margin-bottom: 12px;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition-tactile);
+        .input-group.no-margin {
+            margin-bottom: 0;
         }
 
-        .contact-item:hover {
-            transform: translateX(4px);
-        }
-
-        .icon-box {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-neon);
-            background: #FFFFFF;
-        }
-
-        .contact-details h4 {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        .contact-details span {
-            font-size: 0.95rem;
+        .input-group label {
+            font-size: 0.72rem;
             font-weight: 600;
-        }
-
-        .social-vertical-list {
-            margin-bottom: 16px;
-        }
-
-        .social-link-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            text-decoration: none;
             color: var(--text-primary);
-            font-weight: 600;
-            font-size: 0.9rem;
-            background: #FFFFFF;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-dark);
+            font-family: var(--font-main);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            outline: none;
             transition: var(--transition-tactile);
         }
 
-        .social-link-card:hover {
+        .input-group input:focus,
+        .input-group textarea:focus {
             border-color: var(--accent-neon);
-            color: var(--accent-neon);
+            box-shadow: 0 0 0 2px var(--accent-glow);
         }
 
-        .social-row-round {
-            display: flex;
-            gap: 12px;
+        .input-group textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
-        .social-round-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid var(--border-color);
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            border-radius: 6px;
+        }
+
+        .form-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
+            gap: 6px;
+        }
+
+        /* Right Aligned Contacts & Text sized to 12px */
+        .info-minimal-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        @media (min-width: 992px) {
+            .info-minimal-container {
+                text-align: right;
+                align-items: flex-end;
+                justify-self: end;
+                padding-bottom: 5px;
+                /* Fine-tune precise optical baseline match */
+            }
+        }
+
+        .minimal-text-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .minimal-underlined-link {
+            font-size: 12px;
+            /* Enforced 12px typography size limit */
+            font-weight: 600;
+            color: var(--text-primary);
             text-decoration: none;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 2px;
             transition: var(--transition-tactile);
         }
 
-        .social-round-btn:hover {
-            background: var(--text-primary);
-            color: var(--bg-dark);
-            border-color: var(--text-primary);
+        .minimal-underlined-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: var(--text-primary);
+            transition: var(--transition-tactile);
+        }
+
+        @media (min-width: 992px) {
+            .minimal-underlined-link::after {
+                right: 0;
+            }
+
+            .minimal-underlined-link:hover {
+                transform: translateX(-3px);
+            }
+
+            .minimal-underlined-link:hover::after {
+                background-color: var(--accent-neon);
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .minimal-underlined-link::after {
+                left: 0;
+            }
+
+            .minimal-underlined-link:hover {
+                transform: translateX(3px);
+            }
+
+            .minimal-underlined-link:hover::after {
+                background-color: var(--accent-neon);
+                width: 50%;
+            }
+        }
+
+        /* Smaller Icons Row setup */
+        .social-connect-block {
+            margin-top: 6px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+            width: 100%;
+        }
+
+        .minimal-icon-row {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        @media (min-width: 992px) {
+            .minimal-icon-row {
+                justify-content: flex-end;
+            }
+        }
+
+        .minimal-icon-link {
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            /* Downscaled small visual size profile */
+            text-decoration: none;
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .minimal-icon-link:hover {
+            color: var(--accent-neon);
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--bg-dark);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 8%;
         }
 
         .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 30px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -833,74 +934,96 @@
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="footer-grid">
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <span class="section-subtitle">Let's Collaborate</span>
+            <h2 class="section-title">Start Your Project</h2>
+        </div>
 
-            <div class="footer-brand">
-                <h2>Abdullah Forhad</h2>
-                <p>Creative Technologist bridging the space between stunning visual aesthetics and production-grade
-                    software performance.</p>
+        <div class="contact-grid">
+            <div class="contact-form-card">
+                <form id="portfolioContactForm">
+                    <div class="form-group-row">
+                        <div class="input-group no-margin">
+                            <label>Your Name *</label>
+                            <input type="text" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="input-group no-margin">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="input-group no-margin">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="+880 1XXX-XXXXXX">
+                        </div>
+                        <div class="input-group no-margin">
+                            <label>Preferred Meeting Date</label>
+                            <input type="date" name="meeting_date">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Project Message *</label>
+                        <textarea name="message"
+                            placeholder="Tell me a bit about your ideas, targets, and timeline details..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" id="submitFormBtn" class="btn btn-small">
+                        <span>Send Message</span> &nbsp;<i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                    <div id="formStatusMessage" class="form-status"></div>
+                </form>
             </div>
 
-            <div class="footer-column">
-                <h3>Inquiries</h3>
-                <div class="footer-links">
+            <div class="info-minimal-container">
+                <div class="minimal-text-block">
+                    <a href="mailto:forhadalpha08@gmail.com" class="minimal-underlined-link">Email</a>
+                </div>
 
-                    <a href="mailto:forhadalpha08@gmail.com" class="contact-item">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email Communications</h4>
-                            <span>forhadalpha08@gmail.com</span>
-                        </div>
-                    </a>
+                <div class="minimal-text-block">
+                    <a href="https://wa.me/8801342900364" target="_blank" class="minimal-underlined-link">WhatsApp</a>
+                </div>
 
-                    <a href="https://wa.me/8801342900364" class="contact-item">
-                        <div class="icon-box">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Direct Line</h4>
-                            <span>@abdullah.theLegend</span>
-                        </div>
-                    </a>
-
-                    <div class="contact-item">
-                        <div class="icon-box">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <span>Chittagong Division, Bangladesh</span>
-                        </div>
+                <div class="social-connect-block">
+                    <div class="minimal-icon-row">
+                        <a href="https://www.instagram.com/" target="_blank" class="minimal-icon-link"
+                            title="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/" target="_blank" class="minimal-icon-link" title="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank"
+                            class="minimal-icon-link" title="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank" class="minimal-icon-link" title="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://www.reddit.com/" target="_blank" class="minimal-icon-link" title="Reddit">
+                            <i class="fa-brands fa-reddit-alien"></i>
+                        </a>
+                        <a href="https://www.pinterest.com/" target="_blank" class="minimal-icon-link"
+                            title="Pinterest">
+                            <i class="fa-brands fa-pinterest"></i>
+                        </a>
+                        <a href="https://x.com/" target="_blank" class="minimal-icon-link" title="X (Twitter)">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <div class="footer-column">
-                <h3>Connect</h3>
-                <div class="social-vertical-list">
-                    <a href="https://www.facebook.com/profile.php?id=61580779565120" class="social-link-card">
-                        <i class="fa-brands fa-facebook"></i>
-                        <span>Facebook Profile</span>
-                    </a>
-                </div>
-                <div class="social-row-round">
-                    <a href="https://www.facebook.com/profile.php?id=61580779565120" class="social-round-btn"
-                        title="Facebook">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-                    <a href="https://www.instagram.com/" class="social-round-btn" title="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-            </div>
-
         </div>
+    </section>
 
+    <footer>
         <div class="footer-bottom">
-            <span>&copy; @abdullah.theLegend</span>
+            <span>&copy; 2026 @abdullah.theLegend.</span>
             <div class="footer-bottom-links">
                 <a href="about.html">Privacy Policy</a>
                 <a href="about.html">Terms of Service</a>
@@ -1064,7 +1187,53 @@
                 });
             }
 
-            // EXECUTE PAGE DECORATIVE CONFIGURATIONS
+            // 7. FORM SUBMISSION GATEWAY CONTROLLER
+            const contactForm = document.getElementById('portfolioContactForm');
+            const submitBtn = document.getElementById('submitFormBtn');
+            const statusMsg = document.getElementById('formStatusMessage');
+
+            const googleScriptUrl = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE';
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.6';
+                    statusMsg.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Dispatching details safely...`;
+                    statusMsg.style.color = 'var(--text-muted)';
+
+                    const formData = new FormData(contactForm);
+
+                    fetch(googleScriptUrl, {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.result === 'success') {
+                                statusMsg.style.color = '#10B981';
+                                statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Project dispatched! Check email shortly.`;
+                                contactForm.reset();
+                            } else {
+                                throw new Error('Pipeline script rejected delivery execution');
+                            }
+                        })
+                        .catch(error => {
+                            statusMsg.style.color = '#EF4444';
+                            statusMsg.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Connection dropped. Send via mailto channel directly.`;
+                            console.error('Error details:', error.message);
+                        })
+                        .finally(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.style.opacity = '1';
+                            if (typeof gsap !== "undefined") {
+                                gsap.fromTo(statusMsg, { opacity: 0, y: 5 }, { opacity: 1, y: 0, duration: 0.4 });
+                            }
+                        });
+                });
+            }
+
             applyMainPageDesign();
             renderShowcase();
         });
