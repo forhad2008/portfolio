@@ -516,7 +516,7 @@
             object-fit: cover;
             object-position: center;
             display: block;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: trasform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         /* --- RESPONSIVE FIX: FULL SCREEN SCALE SAFE OVERRIDES FOR MOBILE SCREEN VIEWS --- */
@@ -1213,11 +1213,12 @@ footer{
 
     <textarea name="message" placeholder="Tell me a bit about your ideas..." required>
     </textarea>
+<button type="submit" id="submitFormBtn" class="btn btn-small">
+    <span>Send Message</span>
+    <i class="fa-solid fa-paper-plane"></i>
+</button>
 
-    <button type="submit" id="submitFormBtn" class="btn btn-small">
-        <span>Send Message</span>
-        <i class="fa-solid fa-paper-plane"></i>
-    </button>
+<div id="formStatusMessage" class="form-status"></div>
 </div>
 
 
