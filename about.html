@@ -8,34 +8,51 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM (Matched to Home) --- */
         :root {
-            --bg-dark: #FFFFFF;
-            --bg-card: #F4F7FA;
-            --text-primary: #0F172A;
-            --text-muted: #64748B;
-            --accent-neon: #0284C7;
-            --accent-glow: rgba(2, 132, 199, 0.15);
-            --border-color: rgba(15, 23, 42, 0.08);
-            --font-accent: 'Syne', sans-serif;
-            --font-main: 'Plus Jakarta Sans', sans-serif;
-            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --bg-main: #0b0c10;
+            --bg-surface: #1f2833;
+            --bg-card: #151a22;
+            --text-primary: #f5f5f7;
+            --text-muted: #c5a880;
+            --text-dark: #86868b;
+            --accent: #ff003c;
+            --accent-glow: rgba(255, 0, 60, 0.25);
+            --border: rgba(255, 255, 255, 0.05);
+            --font-display: 'Orbitron', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-main);
+            font-family: var(--font-body);
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+        }
+
+        body {
+            min-height: 100vh;
+            padding: 140px 10% 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
         #canvas-container {
@@ -48,68 +65,47 @@
             pointer-events: none;
         }
 
-        html,
-        body {
-            width: 100%;
-            max-width: 100vw;
-            overflow-x: hidden;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-            padding: 140px 8% 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            position: relative;
-            box-sizing: border-box;
-        }
-
-        /* Ambient Blue Background Glow */
-        body::before {
-            content: '';
+        /* Ambient Background Gradients */
+        .ambient-glow {
             position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
+            top: -20%;
+            right: -10%;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- SLEEK LIGHT GLASS NAVIGATION --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 24px 8%;
+            padding: 30px 10%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            box-sizing: border-box;
+            background: rgba(11, 12, 16, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            font-family: var(--font-accent);
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
             color: var(--text-primary);
             text-transform: uppercase;
         }
 
         .logo span {
-            color: var(--accent-neon);
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
         }
 
         .desktop-nav {
@@ -120,46 +116,38 @@
 
         .desktop-nav a {
             text-decoration: none;
-            color: var(--text-muted);
+            color: var(--text-dark);
             font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: var(--transition-tactile);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition);
         }
 
         .desktop-nav a:hover,
         .desktop-nav li.active a {
-            color: var(--accent-neon);
+            color: var(--text-primary);
+            text-shadow: 0 0 8px rgba(255,255,255,0.5);
         }
 
-        /* Hamburger Styles matching Homepage */
         .hamburger {
             cursor: pointer;
             z-index: 2100;
             display: none;
             flex-direction: column;
             gap: 6px;
-            padding: 4px;
         }
 
         .hamburger div {
             width: 25px;
             height: 2px;
             background: var(--text-primary);
-            transition: var(--transition-tactile);
+            transition: var(--transition);
         }
 
-        .hamburger.active div:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active div:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+        .hamburger.active div:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger.active div:nth-child(2) { opacity: 0; }
+        .hamburger.active div:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
         .menu-window {
             position: fixed;
@@ -167,200 +155,210 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: var(--bg-dark);
+            background: var(--bg-main);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1500;
-            transform: translateY(-100%);
+            transform: translateX(100%);
             transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-            border-bottom: 1px solid var(--border-color);
-            box-sizing: border-box;
-            overflow: hidden;
         }
 
-        .menu-window.open {
-            transform: translateY(0);
-        }
-
-        .menu-window ul {
-            list-style: none;
-            text-align: center;
-            width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        .menu-window li {
-            margin: 24px 0;
-        }
-
+        .menu-window.open { transform: translateX(0); }
+        .menu-window ul { list-style: none; text-align: center; }
+        .menu-window li { margin: 30px 0; }
         .menu-window a {
-            font-family: var(--font-accent);
+            font-family: var(--font-display);
             font-size: 2rem;
             color: var(--text-primary);
             text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition-tactile);
-            display: block;
+            text-transform: uppercase;
+            transition: var(--transition);
         }
+        .menu-window a:hover { color: var(--accent); }
 
-        .menu-window a:hover {
-            color: var(--accent-neon);
-        }
-
-        /* --- MODERN ABOUT BOX --- */
-        .preview-container {
-            max-width: 650px;
+        /* --- MAIN PORTFOLIO HUB LAYOUT --- */
+        .profile-wrapper {
+            max-width: 1100px;
             width: 100%;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 50px 40px;
-            box-shadow: 0 40px 80px rgba(15, 23, 42, 0.04);
+            display: grid;
+            grid-template-columns: 1.28fr 1.72fr;
+            gap: 40px;
             position: relative;
-            overflow: hidden;
-            box-sizing: border-box;
         }
 
-        .preview-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--accent-neon), transparent);
+        .back-btn-container {
+            grid-column: 1 / -1;
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
+            gap: 10px;
+            color: var(--text-dark);
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 35px;
-            transition: var(--transition-tactile);
+            letter-spacing: 2px;
+            transition: var(--transition);
             font-weight: 600;
         }
 
         .back-link:hover {
-            color: var(--accent-neon);
-            transform: translateX(-3px);
+            color: var(--accent);
+            transform: translateX(-5px);
         }
 
-        .project-header {
-            margin-bottom: 40px;
-        }
-
-        .project-title {
-            font-family: var(--font-accent);
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
-            font-weight: 800;
-            color: var(--text-primary);
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-        }
-
-        .project-category {
-            color: var(--accent-neon);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        /* --- ASYMMETRIC METRIC LIST --- */
-        .info-grid {
+        /* Left Section: Identity Card */
+        .identity-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px 40px;
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-bottom: 20px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 35px;
-        }
-
-        .info-item {
-            display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 18px 24px;
-            background: #FFFFFF;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            transition: var(--transition-tactile);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
         }
 
-        .info-item:hover {
-            border-color: rgba(15, 23, 42, 0.15);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+        .identity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), transparent);
         }
 
-        .info-item h3 {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 600;
+        .hero-tag {
+            font-family: var(--font-display);
+            color: var(--accent);
             text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .main-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .main-title span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        }
+
+        .signature-block h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+        }
+
+        .signature-block p {
+            color: var(--text-dark);
+            font-size: 0.9rem;
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .info-item span {
+        /* Right Section: Core Data Hub */
+        .data-hub {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .bio-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .bio-panel p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #adadb8;
+            font-weight: 300;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 150px;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(255, 0, 60, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.05);
+        }
+
+        .stat-card label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .stat-card .value {
+            font-size: 1.4rem;
+            font-weight: 700;
             color: var(--text-primary);
-            font-weight: 600;
-            font-size: 1.05rem;
+            letter-spacing: -0.5px;
         }
 
-        .highlight-text {
-            color: var(--accent-neon) !important;
-            font-weight: 700 !important;
+        .stat-card .value.highlight {
+            color: var(--accent);
+            font-family: var(--font-display);
+            font-weight: 900;
+            text-shadow: 0 0 15px rgba(255,0,60,0.3);
         }
 
         .reveal {
             opacity: 0;
         }
 
-        /* --- RESPONSIVE MOBILE FIXES --- */
+        /* --- RESPONSIVE BREAKPOINTS --- */
         @media (max-width: 991px) {
-            .desktop-nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
+            .desktop-nav { display: none; }
+            .hamburger { display: flex; }
+            .profile-wrapper { grid-template-columns: 1fr; }
+            body { padding: 120px 6% 60px; }
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 120px 16px 60px;
-            }
-
-            nav {
-                padding: 16px 16px;
-            }
-
-            .preview-container {
-                padding: 36px 20px;
-                border-radius: 16px;
-            }
-
-            .info-item {
-                padding: 16px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .info-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-            }
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .identity-card { padding: 40px 24px; }
+            .bio-panel { padding: 30px 24px; }
         }
     </style>
 </head>
@@ -368,9 +366,10 @@
 <body>
 
     <div id="canvas-container"></div>
+    <div class="ambient-glow"></div>
 
     <nav>
-        <div class="logo">Profile<span>.</span></div>
+        <div class="logo">Forhad<span>.</span></div>
         <ul class="desktop-nav">
             <li><a href="index.html">Home</a></li>
             <li class="active"><a href="about.html">About</a></li>
@@ -388,50 +387,74 @@
         <ul id="mobile-nav-links"></ul>
     </div>
 
-    <div class="preview-container">
-        <a href="index.html" class="back-link reveal">
-            <i class="fas fa-arrow-left"></i> Return to Home
-        </a>
+    <div class="profile-wrapper">
+        
+        <div class="back-btn-container reveal">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Escape to Home
+            </a>
+        </div>
 
-        <header class="project-header">
-            <span class="project-category reveal">Personal Profile</span>
-            <h1 class="project-title reveal">About Me</h1>
-        </header>
-
-        <div class="info-grid">
-            <div class="info-item reveal">
-                <h3>First Name</h3>
-                <span>Abdullah</span>
+        <div class="identity-card reveal">
+            <div>
+                <span class="hero-tag">System.Profile</span>
+                <h1 class="main-title">About<br><span>Me</span></h1>
             </div>
-            <div class="info-item reveal">
-                <h3>Last Name</h3>
-                <span>Forhad</span>
-            </div>
-            <div class="info-item reveal">
-                <h3>Country</h3>
-                <span>Bangladesh</span>
-            </div>
-            <div class="info-item reveal">
-                <h3>Mentality</h3>
-                <span class="highlight-text">Alpha</span>
-            </div>
-            <div class="info-item reveal">
-                <h3>Profession</h3>
-                <span class="highlight-text">Designing</span>
-            </div>
-            <div class="info-item reveal">
-                <h3>Favorite Sport</h3>
-                <span>Boxing</span>
+            
+            <div class="signature-block">
+                <h2>Abdullah Forhad</h2>
+                <p>Designer & Tech Strategist</p>
             </div>
         </div>
+
+        <div class="data-hub">
+            <div class="bio-panel reveal">
+                <p>
+                    Operating at the intersection of aesthetic architecture and structural intent. I sculpt digital ecosystems that do not merely exist but perform with high conviction and clinical accuracy.
+                </p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <label>First Name</label>
+                    <div class="value">Abdullah</div>
+                </div>
+                
+                <div class="stat-card reveal">
+                    <label>Last Name</label>
+                    <div class="value">Forhad</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <label>Base Origin</label>
+                    <div class="value">Bangladesh</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <label>Focus Core</label>
+                    <div class="value">Designing</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <label>Tactical Drive</label>
+                    <div class="value highlight">Alpha Mode</div>
+                </div>
+
+                <div class="stat-card reveal">
+                    <label>Dynamic Sport</label>
+                    <div class="value">Boxing</div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
-        // --- MOBILE MENU POPULATION & TOGGLE ENGINE ---
+        // MOBILE OVERLAY INTERACTION ENGINE
         document.addEventListener("DOMContentLoaded", () => {
             const menuItems = [
                 { label: "Home", url: "index.html" },
-                { label: "About Me", url: "about.html" },
+                { label: "About", url: "about.html" },
                 { label: "Services", url: "service.html" },
                 { label: "Contact", url: "index.html#contact" }
             ];
@@ -454,102 +477,88 @@
             }
         });
 
-        // --- 3D AMBIENT SILK FLOATING ENGINE (High-Tech Glass Aesthetic) ---
+        // --- DYNAMIC THREE.JS COSMIC WARP ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        camera.position.z = 30;
+        // Particle System Matrix
+        const particleCount = 1200;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const speeds = new Float32Array(particleCount);
 
-        const bubbleCount = 15;
-        const bubbles = [];
-        const bubbleGroup = new THREE.Group();
-        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
-
-        function createBubbleMaterial() {
-            return new THREE.MeshPhysicalMaterial({
-                color: 0x0284C7,
-                emissive: 0xFFFFFF,
-                emissiveIntensity: 0.1,
-                roughness: 0.05,
-                metalness: 0.1,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.05,
-                transmission: 0.85,
-                ior: 1.5,
-                thickness: 1.5,
-                transparent: true,
-                opacity: 0.12
-            });
+        for(let i = 0; i < particleCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 100;     // X
+            positions[i+1] = (Math.random() - 0.5) * 100;   // Y
+            positions[i+2] = (Math.random() - 0.5) * 100;   // Z
+            speeds[i/3] = Math.random() * 0.2 + 0.05;
         }
 
-        for (let i = 0; i < bubbleCount; i++) {
-            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 2.0 + 0.5;
-            mesh.scale.set(scale, scale, scale);
-            mesh.position.x = (Math.random() - 0.5) * 55;
-            mesh.position.y = (Math.random() - 0.5) * 45;
-            mesh.position.z = (Math.random() - 0.5) * 15;
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-            mesh.userData = {
-                speedY: (scale * 0.008) + 0.003,
-                phaseX: Math.random() * Math.PI * 2,
-                baseScale: scale
-            };
-            bubbleGroup.add(mesh);
-            bubbles.push(mesh);
-        }
-        scene.add(bubbleGroup);
-
-        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 1.8);
-        skyLight.position.set(10, 20, 10);
-        scene.add(skyLight);
-
-        const fillLight = new THREE.AmbientLight(0x0284C7, 0.3);
-        scene.add(fillLight);
-
-        const mouse = { x: 0, y: 0 };
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        // Crimson Star Matrix Material
+        const material = new THREE.PointsMaterial({
+            color: 0xff003c,
+            size: 0.25,
+            transparent: true,
+            opacity: 0.6,
+            blending: THREE.AdditiveBlending
         });
 
+        const starField = new THREE.Points(geometry, material);
+        scene.add(starField);
+
+        camera.position.z = 30;
+
+        // Interaction coordinates
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - window.innerWidth / 2) * 0.02;
+            mouseY = (e.clientY - window.innerHeight / 2) * 0.02;
+        });
+
+        // Warp Animation Loop
         function animate() {
             requestAnimationFrame(animate);
-            const time = Date.now();
 
-            bubbles.forEach(bubble => {
-                const p = bubble.userData;
-                bubble.position.y += p.speedY;
-                bubble.position.x += Math.sin(time * 0.0008 + p.phaseX) * 0.01;
+            const positionsArr = geometry.attributes.position.array;
+            
+            for(let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                positionsArr[i3 + 2] += speeds[i]; // Move forward on Z axis
 
-                if (bubble.position.y > 25) {
-                    bubble.position.y = -25;
-                    bubble.position.x = (Math.random() - 0.5) * 55;
+                // Loop particles back once they pass the viewport camera view
+                if(positionsArr[i3 + 2] > 30) {
+                    positionsArr[i3 + 2] = -70;
+                    positionsArr[i3] = (Math.random() - 0.5) * 100;
+                    positionsArr[i3 + 1] = (Math.random() - 0.5) * 100;
                 }
-            });
+            }
+            geometry.attributes.position.needsUpdate = true;
 
-            bubbleGroup.rotation.y += (mouse.x * 0.02 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.02 - bubbleGroup.rotation.x) * 0.05;
+            // Parallax tracking
+            starField.rotation.x += (mouseY * 0.05 - starField.rotation.x) * 0.1;
+            starField.rotation.y += (mouseX * 0.05 - starField.rotation.y) * 0.1;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // --- GSAP REVEAL ANIMATION (Matching Homepage Fluid Transitions) ---
+        // --- SMOOTH COMPONENT REVEAL ENGINE (GSAP) ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
-                stagger: 0.06,
-                ease: "power3.out",
-                startAt: { y: 25 }
+                duration: 1.2,
+                stagger: 0.08,
+                ease: "power4.out",
+                startAt: { y: 40 }
             });
         });
 
@@ -560,5 +569,4 @@
         });
     </script>
 </body>
-
 </html>
