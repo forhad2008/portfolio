@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Forhad | Creative Signature Resume</title>
+    <title>Abdullah Forhad | Premium Editorial Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -16,29 +16,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- CLASSIC EDITORIAL DEEP RED SYSTEM --- */
         :root {
-            --bg-dark: #FFFFFF;              /* Pure Gallery White */
-            --bg-card: #FDFBF7;              /* Soft Warm Alabaster Tint */
-            --text-primary: #111115;         /* Deep Charcoal Black */
-            --text-muted: #57534E;           /* Stone Warm Gray */
-            --accent-neon: #991B1B;          /* Luxurious Deep Red / Crimson */
-            --accent-glow: rgba(153, 27, 27, 0.06);
-            --border-color: rgba(17, 17, 21, 0.08);
+            --bg-canvas: #FAF9F6;          /* Off-white Silk */
+            --bg-card: #FFFFFF;            /* Pure Gallery White */
+            --text-main: #0D0F12;          /* Midnight Slate */
+            --text-muted: #626875;         /* Soft Charcoal */
+            --accent-gold: #B39274;        /* Muted Antique Gold */
+            --border-line: rgba(13, 15, 18, 0.06);
             
-            /* Typography Variables */
-            --font-ui: 'Plus Jakarta Sans', sans-serif;
-            --font-editorial: 'Cormorant Garamond', serif;
-            --font-signature: 'Playfair Display', serif;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Inter', sans-serif;
             
-            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-ui);
+        }
+
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 24px;
+            overflow-x: hidden;
+            position: relative;
+            letter-spacing: -0.01em;
         }
 
         #canvas-container {
@@ -47,403 +56,267 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
-            pointer-events: none;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 140px 24px 80px;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Ambient Deep Red Background Glow */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(153, 27, 27, 0.03) 0%, rgba(255,255,255,0) 70%);
             z-index: -1;
             pointer-events: none;
+            opacity: 0.6;
         }
 
-        /* Structural Editorial Guide Line */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 10%;
-            width: 1px;
-            height: 100%;
-            background: var(--border-color);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* --- MODERN GLASS NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 24px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-family: var(--font-ui);
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            text-transform: uppercase;
-        }
-
-        .logo span {
-            color: var(--accent-neon);
-        }
-
-        /* --- EDITORIAL RESUME CARD --- */
-        .resume-card {
-            width: 1000px;
+        /* Luxury Layout Wrapper */
+        .premium-container {
+            width: 1100px;
             max-width: 100%;
-            background: #FFFFFF;
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 30px 60px rgba(17, 17, 21, 0.02);
+            background: var(--bg-card);
+            border: 1px solid var(--border-line);
+            border-radius: 20px;
+            box-shadow: 0 40px 90px rgba(13, 15, 18, 0.03);
             z-index: 10;
             position: relative;
             overflow: hidden;
-        }
-
-        /* --- Left Sidebar --- */
-        .sidebar {
-            background: var(--bg-card);
-            border-right: 1px solid var(--border-color);
-            padding: 55px 35px;
-        }
-
-        .profile-img-container {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 30px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            padding: 6px;
-            background: #FFFFFF;
-            overflow: hidden;
-        }
-
-        .profile-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 2px;
-        }
-
-        .sidebar h2 {
-            font-family: var(--font-editorial);
-            font-size: 2.2rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-            line-height: 1.1;
-        }
-
-        .sidebar p {
-            font-family: var(--font-ui);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-neon);
-            margin-bottom: 35px;
-            font-weight: 700;
-        }
-
-        .info-section {
-            text-align: left;
-            margin-top: 40px;
-        }
-
-        .info-title {
-            font-family: var(--font-ui);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-            font-weight: 700;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 14px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition-tactile);
-        }
-
-        .contact-link:hover {
-            color: var(--accent-neon);
-        }
-
-        .contact-link i {
-            font-size: 0.85rem;
-            width: 20px;
-            color: var(--accent-neon);
-        }
-
-        .sidebar .personal-txt {
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .sidebar .personal-txt b {
-            font-family: var(--font-ui);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-primary);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        /* --- Right Main Content --- */
-        .main-content {
-            padding: 55px 50px;
-            background: #FFFFFF;
-        }
-
-        .resume-section {
-            margin-bottom: 45px;
-        }
-
-        .section-header {
-            font-family: var(--font-ui);
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .section-header i {
-            color: var(--accent-neon);
-            font-size: 0.9rem;
-        }
-
-        /* Signature Paragraph Stylings */
-        .profile-summary {
-            font-family: var(--font-signature);
-            font-style: italic;
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 1.2rem;
-            letter-spacing: -0.2px;
-        }
-
-        .experience-item {
-            margin-bottom: 35px;
-            position: relative;
-            padding-left: 24px;
-            border-left: 1px solid var(--accent-neon);
-        }
-
-        .experience-item h4 {
-            font-family: var(--font-ui);
-            font-size: 1rem;
-            color: var(--text-primary);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .experience-item span {
-            font-family: var(--font-ui);
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-neon);
-            display: block;
-            margin: 4px 0 12px;
-        }
-
-        .experience-item p {
-            font-family: var(--font-editorial);
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* Skills Matrix Grid */
-        .skills-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px 35px;
+            grid-template-columns: 1fr;
+            opacity: 0;
         }
 
-        .skill-item {
-            margin-bottom: 5px;
-        }
-
-        .skill-label {
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+        /* Editorial Master Header */
+        header {
+            padding: 80px 80px 50px;
+            border-bottom: 1px solid var(--border-line);
             display: flex;
             justify-content: space-between;
-            color: var(--text-primary);
-            font-weight: 600;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 30px;
         }
 
-        .skill-label span:first-child {
-            font-family: var(--font-ui);
+        .hero-title h1 {
+            font-family: var(--font-serif);
+            font-size: 4.2rem;
+            font-weight: 300;
+            line-height: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .hero-title p {
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.25em;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .quick-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+            text-align: right;
+        }
+
+        .quick-contact a, .quick-contact span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            font-weight: 400;
+        }
+
+        .quick-contact a:hover {
+            color: var(--text-main);
+            transform: translateX(-3px);
+        }
+
+        /* Two-Column Asymmetric Body Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            min-height: 600px;
+        }
+
+        .left-column {
+            border-right: 1px solid var(--border-line);
+            padding: 60px 60px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .right-column {
+            padding: 60px 80px 80px 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Typography Standards for Blocks */
+        .section-label {
             font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: block;
         }
 
-        .progress-bg {
-            background: rgba(17, 17, 21, 0.05);
-            height: 4px;
-            border-radius: 2px;
-            overflow: hidden;
+        .profile-text {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            line-height: 1.5;
+            font-weight: 300;
+            color: var(--text-main);
         }
 
-        .progress-fill {
-            background: var(--accent-neon);
+        /* Modern Timeline Blocks */
+        .timeline-block {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .timeline-meta h3 {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .timeline-meta .date {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* Clean High-Contrast Skills Architecture */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .skill-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        .skill-bar-bg {
+            background: rgba(13, 15, 18, 0.04);
+            height: 2px;
+            width: 100%;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            background: var(--text-main);
             height: 100%;
             width: 0;
-            border-radius: 2px;
-            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Actions Custom Layout */
-        .download-btn {
+        .meta-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .meta-list li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .meta-list li span:first-child {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        /* High-End Clean Print/PDF Trigger */
+        .action-tray {
+            padding: 0 80px 80px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-luxury {
+            background: var(--text-main);
+            color: var(--bg-card);
+            border: none;
+            padding: 16px 40px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            margin-top: 15px;
-            background: transparent;
-            color: var(--accent-neon);
-            border: 1px solid var(--accent-neon);
-            padding: 14px 32px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            font-family: var(--font-ui);
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            font-size: 0.75rem;
-            transition: var(--transition-tactile);
-            cursor: pointer;
         }
 
-        .download-btn:hover {
-            background: var(--accent-neon);
-            color: #FFFFFF;
+        .btn-luxury:hover {
+            background: var(--accent-gold);
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px var(--accent-glow);
+            box-shadow: 0 10px 30px rgba(179, 146, 116, 0.2);
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 850px) {
-            .resume-card {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-                padding: 45px 25px;
-            }
-
-            .main-content {
-                padding: 45px 25px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Responsive Flow Configuration */
+        @media (max-width: 900px) {
+            header { padding: 40px; }
+            .content-grid { grid-template-columns: 1fr; }
+            .left-column { padding: 40px; border-right: none; border-bottom: 1px solid var(--border-line); }
+            .right-column { padding: 40px; }
+            .action-tray { padding: 40px; }
+            .hero-title h1 { font-size: 3rem; }
         }
 
-        /* --- STYLED PRINT ENGINE --- */
+        /* Specialized Ultra-Sharp Print Engine Styles */
         @media print {
-            body {
-                background: #FFFFFF !important;
-                color: #000000 !important;
-                padding: 0 !important;
-            }
-
-            #canvas-container,
-            .download-btn,
-            nav,
-            body::before,
-            body::after {
-                display: none !important;
-            }
-
-            .resume-card {
-                width: 100% !important;
-                box-shadow: none !important;
-                border: none !important;
-                background: #FFFFFF !important;
-                grid-template-columns: 260px 1fr !important;
-            }
-
-            .sidebar {
-                background: #FDFBF7 !important;
-                border-right: 1px solid #E5E7EB !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .progress-bg {
-                background: #E5E7EB !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-
-            .progress-fill {
-                background: #991B1B !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
-
-        .reveal {
-            opacity: 0;
+            body { background: #FFFFFF !important; padding: 0 !important; color: #000000 !important; }
+            #canvas-container, .action-tray { display: none !important; }
+            .premium-container { border: none !important; box-shadow: none !important; width: 100% !important; }
+            .left-column { padding: 40px 40px 40px 0 !important; }
+            .right-column { padding: 40px 0 40px 40px !important; }
+            header { padding: 40px 0 !important; }
+            .skill-bar-fill { background: #000000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
@@ -452,114 +325,105 @@
 
     <div id="canvas-container"></div>
 
-    <nav>
-        <div class="logo">Digital<span>Resume</span></div>
-    </nav>
-
-    <div class="resume-card reveal">
-        <aside class="sidebar">
-            <div class="profile-img-container">
-                <img src="1.jpg" alt="Abdullah Forhad">
+    <div class="premium-container">
+        <header>
+            <div class="hero-title">
+                <h1>Abdullah Forhad</h1>
+                <p>Designer & Frontend Engineer</p>
             </div>
-            <h2>Abdullah Forhad</h2>
-            <p>Designer & Developer</p>
-
-            <div class="info-section">
-                <h3 class="info-title">Contact Me</h3>
-                <a href="mailto:forhadalpha08@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> forhadalpha08@gmail.com
-                </a>
-                <a href="tel:+8801342900364" class="contact-link">
-                    <i class="fas fa-phone"></i> +880 1342 900364
-                </a>
-                <a href="#" class="contact-link">
-                    <i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh
-                </a>
+            <div class="quick-contact">
+                <a href="mailto:forhadalpha08@gmail.com">forhadalpha08@gmail.com</a>
+                <a href="tel:+8801342900364">+880 1342 900364</a>
+                <span>Chittagong, Bangladesh</span>
             </div>
+        </header>
 
-            <div class="info-section">
-                <h3 class="info-title">Personal Info</h3>
-                <p class="personal-txt"><b>Date of Birth</b> 20 November 2008</p>
-                <p class="personal-txt"><b>Nationality</b> Bangladeshi</p>
-            </div>
-        </aside>
-
-        <main class="main-content">
-            <section class="resume-section">
-                <h3 class="section-header"><i class="fas fa-user-circle"></i> Profile</h3>
-                <p class="profile-summary">
-                    Creative Frontend Developer and Graphics Designer with 3+ years of experience building responsive
-                    websites and web applications. Passionate about modern web technologies and user-centered design. I
-                    specialize in turning complex problems into simple, beautiful, and intuitive designs.
-                </p>
-            </section>
-
-            <section class="resume-section">
-                <h3 class="section-header"><i class="fas fa-briefcase"></i> Experience</h3>
-
-                <div class="experience-item">
-                    <h4>Frontend Developer — TechCorp</h4>
-                    <span>Jan 2025 – Present</span>
-                    <p>Developed responsive websites using React, improved website performance by 30%, and collaborated
-                        with designers for UI/UX improvements.</p>
+        <div class="content-grid">
+            <aside class="left-column">
+                <div>
+                    <span class="section-label">Profile</span>
+                    <p class="profile-text">
+                        A digital architect specialized in bridging the clean spacing of modern typography with powerful frontend engineering frameworks. Focused on elegant visual presentation and refined interactions.
+                    </p>
                 </div>
 
-                <div class="experience-item">
-                    <h4>Junior Developer — WebWorks</h4>
-                    <span>Jun 2026 – P
-                        resent</span>
-                    <p>Built interactive web features with HTML, CSS, and JavaScript. Assisted in maintaining company
-                        CMS and enhancing website accessibility.</p>
-                </div>
-            </section>
-
-            <section class="resume-section">
-                <h3 class="section-header"><i class="fas fa-tools"></i> Skills Matrix</h3>
-                <div class="skills-grid">
-                    <div class="skill-item">
-                        <div class="skill-label"><span>MS Word</span> <span>85%</span></div>
-                        <div class="progress-bg">
-                            <div class="progress-fill" style="width: 85%;"></div>
+                <div>
+                    <span class="section-label">Core Capabilities</span>
+                    <div class="skills-container">
+                        <div class="skill-row">
+                            <div class="skill-header"><span>React & JavaScript Engine</span><span>75%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-label"><span>VS Code</span> <span>90%</span></div>
-                        <div class="progress-bg">
-                            <div class="progress-fill" style="width: 90%;"></div>
+                        <div class="skill-row">
+                            <div class="skill-header"><span>Visual Design (Photoshop)</span><span>80%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-label"><span>Adobe Photoshop</span> <span>80%</span></div>
-                        <div class="progress-bg">
-                            <div class="progress-fill" style="width: 80%;"></div>
+                        <div class="skill-row">
+                            <div class="skill-header"><span>VS Code Workspace Ecosystem</span><span>90%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-label"><span>React & JavaScript</span> <span>75%</span></div>
-                        <div class="progress-bg">
-                            <div class="progress-fill" style="width: 75%;"></div>
+                        <div class="skill-row">
+                            <div class="skill-header"><span>Document Production (MS Word)</span><span>85%</span></div>
+                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <section class="resume-section">
-                <h3 class="section-header"><i class="fas fa-graduation-cap"></i> Education</h3>
-                <div class="experience-item">
-                    <h4>Diploma. in Computer Science</h4>
-                    <span>2025 – Present</span>
-                    <p>Comilla Polytechnic Institute — Focused on Software Engineering and Digital Design.</p>
+                <div>
+                    <span class="section-label">Metadata</span>
+                    <ul class="meta-list">
+                        <li><span>Born</span><span>20 November 2008</span></li>
+                        <li><span>Nationality</span><span>Bangladeshi</span></li>
+                    </ul>
                 </div>
-            </section>
+            </aside>
 
-            <button onclick="window.print()" class="download-btn">
-                <i class="fas fa-print"></i> Print / Save as PDF
+            <main class="right-column">
+                <div>
+                    <span class="section-label">Selected Experience</span>
+                    
+                    <div class="timeline-block">
+                        <div class="timeline-meta">
+                            <h3>TechCorp</h3>
+                            <span class="date">Jan 2025 — Present</span>
+                        </div>
+                        <div class="timeline-subtitle">Frontend Developer</div>
+                        <p class="timeline-desc">Engineered interactive client spaces utilizing modern component trees. Maximized initial display speed metrics by 30% and unified styling consistency with dedicated interface design tracks.</p>
+                    </div>
+
+                    <div class="timeline-block">
+                        <div class="timeline-meta">
+                            <h3>WebWorks</h3>
+                            <span class="date">Jun 2026 — Present</span>
+                        </div>
+                        <div class="timeline-subtitle">Junior Developer</div>
+                        <p class="timeline-desc">Crafted accessible structure sets with standard markup scripts. Assisted in the routine maintenance cycles of structured global client architectures.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="section-label">Academic Foundations</span>
+                    <div class="timeline-block">
+                        <div class="timeline-meta">
+                            <h3>Comilla Polytechnic Institute</h3>
+                            <span class="date">2025 — Present</span>
+                        </div>
+                        <div class="timeline-subtitle">Diploma in Computer Science</div>
+                        <p class="timeline-desc">Specialized theory application in core systems engineering methods and advanced structural interface formatting layouts.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="action-tray">
+            <button onclick="window.print()" class="btn-luxury">
+                <i class="fas fa-print"></i> Generate Document
             </button>
-        </main>
+        </div>
     </div>
 
     <script>
-        // --- 3D AMBIENT SILK FLOATING ENGINE (Classic Deep Crimson Glass Bubbles) ---
+        // --- LUXURY ARCHITECTURE MICRO-ENGINE (Crystalline Dust Atmosphere) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -569,101 +433,68 @@
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        camera.position.z = 30;
+        camera.position.z = 40;
 
-        const bubbleCount = 18; 
-        const bubbles = [];
-        const bubbleGroup = new THREE.Group();
-        const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
+        // Premium ambient stellar dust configuration
+        const particleCount = 60;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
 
-        function createBubbleMaterial() {
-            return new THREE.MeshPhysicalMaterial({
-                color: 0x991B1B,              // Deep Crimson Red Core
-                emissive: 0xFFF5F5,          // Clean warm sheen shine
-                emissiveIntensity: 0.04,
-                roughness: 0.08,
-                metalness: 0.15,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.1,
-                transmission: 0.88,          // Polished Glass Look
-                ior: 1.28,
-                thickness: 1.8,
-                transparent: true,
-                opacity: 0.12
-            });
+        for (let i = 0; i < particleCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 70;
+            positions[i + 1] = (Math.random() - 0.5) * 50;
+            positions[i + 2] = (Math.random() - 0.5) * 30;
         }
 
-        for (let i = 0; i < bubbleCount; i++) {
-            const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 1.4 + 0.4;
-            mesh.scale.set(scale, scale, scale);
-            mesh.position.x = (Math.random() - 0.5) * 55;
-            mesh.position.y = (Math.random() - 0.5) * 45;
-            mesh.position.z = (Math.random() - 0.5) * 15;
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-            mesh.userData = {
-                speedY: (scale * 0.005) + 0.002,
-                phaseX: Math.random() * Math.PI * 2,
-            };
-            bubbleGroup.add(mesh);
-            bubbles.push(mesh);
-        }
-        scene.add(bubbleGroup);
+        const material = new THREE.PointsMaterial({
+            size: 0.35,
+            color: 0xB39274, // Gold accents particle dust
+            transparent: true,
+            opacity: 0.4
+        });
 
-        // Soft Gallery Light Setup
-        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 1.8);
-        skyLight.position.set(12, 24, 10);
-        scene.add(skyLight);
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
 
-        const fillLight = new THREE.AmbientLight(0x991B1B, 0.15);
-        scene.add(fillLight);
-
-        const mouse = { x: 0, y: 0 };
+        let mouseX = 0, mouseY = 0;
         window.addEventListener('mousemove', (e) => {
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+            mouseX = (e.clientX / window.innerWidth) - 0.5;
+            mouseY = (e.clientY / window.innerHeight) - 0.5;
         });
 
         function animate() {
             requestAnimationFrame(animate);
-            const time = Date.now();
+            
+            // Subtle, dynamic layout orbit
+            points.rotation.y += 0.0008;
+            points.rotation.x += 0.0004;
 
-            bubbles.forEach(bubble => {
-                bubble.position.y += bubble.userData.speedY;
-                bubble.position.x += Math.sin(time * 0.0006 + bubble.userData.phaseX) * 0.008;
-
-                if (bubble.position.y > 25) {
-                    bubble.position.y = -25;
-                    bubble.position.x = (Math.random() - 0.5) * 55;
-                }
-            });
-
-            bubbleGroup.rotation.y += (mouse.x * 0.015 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.015 - bubbleGroup.rotation.x) * 0.05;
+            points.position.x += (mouseX * 4 - points.position.x) * 0.05;
+            points.position.y += (-mouseY * 4 - points.position.y) * 0.05;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // Progress bars visual entry trigger
+        // Animate Skills Loading
         window.addEventListener('DOMContentLoaded', () => {
-            const progressFills = document.querySelectorAll('.progress-fill');
-            progressFills.forEach(fill => {
-                const targetWidth = fill.style.width;
-                fill.style.width = '0';
-                setTimeout(() => {
-                    fill.style.width = targetWidth;
-                }, 400);
-            });
+            const fills = document.querySelectorAll('.skill-bar-fill');
+            setTimeout(() => {
+                fills.forEach(fill => {
+                    fill.style.width = fill.parentElement.previousElementSibling.lastChild.textContent;
+                });
+            }, 600);
         });
 
-        // Elegant GSAP Entry Animation
-        gsap.to(".reveal", {
+        // Elegant GSAP Document Entrance
+        gsap.to(".premium-container", {
             opacity: 1,
             y: 0,
-            duration: 1.2,
-            ease: "power2.out",
-            startAt: { y: 20 }
+            duration: 1.6,
+            ease: "power4.out",
+            startAt: { y: 40 }
         });
 
         window.addEventListener('resize', () => {
