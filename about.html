@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -16,16 +16,16 @@
 
     <style>
         :root {
-            --bg-main: #090a0f;
-            --bg-card: rgba(18, 20, 29, 0.7);
+            --bg-main: #0a0b0e;
+            --bg-card: rgba(18, 20, 26, 0.65);
             --text-primary: #ffffff;
-            --text-muted: #8a8f98;
-            --text-dark: #3a3f4d;
-            --accent-neon: #ff0055;
-            --accent-glow: rgba(2ff, 0, 85, 0.15);
-            --border-glow: rgba(255, 255, 255, 0.05);
+            --text-muted: #7e8494;
+            --text-dark: #2c303b;
+            --accent-crimson: #ff1e56;
+            --accent-glow: rgba(255, 30, 86, 0.12);
+            --border-glow: rgba(255, 255, 255, 0.04);
             --font-display: 'Syne', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
             --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -46,7 +46,7 @@
 
         body {
             min-height: 100vh;
-            padding: 140px 10% 80px;
+            padding: 140px 8% 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -63,31 +63,43 @@
             pointer-events: none;
         }
 
-        .blur-overlay {
+        /* Vignette shadowing layer for a classic cinematic vibe */
+        .cinematic-vignette {
             position: fixed;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(9,10,15,0) 70%);
-            bottom: -10%;
-            left: -10%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 20%, rgba(10, 11, 14, 0.6) 80%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- EXCLUSIVE NAVIGATION --- */
+        .ambient-glow {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(10,11,14,0) 70%);
+            top: -10%;
+            right: -10%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- PREMIER GLASS NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 30px 10%;
+            padding: 28px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(9, 10, 15, 0.6);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            background: rgba(10, 11, 14, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-glow);
         }
 
@@ -100,7 +112,7 @@
         }
 
         .logo span {
-            color: var(--accent-neon);
+            color: var(--accent-crimson);
         }
 
         .desktop-nav {
@@ -126,7 +138,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent-neon);
+            background: var(--accent-crimson);
             transition: width 0.4s var(--ease-premium);
         }
 
@@ -184,15 +196,15 @@
             text-decoration: none;
             transition: color 0.3s;
         }
-        .menu-window a:hover { color: var(--accent-neon); }
+        .menu-window a:hover { color: var(--accent-crimson); }
 
-        /* --- PREMIER MATRIX DESIGN ARCHITECTURE --- */
+        /* --- DISPLAY INTERFACE ARCHITECTURE --- */
         .workspace-grid {
-            max-width: 1150px;
+            max-width: 1100px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.1fr 1.9fr;
-            gap: 50px;
+            grid-template-columns: 1.15fr 1.85fr;
+            gap: 45px;
             align-items: start;
         }
 
@@ -218,47 +230,48 @@
             transform: translateX(-6px);
         }
 
-        /* Identity Framing Panel */
+        /* Left Section Frame */
         .hero-identity-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
-            border-radius: 32px;
-            padding: 60px 45px;
+            border-radius: 28px;
+            padding: 55px 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 460px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            min-height: 440px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             position: relative;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
         }
 
         .hero-identity-panel::before {
             content: '';
             position: absolute;
-            top: -1px;
-            left: 50px;
-            right: 50px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-neon), transparent);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-crimson), transparent 70%);
         }
 
         .meta-tag {
             font-family: var(--font-body);
-            color: var(--accent-neon);
+            color: var(--accent-crimson);
             text-transform: uppercase;
             font-size: 0.7rem;
             letter-spacing: 4px;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .headline {
             font-family: var(--font-display);
-            font-size: clamp(2.8rem, 4.5vw, 4rem);
+            font-size: clamp(2.8rem, 4.5vw, 3.8rem);
             font-weight: 800;
-            line-height: 1.0;
+            line-height: 1.05;
             letter-spacing: -2px;
         }
 
@@ -266,12 +279,12 @@
             font-style: normal;
             display: block;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
         }
 
         .identity-signature h2 {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
@@ -283,22 +296,22 @@
             letter-spacing: 0.5px;
         }
 
-        /* Structural Details Framework */
+        /* Right Section Stack */
         .analytics-cluster {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 24px;
         }
 
         .editorial-block {
             background: rgba(255, 255, 255, 0.01);
-            border-left: 2px solid var(--text-dark);
-            padding: 10px 0 10px 35px;
+            border-left: 2px solid var(--accent-crimson);
+            padding: 8px 0 8px 30px;
         }
 
         .editorial-block p {
-            font-size: 1.2rem;
-            line-height: 1.7;
+            font-size: 1.15rem;
+            line-height: 1.65;
             color: #d1d5db;
             font-weight: 300;
         }
@@ -306,26 +319,26 @@
         .infographic-matrix {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 16px;
         }
 
         .matrix-node {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
-            border-radius: 20px;
-            padding: 28px;
+            border-radius: 18px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 135px;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: border-color 0.5s var(--ease-premium), transform 0.5s var(--ease-premium);
+            height: 130px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium);
         }
 
         .matrix-node:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(255, 30, 86, 0.4);
+            transform: translateY(-4px);
         }
 
         .matrix-node label {
@@ -337,34 +350,35 @@
         }
 
         .matrix-node .node-value {
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: var(--text-primary);
             letter-spacing: -0.3px;
         }
 
         .matrix-node .node-value.special-accent {
-            color: var(--accent-neon);
+            color: var(--accent-crimson);
             font-family: var(--font-display);
             font-weight: 700;
             letter-spacing: 0.5px;
+            text-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
         }
 
         .reveal {
             opacity: 0;
         }
 
-        /* --- EXCLUSIVE RESPONSIVENESS --- */
+        /* --- RESPONSIVENESS --- */
         @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
-            .workspace-grid { grid-template-columns: 1fr; gap: 40px; }
-            body { padding: 120px 6% 60px; }
+            .workspace-grid { grid-template-columns: 1fr; gap: 35px; }
+            body { padding: 120px 5% 60px; }
         }
 
         @media (max-width: 600px) {
             .infographic-matrix { grid-template-columns: 1fr; }
-            .hero-identity-panel { padding: 45px 30px; min-height: 380px; }
+            .hero-identity-panel { padding: 45px 30px; min-height: 360px; }
             .editorial-block { padding-left: 20px; }
             .editorial-block p { font-size: 1.05rem; }
         }
@@ -374,7 +388,8 @@
 <body>
 
     <div id="canvas-container"></div>
-    <div class="blur-overlay"></div>
+    <div class="cinematic-vignette"></div>
+    <div class="ambient-glow"></div>
 
     <nav>
         <div class="logo">Forhad<span>.</span></div>
@@ -405,20 +420,20 @@
 
         <div class="hero-identity-panel reveal">
             <div>
-                <span class="meta-tag">Identity Core</span>
+                <span class="meta-tag">Identity Profile</span>
                 <h1 class="headline">About<br><em>Me</em></h1>
             </div>
             
             <div class="identity-signature">
                 <h2>Abdullah Forhad</h2>
-                <p>Digital Structural Architect & Designer</p>
+                <p>Digital Architecture & Designing</p>
             </div>
         </div>
 
         <div class="analytics-cluster">
             <div class="editorial-block reveal">
                 <p>
-                    Strategizing layout systems engineered at the interface of clarity and prominent impact. I focus on developing streamlined concepts shaped with sharp visual logic and premium execution.
+                    Strategizing advanced structural systems crafted at the boundary of modern aesthetics and clear tactical intent. Focused on rendering bold concepts with streamlined visual logic and premium execution.
                 </p>
             </div>
 
@@ -444,7 +459,7 @@
                 </div>
 
                 <div class="matrix-node reveal">
-                    <label>Mindset Configuration</label>
+                    <label>Mindset Mode</label>
                     <div class="node-value special-accent">Alpha</div>
                 </div>
 
@@ -458,7 +473,7 @@
     </div>
 
     <script>
-        // SMART NAVIGATION ENGINE SYSTEM
+        // NAVIGATION BAR LOGIC MATRIX
         document.addEventListener("DOMContentLoaded", () => {
             const menuItems = [
                 { label: "Home", url: "index.html" },
@@ -485,93 +500,113 @@
             }
         });
 
-        // --- EXCLUSIVE 3D CRYSTALLINE NETWORK ENGINE (THREE.JS) ---
+        // --- EXCLUSIVE 3D COLLIDING KINETIC PARTICLE CLOUD (THREE.JS) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        camera.position.z = 40;
+        camera.position.z = 45;
 
-        // Custom Geometric Mesh Generation Loop
-        const crystalCount = 12;
-        const crystalGroup = new THREE.Group();
-        const meshes = [];
+        // Custom Petal/Particle Vector Matrix Generation
+        const particleCount = 280;
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(particleCount * 3);
+        const particleData = [];
 
-        // Generates exclusive complex 3D floating nodes
-        for(let i=0; i < crystalCount; i++) {
-            const geometry = new THREE.IcosahedronGeometry(Math.random() * 2 + 1, 0);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0xff0055,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.08
-            });
+        for (let i = 0; i < particleCount; i++) {
+            const x = (Math.random() - 0.5) * 75;
+            const y = (Math.random() - 0.5) * 55;
+            const z = (Math.random() - 0.5) * 35;
 
-            const mesh = new THREE.Mesh(geometry, material);
-            mesh.position.set(
-                (Math.random() - 0.5) * 60,
-                (Math.random() - 0.5) * 40,
-                (Math.random() - 0.5) * 20
-            );
+            positions[i * 3] = x;
+            positions[i * 3 + 1] = y;
+            positions[i * 3 + 2] = z;
 
-            mesh.userData = {
-                rotSpeedX: (Math.random() - 0.5) * 0.01,
-                rotSpeedY: (Math.random() - 0.5) * 0.01,
-                floatSpeed: Math.random() * 0.005 + 0.002,
+            particleData.push({
+                x: x,
+                y: y,
+                z: z,
+                speedY: -(Math.random() * 0.04 + 0.02),
+                speedX: (Math.random() - 0.5) * 0.02,
+                rotSpeed: Math.random() * 0.02,
                 phase: Math.random() * Math.PI
-            };
-
-            meshes.push(mesh);
-            crystalGroup.add(mesh);
+            });
         }
-        scene.add(crystalGroup);
 
-        // Interactive Tracking Vector Coordinates
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        // Crimson Falling Elements Material Properties
+        const material = new THREE.PointsMaterial({
+            color: 0xff1e56,
+            size: 0.35,
+            transparent: true,
+            opacity: 0.75,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particleCloud = new THREE.Points(geometry, material);
+        scene.add(particleCloud);
+
+        // Interactive Tracking Vectors
         let targetX = 0, targetY = 0;
         let currentX = 0, currentY = 0;
 
         window.addEventListener('mousemove', (e) => {
-            targetX = (e.clientX - window.innerWidth / 2) * 0.015;
-            targetY = (e.clientY - window.innerHeight / 2) * 0.015;
+            targetX = (e.clientX - window.innerWidth / 2) * 0.012;
+            targetY = (e.clientY - window.innerHeight / 2) * 0.012;
         });
 
-        // Frame Interpolation Execution Loop
+        // Dynamic Vector Render Loop
         function animate() {
             requestAnimationFrame(animate);
             const time = Date.now();
 
-            meshes.forEach(mesh => {
-                const data = mesh.userData;
-                mesh.rotation.x += data.rotSpeedX;
-                mesh.rotation.y += data.rotSpeedY;
-                mesh.position.y += Math.sin(time * data.floatSpeed + data.phase) * 0.015;
-            });
+            const positionsArray = geometry.attributes.position.array;
 
-            // Smooth luxury tracking calculation matrix
-            currentX += (targetX - currentX) * 0.06;
-            currentY += (targetY - currentY) * 0.06;
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                const data = particleData[i];
 
-            crystalGroup.rotation.y = currentX * 0.4;
-            crystalGroup.rotation.x = currentY * 0.4;
+                data.y += data.speedY;
+                data.x += Math.sin(time * 0.001 + data.phase) * 0.01 + data.speedX;
+
+                // Loop particles back to header screen if boundaries are crossed
+                if (data.y < -30) {
+                    data.y = 30;
+                    data.x = (Math.random() - 0.5) * 75;
+                }
+
+                positionsArray[i3] = data.x;
+                positionsArray[i3 + 1] = data.y;
+            }
+
+            geometry.attributes.position.needsUpdate = true;
+
+            // Fluid luxurious tracking system calculation matrix
+            currentX += (targetX - currentX) * 0.05;
+            currentY += (targetY - currentY) * 0.05;
+
+            particleCloud.rotation.y = currentX * 0.4;
+            particleCloud.rotation.x = currentY * 0.4;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // --- PREMIER KINETIC ELEMENTS STAGGER SHOW (GSAP) ---
+        // --- PREMIER KINETIC PAGE REVEAL (GSAP) ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
                 duration: 1.4,
-                stagger: 0.07,
+                stagger: 0.08,
                 ease: "power4.out",
-                startAt: { y: 45 }
+                startAt: { y: 40 }
             });
         });
 
