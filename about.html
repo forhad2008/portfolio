@@ -8,20 +8,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         :root {
-            --bg-main: #060709;
-            --bg-card: rgba(10, 12, 18, 0.55); /* Glassmorphism Effect */
+            --bg-main: #020304; /* Deep Black background */
+            --bg-card: rgba(10, 11, 14, 0.75); /* Rich Light Black Glass Effect */
             --text-primary: #ffffff;
-            --text-muted: #abb3c4;
-            --text-dark: #2a2e38;
-            --accent-crimson: #ff1e56;
-            --border-glow: rgba(255, 255, 255, 0.1);
+            --text-muted: #94a3b8; /* Enhanced contrast for text readability */
+            --text-dark: #1e293b;
+            --accent-crimson: #81081A; /* More Deep Crimson Red */
+            --accent-glow: rgba(129, 8, 26, 0.35);
+            --border-glow: rgba(255, 255, 255, 0.06);
             --font-display: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
@@ -70,17 +71,17 @@
             position: absolute;
             top: 0;
             left: 0;
+            opacity: 0.35; /* Adjusted opacity to sync perfectly with Deep Black mode */
         }
 
-        /* Adjusted overlay to make the ocean animation vivid and clear */
         .cinematic-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(6, 7, 9, 0.2) 0%, rgba(6, 7, 9, 0.6) 100%),
-                        radial-gradient(circle at center, transparent 40%, rgba(6, 7, 9, 0.5) 90%);
+            background: linear-gradient(180deg, rgba(2, 3, 4, 0.4) 0%, rgba(2, 3, 4, 0.85) 100%),
+                        radial-gradient(circle at center, transparent 30%, rgba(2, 3, 4, 0.8) 90%);
             z-index: -1;
             pointer-events: none;
         }
@@ -96,7 +97,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(6, 7, 9, 0.4);
+            background: rgba(2, 3, 4, 0.6);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border-glow);
@@ -121,7 +122,7 @@
         .desktop-nav a {
             text-decoration: none;
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 700; /* Made font bold as per preference */
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             transition: color 0.4s var(--ease-premium);
@@ -186,6 +187,7 @@
             font-size: 2.2rem;
             color: var(--text-primary);
             text-decoration: none;
+            font-weight: 800;
             transition: color 0.3s;
         }
         .menu-window a:hover { color: var(--accent-crimson); }
@@ -212,7 +214,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: color 0.4s var(--ease-premium), transform 0.4s;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .back-link:hover {
@@ -220,20 +222,21 @@
             transform: translateX(-6px);
         }
 
-        /* Identity Left Panel Glass Box */
+        /* Hero Identity Left Panel Glass Box */
         .hero-identity-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
             border-radius: 28px;
-            padding: 55px 40px;
+            padding: 55px 40px 75px; /* Added padding to accommodate inner slim shape */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 440px;
+            min-height: 460px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: relative;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            overflow: hidden; /* Ensures the shape doesn't go outside the boundary */
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
         }
 
         .hero-identity-panel::before {
@@ -246,13 +249,25 @@
             background: linear-gradient(90deg, var(--accent-crimson), transparent 70%);
         }
 
+        /* --- MINI SLIM SHAPE (INSIDE BOTTOM OF THE BOX) --- */
+        .mini-slim-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(90deg, var(--accent-crimson) 0%, rgba(129, 8, 26, 0.4) 60%, transparent 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            pointer-events: none;
+        }
+
         .meta-tag {
             font-family: var(--font-body);
             color: var(--accent-crimson);
             text-transform: uppercase;
             font-size: 0.7rem;
             letter-spacing: 4px;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 12px;
             display: block;
         }
@@ -269,13 +284,13 @@
             font-style: normal;
             display: block;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
         }
 
         .identity-signature h2 {
             font-family: var(--font-display);
             font-size: 1.7rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 4px;
         }
@@ -283,6 +298,7 @@
         .identity-signature p {
             color: var(--text-muted);
             font-size: 0.85rem;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
@@ -294,19 +310,22 @@
         }
 
         .editorial-block {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 2px solid var(--accent-crimson);
-            padding: 10px 0 10px 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid var(--accent-crimson);
+            padding: 16px 20px 16px 30px;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 0 12px 12px 0;
+            border-radius: 0 16px 16px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-right: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         .editorial-block p {
             font-size: 1.15rem;
-            line-height: 1.65;
+            line-height: 1.7;
             color: #ffffff;
-            font-weight: 400;
+            font-weight: 600; /* Bold accentuation */
         }
 
         .infographic-matrix {
@@ -323,30 +342,31 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 130px;
+            height: 135px;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium), background 0.4s;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .matrix-node:hover {
-            border-color: rgba(255, 30, 86, 0.6);
-            background: rgba(18, 22, 33, 0.7);
+            border-color: rgba(129, 8, 26, 0.8);
+            background: rgba(15, 17, 23, 0.85);
             transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--accent-glow);
         }
 
         .matrix-node label {
             font-size: 0.7rem;
-            color: var(--text-primary);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .matrix-node .node-value {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.3px;
         }
@@ -356,7 +376,7 @@
             font-family: var(--font-display);
             font-weight: 800;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 15px rgba(255, 30, 86, 0.6);
+            text-shadow: 0 0 20px rgba(129, 8, 26, 0.7);
         }
 
         .reveal { opacity: 0; }
@@ -371,7 +391,7 @@
 
         @media (max-width: 600px) {
             .infographic-matrix { grid-template-columns: 1fr; }
-            .hero-identity-panel { padding: 45px 30px; min-height: 360px; }
+            .hero-identity-panel { padding: 45px 30px 65px; min-height: 380px; }
             .editorial-block { padding-left: 20px; }
             .editorial-block p { font-size: 1.05rem; }
         }
@@ -425,6 +445,8 @@
                 <h2>Abdullah Forhad</h2>
                 <p>Digital Architecture & Designing</p>
             </div>
+
+            <div class="mini-slim-shape"></div>
         </div>
 
         <div class="analytics-cluster">
