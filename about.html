@@ -16,14 +16,14 @@
 
     <style>
         :root {
-            --bg-main: #0a0b0e;
-            --bg-card: rgba(18, 20, 26, 0.65);
+            --bg-main: #060709;
+            --bg-card: rgba(14, 16, 22, 0.55);
             --text-primary: #ffffff;
-            --text-muted: #7e8494;
-            --text-dark: #2c303b;
+            --text-muted: #9da4b4;
+            --text-dark: #2a2e38;
             --accent-crimson: #ff1e56;
-            --accent-glow: rgba(255, 30, 86, 0.12);
-            --border-glow: rgba(255, 255, 255, 0.04);
+            --accent-glow: rgba(255, 30, 86, 0.15);
+            --border-glow: rgba(255, 255, 255, 0.05);
             --font-display: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
@@ -53,6 +53,7 @@
             position: relative;
         }
 
+        /* Ambient Dynamic Canvas Layout Container */
         #canvas-container {
             position: fixed;
             top: 0;
@@ -63,30 +64,31 @@
             pointer-events: none;
         }
 
-        /* Vignette shadowing layer for a classic cinematic vibe */
+        /* Cinematic depth mapping gradient overlay */
         .cinematic-vignette {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 20%, rgba(10, 11, 14, 0.6) 80%);
+            background: linear-gradient(180deg, rgba(6, 7, 9, 0.4) 0%, rgba(6, 7, 9, 0.85) 100%),
+                        radial-gradient(circle at center, transparent 10%, rgba(6, 7, 9, 0.7) 90%);
             z-index: -1;
             pointer-events: none;
         }
 
         .ambient-glow {
             position: fixed;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(10,11,14,0) 70%);
-            top: -10%;
-            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(6,7,9,0) 70%);
+            bottom: -15%;
+            left: -10%;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- PREMIER GLASS NAVIGATION --- */
+        /* --- PREMIER NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
@@ -97,9 +99,9 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(10, 11, 14, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(6, 7, 9, 0.4);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
             border-bottom: 1px solid var(--border-glow);
         }
 
@@ -198,7 +200,7 @@
         }
         .menu-window a:hover { color: var(--accent-crimson); }
 
-        /* --- DISPLAY INTERFACE ARCHITECTURE --- */
+        /* --- DISPLAY LAYOUT MATRIX --- */
         .workspace-grid {
             max-width: 1100px;
             width: 100%;
@@ -230,7 +232,7 @@
             transform: translateX(-6px);
         }
 
-        /* Left Section Frame */
+        /* Identity Frame Showcase */
         .hero-identity-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
@@ -240,10 +242,10 @@
             flex-direction: column;
             justify-content: space-between;
             min-height: 440px;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: relative;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
         }
 
         .hero-identity-panel::before {
@@ -279,7 +281,7 @@
             font-style: normal;
             display: block;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
         }
 
         .identity-signature h2 {
@@ -296,7 +298,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Right Section Stack */
+        /* Content Hub Stack */
         .analytics-cluster {
             display: flex;
             flex-direction: column;
@@ -331,13 +333,14 @@
             flex-direction: column;
             justify-content: space-between;
             height: 130px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium), background 0.4s;
         }
 
         .matrix-node:hover {
             border-color: rgba(255, 30, 86, 0.4);
+            background: rgba(22, 25, 34, 0.7);
             transform: translateY(-4px);
         }
 
@@ -361,14 +364,14 @@
             font-family: var(--font-display);
             font-weight: 700;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
+            text-shadow: 0 0 15px rgba(255, 30, 86, 0.3);
         }
 
         .reveal {
             opacity: 0;
         }
 
-        /* --- RESPONSIVENESS --- */
+        /* --- RESPONSIVE PLATFORM SCALING --- */
         @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
@@ -473,7 +476,7 @@
     </div>
 
     <script>
-        // NAVIGATION BAR LOGIC MATRIX
+        // MOBILE OVERLAY MENU CONTROLLER
         document.addEventListener("DOMContentLoaded", () => {
             const menuItems = [
                 { label: "Home", url: "index.html" },
@@ -500,7 +503,7 @@
             }
         });
 
-        // --- EXCLUSIVE 3D COLLIDING KINETIC PARTICLE CLOUD (THREE.JS) ---
+        // --- CYBER-SAMURAI 3D KINETIC GRAPHICS MATRIX (THREE.JS) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -512,73 +515,72 @@
 
         camera.position.z = 45;
 
-        // Custom Petal/Particle Vector Matrix Generation
-        const particleCount = 280;
+        // Custom Falling Crystalline Leaf Simulation Configuration
+        const leafCount = 350;
         const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-        const particleData = [];
+        const positions = new Float32Array(leafCount * 3);
+        const leafData = [];
 
-        for (let i = 0; i < particleCount; i++) {
-            const x = (Math.random() - 0.5) * 75;
-            const y = (Math.random() - 0.5) * 55;
-            const z = (Math.random() - 0.5) * 35;
+        for (let i = 0; i < leafCount; i++) {
+            const x = (Math.random() - 0.5) * 85;
+            const y = (Math.random() - 0.5) * 60;
+            const z = (Math.random() - 0.5) * 40;
 
             positions[i * 3] = x;
             positions[i * 3 + 1] = y;
             positions[i * 3 + 2] = z;
 
-            particleData.push({
+            leafData.push({
                 x: x,
                 y: y,
                 z: z,
-                speedY: -(Math.random() * 0.04 + 0.02),
-                speedX: (Math.random() - 0.5) * 0.02,
-                rotSpeed: Math.random() * 0.02,
+                fallSpeed: -(Math.random() * 0.05 + 0.02),
+                driftSpeed: (Math.random() - 0.5) * 0.03,
                 phase: Math.random() * Math.PI
             });
         }
 
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-        // Crimson Falling Elements Material Properties
+        // High-end Crimson Additive Shading Properties
         const material = new THREE.PointsMaterial({
             color: 0xff1e56,
-            size: 0.35,
+            size: 0.38,
             transparent: true,
-            opacity: 0.75,
+            opacity: 0.8,
             blending: THREE.AdditiveBlending
         });
 
         const particleCloud = new THREE.Points(geometry, material);
         scene.add(particleCloud);
 
-        // Interactive Tracking Vectors
-        let targetX = 0, targetY = 0;
-        let currentX = 0, currentY = 0;
+        // Vector tracking parameters
+        let targetMouseX = 0, targetMouseY = 0;
+        let currentMouseX = 0, currentMouseY = 0;
 
         window.addEventListener('mousemove', (e) => {
-            targetX = (e.clientX - window.innerWidth / 2) * 0.012;
-            targetY = (e.clientY - window.innerHeight / 2) * 0.012;
+            targetMouseX = (e.clientX - window.innerWidth / 2) * 0.015;
+            targetMouseY = (e.clientY - window.innerHeight / 2) * 0.015;
         });
 
-        // Dynamic Vector Render Loop
+        // 3D Rendering Physics Optimization Loop
         function animate() {
             requestAnimationFrame(animate);
             const time = Date.now();
 
             const positionsArray = geometry.attributes.position.array;
 
-            for (let i = 0; i < particleCount; i++) {
+            for (let i = 0; i < leafCount; i++) {
                 const i3 = i * 3;
-                const data = particleData[i];
+                const data = leafData[i];
 
-                data.y += data.speedY;
-                data.x += Math.sin(time * 0.001 + data.phase) * 0.01 + data.speedX;
+                data.y += data.fallSpeed;
+                data.x += Math.cos(time * 0.0015 + data.phase) * 0.015 + data.driftSpeed;
 
-                // Loop particles back to header screen if boundaries are crossed
-                if (data.y < -30) {
-                    data.y = 30;
-                    data.x = (Math.random() - 0.5) * 75;
+                // Loop particles back smoothly if boundaries are crossed
+                if (data.y < -35) {
+                    data.y = 35;
+                    data.x = (Math.random() - 0.5) * 85;
                 }
 
                 positionsArray[i3] = data.x;
@@ -587,23 +589,23 @@
 
             geometry.attributes.position.needsUpdate = true;
 
-            // Fluid luxurious tracking system calculation matrix
-            currentX += (targetX - currentX) * 0.05;
-            currentY += (targetY - currentY) * 0.05;
+            // Fluid luxury tracking calculation matrix
+            currentMouseX += (targetMouseX - currentMouseX) * 0.05;
+            currentMouseY += (targetMouseY - currentMouseY) * 0.05;
 
-            particleCloud.rotation.y = currentX * 0.4;
-            particleCloud.rotation.x = currentY * 0.4;
+            particleCloud.rotation.y = currentMouseX * 0.5;
+            particleCloud.rotation.x = currentMouseY * 0.5;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // --- PREMIER KINETIC PAGE REVEAL (GSAP) ---
+        // --- PREMIER KINETIC ELEMENTS STAGGER SHOW (GSAP) ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 1.4,
+                duration: 1.5,
                 stagger: 0.08,
                 ease: "power4.out",
                 startAt: { y: 40 }
