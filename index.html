@@ -2,1219 +2,1220 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Abdullah Forhad</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
-    <style>
-        /* --- MINIMALIST OCEAN BLUE SYSTEM --- */
-        :root {
-            --bg-dark: #FFFFFF;
-            --bg-card: #F4F7FA;
-            --text-primary: #0F172A;
-            --text-muted: #64748B;
-            --accent-neon: #0284C7;
-            --accent-glow: rgba(2, 132, 199, 0.15);
-            --border-color: rgba(15, 23, 42, 0.08);
-            --font-accent: 'Syne', sans-serif;
-            --font-main: 'Plus Jakarta Sans', sans-serif;
-            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: var(--font-main);
-        }
-
-        html,
-        body {
-            width: 100%;
-            max-width: 100vw;
-            overflow-x: hidden;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 24px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 2000;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-color);
-            box-sizing: border-box;
-        }
-
-        .logo {
-            font-family: var(--font-accent);
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--text-primary);
-            text-transform: uppercase;
-        }
-
-        .logo span {
-            color: var(--accent-neon);
-        }
-
-        .desktop-nav {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .desktop-nav a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: var(--transition-tactile);
-        }
-
-        .desktop-nav a:hover,
-        .desktop-nav li.active a {
-            color: var(--accent-neon);
-        }
-
-        .hamburger {
-            cursor: pointer;
-            z-index: 2100;
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            padding: 4px;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: var(--transition-tactile);
-        }
-
-        .hamburger.active div:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .hamburger.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active div:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .menu-window {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: var(--bg-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1500;
-            transform: translateY(-100%);
-            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-            border-bottom: 1px solid var(--border-color);
-            box-sizing: border-box;
-            overflow: hidden;
-        }
-
-        .menu-window.open {
-            transform: translateY(0);
-        }
-
-        .menu-window ul {
-            list-style: none;
-            text-align: center;
-            width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
-        }
-
-        .menu-window li {
-            margin: 24px 0;
-        }
-
-        .menu-window a {
-            font-family: var(--font-accent);
-            font-size: 2rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 700;
-            transition: var(--transition-tactile);
-            display: block;
-        }
-
-        .menu-window a:hover {
-            color: var(--accent-neon);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            padding: 160px 8% 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            width: 100%;
-            align-items: center;
-        }
-
-        @media (min-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1.2fr 0.8fr;
-                gap: 60px;
-            }
-        }
-
-        .hero-text {
-            text-align: left;
-            color: #202020;
-        }
-
-        .hero-badge {
-            background: rgba(2, 132, 199, 0.05);
-            border: 1px solid var(--border-color);
-            color: #111111;
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent-neon);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .hero-badge .ping {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-neon);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-neon);
-        }
-
-        h1 {
-            font-family: var(--font-accent);
-            font-size: clamp(2.4rem, 5.5vw, 4.8rem);
-            color: var(--text-primary);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1.5px;
-            margin-bottom: 24px;
-        }
-
-        .scroller-window {
-            display: inline-block;
-            height: 1.15em;
-            overflow: hidden;
-            vertical-align: bottom;
-            color: var(--accent-neon);
-        }
-
-        #scroller-track {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .highlight {
-            height: 1.15em;
-            line-height: 1.15em;
-            display: block;
-            white-space: nowrap;
-        }
-
-        .hero-desc {
-            color: rgb(22, 22, 22);
-            font-size: 1.1rem;
-            max-width: 580px;
-            margin-bottom: 32px;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 100%;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            border-radius: 24px;
-            background: #FFFFFF;
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 40px 80px rgba(15, 23, 42, 0.05);
-            transition: var(--transition-tactile);
-        }
-
-        .profile-container:hover {
-            transform: scale(1.02) rotate(1deg);
-            border-color: var(--accent-neon);
-            box-shadow: 0 40px 80px var(--accent-glow);
-        }
-
-        .profile-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
-        }
-
-        /* --- BUTTONS --- */
-        .btn {
-            padding: 14px 28px;
-            background: var(--text-primary);
-            color: rgb(247, 245, 245);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border-radius: 8px;
-            transition: var(--transition-tactile);
-            border: 1px solid var(--text-primary);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn:hover {
-            background: var(--accent-neon);
-            border-color: var(--accent-neon);
-            color: #FFFFFF;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: rgb(26, 25, 25);
-            border-color: var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(15, 23, 42, 0.03);
-            border-color: var(--text-primary);
-            color: var(--text-primary);
-            box-shadow: none;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .statement-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px;
-            margin-top: 60px;
-            width: 100%;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-
-        .statement-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--accent-neon), transparent);
-        }
-
-        .statement-card h3 {
-            font-family: var(--font-accent);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-
-        .statement-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* --- PORTFOLIO GALLERY GRID --- */
-        .design-showcase {
-            padding: 100px 8%;
-            border-top: 1px solid var(--border-color);
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .section-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 32px;
-            max-width: 100%;
-        }
-
-        .section-title {
-            font-family: var(--font-accent);
-            font-size: clamp(2rem, 4.5vw, 3.2rem);
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            max-width: 100%;
-        }
-
-        .section-subtitle {
-            font-size: 0.8rem;
-            color: var(--accent-neon);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .showcase-filter-nav {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 32px;
-            flex-wrap: wrap;
-            max-width: 100%;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: var(--transition-tactile);
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: var(--text-primary);
-            color: var(--bg-dark);
-            border-color: var(--text-primary);
-        }
-
-        .design-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 32px;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .design-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1100px) {
-            .design-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .design-card-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .design-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 0;
-            overflow: hidden;
-            transition: var(--transition-tactile);
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .card-img-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 12;
-            overflow: hidden;
-            position: relative;
-            background: #E2E8F0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .design-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-            transition: trasform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* --- RESPONSIVE FIX: FULL SCREEN SCALE SAFE OVERRIDES FOR MOBILE SCREEN VIEWS --- */
-        @media (max-width: 768px) {
-            nav {
-                padding: 16px 16px;
-            }
-
-            .hero-section {
-                padding: 120px 16px 60px;
-            }
-
-            .design-showcase {
-                padding: 60px 16px;
-            }
-
-            .card-img-wrapper {
-                aspect-ratio: auto;
-                height: 260px;
-                /* Shortened clean presentation line */
-                background-color: #F4F7FA;
-                padding: 8px;
-            }
-
-            .design-card img {
-                width: 120%;
-                height: 100%;
-                object-fit: contain;
-                /* Keeps products 100% visible inside standard view */
-            }
-
-            .card-meta-info {
-                padding: 16px 16px;
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-
-            .card-title {
-                max-width: 100% !important;
-                width: 100%;
-                white-space: normal;
-            }
-        }
-
-        .card-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.9) 100%);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: flex-start;
-            padding: 32px;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: var(--transition-tactile);
-        }
-
-        .card-overlay-content {
-            width: 100%;
-            transform: translateY(20px);
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .card-overlay h4 {
-            font-family: var(--font-accent);
-            color: #FFFFFF;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            letter-spacing: -0.5px;
-        }
-
-        .card-overlay span {
-            color: rgba(235, 234, 234, 0.7);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .card-action-btn {
-            padding: 10px 20px;
-            background: #4d5785;
-            color: var(--text-primary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            border-radius: 8px;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition-tactile);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-        }
-
-        .card-action-btn i {
-            font-size: 0.75rem;
-            transition: transform 0.3s ease;
-        }
-
-        .card-action-btn:hover {
-            background: var(--accent-neon);
-            color: #FFFFFF;
-        }
-
-        .card-action-btn:hover i {
-            transform: translateX(4px);
-        }
-
-        .card-meta-info {
-            padding: 20px 24px;
-            background: #FFFFFF;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .card-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 60%;
-        }
-
-        .card-stats {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            display: flex;
-            gap: 16px;
-            font-weight: 500;
-        }
-
-        .card-stats span i {
-            margin-right: 4px;
-        }
-
-        .design-card:hover {
-            border-color: rgba(15, 23, 42, 0.15);
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
-        }
-
-        .design-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .design-card:hover .card-overlay {
-            opacity: 1;
-        }
-
-        .design-card:hover .card-overlay-content {
-            transform: translateY(0);
-        }
-
-        .see-more-wrap {
-            margin-top: 48px;
-            text-align: center;
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact-section {
-            padding: 80px 8% 60px;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-color);
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            margin-top: 30px;
-            align-items: start;
-            width: 100%;
-        }
-
-        @media (min-width: 992px) {
-            .contact-grid {
-                grid-template-columns: 1.1fr 0.9fr;
-                align-items: end;
-            }
-        }
-
-        .contact-form-card {
-            background: var(--bg-dark);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.01);
-            width: 100%;
-    max-width:650px;
-    justify-self: start;
-            text-align: left;
-            box-sizing: border-box;
-            margin:auto;
-
-        }
-
-        .form-group-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-            width: 100%;
-        }
-
-        @media (min-width: 576px) {
-            .form-group-row {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            margin-bottom: 12px;
-            width: 100%;
-        }
-
-        .input-group.no-margin {
-            margin-bottom: 0;
-        }
-
-        .input-group label {
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .input-group input,
-        .input-group textarea {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--bg-dark);
-            font-family: var(--font-main);
-            color: var(--text-primary);
-            font-size: 0.8rem;
-            outline: none;
-            transition: var(--transition-tactile);
-        }
-
-        .input-group input:focus,
-        .input-group textarea:focus {
-            border-color: var(--accent-neon);
-            box-shadow: 0 0 0 2px var(--accent-glow);
-        }
-
-        .input-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .btn-small {
-            padding: 8px 16px;
-            font-size: 0.78rem;
-            border-radius: 6px;
-        }
-        .button-wrapper{
-    display:flex;
-    align-items:flex-end;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Abdullah Forhad</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        /* --- MINIMALIST OCEAN BLUE SYSTEM --- */
+        :root {
+            --bg-dark: #FFFFFF;
+            --bg-card: #F4F7FA;
+            --text-primary: #0F172A;
+            --text-muted: #64748B;
+            --accent-neon: #0284C7;
+            --accent-glow: rgba(2, 132, 199, 0.15);
+            --border-color: rgba(15, 23, 42, 0.08);
+            --font-accent: 'Syne', sans-serif;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        html,
+        body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-neon);
+        }
+
+        .desktop-nav {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition-tactile);
+        }
+
+        .desktop-nav a:hover,
+        .desktop-nav li.active a {
+            color: var(--accent-neon);
+        }
+
+        .hamburger {
+            cursor: pointer;
+            z-index: 2100;
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            padding: 4px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: var(--transition-tactile);
+        }
+
+        .hamburger.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .menu-window {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+            border-bottom: 1px solid var(--border-color);
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .menu-window.open {
+            transform: translateY(0);
+        }
+
+        .menu-window ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .menu-window li {
+            margin: 24px 0;
+        }
+
+        .menu-window a {
+            font-family: var(--font-accent);
+            font-size: 2rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: var(--transition-tactile);
+            display: block;
+        }
+
+        .menu-window a:hover {
+            color: var(--accent-neon);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            padding: 160px 8% 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            width: 100%;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 60px;
+            }
+        }
+
+        .hero-text {
+            text-align: left;
+            color: #202020;
+        }
+
+        .hero-badge {
+            background: rgba(2, 132, 199, 0.05);
+            border: 1px solid var(--border-color);
+            color: #111111;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-neon);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-badge .ping {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-neon);
+        }
+
+        h1 {
+            font-family: var(--font-accent);
+            font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+            color: var(--text-primary);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .scroller-window {
+            display: inline-block;
+            height: 1.15em;
+            overflow: hidden;
+            vertical-align: bottom;
+            color: var(--accent-neon);
+        }
+
+        #scroller-track {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .highlight {
+            height: 1.15em;
+            line-height: 1.15em;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .hero-desc {
+            color: rgb(22, 22, 22);
+            font-size: 1.1rem;
+            max-width: 580px;
+            margin-bottom: 32px;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 24px;
+            background: #FFFFFF;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 40px 80px rgba(15, 23, 42, 0.05);
+            transition: var(--transition-tactile);
+        }
+
+        .profile-container:hover {
+            transform: scale(1.02) rotate(1deg);
+            border-color: var(--accent-neon);
+            box-shadow: 0 40px 80px var(--accent-glow);
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 14px 28px;
+            background: var(--text-primary);
+            color: rgb(247, 245, 245);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 8px;
+            transition: var(--transition-tactile);
+            border: 1px solid var(--text-primary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background: var(--accent-neon);
+            border-color: var(--accent-neon);
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: rgb(26, 25, 25);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(15, 23, 42, 0.03);
+            border-color: var(--text-primary);
+            color: var(--text-primary);
+            box-shadow: none;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .statement-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 60px;
+            width: 100%;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .statement-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-neon), transparent);
+        }
+
+        .statement-card h3 {
+            font-family: var(--font-accent);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .statement-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- PORTFOLIO GALLERY GRID --- */
+        .design-showcase {
+            padding: 100px 8%;
+            border-top: 1px solid var(--border-color);
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            max-width: 100%;
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            max-width: 100%;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            color: var(--accent-neon);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .showcase-filter-nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-tactile);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--text-primary);
+            color: var(--bg-dark);
+            border-color: var(--text-primary);
+        }
+
+        .design-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 32px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .design-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .design-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .design-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .design-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 0;
+            overflow: hidden;
+            transition: var(--transition-tactile);
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 12;
+            overflow: hidden;
+            position: relative;
+            background: #E2E8F0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .design-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: trasform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* --- RESPONSIVE FIX: FULL SCREEN SCALE SAFE OVERRIDES FOR MOBILE SCREEN VIEWS --- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 16px;
+            }
+
+            .hero-section {
+                padding: 120px 16px 60px;
+            }
+
+            .design-showcase {
+                padding: 60px 16px;
+            }
+
+            .card-img-wrapper {
+                aspect-ratio: auto;
+                height: 260px;
+                /* Shortened clean presentation line */
+                background-color: #F4F7FA;
+                padding: 8px;
+            }
+
+            .design-card img {
+                width: 120%;
+                height: 100%;
+                object-fit: contain;
+                /* Keeps products 100% visible inside standard view */
+            }
+
+            .card-meta-info {
+                padding: 16px 16px;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .card-title {
+                max-width: 100% !important;
+                width: 100%;
+                white-space: normal;
+            }
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.9) 100%);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            padding: 32px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: var(--transition-tactile);
+        }
+
+        .card-overlay-content {
+            width: 100%;
+            transform: translateY(20px);
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .card-overlay h4 {
+            font-family: var(--font-accent);
+            color: #FFFFFF;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-overlay span {
+            color: rgba(235, 234, 234, 0.7);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .card-action-btn {
+            padding: 10px 20px;
+            background: #4d5785;
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 8px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-tactile);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .card-action-btn i {
+            font-size: 0.75rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card-action-btn:hover {
+            background: var(--accent-neon);
+            color: #FFFFFF;
+        }
+
+        .card-action-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .card-meta-info {
+            padding: 20px 24px;
+            background: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60%;
+        }
+
+        .card-stats {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 16px;
+            font-weight: 500;
+        }
+
+        .card-stats span i {
+            margin-right: 4px;
+        }
+
+        .design-card:hover {
+            border-color: rgba(15, 23, 42, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+        }
+
+        .design-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .design-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .design-card:hover .card-overlay-content {
+            transform: translateY(0);
+        }
+
+        .see-more-wrap {
+            margin-top: 48px;
+            text-align: center;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section {
+            padding: 80px 8% 60px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 30px;
+            align-items: start;
+            width: 100%;
+        }
+
+        @media (min-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                align-items: end;
+            }
+        }
+
+        .contact-form-card {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.01);
+            width: 100%;
+    max-width:650px;
+    justify-self: start;
+            text-align: left;
+            box-sizing: border-box;
+            margin:auto;
+
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        @media (min-width: 576px) {
+            .form-group-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        .input-group.no-margin {
+            margin-bottom: 0;
+        }
+
+        .input-group label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--bg-dark);
+            font-family: var(--font-main);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            outline: none;
+            transition: var(--transition-tactile);
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: var(--accent-neon);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            border-radius: 6px;
+        }
+        .button-wrapper{
+    display:flex;
+    align-items:flex-end;
 }
 
 .button-wrapper .btn{
-    width:100%;
-    height:54px;
+    width:100%;
+    height:54px;
 }
-        .form-status {
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+        .form-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
 
-        .info-minimal-container{
-    margin-top:40px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-    text-align:center;
+        .info-minimal-container{
+    margin-top:40px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    text-align:center;
 }
 
-        @media (min-width: 992px) {
-            
-            .info-minimal-container {
-                text-align: right;
-                align-items: flex-end;
-                justify-self: end;
-                padding-bottom: 5px;
-            }
-        }
+        @media (min-width: 992px) {
+            
+            .info-minimal-container {
+                text-align: right;
+                align-items: flex-end;
+                justify-self: end;
+                padding-bottom: 5px;
+            }
+        }
 
-        .minimal-text-block {
-            display: flex;
-            flex-direction: column;
-        }
+        .minimal-text-block {
+            display: flex;
+            flex-direction: column;
+        }
 
-        .minimal-underlined-link {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            padding-bottom: 2px;
-            transition: var(--transition-tactile);
-        }
+        .minimal-underlined-link {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 2px;
+            transition: var(--transition-tactile);
+        }
 
-        .minimal-underlined-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 1.5px;
-            background-color: var(--text-primary);
-            transition: var(--transition-tactile);
-        }
+        .minimal-underlined-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: var(--text-primary);
+            transition: var(--transition-tactile);
+        }
 
-        @media (min-width: 992px) {
-            .minimal-underlined-link::after {
-                right: 0;
-            }
+        @media (min-width: 992px) {
+            .minimal-underlined-link::after {
+                right: 0;
+            }
 
-            .minimal-underlined-link:hover {
-                transform: translateX(-3px);
-            }
+            .minimal-underlined-link:hover {
+                transform: translateX(-3px);
+            }
 
-            .minimal-underlined-link:hover::after {
-                background-color: var(--accent-neon);
-                width: 50%;
-            }
-        }
+            .minimal-underlined-link:hover::after {
+                background-color: var(--accent-neon);
+                width: 50%;
+            }
+        }
 
-        @media (max-width:991px){
+        @media (max-width:991px){
 
-            /* ---------- INFO CONTAINER ---------- */
+            /* ---------- INFO CONTAINER ---------- */
 
 .info-minimal-container{
-    margin-top:40px;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    gap:20px;
+    margin-top:40px;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
 .minimal-text-block{
-    display:flex;
-    flex-direction:column;
+    display:flex;
+    flex-direction:column;
 }
 
 .minimal-underlined-link{
-    font-size:12.5px;
-    font-weight:700;
-    color:var(--text-primary);
-    text-decoration:none;
-    display:inline-block;
-    position:relative;
-    padding-bottom:2px;
-    transition:var(--transition-tactile);
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--text-primary);
+    text-decoration:none;
+    display:inline-block;
+    position:relative;
+    padding-bottom:2px;
+    transition:var(--transition-tactile);
 }
 
 .minimal-underlined-link::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:1.5px;
-    background-color:var(--text-primary);
-    transition:var(--transition-tactile);
+    content:'';
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:1.5px;
+    background-color:var(--text-primary);
+    transition:var(--transition-tactile);
 }
 
 /* ---------- DESKTOP ---------- */
 
 @media (min-width:992px){
 
-    .info-minimal-container{
-        align-items:flex-end;
-        text-align:right;
-        justify-self:end;
-        padding-bottom:5px;
-    }
+    .info-minimal-container{
+        align-items:flex-end;
+        text-align:right;
+        justify-self:end;
+        padding-bottom:5px;
+    }
 
-    .minimal-text-block{
-        width:auto;
-        display:flex;
-        justify-content:flex-end;
-        align-items:flex-end;
-    }
+    .minimal-text-block{
+        width:auto;
+        display:flex;
+        justify-content:flex-end;
+        align-items:flex-end;
+    }
 
-    .minimal-underlined-link::after{
-        right:0;
-    }
+    .minimal-underlined-link::after{
+        right:0;
+    }
 
-    .minimal-underlined-link:hover{
-        transform:translateX(-3px);
-    }
+    .minimal-underlined-link:hover{
+        transform:translateX(-3px);
+    }
 
-    .minimal-underlined-link:hover::after{
-        background-color:var(--accent-neon);
-        width:50%;
-    }
+    .minimal-underlined-link:hover::after{
+        background-color:var(--accent-neon);
+        width:50%;
+    }
 
-    .social-connect-block{
-        width:100%;
-        display:flex;
-        justify-content:flex-end;
-    }
+    .social-connect-block{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+    }
 
-    .minimal-icon-row{
-        display:flex;
-        justify-content:flex-end;
-        gap:18px;
-        flex-wrap:wrap;
-        width:100%;
-    }
+    .minimal-icon-row{
+        display:flex;
+        justify-content:flex-end;
+        gap:18px;
+        flex-wrap:wrap;
+        width:100%;
+    }
 }
 
 /* ---------- MOBILE ---------- */
 
 @media (max-width:991px){
 
-    .info-minimal-container{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        align-items:flex-end;
-        text-align:right;
-        margin-top:40px;
-        gap:20px;
-    }
+    .info-minimal-container{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-end;
+        text-align:right;
+        margin-top:40px;
+        gap:20px;
+    }
 
-    .minimal-text-block{
-        width:auto;
-        display:flex;
-        justify-content:flex-end;
-        align-items:flex-end;
-    }
+    .minimal-text-block{
+        width:auto;
+        display:flex;
+        justify-content:flex-end;
+        align-items:flex-end;
+    }
 
-    .minimal-underlined-link::after{
-        right:0;
-        left:auto;
-    }
+    .minimal-underlined-link::after{
+        right:0;
+        left:auto;
+    }
 
-    .minimal-underlined-link:hover{
-        transform:translateX(-3px);
-    }
+    .minimal-underlined-link:hover{
+        transform:translateX(-3px);
+    }
 
-    .minimal-underlined-link:hover::after{
-        background-color:var(--accent-neon);
-        width:50%;
-    }
+    .minimal-underlined-link:hover::after{
+        background-color:var(--accent-neon);
+        width:50%;
+    }
 
-    .social-connect-block{
-        width:100%;
-        display:flex;
-        justify-content:flex-end;
-    }
+    .social-connect-block{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+    }
 
-    .minimal-icon-row{
-        width:100%;
-        display:flex;
-        justify-content:flex-end;
-        gap:18px;
-        flex-wrap:wrap;
-    }
+    .minimal-icon-row{
+        width:100%;
+        display:flex;
+        justify-content:flex-end;
+        gap:18px;
+        flex-wrap:wrap;
+    }
 }
 
 /* ---------- ICONS ---------- */
 
 .minimal-icon-link{
-    color:var(--text-primary);
-    font-size:1.2rem;
-    text-decoration:none;
-    transition:var(--transition-tactile);
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+    color:var(--text-primary);
+    font-size:1.2rem;
+    text-decoration:none;
+    transition:var(--transition-tactile);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .minimal-icon-link:hover{
-    color:var(--accent-neon);
-    transform:translateY(-2px);
+    color:var(--accent-neon);
+    transform:translateY(-2px);
 }
 
 /* ---------- FOOTER ---------- */
 
 footer{
-    background:var(--bg-dark);
-    border-top:1px solid var(--border-color);
-    padding:14px 6%;
-    box-sizing:border-box;
-    width:100%;
+    background:var(--bg-dark);
+    border-top:1px solid var(--border-color);
+    padding:14px 6%;
+    box-sizing:border-box;
+    width:100%;
 }
 
 .footer-bottom{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    align-items:center;
-    justify-content:space-between;
-    font-size:0.85rem;
-    color:var(--text-muted);
-    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    font-size:0.85rem;
+    color:var(--text-muted);
+    width:100%;
 }}
-        @media (min-width: 768px) {
-            .footer-bottom {
-                flex-direction: row;
-            }
-        }
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
 
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
 
-        .footer-bottom-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition-tactile);
-        }
+        .footer-bottom-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-tactile);
+        }
 
-        .footer-bottom-links a:hover {
-            color: var(--accent-neon);
-        }
+        .footer-bottom-links a:hover {
+            color: var(--accent-neon);
+        }
 
-        @media (max-width: 991px) {
-            .desktop-nav {
-                display: none;
-            }
+        @media (max-width: 991px) {
+            .desktop-nav {
+                display: none;
+            }
 
-            .hamburger {
-                display: flex;
-            }
+            .hamburger {
+                display: flex;
+            }
 
-            .contact-section {
-                padding: 60px 16px 40px;
-            }
+            .contact-section {
+                padding: 60px 16px 40px;
+            }
 
-            .contact-grid {
-                gap: 24px;
-            }
-        }
+            .contact-grid {
+                gap: 24px;
+            }
+        }
 
-        @media (max-width: 768px) {
-            .profile-container {
-                width: 240px;
-                height: 240px;
-            }
+        @media (max-width: 768px) {
+            .profile-container {
+                width: 240px;
+                height: 240px;
+            }
 
-            footer {
-                padding: 12px 12px;
-            }
-        }
-    </style>
+            footer {
+                padding: 12px 12px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">Profile<span>.</span></div>
+    <nav>
+        <div class="logo">Profile<span>.</span></div>
 
-        <ul class="desktop-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <ul class="desktop-nav">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
 
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </nav>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
 
-    <div class="menu-window" id="menu-window">
-        <ul id="mobile-nav-links"></ul>
-    </div>
+    <div class="menu-window" id="menu-window">
+        <ul id="mobile-nav-links"></ul>
+    </div>
 
-    <section class="hero-section">
-        <div class="hero-grid">
-            <div class="hero-text">
-                <div class="hero-badge">
-                    <div class="ping"></div> Available for Projects
-                </div>
-                <h1>
-                    Building the Next<br>
-                    <span class="scroller-window">
-                        <span id="scroller-track">
-                            <span class="highlight">Visual Identity.</span>
-                            <span class="highlight">Web Experience.</span>
-                        </span>
-                    </span>
-                </h1>
-                <p class="hero-desc">
-                    I am Abdullah Forhad, a graphic designer and web developer bridging the space between stunning
-                    visual aesthetics and production-grade software performance.
-                </p>
-                <div class="btn-group">
-                    <a href="#contact" class="btn">Start Project</a>
-                    <a href="resume.html" class="btn btn-secondary">Resume</a>
-                </div>
+    <section class="hero-section">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <div class="ping"></div> Available for Projects
+                </div>
+                <h1>
+                    Building the Next<br>
+                    <span class="scroller-window">
+                        <span id="scroller-track">
+                            <span class="highlight">Visual Identity.</span>
+                            <span class="highlight">Web Experience.</span>
+                        </span>
+                    </span>
+                </h1>
+                <p class="hero-desc">
+                    I am Abdullah Forhad, a graphic designer and web developer bridging the space between stunning
+                    visual aesthetics and production-grade software performance.
+                </p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn">Start Project</a>
+                    <a href="resume.html" class="btn btn-secondary">Resume</a>
+                </div>
 
-                <div class="statement-card">
-                    <h3>My Journey</h3>
-                    <p>
-                        My journey began with a curiosity for graphic expression, designing modern systems that speak to
-                        audiences. Translating complex identity concepts into scalable and interactive layouts sparked
-                        my drive into front-end development.
-                    </p>
-                </div>
-            </div>
+                <div class="statement-card">
+                    <h3>My Journey</h3>
+                    <p>
+                        My journey began with a curiosity for graphic expression, designing modern systems that speak to
+                        audiences. Translating complex identity concepts into scalable and interactive layouts sparked
+                        my drive into front-end development.
+                    </p>
+                </div>
+            </div>
 
-            <div class="hero-visual">
-                <div class="profile-container">
-                    <img src="1.jpg" alt="Abdullah Forhad"
-                        onerror="this.src='https://placehold.co/400x400/eeeeee/0284C7?text=Abdullah'">
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <img src="1.jpg" alt="Abdullah Forhad"
+                        onerror="this.src='https://placehold.co/400x400/eeeeee/0284C7?text=Abdullah'">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <section class="design-showcase">
-        <div class="section-header">
-            <span class="section-subtitle">Creatives Gallery</span>
-            <h2 class="section-title">My Works</h2>
-        </div>
+    <section class="design-showcase">
+        <div class="section-header">
+            <span class="section-subtitle">Creatives Gallery</span>
+            <h2 class="section-title">My Works</h2>
+        </div>
 
-        <div class="showcase-filter-nav" id="filterNav"></div>
-        <div class="design-grid" id="designGrid"></div>
+        <div class="showcase-filter-nav" id="filterNav"></div>
+        <div class="design-grid" id="designGrid"></div>
 
-        <div class="see-more-wrap">
-            <button id="showcaseSeeMoreBtn" class="btn btn-secondary">See More</button>
-        </div>
-    </section> 
-  <section class="contact-section" id="contact">
-        <div class="section-header">
-            <span class="section-subtitle">Let's Collaborate</span>
-            <h2 class="section-title">Start Your Project</h2>
-        </div>
+        <div class="see-more-wrap">
+            <button id="showcaseSeeMoreBtn" class="btn btn-secondary">See More</button>
+        </div>
+    </section>
 
-        <div class="contact-grid">
-            <div class="contact-form-card">
-                <form id="portfolioContactForm">
-                    <div class="form-group-row">
-                        <div class="input-group no-margin">
-                            <label>Your Name *</label>
-                            <input type="text" name="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="input-group no-margin">
-                            <label>Email Address *</label>
-                            <input type="email" name="email" placeholder="john@example.com" required>
-                        </div>
-                    </div>
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <span class="section-subtitle">Let's Collaborate</span>
+            <h2 class="section-title">Start Your Project</h2>
+        </div>
 
-                    <div class="form-group-row">
-                        <div class="input-group no-margin">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+880 1XXX-XXXXXX">
-                        </div>
-     
-                        <div class="input-group no-margin">
-    <label>Preferred Meeting Date</label>
-    <input
-        type="date"
-        id="meetingDate"
-        name="meeting_date">
+        <div class="contact-grid">
+            <div class="contact-form-card">
+                <form id="portfolioContactForm">
+                    <div class="form-group-row">
+                        <div class="input-group no-margin">
+                            <label>Your Name *</label>
+                            <input type="text" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="input-group no-margin">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="input-group no-margin">
+                            <label>Phone Number</label>
+                            <input type="tel" name="phone" placeholder="+880 1XXX-XXXXXX">
+                        </div>
+     
+                        <div class="input-group no-margin">
+    <label>Preferred Meeting Date</label>
+    <input
+        type="date"
+        id="meetingDate"
+        name="meeting_date">
 </div>
 
 <div class="input-group full-width">
-    <label>Project Message *</label>
+    <label>Project Message *</label>
 
-    <textarea name="message" placeholder="Tell me a bit about your ideas..." required>
-    </textarea>
+    <textarea name="message" placeholder="Tell me a bit about your ideas..." required>
+    </textarea>
 <button type="submit" id="submitFormBtn" class="btn btn-small">
-    <span>Send Message</span>
-    <i class="fa-solid fa-paper-plane"></i>
+    <span>Send Message</span>
+    <i class="fa-solid fa-paper-plane"></i>
 </button>
 
 <div id="formStatusMessage" class="form-status"></div>
@@ -1222,310 +1223,310 @@ footer{
 
 
 
-                </form>
-            </div>
+                </form>
+            </div>
 
 
-        </div> <!-- contact-grid শেষ -->
+        </div> <!-- contact-grid শেষ -->
 
-        <div class="info-minimal-container">
-        
-            <div class="minimal-text-block">
-                <a href="mailto:forhadalpha08@gmail.com"
-                    class="minimal-underlined-link">
-                    Email
-                </a>
-            </div>
-        
-            <div class="minimal-text-block">
-                <a href="https://wa.me/8801342900364"
-                    class="minimal-underlined-link"
-                    target="_blank">
-                    WhatsApp
-                </a>
-            </div>
-         
-                   <div class="social-connect-block">
-                        <div class="minimal-icon-row">
-                            <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank"
-                                class="minimal-icon-link" title="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-                            <a href="https://www.tiktok.com/@abdullah.thelegen?_r=1&_t=ZS-988bupiVj1w" target="_blank"
-                                class="minimal-icon-link" title="TikTok">
-                                <i class="fa-brands fa-tiktok"></i>
-                            </a>
-                            <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank" class="minimal-icon-link"
-                                title="Facebook">
-                                <i class="fa-brands fa-facebook"></i>
-                            </a>
-                            <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank" class="minimal-icon-link"
-                                title="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
-                            <a href="https://www.reddit.com/user/Alternative_One7727/" target="_blank" class="minimal-icon-link"
-                                title="Reddit">
-                                <i class="fa-brands fa-reddit-alien"></i>
-                            </a>
-                            <a href="https://pin.it/30WdMXBOi" target="_blank" class="minimal-icon-link" title="Pinterest">
-                                <i class="fa-brands fa-pinterest"></i>
-                            </a>
-                            <a href="https://github.com/forhad2008" target="_blank" class="minimal-icon-link" title="GitHub">
-                                <i class="fa-brands fa-github"></i>                     </a>
+        <div class="info-minimal-container">
+        
+            <div class="minimal-text-block">
+                <a href="mailto:forhadalpha08@gmail.com"
+                    class="minimal-underlined-link">
+                    Email
+                </a>
+            </div>
+        
+            <div class="minimal-text-block">
+                <a href="https://wa.me/8801342900364"
+                    class="minimal-underlined-link"
+                    target="_blank">
+                    WhatsApp
+                </a>
+            </div>
+         
+                   <div class="social-connect-block">
+                        <div class="minimal-icon-row">
+                            <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank"
+                                class="minimal-icon-link" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@abdullah.thelegen?_r=1&_t=ZS-988bupiVj1w" target="_blank"
+                                class="minimal-icon-link" title="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank" class="minimal-icon-link"
+                                title="Facebook">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank" class="minimal-icon-link"
+                                title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="https://www.reddit.com/user/Alternative_One7727/" target="_blank" class="minimal-icon-link"
+                                title="Reddit">
+                                <i class="fa-brands fa-reddit-alien"></i>
+                            </a>
+                            <a href="https://pin.it/30WdMXBOi" target="_blank" class="minimal-icon-link" title="Pinterest">
+                                <i class="fa-brands fa-pinterest"></i>
+                            </a>
+                            <a href="https://github.com/forhad2008" target="_blank" class="minimal-icon-link" title="GitHub">
+                                <i class="fa-brands fa-github"></i>                     </a>
 
-                                <a href="https://www.fiverr.com/YOUR_USERNAME" target="_blank" class="minimal-icon-link" title="Fiverr">
-                                    <i class="fa-solid fa-briefcase"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="minimal-icon-link" title="LinkedIn">
-                                    <i class="fa-brands fa-linkedin"></i>
-                                </a>
-                            </div>
-        
-                </div>
-            </div>
-    
-    </section>
+                                <a href="https://www.fiverr.com/YOUR_USERNAME" target="_blank" class="minimal-icon-link" title="Fiverr">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="minimal-icon-link" title="LinkedIn">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                </a>
+                            </div>
+        
+                </div>
+            </div>
+    
+    </section>
 
-    <footer>
-        <div class="footer-bottom">
-            <span>&copy; 2008 @abdullah.theLegend.</span>
-            <div class="footer-bottom-links">
-                <a href="about.html">Privacy Policy</a>
-                <a href="about.html">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    <footer>
+        <div class="footer-bottom">
+            <span>&copy; 2008 @abdullah.theLegend.</span>
+            <div class="footer-bottom-links">
+                <a href="about.html">Privacy Policy</a>
+                <a href="about.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 1. DATA STORE
-            const menuItems = [
-                { label: "Home", url: "index.html" },
-                { label: "About Me", url: "about.html" },
-                { label: "Services", url: "service.html" },
-                { label: "Contact", url: "#contact" }
-            ];
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. DATA STORE
+            const menuItems = [
+                { label: "Home", url: "index.html" },
+                { label: "About Me", url: "about.html" },
+                { label: "Services", url: "service.html" },
+                { label: "Contact", url: "#contact" }
+            ];
 
-            const projectData = [
-                { id: 1, category: "business-card", title: "Business Card Design", subtitle: "Identity Unit", img: "19.2.webp", alt: "Minimalist Card", views: 420, hearts: 89, target: "_self", themeColor: "#0284C7" },
-                { id: 2, category: "business-card", title: "Geometric Pattern Card", subtitle: "Identity Unit", img: "24.2.webp", alt: "Abstract Geometric", views: 312, hearts: 64, target: "_self", themeColor: "#0369A1" },
-                { id: 3, category: "business-card", title: "Creative Agency Card", subtitle: "Identity Unit", img: "27.2.webp", alt: "Premium Creative", views: 580, hearts: 142, target: "_self", themeColor: "#0EA5E9" },
-                { id: 4, category: "business-card", title: "Vintage Luxury Card", subtitle: "Identity Unit", img: "28.2.webp", alt: "Modern Corporate", views: 290, hearts: 55, target: "_blank", themeColor: "#B45309" },
-                { id: 5, category: "business-card", title: "Premium Finished Card", subtitle: "Identity Unit", img: "29.2.webp", alt: "Luxury Elegant", views: 740, hearts: 210, target: "_self", themeColor: "#0F172A" },
-                { id: 6, category: "business-card", title: "Corporate Card", subtitle: "Identity Unit", img: "30.2.webp", alt: "Executive Design", views: 395, hearts: 118, target: "_self", themeColor: "#334155" },
-                { id: 7, category: "business-card", title: "Premium Finished Card", subtitle: "Business Card", img: "33.2.webp", alt: "Luxury Elegant", views: 650, hearts: 210, target: "_self", themeColor: "#059669" },
-                { id: 8, category: "business-card", title: "Professional Business Card", subtitle: "Business Card", img: "1.2.webp", alt: "Creative Elegant", views: 540, hearts: 310, target: "_self", themeColor: "#2563EB" },
-                { id: 9, category: "business-card", title: "Radio Creative Business Card", subtitle: "Business Card", img: "7.1.webp", alt: "Bold Creative", views: 740, hearts: 320, target: "_self", themeColor: "#DC2626" },
-                { id: 10, category: "business-card", title: "Premium Creative Business Card", subtitle: "Business Card", img: "14.2.webp", alt: "Creative Design", views: 656, hearts: 203, target: "_self", themeColor: "#7C3AED" },
-                { id: 11, category: "logo", title: "Fashion Logo Concept", subtitle: "System Logo", img: "26.webp", alt: "Modern Monogram", views: 610, hearts: 180, target: "_self", themeColor: "#EC4899" },
-                { id: 12, category: "logo", title: "Letter & Shape Logo Design", subtitle: "System Logo", img: "3.webp", alt: "Modern Logo", views: 720, hearts: 215, url: "3.webp", target: "_self", themeColor: "#F59E0B" },
-                { id: 13, category: "website", title: "Aesthetic Lifestyle Branding Website", subtitle: "Identity & Branding", img: "bag2.webp", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/boraldo-store/", target: "_self", themeColor: "#0284C7" },
-                { id: 14, category: "website", title: "Luxury Restaurant Website", subtitle: "Web Experience", img: "res.png", alt: "Software Interface", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/restaurant1-/", target: "_self", themeColor: "#0369A1" }
-            ];
+            const projectData = [
+                { id: 1, category: "business-card", title: "Business Card Design", subtitle: "Identity Unit", img: "19.2.webp", alt: "Minimalist Card", views: 420, hearts: 89, target: "_self", themeColor: "#0284C7" },
+                { id: 2, category: "business-card", title: "Geometric Pattern Card", subtitle: "Identity Unit", img: "24.2.webp", alt: "Abstract Geometric", views: 312, hearts: 64, target: "_self", themeColor: "#0369A1" },
+                { id: 3, category: "business-card", title: "Creative Agency Card", subtitle: "Identity Unit", img: "27.2.webp", alt: "Premium Creative", views: 580, hearts: 142, target: "_self", themeColor: "#0EA5E9" },
+                { id: 4, category: "business-card", title: "Vintage Luxury Card", subtitle: "Identity Unit", img: "28.2.webp", alt: "Modern Corporate", views: 290, hearts: 55, target: "_blank", themeColor: "#B45309" },
+                { id: 5, category: "business-card", title: "Premium Finished Card", subtitle: "Identity Unit", img: "29.2.webp", alt: "Luxury Elegant", views: 740, hearts: 210, target: "_self", themeColor: "#0F172A" },
+                { id: 6, category: "business-card", title: "Corporate Card", subtitle: "Identity Unit", img: "30.2.webp", alt: "Executive Design", views: 395, hearts: 118, target: "_self", themeColor: "#334155" },
+                { id: 7, category: "business-card", title: "Premium Finished Card", subtitle: "Business Card", img: "33.2.webp", alt: "Luxury Elegant", views: 650, hearts: 210, target: "_self", themeColor: "#059669" },
+                { id: 8, category: "business-card", title: "Professional Business Card", subtitle: "Business Card", img: "1.2.webp", alt: "Creative Elegant", views: 540, hearts: 310, target: "_self", themeColor: "#2563EB" },
+                { id: 9, category: "business-card", title: "Radio Creative Business Card", subtitle: "Business Card", img: "7.1.webp", alt: "Bold Creative", views: 740, hearts: 320, target: "_self", themeColor: "#DC2626" },
+                { id: 10, category: "business-card", title: "Premium Creative Business Card", subtitle: "Business Card", img: "14.2.webp", alt: "Creative Design", views: 656, hearts: 203, target: "_self", themeColor: "#7C3AED" },
+                { id: 11, category: "logo", title: "Fashion Logo Concept", subtitle: "System Logo", img: "26.webp", alt: "Modern Monogram", views: 610, hearts: 180, target: "_self", themeColor: "#EC4899" },
+                { id: 12, category: "logo", title: "Letter & Shape Logo Design", subtitle: "System Logo", img: "3.webp", alt: "Modern Logo", views: 720, hearts: 215, url: "3.webp", target: "_self", themeColor: "#F59E0B" },
+                { id: 13, category: "website", title: "Aesthetic Lifestyle Branding Website", subtitle: "Identity & Branding", img: "bag2.webp", alt: "Identity & Branding", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/boraldo-store/", target: "_self", themeColor: "#0284C7" },
+                { id: 14, category: "website", title: "Luxury Restaurant Website", subtitle: "Web Experience", img: "res.png", alt: "Software Interface", views: 4280, hearts: 2714, url: "https://forhad2008.github.io/restaurant1-/", target: "_self", themeColor: "#0369A1" }
+            ];
 
-            const filterCategories = [
-                { slug: "all", label: "All Designs" },
-                { slug: "business-card", label: "Business Cards" },
-                { slug: "logo", label: "Logos" },
-                { slug: "website", label: "Websites" }
-            ];
+            const filterCategories = [
+                { slug: "all", label: "All Designs" },
+                { slug: "business-card", label: "Business Cards" },
+                { slug: "logo", label: "Logos" },
+                { slug: "website", label: "Websites" }
+            ];
 
-            let currentFilter = 'all';
-            window.allowedProjectIds = [1, 2, 13, 14];
+            let currentFilter = 'all';
+            window.allowedProjectIds = [1, 2, 13, 14];
 
-            // 2. CONTROLLER LOGIC
-            function applyMainPageDesign(targetId) {
-                const targetProject = projectData.find(project => project.id === targetId);
-                if (!targetProject) return;
+            // 2. CONTROLLER LOGIC
+            function applyMainPageDesign(targetId) {
+                const targetProject = projectData.find(project => project.id === targetId);
+                if (!targetProject) return;
 
-                if (targetProject.themeColor) {
-                    document.documentElement.style.setProperty('--accent-neon', targetProject.themeColor);
-                }
-                const profileImg = document.querySelector('.profile-container img');
-                if (profileImg) {
-                    profileImg.src = targetProject.img;
-                    profileImg.alt = targetProject.alt;
-                }
-                const heroDesc = document.querySelector('.hero-desc');
-                if (heroDesc) {
-                    heroDesc.innerHTML = `Featuring our project: <strong>${targetProject.title}</strong>. I am Abdullah Forhad, a graphic designer and web developer bridging the space between stunning visual aesthetics and production-grade software performance.`;
-                }
-            }
+                if (targetProject.themeColor) {
+                    document.documentElement.style.setProperty('--accent-neon', targetProject.themeColor);
+                }
+                const profileImg = document.querySelector('.profile-container img');
+                if (profileImg) {
+                    profileImg.src = targetProject.img;
+                    profileImg.alt = targetProject.alt;
+                }
+                const heroDesc = document.querySelector('.hero-desc');
+                if (heroDesc) {
+                    heroDesc.innerHTML = `Featuring our project: <strong>${targetProject.title}</strong>. I am Abdullah Forhad, a graphic designer and web developer bridging the space between stunning visual aesthetics and production-grade software performance.`;
+                }
+            }
 
-            window.changeMainPageDesignById = applyMainPageDesign;
+            window.changeMainPageDesignById = applyMainPageDesign;
 
-            // 3. MOBILE INTERFACE POPULATION
-            const hamburger = document.getElementById('hamburger');
-            const menuWindow = document.getElementById('menu-window');
-            const mobileNavLinksContainer = document.getElementById('mobile-nav-links');
+            // 3. MOBILE INTERFACE POPULATION
+            const hamburger = document.getElementById('hamburger');
+            const menuWindow = document.getElementById('menu-window');
+            const mobileNavLinksContainer = document.getElementById('mobile-nav-links');
 
-            if (mobileNavLinksContainer) {
-                mobileNavLinksContainer.innerHTML = menuItems.map(item => `
-                            <li><a href="${item.url}">${item.label}</a></li>
-                        `).join('');
-            }
+            if (mobileNavLinksContainer) {
+                mobileNavLinksContainer.innerHTML = menuItems.map(item => `
+                            <li><a href="${item.url}">${item.label}</a></li>
+                        `).join('');
+            }
 
-            if (hamburger && menuWindow) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    menuWindow.classList.toggle('open');
-                });
-                menuWindow.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        hamburger.classList.remove('active');
-                        menuWindow.classList.remove('open');
-                    });
-                });
-            }
+            if (hamburger && menuWindow) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    menuWindow.classList.toggle('open');
+                });
+                menuWindow.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        menuWindow.classList.remove('open');
+                    });
+                });
+            }
 
-            // 4. TICKER ANIMATION
-            if (typeof gsap !== "undefined") {
-                gsap.timeline({ repeat: -1 })
-                    .to("#scroller-track", { y: "-50%", duration: 1.6, delay: 2.2, ease: "power4.inOut" })
-                    .to("#scroller-track", { y: "0%", duration: 1.6, delay: 2.2, ease: "power4.inOut" });
-            }
+            // 4. TICKER ANIMATION
+            if (typeof gsap !== "undefined") {
+                gsap.timeline({ repeat: -1 })
+                    .to("#scroller-track", { y: "-50%", duration: 1.6, delay: 2.2, ease: "power4.inOut" })
+                    .to("#scroller-track", { y: "0%", duration: 1.6, delay: 2.2, ease: "power4.inOut" });
+            }
 
-            // 5. RENDERING DYNAMIC FILTERS
-            const filterNav = document.getElementById('filterNav');
-            if (filterNav) {
-                filterNav.innerHTML = filterCategories.map(cat => `
-                            <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
-                                ${cat.label}
-                            </button>
-                        `).join('');
-            }
+            // 5. RENDERING DYNAMIC FILTERS
+            const filterNav = document.getElementById('filterNav');
+            if (filterNav) {
+                filterNav.innerHTML = filterCategories.map(cat => `
+                            <button class="filter-btn ${cat.slug === 'all' ? 'active' : ''}" data-filter="${cat.slug}">
+                                ${cat.label}
+                            </button>
+                        `).join('');
+            }
 
-            // 6. GALLERY RENDER ENGINE
-            const designGrid = document.getElementById('designGrid');
-            const seeMoreBtn = document.getElementById('showcaseSeeMoreBtn');
+            // 6. GALLERY RENDER ENGINE
+            const designGrid = document.getElementById('designGrid');
+            const seeMoreBtn = document.getElementById('showcaseSeeMoreBtn');
 
-            if (seeMoreBtn) seeMoreBtn.style.display = 'none';
+            if (seeMoreBtn) seeMoreBtn.style.display = 'none';
 
-            function renderShowcase() {
-                let filteredProjects = projectData.filter(project => currentFilter === 'all' || project.category === currentFilter);
+            function renderShowcase() {
+                let filteredProjects = projectData.filter(project => currentFilter === 'all' || project.category === currentFilter);
 
-                if (currentFilter === 'all' && window.allowedProjectIds.length > 0) {
-                    filteredProjects = filteredProjects.filter(project => window.allowedProjectIds.includes(project.id));
-                }
+                if (currentFilter === 'all' && window.allowedProjectIds.length > 0) {
+                    filteredProjects = filteredProjects.filter(project => window.allowedProjectIds.includes(project.id));
+                }
 
-                designGrid.innerHTML = filteredProjects.map(project => {
-                    const detailUrl = project.url ? project.url : `${project.id}.html`;
-                    const fallbackText = encodeURIComponent(project.title);
+                designGrid.innerHTML = filteredProjects.map(project => {
+                    const detailUrl = project.url ? project.url : `${project.id}.html`;
+                    const fallbackText = encodeURIComponent(project.title);
 
-                    return `
-                                <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
-                                    <div class="design-card">
-                                        <div class="card-img-wrapper">
-                                            <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x450/eeeeee/0284C7?text=${fallbackText}'">
-                                            <div class="card-overlay">
-                                                <div class="card-overlay-content">
-                                                    <h4>${project.alt}</h4>
-                                                    <span>${project.subtitle}</span>
-                                                    <button class="card-action-btn">
-                                                        <span>View Details</span> <i class="fa-solid fa-arrow-right"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-meta-info">
-                                            <span class="card-title">${project.title}</span>
-                                            <div class="card-stats">
-                                                <span><i class="far fa-eye"></i> ${project.views}</span>
-                                                <span><i class="far fa-heart"></i> ${project.hearts}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            `;
-                }).join('');
-            }
+                    return `
+                                <a href="${detailUrl}" class="design-card-link" target="${project.target}" data-category="${project.category}">
+                                    <div class="design-card">
+                                        <div class="card-img-wrapper">
+                                            <img src="${project.img}" alt="${project.alt}" onerror="this.src='https://placehold.co/600x450/eeeeee/0284C7?text=${fallbackText}'">
+                                            <div class="card-overlay">
+                                                <div class="card-overlay-content">
+                                                    <h4>${project.alt}</h4>
+                                                    <span>${project.subtitle}</span>
+                                                    <button class="card-action-btn">
+                                                        <span>View Details</span> <i class="fa-solid fa-arrow-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-meta-info">
+                                            <span class="card-title">${project.title}</span>
+                                            <div class="card-stats">
+                                                <span><i class="far fa-eye"></i> ${project.views}</span>
+                                                <span><i class="far fa-heart"></i> ${project.hearts}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                }).join('');
+            }
 
-            window.refreshShowcaseGallery = renderShowcase;
+            window.refreshShowcaseGallery = renderShowcase;
 
-            if (filterNav) {
-                filterNav.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', function () {
-                        filterNav.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        currentFilter = this.getAttribute('data-filter');
+            if (filterNav) {
+                filterNav.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        filterNav.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        currentFilter = this.getAttribute('data-filter');
 
-                        if (typeof gsap !== "undefined") {
-                            gsap.fromTo("#designGrid", { opacity: 0.2, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
-                        }
-                        renderShowcase();
-                    });
-                });
-            }
+                        if (typeof gsap !== "undefined") {
+                            gsap.fromTo("#designGrid", { opacity: 0.2, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" });
+                        }
+                        renderShowcase();
+                    });
+                });
+            }
 
-            // 7. FORM SUBMISSION GATEWAY CONTROLLER (FIXED & OPTIMIZED)
+            // 7. FORM SUBMISSION GATEWAY CONTROLLER (FIXED & OPTIMIZED)
 // Prevent selecting past dates
 const meetingDate = document.getElementById("meetingDate");
 
 if (meetingDate) {
-    const today = new Date();
+    const today = new Date();
 
-    // Format as YYYY-MM-DD
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
+    // Format as YYYY-MM-DD
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
 
-    meetingDate.min = `${year}-${month}-${day}`;
+    meetingDate.min = `${year}-${month}-${day}`;
 }
-            const contactForm = document.getElementById('portfolioContactForm');
-            const submitBtn = document.getElementById('submitFormBtn');
-            const statusMsg = document.getElementById('formStatusMessage');
+            const contactForm = document.getElementById('portfolioContactForm');
+            const submitBtn = document.getElementById('submitFormBtn');
+            const statusMsg = document.getElementById('formStatusMessage');
 
-            const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwIbbSk0A5EpL6DmaU95rvMdyfCnnwGGyGa5IW5CnT24Abl5mUwVljw870VA9UzZd2U/exec';
+            const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbwIbbSk0A5EpL6DmaU95rvMdyfCnnwGGyGa5IW5CnT24Abl5mUwVljw870VA9UzZd2U/exec';
 
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
 
-                    submitBtn.disabled = true;
-                    submitBtn.style.opacity = '0.6';
-                    statusMsg.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Dispatching details safely...`;
-                    statusMsg.style.color = 'var(--text-muted)';
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.6';
+                    statusMsg.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Dispatching details safely...`;
+                    statusMsg.style.color = 'var(--text-muted)';
 
-                    const formData = new FormData(contactForm);
+                    const formData = new FormData(contactForm);
 
-                    // গুগল অ্যাপস স্ক্রিপ্টে ১০০% ডেটা ডেলিভারি নিশ্চিত করার জন্য URLSearchParams ব্যবহার করা হয়েছে
-                    const searchParams = new URLSearchParams();
-                    for (const pair of formData.entries()) {
-                        searchParams.append(pair[0], pair[1]);
-                    }
+                    // গুগল অ্যাপস স্ক্রিপ্টে ১০০% ডেটা ডেলিভারি নিশ্চিত করার জন্য URLSearchParams ব্যবহার করা হয়েছে
+                    const searchParams = new URLSearchParams();
+                    for (const pair of formData.entries()) {
+                        searchParams.append(pair[0], pair[1]);
+                    }
 
-                    fetch(googleScriptUrl, {
-                        method: 'POST',
-                        body: searchParams,
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        redirect: 'follow'
-                    })
-                        .then(response => {
-                            statusMsg.style.color = '#10B981';
-                            statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Project dispatched! Check email shortly.`;
-                            contactForm.reset();
-                        })
-                        .catch(error => {
-                            statusMsg.style.color = '#EF4444';
-                            statusMsg.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Connection dropped. Send via mailto channel directly.`;
-                            console.error('Error details:', error);
-                        })
-                        .finally(() => {
-                            submitBtn.disabled = false;
-                            submitBtn.style.opacity = '1';
-                            if (typeof gsap !== "undefined") {
-                                gsap.fromTo(statusMsg, { opacity: 0, y: 5 }, { opacity: 1, y: 0, duration: 0.4 });
-                            }
-                        });
-                });
-            }
+                    fetch(googleScriptUrl, {
+                        method: 'POST',
+                        body: searchParams,
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        redirect: 'follow'
+                    })
+                        .then(response => {
+                            statusMsg.style.color = '#10B981';
+                            statusMsg.innerHTML = `<i class="fa-solid fa-circle-check"></i> Project dispatched! Check email shortly.`;
+                            contactForm.reset();
+                        })
+                        .catch(error => {
+                            statusMsg.style.color = '#EF4444';
+                            statusMsg.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Connection dropped. Send via mailto channel directly.`;
+                            console.error('Error details:', error);
+                        })
+                        .finally(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.style.opacity = '1';
+                            if (typeof gsap !== "undefined") {
+                                gsap.fromTo(statusMsg, { opacity: 0, y: 5 }, { opacity: 1, y: 0, duration: 0.4 });
+                            }
+                        });
+                });
+            }
 
-            applyMainPageDesign();
-            renderShowcase();
-        });
-    </script>
+            applyMainPageDesign();
+            renderShowcase();
+        });
+    </script>
 </body>
 
-</html>
+  </html>
