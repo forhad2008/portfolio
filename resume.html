@@ -8,26 +8,27 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
     <style>
+        /* --- MODERN LUXURY CONFIGURATION --- */
         :root {
-            --bg-canvas: #FAF9F6;          /* Off-white Silk */
-            --bg-card: #FFFFFF;            /* Pure Gallery White */
-            --text-main: #0D0F12;          /* Midnight Slate */
-            --text-muted: #626875;         /* Soft Charcoal */
-            --accent-gold: #B39274;        /* Muted Antique Gold */
-            --border-line: rgba(13, 15, 18, 0.06);
+            --bg-canvas: #0B0F19;           /* Deep Obsidian Midnight */
+            --bg-surface: #131A26;          /* Sleek Slate Surface */
+            --bg-surface-tint: #1B2433;     /* Hover / Highlight Tint */
+            --text-pure: #FFFFFF;
+            --text-main: #E2E8F0;           /* Soft Platinum */
+            --text-muted: #94A3B8;          /* Cool Gray */
+            --accent: #E2B875;              /* Muted Champagne Gold */
+            --accent-glow: rgba(226, 184, 117, 0.15);
+            --border-line: rgba(255, 255, 255, 0.05);
             
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Inter', sans-serif;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Inter', sans-serif;
             
-            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --curve-smooth: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -39,214 +40,146 @@
         body {
             background-color: var(--bg-canvas);
             color: var(--text-main);
-            font-family: var(--font-sans);
+            font-family: var(--font-body);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 100px 24px;
             overflow-x: hidden;
             position: relative;
+            line-height: 1.6;
             letter-spacing: -0.01em;
         }
 
-        #canvas-container {
+        /* --- BACKGROUND PARTICLES CANVAS --- */
+        #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
             pointer-events: none;
             opacity: 0.6;
         }
 
-        /* Luxury Layout Wrapper */
-        .premium-container {
-            width: 1100px;
-            max-width: 100%;
-            background: var(--bg-card);
-            border: 1px solid var(--border-line);
-            border-radius: 20px;
-            box-shadow: 0 40px 90px rgba(13, 15, 18, 0.03);
-            z-index: 10;
+        /* --- HERO HEADER DESIGN --- */
+        header {
             position: relative;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr;
-            opacity: 0;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 40px;
         }
 
-        /* Editorial Master Header */
-        header {
-            padding: 80px 80px 50px;
-            border-bottom: 1px solid var(--border-line);
+        .hero-layout {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 30px;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 40px;
         }
 
         .hero-title h1 {
-            font-family: var(--font-serif);
-            font-size: 4.2rem;
-            font-weight: 300;
-            line-height: 0.95;
-            margin-bottom: 15px;
+            font-family: var(--font-display);
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 0.9;
+            color: var(--text-pure);
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
         }
 
         .hero-title p {
-            font-size: 0.85rem;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: var(--accent-gold);
-            font-weight: 500;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-top: 15px;
+            font-weight: 700;
         }
 
-        .quick-contact {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: flex-end;
+        .meta-specs {
             text-align: right;
-        }
-
-        .quick-contact a, .quick-contact span {
             font-size: 0.85rem;
             color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-            font-weight: 400;
-        }
-
-        .quick-contact a:hover {
-            color: var(--text-main);
-            transform: translateX(-3px);
-        }
-
-        /* Two-Column Asymmetric Body Layout */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.6fr;
-            min-height: 600px;
-        }
-
-        .left-column {
-            border-right: 1px solid var(--border-line);
-            padding: 60px 60px 80px 80px;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-
-        .right-column {
-            padding: 60px 80px 80px 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
-
-        /* Typography Standards for Blocks */
-        .section-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin-bottom: 30px;
-            display: block;
-        }
-
-        .profile-text {
-            font-family: var(--font-serif);
-            font-size: 1.65rem;
-            line-height: 1.5;
-            font-weight: 300;
-            color: var(--text-main);
-        }
-
-        /* Modern Timeline Blocks */
-        .timeline-block {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .timeline-block:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-        }
-
-        .timeline-meta h3 {
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--text-main);
-        }
-
-        .timeline-meta .date {
-            font-size: 0.8rem;
-            color: var(--accent-gold);
-            letter-spacing: 0.05em;
-            font-weight: 500;
-        }
-
-        .timeline-subtitle {
-            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 14px;
-            font-weight: 500;
         }
 
-        .timeline-desc {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            font-weight: 300;
+        .meta-specs span {
+            color: var(--text-pure);
+            font-weight: 600;
         }
 
-        /* Clean High-Contrast Skills Architecture */
-        .skills-container {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .skill-row {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-weight: 400;
-        }
-
-        .skill-bar-bg {
-            background: rgba(13, 15, 18, 0.04);
-            height: 2px;
-            width: 100%;
+        /* --- MAIN PORTFOLIO LAYOUT --- */
+        .wrapper {
             position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            gap: 60px;
         }
 
-        .skill-bar-fill {
-            background: var(--text-main);
-            height: 100%;
-            width: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);
+        /* --- SIDEBAR --- */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+        }
+
+        .sticky-panel {
+            position: sticky;
+            top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+        }
+
+        .panel-block h3 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .contact-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.3s var(--curve-smooth);
+        }
+
+        .contact-item:hover {
+            background: var(--bg-surface-tint);
+            color: var(--text-pure);
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
         }
 
         .meta-list {
@@ -259,248 +192,402 @@
         .meta-list li {
             font-size: 0.9rem;
             color: var(--text-muted);
+        }
+
+        .meta-list li strong {
+            color: var(--text-pure);
+            display: block;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        /* --- MAIN BLOCK --- */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .section-node {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .node-header {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--text-pure);
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 12px;
+        }
+
+        .profile-text {
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* --- MODERN GRID RECONSTRUCTION --- */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .timeline-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.4s var(--curve-smooth), border-color 0.4s var(--curve-smooth);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .card-meta {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
         }
 
-        .meta-list li span:first-child {
-            font-weight: 500;
-            color: var(--text-main);
-        }
-
-        /* High-End Clean Print/PDF Trigger */
-        .action-tray {
-            padding: 0 80px 80px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .btn-luxury {
-            background: var(--text-main);
-            color: var(--bg-card);
-            border: none;
-            padding: 16px 40px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
+        .card-meta h4 {
+            font-size: 1.2rem;
+            color: var(--text-pure);
             font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            display: inline-flex;
-            align-items: center;
+        }
+
+        .card-meta .date-badge {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            background: var(--bg-surface-tint);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .timeline-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- MINIMALIST RADIAL SKILLS --- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .skill-pill {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-line);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
-        .btn-luxury:hover {
-            background: var(--accent-gold);
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .skill-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-pure);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-val {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .track-bg {
+            background: var(--bg-surface-tint);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .track-fill {
+            background: var(--accent);
+            height: 100%;
+            width: 0;
+            border-radius: 3px;
+            transition: width 1.8s var(--curve-smooth);
+            box-shadow: 0 0 12px var(--accent);
+        }
+
+        /* --- ACTION TRIGGERS --- */
+        .btn-box {
+            display: flex;
+            gap: 20px;
+        }
+
+        .action-btn {
+            background: transparent;
+            color: var(--text-pure);
+            border: 1px solid var(--accent);
+            padding: 16px 36px;
+            border-radius: 30px;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s var(--curve-smooth);
+        }
+
+        .action-btn:hover {
+            background: var(--accent);
+            color: var(--bg-canvas);
+            box-shadow: 0 10px 25px var(--accent-glow);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(179, 146, 116, 0.2);
         }
 
-        /* Responsive Flow Configuration */
-        @media (max-width: 900px) {
-            header { padding: 40px; }
-            .content-grid { grid-template-columns: 1fr; }
-            .left-column { padding: 40px; border-right: none; border-bottom: 1px solid var(--border-line); }
-            .right-column { padding: 40px; }
-            .action-tray { padding: 40px; }
-            .hero-title h1 { font-size: 3rem; }
+        /* --- RESPONSIVE ENGINE --- */
+        @media (max-width: 968px) {
+            header { margin: 40px auto 20px; }
+            .hero-layout { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .wrapper { grid-template-columns: 1fr; gap: 40px; }
+            .sticky-panel { position: static; }
         }
 
-        /* Specialized Ultra-Sharp Print Engine Styles */
+        @media (max-width: 640px) {
+            header, .wrapper { padding: 0 20px; }
+            .skills-container { grid-template-columns: 1fr; }
+            .card-meta { flex-direction: column; gap: 8px; }
+        }
+
+        /* --- PREMIUM MONOCHROME PRINT SYSTEM --- */
         @media print {
-            body { background: #FFFFFF !important; padding: 0 !important; color: #000000 !important; }
-            #canvas-container, .action-tray { display: none !important; }
-            .premium-container { border: none !important; box-shadow: none !important; width: 100% !important; }
-            .left-column { padding: 40px 40px 40px 0 !important; }
-            .right-column { padding: 40px 0 40px 40px !important; }
-            header { padding: 40px 0 !important; }
-            .skill-bar-fill { background: #000000 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { background: #FFFFFF !important; color: #000000 !important; }
+            #bg-canvas, .action-btn { display: none !important; }
+            .hero-title h1 { color: #000000 !important; }
+            .timeline-card, .contact-card, .skill-pill { background: #FFFFFF !important; border: 1px solid #E2E8F0 !important; color: #000000 !important; }
+            .card-meta h4, .skill-name, .node-header { color: #000000 !important; }
+            .card-meta .date-badge { background: #F1F5F9 !important; color: #000000 !important; }
+            .track-bg { background: #E2E8F0 !important; }
+            .track-fill { background: #000000 !important; box-shadow: none !important; }
         }
     </style>
 </head>
 
 <body>
 
-    <div id="canvas-container"></div>
+    <canvas id="bg-canvas"></canvas>
 
-    <div class="premium-container">
-        <header>
+    <header>
+        <div class="hero-layout">
             <div class="hero-title">
                 <h1>Abdullah Forhad</h1>
                 <p>Designer & Frontend Engineer</p>
             </div>
-            <div class="quick-contact">
-                <a href="mailto:forhadalpha08@gmail.com">forhadalpha08@gmail.com</a>
-                <a href="tel:+8801342900364">+880 1342 900364</a>
-                <span>Chittagong, Bangladesh</span>
+            <div class="meta-specs">
+                Based in <span>Chittagong, BD</span>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <div class="content-grid">
-            <aside class="left-column">
-                <div>
-                    <span class="section-label">Profile</span>
-                    <p class="profile-text">
-                        A digital architect specialized in bridging the clean spacing of modern typography with powerful frontend engineering frameworks. Focused on elegant visual presentation and refined interactions.
-                    </p>
-                </div>
-
-                <div>
-                    <span class="section-label">Core Capabilities</span>
-                    <div class="skills-container">
-                        <div class="skill-row">
-                            <div class="skill-header"><span>React & JavaScript Engine</span><span>75%</span></div>
-                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%;"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-header"><span>Visual Design (Photoshop)</span><span>80%</span></div>
-                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-header"><span>VS Code Workspace Ecosystem</span><span>90%</span></div>
-                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
-                        </div>
-                        <div class="skill-row">
-                            <div class="skill-header"><span>Document Production (MS Word)</span><span>85%</span></div>
-                            <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
-                        </div>
+    <div class="wrapper">
+        <aside>
+            <div class="sticky-panel">
+                <div class="panel-block">
+                    <h3>Inquiries</h3>
+                    <div class="contact-card">
+                        <a href="mailto:forhadalpha08@gmail.com" class="contact-item">
+                            <i class="fa-regular fa-envelope"></i> forhadalpha08@gmail.com
+                        </a>
+                        <a href="tel:+8801342900364" class="contact-item">
+                            <i class="fa-solid fa-mobile-screen-button"></i> +880 1342 900364
+                        </a>
+                        <span class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i> Chittagong, Bangladesh
+                        </span>
                     </div>
                 </div>
 
-                <div>
-                    <span class="section-label">Metadata</span>
+                <div class="panel-block">
+                    <h3>Biographics</h3>
                     <ul class="meta-list">
-                        <li><span>Born</span><span>20 November 2008</span></li>
-                        <li><span>Nationality</span><span>Bangladeshi</span></li>
+                        <li><strong>Born</strong> 20 November 2008</li>
+                        <li><strong>Citizenship</strong> Bangladeshi</li>
                     </ul>
                 </div>
-            </aside>
+            </div>
+        </aside>
 
-            <main class="right-column">
-                <div>
-                    <span class="section-label">Selected Experience</span>
+        <main>
+            <section class="section-node">
+                <h2 class="node-header">Overview</h2>
+                <p class="profile-text">
+                    Creative Frontend Developer and Graphics Designer with 3+ years of experience crafting ultra-responsive web infrastructures. Passionate about marrying technical efficiency with high-end editorial aesthetics to transform complex structures into seamless visual experiences.
+                </p>
+            </section>
+
+            <section class="section-node">
+                <h2 class="node-header">Selected Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-card">
+                        <div class="card-meta">
+                            <h4>Frontend Developer — TechCorp</h4>
+                            <span class="date-badge">2025 – Present</span>
+                        </div>
+                        <p>Architected application layouts using React ecosystems, optimizing asset loads to maximize rendering efficiency by 30%. Partnered with design leads to craft tailored user interfaces.</p>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="card-meta">
+                            <h4>Junior Developer — WebWorks</h4>
+                            <span class="date-badge">2026 – Present</span>
+                        </div>
+                        <p>Developed dynamic features using clean modular JavaScript structures. Managed deployment flows, handled custom design blocks, and prioritized responsive performance schemas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-node">
+                <h2 class="node-header">Expertise Matrix</h2>
+                <div class="skills-container">
+                    <div class="skill-pill">
+                        <div class="skill-info">
+                            <span class="skill-name">React & JS Ecosystem</span>
+                            <span class="skill-val">75%</span>
+                        </div>
+                        <div class="track-bg"><div class="track-fill" style="width: 75%;"></div></div>
+                    </div>
                     
-                    <div class="timeline-block">
-                        <div class="timeline-meta">
-                            <h3>TechCorp</h3>
-                            <span class="date">Jan 2025 — Present</span>
+                    <div class="skill-pill">
+                        <div class="skill-info">
+                            <span class="skill-name">VS Code Environment</span>
+                            <span class="skill-val">90%</span>
                         </div>
-                        <div class="timeline-subtitle">Frontend Developer</div>
-                        <p class="timeline-desc">Engineered interactive client spaces utilizing modern component trees. Maximized initial display speed metrics by 30% and unified styling consistency with dedicated interface design tracks.</p>
+                        <div class="track-bg"><div class="track-fill" style="width: 90%;"></div></div>
                     </div>
 
-                    <div class="timeline-block">
-                        <div class="timeline-meta">
-                            <h3>WebWorks</h3>
-                            <span class="date">Jun 2026 — Present</span>
+                    <div class="skill-pill">
+                        <div class="skill-info">
+                            <span class="skill-name">Adobe Photoshop</span>
+                            <span class="skill-val">80%</span>
                         </div>
-                        <div class="timeline-subtitle">Junior Developer</div>
-                        <p class="timeline-desc">Crafted accessible structure sets with standard markup scripts. Assisted in the routine maintenance cycles of structured global client architectures.</p>
+                        <div class="track-bg"><div class="track-fill" style="width: 80%;"></div></div>
                     </div>
-                </div>
 
-                <div>
-                    <span class="section-label">Academic Foundations</span>
-                    <div class="timeline-block">
-                        <div class="timeline-meta">
-                            <h3>Comilla Polytechnic Institute</h3>
-                            <span class="date">2025 — Present</span>
+                    <div class="skill-pill">
+                        <div class="skill-info">
+                            <span class="skill-name">MS Office / Suite</span>
+                            <span class="skill-val">85%</span>
                         </div>
-                        <div class="timeline-subtitle">Diploma in Computer Science</div>
-                        <p class="timeline-desc">Specialized theory application in core systems engineering methods and advanced structural interface formatting layouts.</p>
+                        <div class="track-bg"><div class="track-fill" style="width: 85%;"></div></div>
                     </div>
                 </div>
-            </main>
-        </div>
+            </section>
 
-        <div class="action-tray">
-            <button onclick="window.print()" class="btn-luxury">
-                <i class="fas fa-print"></i> Generate Document
-            </button>
-        </div>
+            <section class="section-node">
+                <h2 class="node-header">Education</h2>
+                <div class="timeline">
+                    <div class="timeline-card">
+                        <div class="card-meta">
+                            <h4>Diploma in Computer Science</h4>
+                            <span class="date-badge">2025 – Present</span>
+                        </div>
+                        <p>Comilla Polytechnic Institute — Specializing in software system design architectures and core computation analytics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="btn-box">
+                <button onclick="window.print()" class="action-btn">
+                    <i class="fa-solid fa-print"></i> Generate Document / PDF
+                </button>
+            </div>
+        </main>
     </div>
 
     <script>
-        // --- LUXURY ARCHITECTURE MICRO-ENGINE (Crystalline Dust Atmosphere) ---
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        // --- PERFORMANCE-OPTIMIZED BG ENGINE ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
+        let particles = [];
+        const count = 45;
 
-        camera.position.z = 40;
-
-        // Premium ambient stellar dust configuration
-        const particleCount = 60;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-
-        for (let i = 0; i < particleCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 70;
-            positions[i + 1] = (Math.random() - 0.5) * 50;
-            positions[i + 2] = (Math.random() - 0.5) * 30;
-        }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-        const material = new THREE.PointsMaterial({
-            size: 0.35,
-            color: 0xB39274, // Gold accents particle dust
-            transparent: true,
-            opacity: 0.4
-        });
-
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
-
-        let mouseX = 0, mouseY = 0;
-        window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX / window.innerWidth) - 0.5;
-            mouseY = (e.clientY / window.innerHeight) - 0.5;
-        });
-
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            // Subtle, dynamic layout orbit
-            points.rotation.y += 0.0008;
-            points.rotation.x += 0.0004;
-
-            points.position.x += (mouseX * 4 - points.position.x) * 0.05;
-            points.position.y += (-mouseY * 4 - points.position.y) * 0.05;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Animate Skills Loading
-        window.addEventListener('DOMContentLoaded', () => {
-            const fills = document.querySelectorAll('.skill-bar-fill');
-            setTimeout(() => {
-                fills.forEach(fill => {
-                    fill.style.width = fill.parentElement.previousElementSibling.lastChild.textContent;
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 1.5 + 0.5,
+                    dx: (Math.random() - 0.5) * 0.4,
+                    dy: (Math.random() - 0.5) * 0.4
                 });
-            }, 600);
-        });
+            }
+        }
 
-        // Elegant GSAP Document Entrance
-        gsap.to(".premium-container", {
-            opacity: 1,
-            y: 0,
-            duration: 1.6,
-            ease: "power4.out",
-            startAt: { y: 40 }
-        });
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(226, 184, 117, 0.3)';
+            ctx.strokeStyle = 'rgba(226, 184, 117, 0.04)';
+            
+            particles.forEach((p, idx) => {
+                p.x += p.dx;
+                p.y += p.dy;
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
+                if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = idx + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('DOMContentLoaded', () => {
+            initCanvas();
+            draw();
+            
+            // Skill bar fill triggers smoothly on load
+            setTimeout(() => {
+                document.querySelectorAll('.track-fill').forEach(bar => {
+                    bar.style.width = bar.parentElement.previousElementSibling.children[1].textContent;
+                });
+            }, 300);
         });
     </script>
 </body>
