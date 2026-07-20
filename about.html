@@ -11,18 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         :root {
             --bg-main: #060709;
-            --bg-card: rgba(14, 16, 22, 0.55);
+            --bg-card: rgba(10, 12, 18, 0.45); /* Highly transparent glass effect */
             --text-primary: #ffffff;
-            --text-muted: #9da4b4;
+            --text-muted: #abb3c4;
             --text-dark: #2a2e38;
             --accent-crimson: #ff1e56;
-            --accent-glow: rgba(255, 30, 86, 0.15);
             --border-glow: rgba(255, 255, 255, 0.05);
             --font-display: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -53,37 +51,36 @@
             position: relative;
         }
 
-        /* Ambient Dynamic Canvas Layout Container */
-        #canvas-container {
+        /* --- EXCLUSIVE ANIMATED VIDEO WALLPAPER CONTAINER --- */
+        .video-background-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
+            overflow: hidden;
             pointer-events: none;
         }
 
-        /* Cinematic depth mapping gradient overlay */
-        .cinematic-vignette {
+        .video-background-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Dark Cinematic Overlay to blend the content smoothly over the wallpaper */
+        .cinematic-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(6, 7, 9, 0.4) 0%, rgba(6, 7, 9, 0.85) 100%),
-                        radial-gradient(circle at center, transparent 10%, rgba(6, 7, 9, 0.7) 90%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .ambient-glow {
-            position: fixed;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(6,7,9,0) 70%);
-            bottom: -15%;
-            left: -10%;
+            background: linear-gradient(180deg, rgba(6, 7, 9, 0.5) 0%, rgba(6, 7, 9, 0.85) 100%),
+                        radial-gradient(circle at center, transparent 20%, rgba(6, 7, 9, 0.6) 90%);
             z-index: -1;
             pointer-events: none;
         }
@@ -99,9 +96,9 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(6, 7, 9, 0.4);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            background: rgba(6, 7, 9, 0.3);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border-glow);
         }
 
@@ -113,9 +110,7 @@
             color: var(--text-primary);
         }
 
-        .logo span {
-            color: var(--accent-crimson);
-        }
+        .logo span { color: var(--accent-crimson); }
 
         .desktop-nav {
             display: flex;
@@ -145,14 +140,9 @@
         }
 
         .desktop-nav a:hover::after,
-        .desktop-nav li.active a::after {
-            width: 100%;
-        }
-
+        .desktop-nav li.active a::after { width: 100%; }
         .desktop-nav a:hover,
-        .desktop-nav li.active a {
-            color: var(--text-primary);
-        }
+        .desktop-nav li.active a { color: var(--text-primary); }
 
         .hamburger {
             cursor: pointer;
@@ -200,7 +190,7 @@
         }
         .menu-window a:hover { color: var(--accent-crimson); }
 
-        /* --- DISPLAY LAYOUT MATRIX --- */
+        /* --- DISPLAY LAYOUT CONTENT --- */
         .workspace-grid {
             max-width: 1100px;
             width: 100%;
@@ -210,9 +200,7 @@
             align-items: start;
         }
 
-        .top-action-bar {
-            grid-column: 1 / -1;
-        }
+        .top-action-bar { grid-column: 1 / -1; }
 
         .back-link {
             display: inline-flex;
@@ -232,7 +220,7 @@
             transform: translateX(-6px);
         }
 
-        /* Identity Frame Showcase */
+        /* Identity Left Panel Glass Box */
         .hero-identity-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-glow);
@@ -245,7 +233,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             position: relative;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
         }
 
         .hero-identity-panel::before {
@@ -281,7 +269,7 @@
             font-style: normal;
             display: block;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
         }
 
         .identity-signature h2 {
@@ -298,7 +286,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* Content Hub Stack */
+        /* Information Right Layout Grid */
         .analytics-cluster {
             display: flex;
             flex-direction: column;
@@ -306,15 +294,18 @@
         }
 
         .editorial-block {
-            background: rgba(255, 255, 255, 0.01);
+            background: rgba(255, 255, 255, 0.02);
             border-left: 2px solid var(--accent-crimson);
-            padding: 8px 0 8px 30px;
+            padding: 10px 0 10px 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 0 12px 12px 0;
         }
 
         .editorial-block p {
             font-size: 1.15rem;
             line-height: 1.65;
-            color: #d1d5db;
+            color: #e5e7eb;
             font-weight: 300;
         }
 
@@ -333,15 +324,16 @@
             flex-direction: column;
             justify-content: space-between;
             height: 130px;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium), background 0.4s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .matrix-node:hover {
-            border-color: rgba(255, 30, 86, 0.4);
-            background: rgba(22, 25, 34, 0.7);
-            transform: translateY(-4px);
+            border-color: rgba(255, 30, 86, 0.5);
+            background: rgba(18, 22, 33, 0.6);
+            transform: translateY(-5px);
         }
 
         .matrix-node label {
@@ -364,14 +356,12 @@
             font-family: var(--font-display);
             font-weight: 700;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 15px rgba(255, 30, 86, 0.3);
+            text-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
         }
 
-        .reveal {
-            opacity: 0;
-        }
+        .reveal { opacity: 0; }
 
-        /* --- RESPONSIVE PLATFORM SCALING --- */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
@@ -390,9 +380,13 @@
 
 <body>
 
-    <div id="canvas-container"></div>
-    <div class="cinematic-vignette"></div>
-    <div class="ambient-glow"></div>
+    <div class="video-background-container">
+        <video autoplay muted loop playsinline poster="17845397868661389406738947907876.jpg">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-red-ink-swirling-in-water-43063-large.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="cinematic-overlay"></div>
 
     <nav>
         <div class="logo">Forhad<span>.</span></div>
@@ -476,7 +470,7 @@
     </div>
 
     <script>
-        // MOBILE OVERLAY MENU CONTROLLER
+        // MOBILE OVERLAY NAVIGATION ENGINE
         document.addEventListener("DOMContentLoaded", () => {
             const menuItems = [
                 { label: "Home", url: "index.html" },
@@ -503,119 +497,16 @@
             }
         });
 
-        // --- CYBER-SAMURAI 3D KINETIC GRAPHICS MATRIX (THREE.JS) ---
-        const container = document.getElementById('canvas-container');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
-
-        camera.position.z = 45;
-
-        // Custom Falling Crystalline Leaf Simulation Configuration
-        const leafCount = 350;
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(leafCount * 3);
-        const leafData = [];
-
-        for (let i = 0; i < leafCount; i++) {
-            const x = (Math.random() - 0.5) * 85;
-            const y = (Math.random() - 0.5) * 60;
-            const z = (Math.random() - 0.5) * 40;
-
-            positions[i * 3] = x;
-            positions[i * 3 + 1] = y;
-            positions[i * 3 + 2] = z;
-
-            leafData.push({
-                x: x,
-                y: y,
-                z: z,
-                fallSpeed: -(Math.random() * 0.05 + 0.02),
-                driftSpeed: (Math.random() - 0.5) * 0.03,
-                phase: Math.random() * Math.PI
-            });
-        }
-
-        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-        // High-end Crimson Additive Shading Properties
-        const material = new THREE.PointsMaterial({
-            color: 0xff1e56,
-            size: 0.38,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particleCloud = new THREE.Points(geometry, material);
-        scene.add(particleCloud);
-
-        // Vector tracking parameters
-        let targetMouseX = 0, targetMouseY = 0;
-        let currentMouseX = 0, currentMouseY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            targetMouseX = (e.clientX - window.innerWidth / 2) * 0.015;
-            targetMouseY = (e.clientY - window.innerHeight / 2) * 0.015;
-        });
-
-        // 3D Rendering Physics Optimization Loop
-        function animate() {
-            requestAnimationFrame(animate);
-            const time = Date.now();
-
-            const positionsArray = geometry.attributes.position.array;
-
-            for (let i = 0; i < leafCount; i++) {
-                const i3 = i * 3;
-                const data = leafData[i];
-
-                data.y += data.fallSpeed;
-                data.x += Math.cos(time * 0.0015 + data.phase) * 0.015 + data.driftSpeed;
-
-                // Loop particles back smoothly if boundaries are crossed
-                if (data.y < -35) {
-                    data.y = 35;
-                    data.x = (Math.random() - 0.5) * 85;
-                }
-
-                positionsArray[i3] = data.x;
-                positionsArray[i3 + 1] = data.y;
-            }
-
-            geometry.attributes.position.needsUpdate = true;
-
-            // Fluid luxury tracking calculation matrix
-            currentMouseX += (targetMouseX - currentMouseX) * 0.05;
-            currentMouseY += (targetMouseY - currentMouseY) * 0.05;
-
-            particleCloud.rotation.y = currentMouseX * 0.5;
-            particleCloud.rotation.x = currentMouseY * 0.5;
-
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // --- PREMIER KINETIC ELEMENTS STAGGER SHOW (GSAP) ---
+        // PREMIER GSAP REVEAL ANIMATIONS ON LOAD
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
-                duration: 1.5,
+                duration: 1.4,
                 stagger: 0.08,
                 ease: "power4.out",
-                startAt: { y: 40 }
+                startAt: { y: 35 }
             });
-        });
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
