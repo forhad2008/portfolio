@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Forhad | Creative Resume</title>
+    <title>Abdullah Forhad | Classic Creative Resume</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -16,17 +16,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM (Cohesive with Main Site) --- */
+        /* --- CLASSIC EDITORIAL DEEP RED SYSTEM --- */
         :root {
             --bg-dark: #FFFFFF;              /* Pure Gallery White */
-            --bg-card: #F8F9FA;              /* Minimalist Light Gray */
-            --text-primary: #0A0A0C;         /* Rich Ink Black */
-            --text-muted: #6B7280;           /* Mid Neutral Gray */
-            --accent-neon: #0284C7;          /* High-Contrast Sky Blue */
-            --accent-glow: rgba(2, 132, 199, 0.08);
-            --border-color: rgba(10, 10, 12, 0.08);
-            --font-accent: 'Syne', sans-serif;
-            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --bg-card: #FDFBF7;              /* Soft Warm Alabaster Tint */
+            --text-primary: #111115;         /* Deep Charcoal Black */
+            --text-muted: #57534E;           /* Stone Warm Gray */
+            --accent-neon: #991B1B;          /* Luxurious Deep Red / Crimson */
+            --accent-glow: rgba(153, 27, 27, 0.06);
+            --border-color: rgba(17, 17, 21, 0.08);
+            --font-accent: 'Cinzel', serif;
+            --font-main: 'Playfair Display', serif;
             --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -59,7 +59,7 @@
             position: relative;
         }
 
-        /* Ambient Blue Background Glow */
+        /* Ambient Deep Red Background Glow */
         body::before {
             content: '';
             position: fixed;
@@ -67,7 +67,7 @@
             right: -10%;
             width: 50vw;
             height: 50vw;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.04) 0%, rgba(255,255,255,0) 70%);
+            background: radial-gradient(circle, rgba(153, 27, 27, 0.03) 0%, rgba(255,255,255,0) 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -103,34 +103,14 @@
 
         .logo {
             font-family: var(--font-accent);
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             color: var(--text-primary);
             text-transform: uppercase;
         }
 
         .logo span {
-            color: var(--accent-neon);
-        }
-
-        .desktop-nav {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .desktop-nav a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: var(--transition-tactile);
-        }
-
-        .desktop-nav a:hover,
-        .desktop-nav li.active a {
             color: var(--accent-neon);
         }
 
@@ -140,10 +120,10 @@
             max-width: 100%;
             background: #FFFFFF;
             display: grid;
-            grid-template-columns: 320px 1fr;
+            grid-template-columns: 340px 1fr;
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(10, 10, 12, 0.02);
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(17, 17, 21, 0.02);
             z-index: 10;
             position: relative;
             overflow: hidden;
@@ -160,7 +140,7 @@
             width: 150px;
             height: 150px;
             margin: 0 auto 30px;
-            border-radius: 16px;
+            border-radius: 6px;
             border: 1px solid var(--border-color);
             padding: 6px;
             background: #FFFFFF;
@@ -171,22 +151,24 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 2px;
         }
 
         .sidebar h2 {
             font-family: var(--font-accent);
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         .sidebar p {
-            font-size: 0.85rem;
+            font-family: var(--font-accent);
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: var(--accent-neon);
             margin-bottom: 35px;
             font-weight: 700;
@@ -199,9 +181,9 @@
 
         .info-title {
             font-family: var(--font-accent);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: var(--text-primary);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 8px;
@@ -216,8 +198,8 @@
             color: var(--text-muted);
             text-decoration: none;
             margin-bottom: 14px;
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 400;
             transition: var(--transition-tactile);
         }
 
@@ -226,21 +208,25 @@
         }
 
         .contact-link i {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             width: 20px;
             color: var(--accent-neon);
         }
 
         .sidebar .personal-txt {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin-bottom: 10px;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .sidebar .personal-txt b {
+            font-family: var(--font-accent);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* --- Right Main Content --- */
@@ -255,7 +241,7 @@
 
         .section-header {
             font-family: var(--font-accent);
-            font-size: 1.4rem;
+            font-size: 1.25rem;
             color: var(--text-primary);
             margin-bottom: 25px;
             display: flex;
@@ -264,55 +250,56 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
             font-weight: 700;
-            letter-spacing: -0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .section-header i {
             color: var(--accent-neon);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .profile-summary {
             color: var(--text-muted);
             line-height: 1.8;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
         }
 
         .experience-item {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             position: relative;
             padding-left: 24px;
-            border-left: 2px solid var(--accent-neon);
+            border-left: 1px solid var(--accent-neon);
         }
 
         .experience-item h4 {
             font-family: var(--font-accent);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--text-primary);
             font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .experience-item span {
-            font-size: 0.8rem;
+            font-family: var(--font-main);
+            font-style: italic;
+            font-size: 0.9rem;
             color: var(--accent-neon);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
             display: block;
-            margin: 4px 0 8px;
+            margin: 4px 0 12px;
         }
 
         .experience-item p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            line-height: 1.65;
+            line-height: 1.7;
         }
 
         /* Skills Matrix Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px 35px;
+            gap: 24px 35px;
         }
 
         .skill-item {
@@ -320,18 +307,25 @@
         }
 
         .skill-label {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             color: var(--text-primary);
-            font-weight: 600;
+            font-weight: 500;
+        }
+
+        .skill-label span:first-child {
+            font-family: var(--font-accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .progress-bg {
-            background: rgba(10, 10, 12, 0.05);
-            height: 6px;
-            border-radius: 10px;
+            background: rgba(17, 17, 21, 0.05);
+            height: 4px;
+            border-radius: 2px;
             overflow: hidden;
         }
 
@@ -339,7 +333,7 @@
             background: var(--accent-neon);
             height: 100%;
             width: 0;
-            border-radius: 10px;
+            border-radius: 2px;
             transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -353,11 +347,12 @@
             color: var(--accent-neon);
             border: 1px solid var(--accent-neon);
             padding: 14px 32px;
-            border-radius: 8px;
+            border-radius: 4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: var(--font-accent);
+            letter-spacing: 1.5px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             transition: var(--transition-tactile);
             cursor: pointer;
         }
@@ -390,7 +385,7 @@
             }
         }
 
-        /* --- STYLED PRINT ENGINE ENGINE --- */
+        /* --- STYLED PRINT ENGINE --- */
         @media print {
             body {
                 background: #FFFFFF !important;
@@ -415,7 +410,7 @@
             }
 
             .sidebar {
-                background: #F8F9FA !important;
+                background: #FDFBF7 !important;
                 border-right: 1px solid #E5E7EB !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
@@ -428,7 +423,7 @@
             }
 
             .progress-fill {
-                background: #0284C7 !important;
+                background: #991B1B !important;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -445,8 +440,7 @@
     <div id="canvas-container"></div>
 
     <nav>
-        <div class="logo">Resume</div>
-        
+        <div class="logo">Portfolio / <span>Resume</span></div>
     </nav>
 
     <div class="resume-card reveal">
@@ -472,8 +466,8 @@
 
             <div class="info-section">
                 <h3 class="info-title">Personal Info</h3>
-                <p class="personal-txt"><b>Date of Birth:</b> 20 November 2008</p>
-                <p class="personal-txt"><b>Nationality:</b> Bangladeshi</p>
+                <p class="personal-txt"><b>Date of Birth:</b> <br>20 November 2008</p>
+                <p class="personal-txt"><b>Nationality:</b> <br>Bangladeshi</p>
             </div>
         </aside>
 
@@ -506,7 +500,7 @@
             </section>
 
             <section class="resume-section">
-                <h3 class="section-header"><i class="fas fa-tools"></i> Skills</h3>
+                <h3 class="section-header"><i class="fas fa-tools"></i> Skills Matrix</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
                         <div class="skill-label"><span>MS Word</span> <span>85%</span></div>
@@ -551,7 +545,7 @@
     </div>
 
     <script>
-        // --- 3D AMBIENT SILK FLOATING ENGINE (Upgraded High-Tech Glass Bubble Mix) ---
+        // --- 3D AMBIENT SILK FLOATING ENGINE (Classic Deep Crimson Glass Bubbles) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -563,38 +557,38 @@
 
         camera.position.z = 30;
 
-        const bubbleCount = 20; 
+        const bubbleCount = 18; 
         const bubbles = [];
         const bubbleGroup = new THREE.Group();
         const bubbleGeo = new THREE.SphereGeometry(1, 32, 32);
 
         function createBubbleMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x0284C7,             // Sky Blue Core Tint
-                emissive: 0xFFFFFF,          // Bright clean shine
-                emissiveIntensity: 0.05,
-                roughness: 0.05,
-                metalness: 0.1,
+                color: 0x991B1B,              // Deep Crimson Red Core
+                emissive: 0xFFF5F5,          // Clean warm sheen shine
+                emissiveIntensity: 0.04,
+                roughness: 0.08,
+                metalness: 0.15,
                 clearcoat: 1.0,
                 clearcoatRoughness: 0.1,
-                transmission: 0.85,          // Glass look
-                ior: 1.25,
-                thickness: 1.5,
+                transmission: 0.88,          // Polished Glass Look
+                ior: 1.28,
+                thickness: 1.8,
                 transparent: true,
-                opacity: 0.15
+                opacity: 0.12
             });
         }
 
         for (let i = 0; i < bubbleCount; i++) {
             const mesh = new THREE.Mesh(bubbleGeo, createBubbleMaterial());
-            const scale = Math.random() * 1.2 + 0.4;
+            const scale = Math.random() * 1.4 + 0.4;
             mesh.scale.set(scale, scale, scale);
             mesh.position.x = (Math.random() - 0.5) * 55;
             mesh.position.y = (Math.random() - 0.5) * 45;
             mesh.position.z = (Math.random() - 0.5) * 15;
 
             mesh.userData = {
-                speedY: (scale * 0.007) + 0.003,
+                speedY: (scale * 0.005) + 0.002,
                 phaseX: Math.random() * Math.PI * 2,
             };
             bubbleGroup.add(mesh);
@@ -602,12 +596,12 @@
         }
         scene.add(bubbleGroup);
 
-        // Soft Studio Lighting
-        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
-        skyLight.position.set(10, 20, 8);
+        // Soft Gallery Light Setup
+        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 1.8);
+        skyLight.position.set(12, 24, 10);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x0284C7, 0.25);
+        const fillLight = new THREE.AmbientLight(0x991B1B, 0.15);
         scene.add(fillLight);
 
         const mouse = { x: 0, y: 0 };
@@ -622,7 +616,7 @@
 
             bubbles.forEach(bubble => {
                 bubble.position.y += bubble.userData.speedY;
-                bubble.position.x += Math.sin(time * 0.0008 + bubble.userData.phaseX) * 0.01;
+                bubble.position.x += Math.sin(time * 0.0006 + bubble.userData.phaseX) * 0.008;
 
                 if (bubble.position.y > 25) {
                     bubble.position.y = -25;
@@ -630,14 +624,14 @@
                 }
             });
 
-            bubbleGroup.rotation.y += (mouse.x * 0.02 - bubbleGroup.rotation.y) * 0.05;
-            bubbleGroup.rotation.x += (-mouse.y * 0.02 - bubbleGroup.rotation.x) * 0.05;
+            bubbleGroup.rotation.y += (mouse.x * 0.015 - bubbleGroup.rotation.y) * 0.05;
+            bubbleGroup.rotation.x += (-mouse.y * 0.015 - bubbleGroup.rotation.x) * 0.05;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // Progress bar dynamic visual lazy trigger
+        // Progress bars visual entry trigger
         window.addEventListener('DOMContentLoaded', () => {
             const progressFills = document.querySelectorAll('.progress-fill');
             progressFills.forEach(fill => {
@@ -645,17 +639,17 @@
                 fill.style.width = '0';
                 setTimeout(() => {
                     fill.style.width = targetWidth;
-                }, 300);
+                }, 400);
             });
         });
 
-        // GSAP Clean Page Animations
+        // Elegant GSAP Entry Animation
         gsap.to(".reveal", {
             opacity: 1,
             y: 0,
-            duration: 1,
-            ease: "power3.out",
-            startAt: { y: 30 }
+            duration: 1.2,
+            ease: "power2.out",
+            startAt: { y: 20 }
         });
 
         window.addEventListener('resize', () => {
