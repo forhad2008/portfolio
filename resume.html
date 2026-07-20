@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Forhad | Classic Creative Resume</title>
+    <title>Abdullah Forhad | Creative Signature Resume</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -25,8 +25,12 @@
             --accent-neon: #991B1B;          /* Luxurious Deep Red / Crimson */
             --accent-glow: rgba(153, 27, 27, 0.06);
             --border-color: rgba(17, 17, 21, 0.08);
-            --font-accent: 'Cinzel', serif;
-            --font-main: 'Playfair Display', serif;
+            
+            /* Typography Variables */
+            --font-ui: 'Plus Jakarta Sans', sans-serif;
+            --font-editorial: 'Cormorant Garamond', serif;
+            --font-signature: 'Playfair Display', serif;
+            
             --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -34,7 +38,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-main);
+            font-family: var(--font-ui);
         }
 
         #canvas-container {
@@ -85,7 +89,7 @@
             pointer-events: none;
         }
 
-        /* --- SLEEK LIGHT GLASS NAVIGATION --- */
+        /* --- MODERN GLASS NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
@@ -102,10 +106,10 @@
         }
 
         .logo {
-            font-family: var(--font-accent);
-            font-size: 1.4rem;
+            font-family: var(--font-ui);
+            font-size: 0.9rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: var(--text-primary);
             text-transform: uppercase;
         }
@@ -155,18 +159,18 @@
         }
 
         .sidebar h2 {
-            font-family: var(--font-accent);
-            font-size: 1.7rem;
-            font-weight: 700;
+            font-family: var(--font-editorial);
+            font-size: 2.2rem;
+            font-weight: 500;
             color: var(--text-primary);
             margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            line-height: 1.2;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
         }
 
         .sidebar p {
-            font-family: var(--font-accent);
-            font-size: 0.75rem;
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--accent-neon);
@@ -180,8 +184,8 @@
         }
 
         .info-title {
-            font-family: var(--font-accent);
-            font-size: 0.8rem;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-primary);
@@ -198,8 +202,8 @@
             color: var(--text-muted);
             text-decoration: none;
             margin-bottom: 14px;
-            font-size: 0.9rem;
-            font-weight: 400;
+            font-size: 0.85rem;
+            font-weight: 500;
             transition: var(--transition-tactile);
         }
 
@@ -214,19 +218,21 @@
         }
 
         .sidebar .personal-txt {
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
             color: var(--text-muted);
             line-height: 1.6;
         }
 
         .sidebar .personal-txt b {
-            font-family: var(--font-accent);
-            font-size: 0.75rem;
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text-primary);
             font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
         }
 
         /* --- Right Main Content --- */
@@ -240,8 +246,8 @@
         }
 
         .section-header {
-            font-family: var(--font-accent);
-            font-size: 1.25rem;
+            font-family: var(--font-ui);
+            font-size: 0.85rem;
             color: var(--text-primary);
             margin-bottom: 25px;
             display: flex;
@@ -250,19 +256,23 @@
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         .section-header i {
             color: var(--accent-neon);
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
+        /* Signature Paragraph Stylings */
         .profile-summary {
+            font-family: var(--font-signature);
+            font-style: italic;
             color: var(--text-muted);
             line-height: 1.8;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
+            letter-spacing: -0.2px;
         }
 
         .experience-item {
@@ -273,26 +283,29 @@
         }
 
         .experience-item h4 {
-            font-family: var(--font-accent);
-            font-size: 1.1rem;
+            font-family: var(--font-ui);
+            font-size: 1rem;
             color: var(--text-primary);
             font-weight: 700;
             letter-spacing: 0.5px;
         }
 
         .experience-item span {
-            font-family: var(--font-main);
-            font-style: italic;
-            font-size: 0.9rem;
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--accent-neon);
             display: block;
             margin: 4px 0 12px;
         }
 
         .experience-item p {
-            font-size: 1rem;
+            font-family: var(--font-editorial);
+            font-size: 1.25rem;
             color: var(--text-muted);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         /* Skills Matrix Grid */
@@ -307,19 +320,19 @@
         }
 
         .skill-label {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             color: var(--text-primary);
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .skill-label span:first-child {
-            font-family: var(--font-accent);
-            font-size: 0.8rem;
+            font-family: var(--font-ui);
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 0.75rem;
         }
 
         .progress-bg {
@@ -349,10 +362,10 @@
             padding: 14px 32px;
             border-radius: 4px;
             text-transform: uppercase;
-            font-family: var(--font-accent);
+            font-family: var(--font-ui);
             letter-spacing: 1.5px;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             transition: var(--transition-tactile);
             cursor: pointer;
         }
@@ -440,7 +453,7 @@
     <div id="canvas-container"></div>
 
     <nav>
-        <div class="logo">Portfolio / <span>Resume</span></div>
+        <div class="logo"><span>Resume</span></div>
     </nav>
 
     <div class="resume-card reveal">
@@ -466,8 +479,8 @@
 
             <div class="info-section">
                 <h3 class="info-title">Personal Info</h3>
-                <p class="personal-txt"><b>Date of Birth:</b> <br>20 November 2008</p>
-                <p class="personal-txt"><b>Nationality:</b> <br>Bangladeshi</p>
+                <p class="personal-txt"><b>Date of Birth</b> 20 November 2008</p>
+                <p class="personal-txt"><b>Nationality</b> Bangladeshi</p>
             </div>
         </aside>
 
@@ -493,7 +506,8 @@
 
                 <div class="experience-item">
                     <h4>Junior Developer — WebWorks</h4>
-                    <span>Jun 2020 – Dec 2021</span>
+                    <span>Jun 2026 – P
+                        resent</span>
                     <p>Built interactive web features with HTML, CSS, and JavaScript. Assisted in maintaining company
                         CMS and enhancing website accessibility.</p>
                 </div>
@@ -532,9 +546,9 @@
             <section class="resume-section">
                 <h3 class="section-header"><i class="fas fa-graduation-cap"></i> Education</h3>
                 <div class="experience-item">
-                    <h4>B.Sc. in Computer Science</h4>
-                    <span>2016 – 2020</span>
-                    <p>University of XYZ — Focused on Software Engineering and Digital Design.</p>
+                    <h4>Diploma. in Computer Science</h4>
+                    <span>2025 – Present</span>
+                    <p>Comilla Polytechnic Institute — Focused on Software Engineering and Digital Design.</p>
                 </div>
             </section>
 
