@@ -13,22 +13,24 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<style>
-        /* --- MINIMALIST OCEAN BLUE SYSTEM --- */
+
+    <style>
+        /* --- MINIMALIST DEEP BLACK & CRIMSON GLASS SYSTEM --- */
         :root {
-            /* Main Theme Overrides */
-            --bg-main: #1A1A1E;          /* Deep obsidian dark background */
-            --bg-card: #26262B;          /* Shadow charcoal for form cards */
+            /* Main Theme Overrides: Swapped light blacks for deep absolute black */
+            --bg-main: #000000;          /* True pitch black canvas */
+            --bg-card: rgba(10, 10, 10, 0.7); /* Deep black glass base */
             
-            /* Color combination request */
+            /* Color combination request: Swapped blue elements for deep red */
             --accent-neon: #990033;      /* Deep wine red */
-            --accent-deep: #0284C7;      /* Vivid blue for contrasting borders/hovers */
-            --accent-glow: rgba(153, 0, 51, 0.25);
+            --accent-deep: #660022;      /* Crimson shadow to replace the old vivid blue */
+            --accent-glow: rgba(153, 0, 51, 0.2);
+            --accent-glow-deep: rgba(102, 0, 34, 0.4);
             
             /* Text states */
             --text-primary: #E5E7EB;     /* Misty cloud white */
             --text-muted: #9CA3AF;       /* Storm ash silver */
-            --input-border: #3F3F46;     /* Dark steel border color */
+            --input-border: rgba(255, 255, 255, 0.08); /* Faint glass perimeter */
 
             /* Typography & Animation Globals */
             --font-main: 'Plus Jakarta Sans', sans-serif;
@@ -67,12 +69,13 @@
             left: -10%;
             width: 50vw;
             height: 50vw;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            /* Replaced the old blue ambient glow with a dark crimson wash */
+            background: radial-gradient(circle, rgba(102, 0, 34, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION (GLASS VARIANT) --- */
         nav {
             position: fixed;
             top: 0;
@@ -83,9 +86,9 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(26, 26, 30, 0.85);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(0, 0, 0, 0.75); /* Darker true-black glass background */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--input-border);
             box-sizing: border-box;
         }
@@ -229,13 +232,14 @@
         }
 
         .hero-badge {
-            background: rgba(2, 132, 199, 0.05);
+            /* Altered background base to deep crimson hue */
+            background: rgba(102, 0, 34, 0.15);
             border: 1px solid var(--input-border);
             padding: 6px 14px;
             border-radius: 100px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: var(--accent-deep);
+            color: var(--accent-neon);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -247,9 +251,9 @@
         .hero-badge .ping {
             width: 6px;
             height: 6px;
-            background-color: var(--accent-deep);
+            background-color: var(--accent-neon);
             border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent-deep);
+            box-shadow: 0 0 8px var(--accent-neon);
         }
 
         h1 {
@@ -304,16 +308,18 @@
             height: 300px;
             border-radius: 24px;
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 10px;
             border: 1px solid var(--input-border);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
             transition: var(--transition-tactile);
         }
 
         .profile-container:hover {
             transform: scale(1.02) rotate(1deg);
             border-color: var(--accent-neon);
-            box-shadow: 0 40px 80px var(--accent-glow);
+            box-shadow: 0 30px 60px var(--accent-glow-deep);
         }
 
         .profile-container img {
@@ -353,10 +359,12 @@
             background: transparent;
             color: var(--text-primary);
             border-color: var(--input-border);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             border-color: var(--text-primary);
             color: var(--text-primary);
             box-shadow: none;
@@ -368,8 +376,11 @@
             flex-wrap: wrap;
         }
 
+        /* --- GLASS CHASSIS BOX CARDS --- */
         .statement-card {
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--input-border);
             border-radius: 16px;
             padding: 32px;
@@ -379,6 +390,7 @@
             position: relative;
             overflow: hidden;
             box-sizing: border-box;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
         .statement-card::after {
@@ -456,6 +468,8 @@
             border-radius: 100px;
             cursor: pointer;
             transition: var(--transition-tactile);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         .filter-btn:hover,
@@ -494,13 +508,15 @@
 
         .design-card {
             background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--input-border);
             border-radius: 20px;
             padding: 0;
             overflow: hidden;
             transition: var(--transition-tactile);
             position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             width: 100%;
             max-width: 100%;
         }
@@ -510,7 +526,7 @@
             aspect-ratio: 16 / 12;
             overflow: hidden;
             position: relative;
-            background: #202024;
+            background: #050505;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -531,9 +547,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(26, 26, 30, 0.2) 0%, rgba(26, 26, 30, 0.95) 100%);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.95) 100%);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -571,17 +587,17 @@
 
         .card-action-btn {
             padding: 10px 20px;
-            background: #4d5785;
+            background: #2A1018; /* Swapped dusty blue variant for dark velvet crimson */
             color: var(--text-primary);
             font-size: 0.8rem;
             font-weight: 700;
             border-radius: 8px;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.05);
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: var(--transition-tactile);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
             cursor: pointer;
         }
 
@@ -601,7 +617,7 @@
 
         .card-meta-info {
             padding: 20px 24px;
-            background: var(--bg-card);
+            background: transparent; /* Changed to clear transparency for clean glass effect */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -631,9 +647,9 @@
         }
 
         .design-card:hover {
-            border-color: var(--accent-deep);
+            border-color: var(--accent-deep); /* Hover accent shifts cleanly to crimson */
             transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-glow-deep);
         }
 
         .design-card:hover img {
@@ -656,7 +672,7 @@
         /* --- CONTACT SECTION --- */
         .contact-section {
             padding: 80px 8% 60px;
-            background: var(--bg-card);
+            background: rgba(5, 5, 5, 0.4); /* Pure dark translucent backing */
             border-top: 1px solid var(--input-border);
             box-sizing: border-box;
             width: 100%;
@@ -679,11 +695,13 @@
         }
 
         .contact-form-card {
-            background: var(--bg-main);
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--input-border);
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             width: 100%;
             max-width: 650px;
             justify-self: start;
@@ -730,7 +748,7 @@
             padding: 8px 10px;
             border: 1px solid var(--input-border);
             border-radius: 6px;
-            background: var(--bg-main);
+            background: rgba(0, 0, 0, 0.4); /* Inside inputs get pitch-black depth */
             font-family: var(--font-main);
             color: var(--text-primary);
             font-size: 0.8rem;
@@ -808,7 +826,7 @@
         @media (max-width: 768px) {
             nav {
                 padding: 16px 16px;
-                background: rgba(26, 26, 30, 0.95);
+                background: rgba(0, 0, 0, 0.9);
             }
 
             .hero-section {
@@ -822,7 +840,7 @@
             .card-img-wrapper {
                 aspect-ratio: auto;
                 height: 260px;
-                background-color: #202024;
+                background-color: #050505;
                 padding: 8px;
             }
 
@@ -1015,7 +1033,8 @@
         .footer-bottom-links a:hover {
             color: var(--accent-neon);
         }
-    </style>
+</style>
+         
                                     
 </head>
         <body>
@@ -1069,7 +1088,7 @@
                     <h3>My Journey</h3>
                     <p>
                         My journey began with a curiosity for graphic expression, designing modern systems that speak to
-                        audiences. Translating complex identity concepts into scalable and interactive layouts sparked
+                        audiences. Translating compstyle>lexlelex identity concepts into scalable and interactive layouts sparked
                         my drive into front-end development.
                     </p>
                 </div>
