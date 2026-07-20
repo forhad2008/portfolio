@@ -16,12 +16,12 @@
     <style>
         :root {
             --bg-main: #060709;
-            --bg-card: rgba(10, 12, 18, 0.45); /* Highly transparent glass effect */
+            --bg-card: rgba(10, 12, 18, 0.55); /* Glassmorphism Effect */
             --text-primary: #ffffff;
             --text-muted: #abb3c4;
             --text-dark: #2a2e38;
             --accent-crimson: #ff1e56;
-            --border-glow: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(255, 255, 255, 0.1);
             --font-display: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
@@ -72,15 +72,15 @@
             left: 0;
         }
 
-        /* Dark Cinematic Overlay to blend the content smoothly over the wallpaper */
+        /* Adjusted overlay to make the ocean animation vivid and clear */
         .cinematic-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(6, 7, 9, 0.5) 0%, rgba(6, 7, 9, 0.85) 100%),
-                        radial-gradient(circle at center, transparent 20%, rgba(6, 7, 9, 0.6) 90%);
+            background: linear-gradient(180deg, rgba(6, 7, 9, 0.2) 0%, rgba(6, 7, 9, 0.6) 100%),
+                        radial-gradient(circle at center, transparent 40%, rgba(6, 7, 9, 0.5) 90%);
             z-index: -1;
             pointer-events: none;
         }
@@ -96,7 +96,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(6, 7, 9, 0.3);
+            background: rgba(6, 7, 9, 0.4);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border-glow);
@@ -269,7 +269,7 @@
             font-style: normal;
             display: block;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
         }
 
         .identity-signature h2 {
@@ -294,7 +294,7 @@
         }
 
         .editorial-block {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.05);
             border-left: 2px solid var(--accent-crimson);
             padding: 10px 0 10px 30px;
             backdrop-filter: blur(10px);
@@ -305,8 +305,8 @@
         .editorial-block p {
             font-size: 1.15rem;
             line-height: 1.65;
-            color: #e5e7eb;
-            font-weight: 300;
+            color: #ffffff;
+            font-weight: 400;
         }
 
         .infographic-matrix {
@@ -331,22 +331,22 @@
         }
 
         .matrix-node:hover {
-            border-color: rgba(255, 30, 86, 0.5);
-            background: rgba(18, 22, 33, 0.6);
+            border-color: rgba(255, 30, 86, 0.6);
+            background: rgba(18, 22, 33, 0.7);
             transform: translateY(-5px);
         }
 
         .matrix-node label {
             font-size: 0.7rem;
-            color: var(--text-muted);
+            color: var(--text-primary);
             text-transform: uppercase;
             letter-spacing: 2px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .matrix-node .node-value {
             font-size: 1.3rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-primary);
             letter-spacing: -0.3px;
         }
@@ -354,9 +354,9 @@
         .matrix-node .node-value.special-accent {
             color: var(--accent-crimson);
             font-family: var(--font-display);
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 15px rgba(255, 30, 86, 0.4);
+            text-shadow: 0 0 15px rgba(255, 30, 86, 0.6);
         }
 
         .reveal { opacity: 0; }
