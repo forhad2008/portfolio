@@ -16,15 +16,14 @@
 
     <style>
         :root {
-            --bg-main: #0b0c10;
-            --bg-surface: #1f2833;
-            --bg-card: #151a22;
-            --text-primary: #f5f5f7;
-            --text-muted: #c5a880;
-            --text-dark: #86868b;
-            --accent: #ff003c;
-            --accent-glow: rgba(255, 0, 60, 0.25);
-            --border: rgba(255, 255, 255, 0.05);
+            --bg-main: #0a0a0c;
+            --bg-card: #121216;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-dark: #475569;
+            --accent: #ff0043;
+            --accent-glow: rgba(255, 0, 67, 0.2);
+            --border: rgba(255, 255, 255, 0.04);
             --font-display: 'Orbitron', sans-serif;
             --font-body: 'Inter', sans-serif;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -47,7 +46,7 @@
 
         body {
             min-height: 100vh;
-            padding: 140px 10% 80px;
+            padding: 140px 8% 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -65,30 +64,29 @@
             pointer-events: none;
         }
 
-        /* Ambient Background Gradients */
         .ambient-glow {
             position: fixed;
-            width: 60vw;
-            height: 60vw;
+            width: 50vw;
+            height: 50vw;
             background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0,0,0,0) 70%);
-            top: -20%;
+            top: -10%;
             right: -10%;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- STYLISH NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            padding: 30px 10%;
+            padding: 26px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(11, 12, 16, 0.75);
+            background: rgba(10, 10, 12, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
@@ -96,7 +94,7 @@
 
         .logo {
             font-family: var(--font-display);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 900;
             letter-spacing: 2px;
             color: var(--text-primary);
@@ -116,9 +114,9 @@
 
         .desktop-nav a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-muted);
             font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: var(--transition);
@@ -127,7 +125,7 @@
         .desktop-nav a:hover,
         .desktop-nav li.active a {
             color: var(--text-primary);
-            text-shadow: 0 0 8px rgba(255,255,255,0.5);
+            text-shadow: 0 0 8px rgba(255,255,255,0.4);
         }
 
         .hamburger {
@@ -139,7 +137,7 @@
         }
 
         .hamburger div {
-            width: 25px;
+            width: 24px;
             height: 2px;
             background: var(--text-primary);
             transition: var(--transition);
@@ -160,13 +158,13 @@
             justify-content: center;
             align-items: center;
             z-index: 1500;
-            transform: translateX(100%);
+            transform: translateY(-100%);
             transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
         }
 
-        .menu-window.open { transform: translateX(0); }
+        .menu-window.open { transform: translateY(0); }
         .menu-window ul { list-style: none; text-align: center; }
-        .menu-window li { margin: 30px 0; }
+        .menu-window li { margin: 24px 0; }
         .menu-window a {
             font-family: var(--font-display);
             font-size: 2rem;
@@ -177,27 +175,26 @@
         }
         .menu-window a:hover { color: var(--accent); }
 
-        /* --- MAIN PORTFOLIO HUB LAYOUT --- */
-        .profile-wrapper {
-            max-width: 1100px;
+        /* --- LAYOUT ARCHITECTURE --- */
+        .profile-container {
+            max-width: 1000px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.28fr 1.72fr;
+            grid-template-columns: 1.2fr 1.8fr;
             gap: 40px;
-            position: relative;
         }
 
-        .back-btn-container {
+        .back-nav {
             grid-column: 1 / -1;
         }
 
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            color: var(--text-dark);
+            gap: 8px;
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: var(--transition);
@@ -209,8 +206,8 @@
             transform: translateX(-5px);
         }
 
-        /* Left Section: Identity Card */
-        .identity-card {
+        /* Identity Block */
+        .identity-panel {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 24px;
@@ -220,145 +217,143 @@
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            min-height: 420px;
         }
 
-        .identity-card::before {
+        .identity-panel::after {
             content: '';
             position: absolute;
-            top: 0;
             left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), transparent);
+            bottom: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(0deg, var(--accent), transparent);
         }
 
-        .hero-tag {
+        .panel-tag {
             font-family: var(--font-display);
             color: var(--accent);
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
         }
 
-        .main-title {
+        .panel-title {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 4vw, 3.8rem);
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
             font-weight: 900;
             line-height: 1.05;
             letter-spacing: -2px;
             text-transform: uppercase;
-            margin-bottom: 30px;
         }
 
-        .main-title span {
+        .panel-title span {
             display: block;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
         }
 
-        .signature-block h2 {
+        .footer-details h2 {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .signature-block p {
-            color: var(--text-dark);
-            font-size: 0.9rem;
+        .footer-details p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Right Section: Core Data Hub */
-        .data-hub {
+        /* Information Stack */
+        .details-panel {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 24px;
         }
 
-        .bio-panel {
-            background: rgba(255, 255, 255, 0.02);
+        .statement-card {
+            background: rgba(255, 255, 255, 0.01);
             border: 1px solid var(--border);
             border-radius: 24px;
-            padding: 40px;
+            padding: 35px;
             backdrop-filter: blur(10px);
         }
 
-        .bio-panel p {
+        .statement-card p {
             font-size: 1.1rem;
-            line-height: 1.7;
-            color: #adadb8;
+            line-height: 1.6;
+            color: #cbd5e1;
             font-weight: 300;
         }
 
-        .stats-grid {
+        .grid-matrix {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 16px;
         }
 
-        .stat-card {
+        .matrix-item {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 16px;
+            padding: 24px;
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 150px;
+            height: 120px;
         }
 
-        .stat-card:hover {
-            border-color: rgba(255, 0, 60, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.05);
+        .matrix-item:hover {
+            border-color: rgba(255, 0, 67, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(255, 0, 67, 0.04);
         }
 
-        .stat-card label {
+        .matrix-item label {
             font-family: var(--font-display);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-dark);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        .stat-card .value {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .matrix-item .data-val {
+            font-size: 1.25rem;
+            font-weight: 600;
             color: var(--text-primary);
-            letter-spacing: -0.5px;
         }
 
-        .stat-card .value.highlight {
+        .matrix-item .data-val.special {
             color: var(--accent);
             font-family: var(--font-display);
-            font-weight: 900;
-            text-shadow: 0 0 15px rgba(255,0,60,0.3);
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(255, 0, 67, 0.2);
         }
 
         .reveal {
             opacity: 0;
         }
 
-        /* --- RESPONSIVE BREAKPOINTS --- */
+        /* --- RESPONSIVE MODIFICATIONS --- */
         @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
-            .profile-wrapper { grid-template-columns: 1fr; }
-            body { padding: 120px 6% 60px; }
+            .profile-container { grid-template-columns: 1fr; }
+            body { padding: 120px 5% 60px; }
         }
 
         @media (max-width: 600px) {
-            .stats-grid { grid-template-columns: 1fr; }
-            .identity-card { padding: 40px 24px; }
-            .bio-panel { padding: 30px 24px; }
+            .grid-matrix { grid-template-columns: 1fr; }
+            .identity-panel { padding: 40px 24px; min-height: 350px; }
+            .statement-card { padding: 24px; }
         }
     </style>
 </head>
@@ -387,62 +382,62 @@
         <ul id="mobile-nav-links"></ul>
     </div>
 
-    <div class="profile-wrapper">
+    <div class="profile-container">
         
-        <div class="back-btn-container reveal">
+        <div class="back-nav reveal">
             <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Escape to Home
+                <i class="fas fa-arrow-left"></i> Return to Terminal
             </a>
         </div>
 
-        <div class="identity-card reveal">
+        <div class="identity-panel reveal">
             <div>
-                <span class="hero-tag">System.Profile</span>
-                <h1 class="main-title">About<br><span>Me</span></h1>
+                <span class="panel-tag">Core.Identity</span>
+                <h1 class="panel-title">About<br><span>Me</span></h1>
             </div>
             
-            <div class="signature-block">
+            <div class="footer-details">
                 <h2>Abdullah Forhad</h2>
-                <p>Designer & Tech Strategist</p>
+                <p>Digital Structuralist / Designer</p>
             </div>
         </div>
 
-        <div class="data-hub">
-            <div class="bio-panel reveal">
+        <div class="details-panel">
+            <div class="statement-card reveal">
                 <p>
-                    Operating at the intersection of aesthetic architecture and structural intent. I sculpt digital ecosystems that do not merely exist but perform with high conviction and clinical accuracy.
+                    Working at the cutting edge of digital structure and user behavior. I design systems crafted for visual prominence, performance, and clear tactical intent.
                 </p>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card reveal">
+            <div class="grid-matrix">
+                <div class="matrix-item reveal">
                     <label>First Name</label>
-                    <div class="value">Abdullah</div>
+                    <div class="data-val">Abdullah</div>
                 </div>
                 
-                <div class="stat-card reveal">
+                <div class="matrix-item reveal">
                     <label>Last Name</label>
-                    <div class="value">Forhad</div>
+                    <div class="data-val">Forhad</div>
                 </div>
 
-                <div class="stat-card reveal">
-                    <label>Base Origin</label>
-                    <div class="value">Bangladesh</div>
+                <div class="matrix-item reveal">
+                    <label>Country Origin</label>
+                    <div class="data-val">Bangladesh</div>
                 </div>
 
-                <div class="stat-card reveal">
-                    <label>Focus Core</label>
-                    <div class="value">Designing</div>
+                <div class="matrix-item reveal">
+                    <label>Focus Domain</label>
+                    <div class="data-val">Designing</div>
                 </div>
 
-                <div class="stat-card reveal">
-                    <label>Tactical Drive</label>
-                    <div class="value highlight">Alpha Mode</div>
+                <div class="matrix-item reveal">
+                    <label>Mentality Mode</label>
+                    <div class="data-val special">Alpha</div>
                 </div>
 
-                <div class="stat-card reveal">
-                    <label>Dynamic Sport</label>
-                    <div class="value">Boxing</div>
+                <div class="matrix-item reveal">
+                    <label>Active Core Sport</label>
+                    <div class="data-val">Boxing</div>
                 </div>
             </div>
         </div>
@@ -450,11 +445,11 @@
     </div>
 
     <script>
-        // MOBILE OVERLAY INTERACTION ENGINE
+        // MOBILE MOBILE NAVIGATION LINK ENGINE
         document.addEventListener("DOMContentLoaded", () => {
             const menuItems = [
                 { label: "Home", url: "index.html" },
-                { label: "About", url: "about.html" },
+                { label: "About Me", url: "about.html" },
                 { label: "Services", url: "service.html" },
                 { label: "Contact", url: "index.html#contact" }
             ];
@@ -477,88 +472,104 @@
             }
         });
 
-        // --- DYNAMIC THREE.JS COSMIC WARP ENGINE ---
+        // --- CYBERNETIC WEB INTERACTIVE PARTICLE ENGINE (THREE.JS) ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
-        // Particle System Matrix
-        const particleCount = 1200;
+        // Vector Array Initialization
+        const count = 90;
         const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-        const speeds = new Float32Array(particleCount);
+        const positions = new Float32Array(count * 3);
+        const originalPositions = [];
 
-        for(let i = 0; i < particleCount * 3; i += 3) {
-            positions[i] = (Math.random() - 0.5) * 100;     // X
-            positions[i+1] = (Math.random() - 0.5) * 100;   // Y
-            positions[i+2] = (Math.random() - 0.5) * 100;   // Z
-            speeds[i/3] = Math.random() * 0.2 + 0.05;
+        for(let i=0; i<count*3; i+=3) {
+            positions[i] = (Math.random() - 0.5) * 60;
+            positions[i+1] = (Math.random() - 0.5) * 60;
+            positions[i+2] = (Math.random() - 0.5) * 40;
+            
+            originalPositions.push({
+                x: positions[i],
+                y: positions[i+1],
+                z: positions[i+2],
+                speedX: (Math.random() - 0.5) * 0.03,
+                speedY: (Math.random() - 0.5) * 0.03
+            });
         }
 
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-        // Crimson Star Matrix Material
+        // Crimson Material Glow Config
         const material = new THREE.PointsMaterial({
-            color: 0xff003c,
-            size: 0.25,
+            color: 0xff0043,
+            size: 0.4,
             transparent: true,
-            opacity: 0.6,
+            opacity: 0.7,
             blending: THREE.AdditiveBlending
         });
 
-        const starField = new THREE.Points(geometry, material);
-        scene.add(starField);
+        const pointCloud = new THREE.Points(geometry, material);
+        scene.add(pointCloud);
 
-        camera.position.z = 30;
+        camera.position.z = 35;
 
-        // Interaction coordinates
-        let mouseX = 0, mouseY = 0;
+        // Interaction Tracking Coordinates
+        let targetMouseX = 0, targetMouseY = 0;
+        let currentMouseX = 0, currentMouseY = 0;
+
         window.addEventListener('mousemove', (e) => {
-            mouseX = (e.clientX - window.innerWidth / 2) * 0.02;
-            mouseY = (e.clientY - window.innerHeight / 2) * 0.02;
+            targetMouseX = (e.clientX - window.innerWidth / 2) * 0.02;
+            targetMouseY = (e.clientY - window.innerHeight / 2) * 0.02;
         });
 
-        // Warp Animation Loop
+        // Render Loop Matrix
         function animate() {
             requestAnimationFrame(animate);
 
-            const positionsArr = geometry.attributes.position.array;
+            const positionsArray = geometry.attributes.position.array;
             
-            for(let i = 0; i < particleCount; i++) {
+            for(let i=0; i<count; i++) {
                 const i3 = i * 3;
-                positionsArr[i3 + 2] += speeds[i]; // Move forward on Z axis
+                const data = originalPositions[i];
+                
+                data.x += data.speedX;
+                data.y += data.speedY;
 
-                // Loop particles back once they pass the viewport camera view
-                if(positionsArr[i3 + 2] > 30) {
-                    positionsArr[i3 + 2] = -70;
-                    positionsArr[i3] = (Math.random() - 0.5) * 100;
-                    positionsArr[i3 + 1] = (Math.random() - 0.5) * 100;
-                }
+                // Boundary structural containment checks
+                if(Math.abs(data.x) > 35) data.speedX *= -1;
+                if(Math.abs(data.y) > 35) data.speedY *= -1;
+
+                positionsArray[i3] = data.x;
+                positionsArray[i3+1] = data.y;
             }
+            
             geometry.attributes.position.needsUpdate = true;
 
-            // Parallax tracking
-            starField.rotation.x += (mouseY * 0.05 - starField.rotation.x) * 0.1;
-            starField.rotation.y += (mouseX * 0.05 - starField.rotation.y) * 0.1;
+            // Interactive easing physics
+            currentMouseX += (targetMouseX - currentMouseX) * 0.05;
+            currentMouseY += (targetMouseY - currentMouseY) * 0.05;
+
+            pointCloud.rotation.y = currentMouseX * 0.3;
+            pointCloud.rotation.x = currentMouseY * 0.3;
 
             renderer.render(scene, camera);
         }
         animate();
 
-        // --- SMOOTH COMPONENT REVEAL ENGINE (GSAP) ---
+        // --- GSAP FLUID GRAPHICS STAGGER REVEAL ---
         window.addEventListener('DOMContentLoaded', () => {
             gsap.to(".reveal", {
                 opacity: 1,
                 y: 0,
                 duration: 1.2,
-                stagger: 0.08,
+                stagger: 0.06,
                 ease: "power4.out",
-                startAt: { y: 40 }
+                startAt: { y: 35 }
             });
         });
 
