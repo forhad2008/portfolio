@@ -16,14 +16,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM --- */
+        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM (RED THEME) --- */
         :root {
             --bg-dark: #FFFFFF;
             --bg-card: #F4F7FA;
             --text-primary: #0F172A;
             --text-muted: #64748B;
-            --accent-neon: #0284C7; /* Cohesive Sky Blue */
-            --accent-glow: rgba(2, 132, 199, 0.15);
+            --accent-neon: #EF4444; /* High-Contrast Crimson Red */
+            --accent-glow: rgba(239, 68, 68, 0.15);
             --border-color: rgba(15, 23, 42, 0.08);
             --font-accent: 'Syne', sans-serif;
             --font-main: 'Plus Jakarta Sans', sans-serif;
@@ -72,7 +72,7 @@
             right: -10%;
             width: 50vw;
             height: 50vw;
-            background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -247,7 +247,7 @@
         .service-card:hover {
             transform: translateY(-8px);
             border-color: rgba(15, 23, 42, 0.15);
-            box-shadow: 0 30px 60px rgba(2, 132, 199, 0.08);
+            box-shadow: 0 30px 60px rgba(239, 68, 68, 0.08);
             background: var(--bg-dark);
         }
 
@@ -257,7 +257,7 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(2, 132, 199, 0.06) 0%, transparent 60%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(239, 68, 68, 0.06) 0%, transparent 60%);
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.4s;
@@ -510,7 +510,7 @@
 
         function createPlaneMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x0284C7, // Match layout accent blue
+                color: 0xEF4444, // Red theme color for 3D elements
                 emissive: 0xFFFFFF,
                 emissiveIntensity: 0.04,
                 roughness: 0.05,
@@ -552,7 +552,7 @@
         skyLight.position.set(15, 25, 10);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x0284C7, 0.25);
+        const fillLight = new THREE.AmbientLight(0xEF4444, 0.25); // Red ambient light
         scene.add(fillLight);
 
         const mouse = { x: 0, y: 0 };
