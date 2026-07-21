@@ -9,248 +9,348 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
---bg:#000;
---card:rgba(10,10,10,.85);
---border:rgba(255,255,255,.08);
---accent:#990033;
---text:#E5E7EB;
---muted:#9CA3AF;
+:root {
+    --bg: #030305;
+    --card-bg: rgba(13, 13, 18, 0.65);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(230, 0, 76, 0.3);
+    --accent: #E6004C;
+    --accent-glow: rgba(230, 0, 76, 0.4);
+    --accent-gradient: linear-gradient(135deg, #FF0055 0%, #990033 100%);
+    --text: #F3F4F6;
+    --muted: #9CA3AF;
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Plus Jakarta Sans',sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-body{
-background:#000;
-color:var(--text);
-line-height:1.8;
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+    position: relative;
 }
 
-header{
-padding:30px 8%;
-border-bottom:1px solid var(--border);
-display:flex;
-justify-content:space-between;
-align-items:center;
+/* Background Ambient Glows */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    pointer-events: none;
+}
+body::before {
+    top: -100px;
+    left: -100px;
+    background: var(--accent-glow);
+}
+body::after {
+    bottom: -100px;
+    right: -100px;
+    background: rgba(153, 0, 51, 0.2);
 }
 
-.logo{
-font-family:'Syne',sans-serif;
-font-size:32px;
-font-weight:800;
+header {
+    padding: 30px 8%;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.logo span{
-color:var(--accent);
+.logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
-.home-btn{
-text-decoration:none;
-color:white;
-border:1px solid var(--border);
-padding:12px 22px;
-border-radius:8px;
-transition:.3s;
+.logo span {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
 }
 
-.home-btn:hover{
-background:var(--accent);
+.home-btn {
+    text-decoration: none;
+    color: white;
+    border: 1px solid var(--border);
+    padding: 10px 24px;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.02);
 }
 
-.container{
-width:min(950px,92%);
-margin:70px auto;
+.home-btn:hover {
+    background: var(--accent-gradient);
+    border-color: transparent;
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-2px);
 }
 
-.policy-card{
-
-background:var(--card);
-border:1px solid var(--border);
-border-radius:20px;
-padding:50px;
-backdrop-filter:blur(20px);
-box-shadow:0 30px 80px rgba(0,0,0,.65);
-
+.container {
+    width: min(900px, 92%);
+    margin: 80px auto;
 }
 
-h1{
-
-font-family:'Syne',sans-serif;
-font-size:48px;
-margin-bottom:10px;
-
+/* Creative Card Wrapper */
+.policy-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 60px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8);
+    position: relative;
+    transition: border-color 0.4s ease;
 }
 
-.last-update{
-
-color:var(--muted);
-margin-bottom:40px;
-
+.policy-card:hover {
+    border-color: var(--border-hover);
 }
 
-h2{
-
-margin-top:40px;
-margin-bottom:15px;
-color:var(--accent);
-font-size:24px;
-
+/* Accent Line Bar on Top of Card */
+.policy-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+    box-shadow: 0 0 15px var(--accent);
 }
 
-p{
-
-color:var(--muted);
-
+h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
 }
 
-ul{
-
-margin-top:15px;
-margin-left:25px;
-color:var(--muted);
-
+.last-update {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 35px;
+    padding: 4px 12px;
+    background: rgba(230, 0, 76, 0.1);
+    border-radius: 20px;
+    border: 1px solid rgba(230, 0, 76, 0.2);
 }
 
-li{
-
-margin-bottom:12px;
-
+.intro-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #E5E7EB;
+    margin-bottom: 40px;
+    font-weight: 300;
 }
 
-footer{
-
-text-align:center;
-padding:35px;
-border-top:1px solid var(--border);
-margin-top:80px;
-color:var(--muted);
-
+h2 {
+    margin-top: 45px;
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-@media(max-width:768px){
-
-.policy-card{
-
-padding:25px;
-
+/* Subtle icon accent before headings */
+h2::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 18px;
+    background: var(--accent-gradient);
+    border-radius: 4px;
 }
 
-h1{
-
-font-size:34px;
-
+p {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 400;
 }
 
-header{
-
-padding:20px;
-
+ul {
+    margin-top: 15px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
 }
 
+li {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease;
 }
 
+li::before {
+    content: '✦';
+    color: var(--accent);
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateX(4px);
+}
+
+.contact-box {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px dashed var(--border);
+    display: inline-block;
+}
+
+.contact-box a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.contact-box a:hover {
+    color: var(--accent);
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 100px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+@media(max-width: 768px){
+    .policy-card {
+        padding: 30px;
+        border-radius: 20px;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    header {
+        padding: 20px 5%;
+    }
+
+    ul {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
-
 </head>
 
 <body>
 
 <header>
+    <div class="logo">
+        PROFILE<span>.</span>
+    </div>
 
-<div class="logo">
-PROFILE<span>.</span>
-</div>
-
-<a href="index.html" class="home-btn">
-← Home
-</a>
-
+    <a href="index.html" class="home-btn">
+        ← Home
+    </a>
 </header>
 
 <div class="container">
+    <div class="policy-card">
 
-<div class="policy-card">
+        <h1>Privacy Policy</h1>
+        <div class="last-update">Last Updated: July 2026</div>
 
-<h1>Privacy Policy</h1>
+        <p class="intro-text">
+            Your privacy is highly valued. This Privacy Policy outlines how <strong>Abdullah Forhad</strong> collects, uses, and safeguards your personal data when interacting with this portfolio or reaching out via available contact forms.
+        </p>
 
-<div class="last-update">
-Last Updated: July 2026
-</div>
+        <h2>Information We Collect</h2>
+        <ul>
+            <li>Your name</li>
+            <li>Email address</li>
+            <li>Phone number (optional)</li>
+            <li>Submitted project messages</li>
+            <li>Preferred meeting dates</li>
+        </ul>
 
-<p>
-Your privacy is important. This Privacy Policy explains how Abdullah Forhad collects, uses, and protects your personal information when you visit this portfolio website or contact through the available forms.
-</p>
+        <h2>How We Use Your Information</h2>
+        <p>
+            The information you provide is strictly used to process communications regarding your projects, respond to direct inquiries, schedule meetings, and continuously enhance offered services.
+        </p>
 
-<h2>Information We Collect</h2>
+        <h2>Data Security</h2>
+        <p>
+            Modern technical measures and protocols are enforced to maintain data safety and shield your details from unauthorized access, disclosure, or misuse.
+        </p>
 
-<ul>
-<li>Your name</li>
-<li>Email address</li>
-<li>Phone number (if provided)</li>
-<li>Project message submitted through the contact form</li>
-<li>Meeting date (optional)</li>
-</ul>
+        <h2>Third-Party Services</h2>
+        <p>
+            This website may features links to third-party platforms including GitHub, Behance, LinkedIn, Instagram, YouTube, WhatsApp, and Google Forms. Please note that external platforms operate under their own independent privacy policies.
+        </p>
 
-<h2>How We Use Your Information</h2>
+        <h2>Cookies</h2>
+        <p>
+            Essential browser cookies may be utilized to refine performance and optimize user experience. Cookies do not store or collect sensitive personal data.
+        </p>
 
-<p>
-The information you provide is used only to communicate regarding your project, respond to inquiries, schedule meetings, and improve our services.
-</p>
+        <h2>Your Rights</h2>
+        <p>
+            You retain full ownership over your information. You may request access to, correction of, or permanent deletion of your submitted data at any time.
+        </p>
 
-<h2>Data Security</h2>
+        <h2>Contact Information</h2>
+        <div class="contact-box">
+            <p style="font-size: 13px; margin-bottom: 4px;">Direct Inquiry Email:</p>
+            <a href="mailto:forhadalpha08@gmail.com">forhadalpha08@gmail.com</a>
+        </div>
 
-<p>
-Reasonable technical measures are used to protect your information from unauthorized access, disclosure, or misuse.
-</p>
+        <h2>Changes to This Policy</h2>
+        <p>
+            This Privacy Policy may undergo periodic revisions. Any adjustments will be reflected directly on this page along with a refreshed update date.
+        </p>
 
-<h2>Third-Party Services</h2>
-
-<p>
-This website may contain links to third-party platforms such as GitHub, Behance, LinkedIn, Instagram, YouTube, WhatsApp, Google Forms, or other social media services. Those services have their own privacy policies.
-</p>
-
-<h2>Cookies</h2>
-
-<p>
-This website may use basic browser cookies to improve user experience and website performance. No sensitive personal information is stored inside cookies.
-</p>
-
-<h2>Your Rights</h2>
-
-<p>
-You may request access, correction, or deletion of any personal information you have submitted through the contact form by contacting us via email.
-</p>
-
-<h2>Contact</h2>
-
-<p>
-
-<strong>Email:</strong><br>
-
-forhadalpha08@gmail.com
-
-</p>
-
-<h2>Changes to This Policy</h2>
-
-<p>
-This Privacy Policy may be updated at any time without prior notice. Any changes will appear on this page along with the updated revision date.
-</p>
-
-</div>
-
+    </div>
 </div>
 
 <footer>
-
-© 2008 Abdullah Forhad • All Rights Reserved
-
+    © 2008 Abdullah Forhad • All Rights Reserved
 </footer>
 
 </body>
