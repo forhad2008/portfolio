@@ -999,69 +999,65 @@
 
         /* --- FOOTER --- */
 
-    footer {
-    background: var(--bg-main);
-    border-top: 1px solid var(--input-border);
-    padding: 14px 6%;
-    width: 100%;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.footer-bottom span {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    text-align: left;
-}
-
-.footer-bottom-links {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.footer-bottom-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    white-space: nowrap;
-    transition: 0.3s;
-}
-
-.footer-bottom-links a:hover {
-    color: var(--accent-neon);
-}    
-        
-    
-@media (max-width:768px){
-
-footer{
-    padding:16px;
+    .site-footer{
+    width:100%;
+    border-top:1px solid var(--input-border);
+    padding:18px 8%;
+    margin-top:40px;
 }
 
 .footer-bottom{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:12px;
+    width:100%;
+    gap:20px;
 }
 
-.footer-bottom span{
-    font-size:13px;
+.footer-left{
+    color:var(--text-muted);
+    font-size:14px;
 }
 
-.footer-bottom-links{
-    gap:12px;
+.footer-right{
+    display:flex;
+    gap:20px;
 }
 
-.footer-bottom-links a{
-    font-size:13px;
+.footer-right a{
+    text-decoration:none;
+    color:var(--text-muted);
+    transition:.3s;
 }
 
+.footer-right a:hover{
+    color:var(--accent-neon);
+}
+        
+    
+@media (max-width:768px){
+
+.site-footer{
+    margin-top:25px;
+    padding:20px 16px;
+}
+
+.footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+}
+
+.footer-left{
+    order:1;
+}
+
+.footer-right{
+    order:2;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
 }
         
     
@@ -1324,19 +1320,16 @@ footer{
     
     </section>
 
-    <footer>
-        
-<footer>
-
-      <footer>
-<footer>
+    <footer class="site-footer">
     <div class="footer-bottom">
 
-        <span>@abdullah</span>
+        <div class="footer-left">
+            © 2008 @abdullah.theLegend.
+        </div>
 
-        <div class="footer-bottom-links">
-            <a href="about.html">Privacy Policy</a>
-            <a href="service.html">Services</a>
+        <div class="footer-right">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
         </div>
 
     </div>
