@@ -8,21 +8,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
         :root {
-            --bg-main: #020304; /* Deep Black background */
-            --bg-card: rgba(10, 11, 14, 0.75); /* Rich Light Black Glass Effect */
+            --bg-main: #020304;
             --text-primary: #ffffff;
-            --text-muted: #94a3b8; /* Enhanced contrast for text readability */
-            --text-dark: #1e293b;
-            --accent-crimson: #81081A; /* More Deep Crimson Red */
-            --accent-glow: rgba(129, 8, 26, 0.35);
-            --border-glow: rgba(255, 255, 255, 0.06);
+            --text-muted: #94a3b8;
+            --accent-crimson: #E6004C;
+            --accent-glow: rgba(230, 0, 76, 0.4);
+            --border-glow: rgba(255, 255, 255, 0.1);
             --font-display: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif;
             --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
@@ -52,38 +50,26 @@
             position: relative;
         }
 
-        /* --- EXCLUSIVE ANIMATED VIDEO WALLPAPER CONTAINER --- */
-        .video-background-container {
+        /* --- BACKGROUND AMBIENT GLOW SPOTLIGHTS --- */
+        body::before, body::after {
+            content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .video-background-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0.35; /* Adjusted opacity to sync perfectly with Deep Black mode */
-        }
-
-        .cinematic-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(2, 3, 4, 0.4) 0%, rgba(2, 3, 4, 0.85) 100%),
-                        radial-gradient(circle at center, transparent 30%, rgba(2, 3, 4, 0.8) 90%);
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            filter: blur(150px);
             z-index: -1;
             pointer-events: none;
+        }
+        body::before {
+            top: 10%;
+            left: -100px;
+            background: var(--accent-glow);
+        }
+        body::after {
+            bottom: 10%;
+            right: -100px;
+            background: rgba(129, 8, 26, 0.3);
         }
 
         /* --- PREMIER NAVIGATION --- */
@@ -97,7 +83,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2000;
-            background: rgba(2, 3, 4, 0.6);
+            background: rgba(2, 3, 4, 0.7);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid var(--border-glow);
@@ -122,7 +108,7 @@
         .desktop-nav a {
             text-decoration: none;
             color: var(--text-muted);
-            font-weight: 700; /* Made font bold as per preference */
+            font-weight: 700;
             font-size: 0.85rem;
             letter-spacing: 0.5px;
             transition: color 0.4s var(--ease-premium);
@@ -192,17 +178,17 @@
         }
         .menu-window a:hover { color: var(--accent-crimson); }
 
-        /* --- DISPLAY LAYOUT CONTENT --- */
+        /* --- MODERN OPEN WORKSPACE LAYOUT (NO BOXES) --- */
         .workspace-grid {
             max-width: 1100px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.15fr 1.85fr;
-            gap: 45px;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
             align-items: start;
         }
 
-        .top-action-bar { grid-column: 1 / -1; }
+        .top-action-bar { grid-column: 1 / -1; margin-bottom: -20px; }
 
         .back-link {
             display: inline-flex;
@@ -222,138 +208,111 @@
             transform: translateX(-6px);
         }
 
-        /* Hero Identity Left Panel Glass Box */
+        /* Modern Freeform Identity Column */
         .hero-identity-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 28px;
-            padding: 55px 40px 75px; /* Added padding to accommodate inner slim shape */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            min-height: 460px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            gap: 30px;
             position: relative;
-            overflow: hidden; /* Ensures the shape doesn't go outside the boundary */
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-        }
-
-        .hero-identity-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-crimson), transparent 70%);
-        }
-
-        /* --- MINI SLIM SHAPE (INSIDE BOTTOM OF THE BOX) --- */
-        .mini-slim-shape {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: linear-gradient(90deg, var(--accent-crimson) 0%, rgba(129, 8, 26, 0.4) 60%, transparent 100%);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            pointer-events: none;
         }
 
         .meta-tag {
             font-family: var(--font-body);
             color: var(--accent-crimson);
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             letter-spacing: 4px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: block;
+            font-weight: 800;
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(230, 0, 76, 0.1);
+            border: 1px solid rgba(230, 0, 76, 0.25);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            width: fit-content;
         }
 
         .headline {
             font-family: var(--font-display);
-            font-size: clamp(2.8rem, 4.5vw, 3.8rem);
+            font-size: clamp(3.5rem, 6vw, 5.5rem);
             font-weight: 800;
-            line-height: 1.05;
+            line-height: 0.95;
             letter-spacing: -2px;
         }
 
         .headline em {
             font-style: normal;
             display: block;
-            color: transparent;
-            -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, #FFF 0%, var(--accent-crimson) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .identity-signature h2 {
             font-family: var(--font-display);
-            font-size: 1.7rem;
+            font-size: 2rem;
             font-weight: 800;
             letter-spacing: -0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .identity-signature p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
-        /* Information Right Layout Grid */
+        /* Modern Information Matrix (Borderless Floating Items) */
         .analytics-cluster {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 40px;
         }
 
         .editorial-block {
-            background: rgba(255, 255, 255, 0.02);
-            border-left: 3px solid var(--accent-crimson);
-            padding: 16px 20px 16px 30px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 0 16px 16px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.02);
-            border-right: 1px solid rgba(255, 255, 255, 0.02);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            position: relative;
+            padding-left: 24px;
+            border-left: 2px solid var(--accent-crimson);
         }
 
         .editorial-block p {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             line-height: 1.7;
-            color: #ffffff;
-            font-weight: 600; /* Bold accentuation */
+            color: #E2E8F0;
+            font-weight: 400;
         }
 
         .infographic-matrix {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 25px;
         }
 
+        /* Creative Borderless Node Item */
         .matrix-node {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            border-radius: 18px;
-            padding: 24px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 135px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: border-color 0.4s var(--ease-premium), transform 0.4s var(--ease-premium), background 0.4s;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            gap: 8px;
+            padding: 16px 0;
+            position: relative;
+            border-bottom: 1px solid var(--border-glow);
+            transition: all 0.4s var(--ease-premium);
         }
 
-        .matrix-node:hover {
-            border-color: rgba(129, 8, 26, 0.8);
-            background: rgba(15, 17, 23, 0.85);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--accent-glow);
+        .matrix-node::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--accent-crimson);
+            transition: width 0.4s var(--ease-premium);
+        }
+
+        .matrix-node:hover::after {
+            width: 100%;
         }
 
         .matrix-node label {
@@ -365,7 +324,7 @@
         }
 
         .matrix-node .node-value {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.3px;
@@ -376,7 +335,7 @@
             font-family: var(--font-display);
             font-weight: 800;
             letter-spacing: 0.5px;
-            text-shadow: 0 0 20px rgba(129, 8, 26, 0.7);
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .reveal { opacity: 0; }
@@ -385,28 +344,19 @@
         @media (max-width: 991px) {
             .desktop-nav { display: none; }
             .hamburger { display: flex; }
-            .workspace-grid { grid-template-columns: 1fr; gap: 35px; }
+            .workspace-grid { grid-template-columns: 1fr; gap: 40px; }
             body { padding: 120px 5% 60px; }
         }
 
         @media (max-width: 600px) {
-            .infographic-matrix { grid-template-columns: 1fr; }
-            .hero-identity-panel { padding: 45px 30px 65px; min-height: 380px; }
-            .editorial-block { padding-left: 20px; }
+            .infographic-matrix { grid-template-columns: 1fr; gap: 15px; }
+            .headline { font-size: 3.2rem; }
             .editorial-block p { font-size: 1.05rem; }
         }
     </style>
 </head>
 
 <body>
-
-    <div class="video-background-container">
-        <video autoplay muted loop playsinline>
-            <source src="https://cdn.pixabay.com/video/2020/09/24/51048-464522432_large.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <div class="cinematic-overlay"></div>
 
     <nav>
         <div class="logo">ABOUT ME<span>.</span></div>
@@ -445,8 +395,6 @@
                 <h2>Abdullah Forhad</h2>
                 <p>Digital Architecture & Designing</p>
             </div>
-
-            <div class="mini-slim-shape"></div>
         </div>
 
         <div class="analytics-cluster">
