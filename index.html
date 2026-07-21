@@ -1015,9 +1015,14 @@
     font-size: 0.85rem;
 }
 
+.footer-bottom span {
+    margin-right: auto;
+}
+
 .footer-bottom-links {
     display: flex;
     gap: 20px;
+    margin-left: auto;
 }
 
 .footer-bottom-links a {
@@ -1029,14 +1034,11 @@
 .footer-bottom-links a:hover {
     color: var(--accent-neon);
 }
-
     
     
-        @media (max-width: 768px) {
+        @media (min-width: 768px) {
     .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 12px;
+        flex-direction: row;
     }
 }
 
@@ -1314,15 +1316,18 @@
     </section>
 
     <footer>
-        <div class="footer-bottom">
-            <span>&copy; 2008 @abdullah.theLegend.</span>
-            <div class="footer-bottom-links">
-                <a href="about.html">Privacy Policy</a>
-                <a href="about.html">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+        
+<footer>
+    <div class="footer-bottom">
+        <span>&copy; 2008 @abdullah.theLegend.</span>
 
+        <div class="footer-bottom-links">
+            <a href="about.html">Privacy Policy</a>
+            <a href="service.html">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+        
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // 1. DATA STORE
