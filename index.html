@@ -1060,13 +1060,20 @@ body::after {
 }
 
 /* ছবিটিকে কোনো কালো বর্ডার ছাড়া পুরো স্ক্রিনে ফিট করার নিয়ম */
-.splash-content,
-#batmanImage {
-    width: 110%;
+.splash-content {
+    width: 100%;
     height: 100%;
-    object-fit: cover;    /* ছবি চেপ্টা না করে পুরো স্ক্রিন কভার করবে */
-    object-position: center; /* ছবিটিকে স্ক্রিনের মাঝখানে ধরে রাখবে */
+    overflow: hidden;
 }
+
+#batmanImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.2); /* 120% Zoom */
+    transform-origin: center center;
+        }
 
 /* সপ্ল্যাশ স্ক্রিন হাইড করার জন্য ক্লাস */
 #batmanSplashScreen.fade-out {
