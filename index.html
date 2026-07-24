@@ -16,28 +16,32 @@
 
     <style>
         /* --- MINIMALIST DEEP BLACK & CRIMSON GLASS SYSTEM --- */
-        :root {
-            /* Main Theme Overrides: Swapped light blacks for deep absolute black */
-            --bg-main: #000000;          /* True pitch black canvas */
-            --bg-card: rgba(10, 10, 10, 0.7); /* Deep black glass base */
-
         
-    --accent-neon: #D31322;      /* Main red from the artwork */
-    --accent-deep: #8A0E18;       /* Dark shadow red */
-    --accent-glow: rgba(211,19,34,0.28);
-    --accent-glow-deep: rgba(138,14,24,0.45);
-            
-            /* Text states */
-            --text-primary: #E5E7EB;     /* Misty cloud white */
-            --text-muted: #9CA3AF;       /* Storm ash silver */
-            --input-border: rgba(255, 255, 255, 0.08); /* Faint glass perimeter */
+:root {
+    /* Main Theme */
+    --bg-main: #000000;
+    --bg-card: rgba(10, 10, 10, 0.7);
 
-            /* Typography & Animation Globals */
-            --font-main: 'Plus Jakarta Sans', sans-serif;
-            --font-accent: 'Syne', sans-serif;
-            --transition-tactile: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
+    /* Artwork Red Palette */
+    --accent-neon: #76000A;      /* Main blood red */
+    --accent-deep: #4A0005;      /* Deep shadow red */
+    --accent-light: #9A0A14;     /* Highlight red */
 
+    /* Glow Effects */
+    --accent-glow: rgba(118, 0, 10, 0.30);
+    --accent-glow-deep: rgba(74, 0, 5, 0.45);
+
+    /* Text */
+    --text-primary: #E5E7EB;
+    --text-muted: #9CA3AF;
+    --input-border: rgba(255,255,255,0.08);
+
+    /* Typography */
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-accent: 'Syne', sans-serif;
+
+    --transition-tactile: all 0.3s cubic-bezier(0.25,0.8,0.25,1);
+}
         * {
             margin: 0;
             padding: 0;
