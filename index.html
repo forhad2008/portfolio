@@ -1037,48 +1037,45 @@
     color:var(--accent-neon);
 }
 
-/* Full-screen Splash Screen Overlay */
 #batmanSplashScreen {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;       /* 100% Viewport Width */
-    height: 100vh;      /* 100% Viewport Height */
+    width: 100vw;       /* পুরো স্ক্রিনের চওড়া (Width) */
+    height: 100vh;      /* পুরো স্ক্রিনের লম্বা (Height) */
     background-color: #000000;
-    z-index: 999999;    /* Keeps it on top of all menu bars and elements */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;   /* Prevents scrollbars */
+    z-index: 999999;    /* ওয়েবসাইটের অন্য সবকিছুর উপরে দেখাবে */
+    overflow: hidden;   /* স্ক্রলে অতিরিক্ত জায়গা তৈরি হতে দেবে না */
     opacity: 1;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    transition: opacity 0.8s ease, visibility 0.8s ease; /* ফেড আউট এনিমেশন */
 }
 
-/* Ensure image covers the full screen without stretching or distortion */
-#batmanSplashScreen img {
+/* ছবিটিকে কোনো কালো বর্ডার ছাড়া পুরো স্ক্রিনে ফিট করার নিয়ম */
+.splash-content,
+#batmanImage {
     width: 100%;
     height: 100%;
-    object-fit: cover;      /* Crops proportionally to fit any screen size */
-    object-position: center; /* Keeps Batman centered */
+    object-fit: cover;    /* ছবি চেপ্টা না করে পুরো স্ক্রিন কভার করবে */
+    object-position: center; /* ছবিটিকে স্ক্রিনের মাঝখানে ধরে রাখবে */
 }
 
-/* Fade out state */
+/* সপ্ল্যাশ স্ক্রিন হাইড করার জন্য ক্লাস */
 #batmanSplashScreen.fade-out {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-}     
+}
 
 </style>
          
                                     
 </head>
         <body>
-            <div id="batmanSplashScreen">
-                <div class="splash-content">
-                    <img src="bat.webp"
-                        alt="Batman Wallpaper" id="batmanImage">
-                </div>      </div>
+         <div id="batmanSplashScreen">
+    <div class="splash-content">
+        <img src="bat.webp" alt="Batman Wallpaper" id="batmanImage">
+    </div>
+</div>
 
     <nav>
         <div class="logo">Profile<span>.</span></div>
