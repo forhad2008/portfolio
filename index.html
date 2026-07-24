@@ -1036,6 +1036,36 @@
 .footer-right a:hover{
     color:var(--accent-neon);
 }
+
+#batmanSplashScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: auto;
+
+    background-color: #000000;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
+}
+
+#batmanSplashScreen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#batmanSplashScreen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
         
 
 </style>
@@ -1043,6 +1073,11 @@
                                     
 </head>
         <body>
+            <div id="batmanSplashScreen">
+                <div class="splash-content">
+                    <img src="bat.webp"
+                        alt="Batman Wallpaper" id="batmanImage">
+                </div>      </div>
 
     <nav>
         <div class="logo">Profile<span>.</span></div>
@@ -1313,6 +1348,25 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // --- BATMAN SPLASH SCREEN LOGIC ---
+            const splashScreen = document.getElementById('batmanSplashScreen');
+
+            if (!sessionStorage.getItem('splashShown')) {
+                // ৩ সেকেন্ড পর ওয়ালপেপার হাইড হবে
+                setTimeout(() => {
+                    if (splashScreen) {
+                        splashScreen.classList.add('fade-out');
+                    }
+                }, 5000);
+
+                // প্রথমবার দেখানো হয়ে গেলে তা সেভ করে রাখবে
+                sessionStorage.setItem('splashShown', 'true');
+            } else {
+                // একই সেশনে পেজ রিফ্রেশ করলে আর দেখাবে না
+                if (splashScreen) {
+                    splashScreen.style.display = 'none';
+                }
+            }
             // 1. DATA STORE
             const menuItems = [
                 { label: "Home", url: "index.html" },
