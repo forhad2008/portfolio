@@ -835,6 +835,68 @@ body::after {
             transition: var(--transition-tactile);
         }
 
+        /* =========================
+   Sound Banner
+========================= */
+
+.sound-banner{
+    width:100%;
+    height: 245px;
+    background:
+    linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)),
+    url("sound-bg1.webp") center center/cover no-repeat;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.sound-overlay{
+    width:100%;
+    height:250px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.sound-button{
+
+    width:125px;
+    height:40px;
+
+    background:#050505;
+    color:#fff;
+
+    border:none;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+
+    font-family:var(--font-accent);
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+    transition:.35s ease;
+}
+
+.sound-button:hover{
+
+    background:var(--primary-color);
+    transform:scale(1.05);
+
+}
+
+.sound-button i{
+    font-size:14px;
+        }
+
         /* --- RESPONSIVE FIXES & MEDIA QUERIES --- */
         @media (max-width: 768px) {
             nav {
@@ -1224,6 +1286,31 @@ body::after {
 
 
         </div> <!-- contact-grid শেষ -->
+        <!-- Sound Section -->
+<section class="sound-banner">
+    <div class="sound-overlay">
+
+        <button id="sound-center-btn" class="sound-button">
+            <i class="fas fa-music"></i>
+            <span>SOUNDS</span>
+        </button>
+
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const soundButton = document.getElementById("sound-center-btn");
+
+    soundButton.addEventListener("click", function () {
+        window.open(
+            "https://www.udio.com/creators/SiennaCatchyKoto331679",
+            "_blank"
+        );
+    });
+});
+</script>
 
         <div class="info-minimal-container">
 
