@@ -1408,25 +1408,7 @@ body::after {
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // --- BATMAN SPLASH SCREEN LOGIC ---
-            const splashScreen = document.getElementById('batmanSplashScreen');
 
-            if (!sessionStorage.getItem('splashShown')) {
-                // ৩ সেকেন্ড পর ওয়ালপেপার হাইড হবে
-                setTimeout(() => {
-                    if (splashScreen) {
-                        splashScreen.classList.add('fade-out');
-                    }
-                }, 5000);
-
-                // প্রথমবার দেখানো হয়ে গেলে তা সেভ করে রাখবে
-                sessionStorage.setItem('splashShown', 'true');
-            } else {
-                // একই সেশনে পেজ রিফ্রেশ করলে আর দেখাবে না
-                if (splashScreen) {
-                    splashScreen.style.display = 'none';
-                }
-            }
             // 1. DATA STORE
             const menuItems = [
                 { label: "Home", url: "index.html" },
