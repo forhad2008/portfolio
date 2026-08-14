@@ -78,16 +78,30 @@ header {
 }
 
 .logo {
-    font-family: 'Syne', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
-.logo span {
-    color: var(--accent);
-    text-shadow: 0 0 12px var(--accent-glow);
+.logo img {
+        height: 55px;
+    width: auto;
+
+    object-fit: contain;
+    display: block;
+    transition: var(--transition-tactile);
 }
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+        .desktop-nav {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+    
 
 .home-btn {
     text-decoration: none;
@@ -318,9 +332,9 @@ footer {
 <body>
 
 <header>
-    <div class="logo">
-        PROFILE<span>.</span>
-    </div>
+<a href="index.html" class="logo">
+    <img src="logo1.png" alt="Abdullah Forhad Logo">
+</a>
 
     <a href="index.html" class="home-btn">
         ← Home
