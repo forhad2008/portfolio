@@ -107,17 +107,22 @@ body::after {
         }
 
         .logo {
-            font-family: var(--font-accent);
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: var(--text-primary);
-            text-transform: uppercase;
-        }
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 
-        .logo span {
-            color: var(--accent-neon);
-        }
+.logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition-tactile);
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
 
         .desktop-nav {
             display: flex;
@@ -1062,8 +1067,9 @@ body::after {
 
 
     <nav>
-        <div class="logo">Profile<span>.</span></div>
-
+<a href="index.html" class="logo">
+    <img src="logo.png" alt="Abdullah Forhad Logo">
+</a>
         <ul class="desktop-nav">
             <li class="active"><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
