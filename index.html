@@ -125,40 +125,45 @@
         /* =========================================================
            NAVIGATION & MOBILE DRAWER: Handled by navbar.css & navbar.js
         ========================================================= */
-        /* Sync Mobile Floating Dock when Drawer or Cart is Open */
+        /* Sync Mobile Bottom Dock when Drawer or Cart is Open */
         body.locked .mobile-bottom-dock,
         body.no-scroll .mobile-bottom-dock,
         body[style*="overflow: hidden"] .mobile-bottom-dock,
         .menu-window.open ~ .mobile-bottom-dock {
             opacity: 0 !important;
             pointer-events: none !important;
-            transform: translate(-50%, 20px) !important;
+            transform: translateY(100%) !important;
             transition: var(--transition-tactile);
         }
 
         /* =========================================================
-           LUXURY MOBILE BOTTOM FLOATING DOCK
+           LUXURY MOBILE BOTTOM NAVIGATION BAR (Full Width Edge-to-Edge)
         ========================================================= */
         .mobile-bottom-dock {
             display: none;
             position: fixed;
-            bottom: max(14px, env(safe-area-inset-bottom));
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 24px);
-            max-width: 390px;
-            height: 58px;
-            background: rgba(12, 12, 12, 0.88);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 25px rgba(133, 0, 9, 0.25);
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            transform: none !important;
+            height: calc(58px + env(safe-area-inset-bottom, 0px));
+            background: rgba(10, 2, 4, 0.94);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            border-left: none !important;
+            border-right: none !important;
+            border-bottom: none !important;
+            border-radius: 0 !important;
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.85);
             z-index: 2600;
-            padding: 4px 6px;
+            padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px));
             box-sizing: border-box;
             align-items: center;
             justify-content: space-around;
+            margin: 0 !important;
         }
 
         .dock-item {
@@ -174,14 +179,16 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 999px;
+            padding: 6px 8px;
+            border-radius: 0 !important;
             background: transparent;
             border: none;
             cursor: pointer;
             transition: var(--transition-tactile);
             -webkit-tap-highlight-color: transparent;
             touch-action: manipulation;
+            flex: 1;
+            height: 100%;
         }
 
         .dock-item i {
@@ -1143,19 +1150,32 @@
             transform: translateY(-2px);
         }
 
-        /* --- CONTACT SECTION --- */
+        /* --- CONTACT SECTION (Haute Couture Noir Atelier Palette) --- */
         .contact-section {
-            padding: 80px 8% 60px;
-            background: rgba(5, 5, 5, 0.4); /* Pure dark translucent backing */
-            border-top: 1px solid var(--input-border);
+            padding: 85px 8% 65px;
+            background: radial-gradient(circle at 85% 15%, rgba(133, 0, 9, 0.09) 0%, transparent 55%), #050505;
+            color: #f4f4f5;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             box-sizing: border-box;
             width: 100%;
+            position: relative;
+        }
+
+        .contact-section .section-subtitle {
+            color: #ef4444;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+        }
+
+        .contact-section .section-title {
+            color: #ffffff;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 32px;
             margin-top: 30px;
             align-items: start;
             width: 100%;
@@ -1169,13 +1189,13 @@
         }
 
         .contact-form-card {
-            background: linear-gradient(135deg, rgba(140, 10, 20, 0.22) 0%, rgba(20, 4, 7, 0.72) 100%);
-            backdrop-filter: blur(22px) saturate(180%);
-            -webkit-backdrop-filter: blur(22px) saturate(180%);
-            border: 1px solid rgba(248, 113, 113, 0.32);
-            padding: 18px 20px;
+            background: linear-gradient(145deg, rgba(18, 16, 18, 0.92) 0%, rgba(10, 8, 10, 0.96) 100%);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(248, 113, 113, 0.22);
+            padding: 24px 26px;
             border-radius: 12px;
-            box-shadow: inset 0 1px 1.5px 0 rgba(255, 180, 190, 0.3), 0 20px 50px rgba(0, 0, 0, 0.88), 0 0 25px rgba(220, 38, 38, 0.18);
+            box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.08), 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(133, 0, 9, 0.12);
             width: 100%;
             max-width: 580px;
             justify-self: start;
@@ -1187,8 +1207,8 @@
         .form-group-row {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 12px;
+            margin-bottom: 12px;
             width: 100%;
         }
 
@@ -1201,8 +1221,8 @@
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            margin-bottom: 10px;
+            gap: 4px;
+            margin-bottom: 12px;
             width: 100%;
         }
 
@@ -1213,8 +1233,8 @@
         .input-group label {
             font-size: 0.68rem;
             font-weight: 600;
-            color: #fca5a5;
-            letter-spacing: 0.5px;
+            color: #e4e4e7;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
         }
 
@@ -1222,31 +1242,37 @@
         .input-group textarea,
         .input-group select {
             width: 100%;
-            height: 35px;
-            padding: 6px 10px;
-            border: 1px solid rgba(248, 113, 113, 0.22);
+            height: 38px;
+            padding: 8px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 6px;
-            background: rgba(10, 2, 4, 0.6);
+            background: rgba(255, 255, 255, 0.04);
             font-family: var(--font-main);
-            color: var(--text-primary);
-            font-size: 0.8rem;
+            color: #ffffff;
+            font-size: 0.82rem;
             outline: none;
             transition: var(--transition-tactile);
             box-sizing: border-box;
+            color-scheme: dark;
+        }
+
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.35);
         }
 
         .input-group input:focus,
         .input-group textarea:focus,
         .input-group select:focus {
-            border-color: #f87171;
-            background: rgba(18, 3, 7, 0.8);
-            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25), inset 0 1px 2px rgba(0,0,0,0.5);
+            border-color: #ef4444;
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2), 0 0 15px rgba(239, 68, 68, 0.15);
         }
 
         .input-group textarea {
             resize: vertical;
-            min-height: 62px;
-            height: 62px;
+            min-height: 68px;
+            height: 68px;
         }
 
         .button-wrapper {
@@ -1257,30 +1283,32 @@
         .button-wrapper .btn,
         #submitFormBtn {
             width: 100%;
-            height: 38px;
+            height: 42px;
             padding: 8px 18px;
             font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             border-radius: 6px;
-            background: linear-gradient(135deg, rgba(185, 28, 28, 0.95), rgba(120, 10, 18, 0.95));
-            border: 1px solid rgba(248, 113, 113, 0.35);
-            color: #ffffff;
+            background: #ffffff !important;
+            border: 1px solid rgba(255, 255, 255, 0.9) !important;
+            color: #050505 !important;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 16px rgba(185, 28, 28, 0.35);
+            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.12);
             transition: var(--transition-tactile);
             box-sizing: border-box;
         }
 
         #submitFormBtn:hover {
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            box-shadow: 0 6px 22px rgba(220, 38, 38, 0.5);
-            transform: translateY(-1px);
+            background: #850009 !important;
+            color: #ffffff !important;
+            border-color: #a3000b !important;
+            box-shadow: 0 6px 25px rgba(133, 0, 9, 0.5) !important;
+            transform: translateY(-2px);
         }
 
         .form-status {
@@ -1290,6 +1318,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            color: #f4f4f5;
         }
 
         .info-minimal-container {
@@ -1308,9 +1337,9 @@
         }
 
         .minimal-underlined-link {
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 500;
-            color: var(--text-primary);
+            color: #f4f4f5;
             text-decoration: none;
             display: inline-block;
             position: relative;
@@ -1322,10 +1351,19 @@
             content: '';
             position: absolute;
             bottom: 0;
+            left: 0;
             width: 100%;
             height: 1.5px;
-            background-color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.35);
             transition: var(--transition-tactile);
+        }
+
+        .minimal-underlined-link:hover {
+            color: #ffffff;
+        }
+
+        .minimal-underlined-link:hover::after {
+            background-color: #850009;
         }
 
 
@@ -1333,7 +1371,7 @@
         /* --- RESPONSIVE FIXES & LUXURY MOBILE MEDIA QUERIES --- */
         @media (max-width: 768px) {
             body {
-                padding-bottom: 80px; /* Clearance for floating bottom dock */
+                padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); /* Clearance for edge-to-edge bottom bar */
             }
 
 
@@ -1640,20 +1678,21 @@
                 padding: 12px 16px;
             }
 
-            /* Contact Form Mobile Polish: Compact Form Box, Small Input Size & Soft Red Liquid Glass */
+            /* Contact Form Mobile Polish: Haute Couture Noir Liquid Glass */
             .contact-section {
-                padding: 36px 14px 28px;
+                padding: 38px 14px 30px;
+                background: #050505;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             }
 
             .contact-form-card {
-                padding: 14px 12px !important;
+                padding: 16px 14px !important;
                 max-width: 100% !important;
                 border-radius: 10px !important;
-                background: linear-gradient(135deg, rgba(140, 10, 20, 0.25) 0%, rgba(20, 4, 7, 0.78) 100%) !important;
-                backdrop-filter: blur(22px) saturate(180%) !important;
-                -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
-                border: 1px solid rgba(248, 113, 113, 0.35) !important;
-                box-shadow: inset 0 1px 1.5px 0 rgba(255, 180, 190, 0.32), 0 14px 34px rgba(0, 0, 0, 0.92), 0 0 22px rgba(220, 38, 38, 0.22) !important;
+                background: linear-gradient(145deg, rgba(18, 16, 18, 0.94) 0%, rgba(10, 8, 10, 0.98) 100%) !important;
+                border: 1px solid rgba(248, 113, 113, 0.25) !important;
+                box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.08), 0 16px 40px rgba(0, 0, 0, 0.92), 0 0 22px rgba(133, 0, 9, 0.15) !important;
             }
 
             .form-group-row {
@@ -1672,8 +1711,8 @@
 
             .input-group label {
                 font-size: 0.64rem !important;
-                color: #fca5a5 !important;
-                letter-spacing: 0.4px !important;
+                color: #e4e4e7 !important;
+                letter-spacing: 0.6px !important;
                 margin-bottom: 2px !important;
             }
 
@@ -1684,9 +1723,10 @@
                 height: 33px !important;
                 padding: 4px 8px !important;
                 border-radius: 5px !important;
-                background: rgba(12, 3, 5, 0.65) !important;
-                border: 1px solid rgba(248, 113, 113, 0.25) !important;
-                color: #f4f4f5 !important;
+                background: rgba(255, 255, 255, 0.04) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                color: #ffffff !important;
+                color-scheme: dark;
             }
 
             .input-group textarea {
@@ -1702,17 +1742,48 @@
                 font-size: 0.72rem !important;
                 padding: 5px 12px !important;
                 border-radius: 5px !important;
-                background: linear-gradient(135deg, rgba(185, 28, 28, 0.95), rgba(120, 10, 18, 0.95)) !important;
-                border: 1px solid rgba(248, 113, 113, 0.4) !important;
+                background: #ffffff !important;
+                border: 1px solid rgba(255, 255, 255, 0.9) !important;
+                color: #050505 !important;
+                box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12) !important;
             }
 
-            /* Soft Red Liquid Glass on Mobile Bottom Floating Dock */
+            #submitFormBtn:hover,
+            #submitFormBtn:active {
+                background: #850009 !important;
+                color: #ffffff !important;
+                border-color: #a3000b !important;
+                box-shadow: 0 4px 18px rgba(133, 0, 9, 0.5) !important;
+            }
+
+            /* Full Bottom Screen Edge-to-Edge Menu Bar (No Gap, No Border Radius) */
             .mobile-bottom-dock {
-                background: linear-gradient(135deg, rgba(140, 10, 20, 0.28) 0%, rgba(20, 4, 7, 0.82) 100%) !important;
-                backdrop-filter: blur(24px) saturate(190%) !important;
-                -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-                border: 1px solid rgba(248, 113, 113, 0.35) !important;
-                box-shadow: inset 0 1px 1.5px 0 rgba(255, 180, 190, 0.35), 0 16px 40px rgba(0, 0, 0, 0.92), 0 0 25px rgba(220, 38, 38, 0.28) !important;
+                display: flex !important;
+                bottom: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                transform: none !important;
+                border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
+                border-bottom: none !important;
+                border-top: 1px solid rgba(248, 113, 113, 0.35) !important;
+                background: linear-gradient(180deg, rgba(140, 10, 20, 0.28) 0%, rgba(10, 2, 4, 0.96) 100%) !important;
+                backdrop-filter: blur(25px) saturate(190%) !important;
+                -webkit-backdrop-filter: blur(25px) saturate(190%) !important;
+                box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.85), 0 -1px 18px rgba(185, 28, 28, 0.25) !important;
+                height: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+                padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px)) !important;
+                margin: 0 !important;
+            }
+
+            .dock-item {
+                border-radius: 0 !important;
+                flex: 1 !important;
+                height: 100% !important;
+                padding: 6px 4px !important;
             }
 
             .info-minimal-container {
@@ -1969,14 +2040,14 @@
                 <li class="mobile-nav-item">
                     <a href="#home" class="mobile-nav-link">
                         <span class="nav-num">01</span>
-                        <span class="nav-title">Curated Home</span>
-                        <span class="nav-desc">Portfolio Front</span>
+                        <span class="nav-title">Home</span>
+                        <span class="nav-desc">Portfolio Home Page</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="#shop" class="mobile-nav-link">
                         <span class="nav-num">02</span>
-                        <span class="nav-title">Exclusive Drops</span>
+                        <span class="nav-title">Creations</span>
                         <span class="nav-desc">17 Bespoke Pieces</span>
                     </a>
                 </li>
@@ -1990,7 +2061,7 @@
                 <li class="mobile-nav-item">
                     <a href="service.html" class="mobile-nav-link">
                         <span class="nav-num">04</span>
-                        <span class="nav-title">Atelier Services</span>
+                        <span class="nav-title">Services</span>
                         <span class="nav-desc">Identity & Engineering</span>
                     </a>
                 </li>
