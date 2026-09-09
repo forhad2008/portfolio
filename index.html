@@ -2036,6 +2036,34 @@
 
 
 
+
+
+        /* =========================================================
+           SCROLL PERFORMANCE HARDENING
+           Keep scrolling on compositor-friendly properties.
+        ========================================================= */
+        .card-img-wrapper img,
+        .card {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .design-grid {
+            contain: layout style;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
 </style>
          
                                     
@@ -3538,7 +3566,7 @@
                         <article class="${cardClass}" data-id="${item.id}" data-category="${item.category}">
                             <a href="${item.detailUrl}" class="card-img-wrapper" target="${item.detailUrl.startsWith('http') || item.detailUrl.endsWith('.pdf') ? '_blank' : '_self'}">
                                 <span class="${badgeClass}">${item.badge}</span>
-                                <img src="${item.img}" alt="${item.title}" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=${encodeURIComponent(item.title)}'">
+                                <img src="${item.img}" alt="${item.title}" loading="eager" decoding="async" fetchpriority="auto" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=${encodeURIComponent(item.title)}'">
                             </a>
                             <div class="card-content">
                                 <div>
@@ -3576,56 +3604,168 @@
                 }
             });
 
-            // Mobile Bottom Dock ScrollSpy Active State
+            /* =========================================================
+               4. ZERO-REINITIALIZATION SCROLL SYSTEM
+               - NO per-pixel section calculations
+               - NO querySelectorAll() on every scroll frame
+               - NO card re-rendering while scrolling
+               - IntersectionObserver handles section state
+               - One tiny sentinel handles navbar state
+               - DOM is mutated only when the active state actually changes
+            ========================================================= */
             const dockHome = document.getElementById('dock-item-home');
             const dockShop = document.getElementById('dock-item-shop');
             const dockContact = document.getElementById('dock-item-contact');
+            const nav = document.getElementById('navbar');
 
-            const sectionHome = document.getElementById('home');
-            const sectionShop = document.getElementById('shop');
-            const sectionContact = document.getElementById('contact');
+            const scrollSections = [
+                { id: 'home', element: document.getElementById('home') },
+                { id: 'shop', element: document.getElementById('shop') },
+                { id: 'contact', element: document.getElementById('contact') }
+            ].filter(section => section.element);
 
-            function updateDockActiveState() {
-                const scrollPos = window.scrollY + 280;
-                let currentSec = 'home';
+            // Cache navigation targets ONCE. Nothing is queried during scrolling.
+            const desktopNavItems = Array.from(
+                document.querySelectorAll('.desktop-nav li')
+            ).map(li => ({
+                element: li,
+                href: li.querySelector('a')?.getAttribute('href') || ''
+            }));
 
-                if (sectionContact && sectionContact.offsetTop <= scrollPos) {
-                    currentSec = 'contact';
-                } else if (sectionShop && sectionShop.offsetTop <= scrollPos) {
-                    currentSec = 'shop';
-                } else {
-                    currentSec = 'home';
-                }
+            const dockItems = {
+                home: dockHome,
+                shop: dockShop,
+                contact: dockContact
+            };
 
-                if (dockHome) dockHome.classList.toggle('active', currentSec === 'home');
-                if (dockShop) dockShop.classList.toggle('active', currentSec === 'shop');
-                if (dockContact) dockContact.classList.toggle('active', currentSec === 'contact');
+            let activeSection = null;
 
-                // Desktop Nav Active State
-                document.querySelectorAll('.desktop-nav li').forEach(li => {
-                    const link = li.querySelector('a');
-                    if (link) {
-                        const href = link.getAttribute('href');
-                        if (href === '#' + currentSec || (currentSec === 'home' && (href === '#home' || href === 'index.html'))) {
-                            li.classList.add('active');
-                        } else if (href && href.startsWith('#')) {
-                            li.classList.remove('active');
+            function setActiveSection(sectionId) {
+                if (!sectionId || sectionId === activeSection) return;
+                activeSection = sectionId;
+
+                // Only touch the elements whose state can actually change.
+                Object.entries(dockItems).forEach(([id, element]) => {
+                    if (element) {
+                        const shouldBeActive = id === sectionId;
+                        if (element.classList.contains('active') !== shouldBeActive) {
+                            element.classList.toggle('active', shouldBeActive);
                         }
                     }
                 });
 
-                // Desktop Navbar Scrolled Effect
-                const nav = document.getElementById('navbar');
-                if (nav) {
-                    if (window.scrollY > 20) {
-                        nav.classList.add('scrolled');
-                    } else {
-                        nav.classList.remove('scrolled');
+                desktopNavItems.forEach(({ element, href }) => {
+                    const isSectionLink = href === `#${sectionId}` ||
+                        (sectionId === 'home' && (href === '#home' || href === 'index.html'));
+
+                    if (isSectionLink) {
+                        if (!element.classList.contains('active')) {
+                            element.classList.add('active');
+                        }
+                    } else if (href.startsWith('#') && element.classList.contains('active')) {
+                        element.classList.remove('active');
                     }
-                }
+                });
             }
 
-            window.addEventListener('scroll', updateDockActiveState, { passive: true });
+            // Observe sections instead of calculating offsetTop on every scroll event.
+            if ('IntersectionObserver' in window && scrollSections.length) {
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    const visible = entries
+                        .filter(entry => entry.isIntersecting)
+                        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+                    if (visible.length) {
+                        setActiveSection(visible[0].target.id);
+                    }
+                }, {
+                    root: null,
+                    rootMargin: '-30% 0px -55% 0px',
+                    threshold: [0, 0.01, 0.25]
+                });
+
+                scrollSections.forEach(section => sectionObserver.observe(section.element));
+            } else {
+                // Compatibility fallback: throttled to one update per animation frame.
+                let fallbackQueued = false;
+
+                const fallbackScroll = () => {
+                    if (fallbackQueued) return;
+                    fallbackQueued = true;
+
+                    requestAnimationFrame(() => {
+                        const position = window.scrollY + window.innerHeight * 0.3;
+                        let current = scrollSections[0]?.id || 'home';
+
+                        scrollSections.forEach(section => {
+                            if (section.element.offsetTop <= position) {
+                                current = section.id;
+                            }
+                        });
+
+                        setActiveSection(current);
+                        fallbackQueued = false;
+                    });
+                };
+
+                window.addEventListener('scroll', fallbackScroll, { passive: true });
+                fallbackScroll();
+            }
+
+            // Create ONE 1px sentinel. Its visibility controls the navbar state.
+            if (nav && 'IntersectionObserver' in window) {
+                const navSentinel = document.createElement('span');
+                navSentinel.setAttribute('aria-hidden', 'true');
+                navSentinel.style.cssText =
+                    'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none;visibility:hidden;';
+
+                document.body.prepend(navSentinel);
+
+                const navObserver = new IntersectionObserver(([entry]) => {
+                    const shouldBeScrolled = !entry.isIntersecting;
+
+                    if (nav.classList.contains('scrolled') !== shouldBeScrolled) {
+                        nav.classList.toggle('scrolled', shouldBeScrolled);
+                    }
+                }, {
+                    root: null,
+                    threshold: 0
+                });
+
+                navObserver.observe(navSentinel);
+            } else if (nav) {
+                // Very old-browser fallback, still limited to animation frames.
+                let navQueued = false;
+
+                const updateNavFallback = () => {
+                    if (navQueued) return;
+                    navQueued = true;
+
+                    requestAnimationFrame(() => {
+                        const shouldBeScrolled = window.scrollY > 20;
+                        if (nav.classList.contains('scrolled') !== shouldBeScrolled) {
+                            nav.classList.toggle('scrolled', shouldBeScrolled);
+                        }
+                        navQueued = false;
+                    });
+                };
+
+                window.addEventListener('scroll', updateNavFallback, { passive: true });
+                updateNavFallback();
+            }
+
+            // Set the initial state once. No scrolling is required to initialize it.
+            if (scrollSections.length) {
+                const initialSection = window.location.hash
+                    ? window.location.hash.slice(1)
+                    : 'home';
+
+                setActiveSection(
+                    scrollSections.some(section => section.id === initialSection)
+                        ? initialSection
+                        : 'home'
+                );
+            }
 
             /* =========================================================
                5. TICKER ANIMATION (GSAP)
