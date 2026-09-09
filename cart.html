@@ -2159,9 +2159,8 @@ function changeQty(
     return;
   }
 
-  if(amount > 0 && Number(item.qty || 0) >= 10){
-    alert("Notice: Maximum 10 units per item allowed.");
-    return;
+  if(amount > 0){
+    return; // Plus feature removed
   }
 
   item.qty =
@@ -2413,16 +2412,7 @@ function renderCartItems(){
                   ${Number(item.qty || 0)}
                 </span>
 
-                <button
-                  type="button"
-                  onclick="changeQty(
-                    ${Number(item.id)},
-                    '${escapeJS(item.size)}',
-                    1
-                  )"
-                >
-                  +
-                </button>
+
 
               </div>
 

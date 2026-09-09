@@ -19,6 +19,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="navbar.css">
+    <!-- Immediate Preload for Critical Above-The-Fold Product Images -->
+    <link rel="preload" as="image" href="19.2.webp" type="image/webp">
+    <link rel="preload" as="image" href="24.2.webp" type="image/webp">
     <script src="navbar.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
@@ -2258,8 +2261,508 @@
             </p>
         </div>
 
-        <div class="showcase-filter-nav" id="filterNav"></div>
-        <div class="design-grid" id="designGrid"></div>
+        <div class="showcase-filter-nav" id="filterNav">
+            <button class="filter-btn active" data-filter="all">All Exclusive Works</button>
+            <button class="filter-btn" data-filter="business-card">Business Cards</button>
+            <button class="filter-btn" data-filter="logo">Luxury Logos</button>
+            <button class="filter-btn" data-filter="website">Web Experiences</button>
+            <button class="filter-btn" data-filter="wedding-card">Wedding Cards</button>
+        </div>
+        <div class="design-grid" id="designGrid">
+            <article class="card" data-id="1" data-category="business-card">
+                <a href="1.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge">EXCLUSIVE DROP</span>
+                    <img src="19.2.webp" alt="Minimalist Business Card Concept" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Minimalist%20Business%20Card%20Concept'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Identity Unit</span>
+                        <h3 class="card-title">
+                            <a href="1.html" target="_self">Minimalist Business Card Concept</a>
+                        </h3>
+                        <p class="card-desc">Precision typography with structural grid composition and clean negative space.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">3.5" × 2.0"</span><span class="spec-tag">CMYK Print Ready</span><span class="spec-tag">Ai / Ps</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$5</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 1)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-id="2" data-category="business-card">
+                <a href="2.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge">MINIMALIST</span>
+                    <img src="24.2.webp" alt="Geometric Pattern Business Card" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Geometric%20Pattern%20Business%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Identity Unit</span>
+                        <h3 class="card-title">
+                            <a href="2.html" target="_self">Geometric Pattern Business Card</a>
+                        </h3>
+                        <p class="card-desc">Dynamic geometric rhythm crafted for tech founders and visionary executives.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Vector System</span><span class="spec-tag">Spot UV Ready</span><span class="spec-tag">Ai / PDF</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$5</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 2)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="3" data-category="business-card">
+                <a href="3.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge luxury-badge">PREMIUM DROP</span>
+                    <img src="27.2.webp" alt="Creative Agency Executive Card" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Creative%20Agency%20Executive%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Creative Agency</span>
+                        <h3 class="card-title">
+                            <a href="3.html" target="_self">Creative Agency Executive Card</a>
+                        </h3>
+                        <p class="card-desc">Bold aesthetic for creative directors and studios requiring immediate impact.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">3.5" × 2.0"</span><span class="spec-tag">Emboss Finish</span><span class="spec-tag">Full Rights</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$9</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 3)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-id="4" data-category="business-card">
+                <a href="4.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge">HERITAGE</span>
+                    <img src="28.2.webp" alt="Vintage Luxury Sovereign Card" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Vintage%20Luxury%20Sovereign%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Vintage Luxury</span>
+                        <h3 class="card-title">
+                            <a href="4.html" target="_self">Vintage Luxury Sovereign Card</a>
+                        </h3>
+                        <p class="card-desc">Classical serif elegance intertwined with dark modern luxury styling.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Gold Foil Ready</span><span class="spec-tag">300 DPI</span><span class="spec-tag">Die-Cut Ready</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$8</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 4)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-id="5" data-category="business-card">
+                <a href="5.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge">SIGNATURE</span>
+                    <img src="29.2.webp" alt="Premium Finished Noir Card" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Premium%20Finished%20Noir%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Identity Unit</span>
+                        <h3 class="card-title">
+                            <a href="5.html" target="_self">Premium Finished Noir Card</a>
+                        </h3>
+                        <p class="card-desc">Ultra-clean minimalist identity unit for modern corporate leadership.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Matte Finish</span><span class="spec-tag">Bleed Margin</span><span class="spec-tag">Print Master</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$7</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 5)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="6" data-category="business-card">
+                <a href="6.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge luxury-badge">EXECUTIVE</span>
+                    <img src="30.2.webp" alt="Corporate Executive Business Card" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Corporate%20Executive%20Business%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Identity Unit</span>
+                        <h3 class="card-title">
+                            <a href="6.html" target="_self">Corporate Executive Business Card</a>
+                        </h3>
+                        <p class="card-desc">Structured layout engineered for high-stakes executive presence.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">3.5" × 2.0"</span><span class="spec-tag">CMYK Master</span><span class="spec-tag">Vector Package</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$12</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 6)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="7" data-category="business-card">
+                <a href="7.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge luxury-badge">PRESTIGE</span>
+                    <img src="33.2.webp" alt="Emerald Prestige Business Card" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Emerald%20Prestige%20Business%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Business Card</span>
+                        <h3 class="card-title">
+                            <a href="7.html" target="_self">Emerald Prestige Business Card</a>
+                        </h3>
+                        <p class="card-desc">Rich jewel-toned sophistication designed to stand out in luxury networking.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Rich Palette</span><span class="spec-tag">Bleed Included</span><span class="spec-tag">Ai / EPS</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$10</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 7)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-id="8" data-category="business-card">
+                <a href="8.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge">BESPOKE</span>
+                    <img src="1.2.webp" alt="Sapphire Royal Business Card" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Sapphire%20Royal%20Business%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Business Card</span>
+                        <h3 class="card-title">
+                            <a href="8.html" target="_self">Sapphire Royal Business Card</a>
+                        </h3>
+                        <p class="card-desc">Balanced typography and refined hierarchy for distinguished professionals.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">300 DPI</span><span class="spec-tag">Full Print Ready</span><span class="spec-tag">Customizable</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$6</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 8)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-id="9" data-category="business-card">
+                <a href="9.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge">CREATIVE DROP</span>
+                    <img src="7.1.webp" alt="Radio Crimson Creative Card" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Radio%20Crimson%20Creative%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Business Card</span>
+                        <h3 class="card-title">
+                            <a href="9.html" target="_self">Radio Crimson Creative Card</a>
+                        </h3>
+                        <p class="card-desc">Energetic layout designed for media, broadcasting, and bold innovators.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Dual Palette</span><span class="spec-tag">Print Scalable</span><span class="spec-tag">Source Files</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$7</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 9)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="10" data-category="business-card">
+                <a href="10.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge luxury-badge">LIMITED DROP</span>
+                    <img src="14.2.webp" alt="Violet Noir Creative Card" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Violet%20Noir%20Creative%20Card'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Business Card</span>
+                        <h3 class="card-title">
+                            <a href="10.html" target="_self">Violet Noir Creative Card</a>
+                        </h3>
+                        <p class="card-desc">Art-directed identity card with modern depth and tactile contrast.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">CMYK Print</span><span class="spec-tag">Double-Sided</span><span class="spec-tag">Ai Master</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$9</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 10)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="11" data-category="logo">
+                <a href="11.html" class="card-img-wrapper" target="_self">
+                    <span class="card-badge luxury-badge">HAUTE COUTURE</span>
+                    <img src="26.webp" alt="Fashion Monogram Logo Concept" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Fashion%20Monogram%20Logo%20Concept'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">System Logo</span>
+                        <h3 class="card-title">
+                            <a href="11.html" target="_self">Fashion Monogram Logo Concept</a>
+                        </h3>
+                        <p class="card-desc">Timeless typographic emblem tailored for luxury lifestyle and apparel brands.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Vector AI / SVG</span><span class="spec-tag">Brand Guide</span><span class="spec-tag">Monogram Suite</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$25</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 11)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="12" data-category="logo">
+                <a href="3.png" class="card-img-wrapper" target="_self">
+                    <span class="card-badge luxury-badge">SOVEREIGN GOLD</span>
+                    <img src="3.png" alt="Sovereign Golden Crown Monogram" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Sovereign%20Golden%20Crown%20Monogram'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">System Logo</span>
+                        <h3 class="card-title">
+                            <a href="3.png" target="_self">Sovereign Golden Crown Monogram</a>
+                        </h3>
+                        <p class="card-desc">Regal insignia with intricate vector linework and royal gold aesthetics.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Full Vector Suite</span><span class="spec-tag">Monochrome Variants</span><span class="spec-tag">Commercial License</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$30</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 12)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="13" data-category="website">
+                <a href="https://forhad2008.github.io/boraldo-store/" class="card-img-wrapper" target="_blank">
+                    <span class="card-badge luxury-badge">DIGITAL ATELIER</span>
+                    <img src="bag2.webp" alt="Aesthetic Lifestyle Branding Website" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Aesthetic%20Lifestyle%20Branding%20Website'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Identity & Branding</span>
+                        <h3 class="card-title">
+                            <a href="https://forhad2008.github.io/boraldo-store/" target="_blank">Aesthetic Lifestyle Branding Website</a>
+                        </h3>
+                        <p class="card-desc">Next-generation digital commerce experience with interactive shopping drawers.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Responsive Web</span><span class="spec-tag">Shopping Cart</span><span class="spec-tag">Animations</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$150</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 13)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="14" data-category="website">
+                <a href="https://forhad2008.github.io/restaurant1-/" class="card-img-wrapper" target="_blank">
+                    <span class="card-badge luxury-badge">SIGNATURE WEB</span>
+                    <img src="res.png" alt="Luxury Gastronomy Web Identity" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Luxury%20Gastronomy%20Web%20Identity'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Web Experience</span>
+                        <h3 class="card-title">
+                            <a href="https://forhad2008.github.io/restaurant1-/" target="_blank">Luxury Gastronomy Web Identity</a>
+                        </h3>
+                        <p class="card-desc">Atmospheric digital restaurant showcase with reservation flow and menu storytelling.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">High Performance</span><span class="spec-tag">Mobile First</span><span class="spec-tag">Interactive Menu</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$180</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 14)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="15" data-category="website">
+                <a href="https://forhad2008.github.io/Abdullah-psychotic/" class="card-img-wrapper" target="_blank">
+                    <span class="card-badge luxury-badge">FLAGSHIP</span>
+                    <img src="Neg.webp" alt="Abdullah Psychotic Lifestyle Portal" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Abdullah%20Psychotic%20Lifestyle%20Portal'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Personal Branding</span>
+                        <h3 class="card-title">
+                            <a href="https://forhad2008.github.io/Abdullah-psychotic/" target="_blank">Abdullah Psychotic Lifestyle Portal</a>
+                        </h3>
+                        <p class="card-desc">Immersive personal empire digital platform with dynamic product systems.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Custom Sound</span><span class="spec-tag">Underworld Auth</span><span class="spec-tag">Real-Time Cart</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$120</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 15)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card" data-id="16" data-category="website">
+                <a href="https://forhad2008.github.io/png-to-webp-converter/" class="card-img-wrapper" target="_blank">
+                    <span class="card-badge">PRO SOFTWARE</span>
+                    <img src="pw.jpeg" alt="High-Speed Web Image Processor" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=High-Speed%20Web%20Image%20Processor'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Web Application</span>
+                        <h3 class="card-title">
+                            <a href="https://forhad2008.github.io/png-to-webp-converter/" target="_blank">High-Speed Web Image Processor</a>
+                        </h3>
+                        <p class="card-desc">Ultra-fast WebAssembly-powered image conversion engine with zero latency.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Client-Side Wasm</span><span class="spec-tag">No Server Lag</span><span class="spec-tag">Batch Processing</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$250</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 16)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="card luxury-card" data-id="17" data-category="wedding-card">
+                <a href="wedding card presentation.pdf" class="card-img-wrapper" target="_blank">
+                    <span class="card-badge luxury-badge">CEREMONIAL</span>
+                    <img src="wed.webp" alt="Royal Crimson & Gold Wedding Suite" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Royal%20Crimson%20%26%20Gold%20Wedding%20Suite'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Wedding & Celebration</span>
+                        <h3 class="card-title">
+                            <a href="wedding card presentation.pdf" target="_blank">Royal Crimson & Gold Wedding Suite</a>
+                        </h3>
+                        <p class="card-desc">Opulent ceremonial stationery suite featuring royal calligraphy and gold foil accents.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">Print Ready CMYK</span><span class="spec-tag">Digital RSVP</span><span class="spec-tag">Foil Map</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$15</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 17)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
     </section>
 
     <section class="contact-section" id="contact">
@@ -2972,11 +3475,14 @@
             const designGrid = document.getElementById('designGrid');
 
             if (filterNav) {
-                filterNav.innerHTML = filterCategories.map(cat => `
-                    <button class="filter-btn ${cat.slug === currentFilter ? 'active' : ''}" data-filter="${cat.slug}">
-                        ${cat.label}
-                    </button>
-                `).join('');
+                // If filterNav buttons are not yet in DOM, render them
+                if (filterNav.children.length === 0) {
+                    filterNav.innerHTML = filterCategories.map(cat => `
+                        <button class="filter-btn ${cat.slug === currentFilter ? 'active' : ''}" data-filter="${cat.slug}">
+                            ${cat.label}
+                        </button>
+                    `).join('');
+                }
 
                 filterNav.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.addEventListener('click', function () {
@@ -2987,13 +3493,34 @@
                         if (typeof gsap !== "undefined") {
                             gsap.fromTo("#designGrid", { opacity: 0.2, y: 15 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" });
                         }
-                        renderShowcase();
+                        filterShowcase(currentFilter);
                     });
                 });
             }
 
+            function filterShowcase(category) {
+                if (!designGrid) return;
+                const cards = designGrid.querySelectorAll('.card');
+                if (cards.length > 0) {
+                    cards.forEach(card => {
+                        const cardCat = card.getAttribute('data-category');
+                        if (category === 'all' || cardCat === category) {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            }
+
             function renderShowcase() {
                 if (!designGrid) return;
+
+                // If cards are already loaded in body, apply filter without destroying DOM
+                if (designGrid.querySelectorAll('.card').length > 0) {
+                    filterShowcase(currentFilter);
+                    return;
+                }
 
                 const filtered = projectData.filter(item => currentFilter === 'all' || item.category === currentFilter);
 
@@ -3003,10 +3530,10 @@
                     const specsHTML = item.specs ? item.specs.map(s => `<span class="spec-tag">${s}</span>`).join('') : '';
 
                     return `
-                        <article class="${cardClass}" data-id="${item.id}">
+                        <article class="${cardClass}" data-id="${item.id}" data-category="${item.category}">
                             <a href="${item.detailUrl}" class="card-img-wrapper" target="${item.detailUrl.startsWith('http') || item.detailUrl.endsWith('.pdf') ? '_blank' : '_self'}">
                                 <span class="${badgeClass}">${item.badge}</span>
-                                <img src="${item.img}" alt="${item.title}" loading="lazy" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=${encodeURIComponent(item.title)}'">
+                                <img src="${item.img}" alt="${item.title}" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=${encodeURIComponent(item.title)}'">
                             </a>
                             <div class="card-content">
                                 <div>
