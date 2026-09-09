@@ -1,0 +1,491 @@
+/* =========================================================
+   UNIFIED LUXURY ATELIER NAVBAR & MOBILE DRAWER STYLES
+   Shared across all pages (excluding cart.html)
+========================================================= */
+
+#navbar, nav.site-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 2000;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    background: transparent;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 42px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: #a1a1aa;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.desktop-nav a:hover,
+.desktop-nav li.active a {
+    color: #ffffff;
+}
+
+.desktop-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg, #850009, #d4af37);
+    transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after,
+.desktop-nav li.active a::after {
+    width: 100%;
+}
+
+#navbar.scrolled, nav.site-navbar.scrolled {
+    background: rgba(8, 3, 5, 0.92) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(248, 113, 113, 0.2) !important;
+    padding: 14px 8% !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Luxury Shopping Cart Trigger in Navbar */
+.cart-icon-btn {
+    position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(248, 113, 113, 0.25);
+    color: #f4f4f5;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cart-icon-btn:hover {
+    background: rgba(185, 28, 28, 0.22);
+    border-color: #ef4444;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.35);
+}
+
+.cart-svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #850009;
+    color: #ffffff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 4px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #040404;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cart-badge.pop {
+    transform: scale(1.35);
+}
+
+.hamburger {
+    cursor: pointer;
+    z-index: 2100;
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    padding: 4px;
+}
+
+.hamburger div {
+    width: 24px;
+    height: 2px;
+    background: #ffffff;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.hamburger.active div:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 991px) {
+    .desktop-nav {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    #navbar, nav.site-navbar {
+        padding: 16px 16px;
+        background: rgba(0, 0, 0, 0.9);
+    }
+    .logo img {
+        height: 36px;
+    }
+}
+
+/* =========================================================
+   LUXURY ATELIER MOBILE DRAWER MENU (SOFT RED LIQUID GLASS)
+========================================================= */
+.menu-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: linear-gradient(180deg, rgba(20, 4, 7, 0.98) 0%, rgba(8, 2, 4, 0.99) 100%);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    z-index: 2800;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.35s ease;
+    box-sizing: border-box;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-window.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu-window-content {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: max(18px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+    max-width: 480px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.menu-window-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(248, 113, 113, 0.15);
+}
+
+.menu-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.menu-monogram {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(160, 15, 30, 0.5), rgba(212, 175, 55, 0.25));
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: #d4af37;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+.menu-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-brand-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.menu-brand-kicker {
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    color: #d4af37;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.menu-close-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(248, 113, 113, 0.25);
+    color: #a1a1aa;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-close-btn:hover,
+.menu-close-btn:active {
+    color: #ffffff;
+    border-color: rgba(248, 113, 113, 0.6);
+    background: rgba(185, 28, 28, 0.2);
+    transform: rotate(90deg);
+}
+
+.menu-kicker-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0 8px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    color: #71717a;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(248, 113, 113, 0.12);
+}
+
+.menu-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #22c55e;
+    font-size: 8.5px;
+    letter-spacing: 1px;
+}
+
+.menu-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    padding: 14px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mobile-nav-item {
+    position: relative;
+}
+
+.mobile-nav-link {
+    display: grid;
+    grid-template-columns: 32px 1fr auto;
+    align-items: center;
+    padding: 11px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    background: transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+    background: rgba(185, 28, 28, 0.12);
+    border-color: rgba(248, 113, 113, 0.3);
+    transform: translateX(4px);
+}
+
+.nav-num {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #d4af37;
+    letter-spacing: 1px;
+}
+
+.nav-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    color: #f4f4f5;
+}
+
+.mobile-nav-link:hover .nav-title {
+    color: #d4af37;
+}
+
+.nav-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 10px;
+    color: #71717a;
+    letter-spacing: 0.5px;
+}
+
+.menu-window-footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid rgba(248, 113, 113, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.btn-menu-cta {
+    width: 100%;
+    padding: 13px 18px;
+    background: linear-gradient(135deg, rgba(185, 28, 28, 0.9), rgba(120, 10, 18, 0.95));
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(248, 113, 113, 0.35);
+    box-shadow: 0 8px 24px rgba(185, 28, 28, 0.3);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.btn-menu-cta:active {
+    transform: scale(0.98);
+}
+
+.menu-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+}
+
+.menu-social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(248, 113, 113, 0.2);
+    color: #a1a1aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.menu-social-link:hover,
+.menu-social-link:active {
+    color: #d4af37;
+    border-color: rgba(248, 113, 113, 0.5);
+    background: rgba(185, 28, 28, 0.2);
+    transform: translateY(-2px);
+}
+
+.menu-legal {
+    text-align: center;
+    font-size: 9.5px;
+    color: #71717a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Page Spacing Helper for Pages with Fixed Unified Navbar */
+body.has-unified-navbar {
+    padding-top: 100px !important;
+}
+
+@media (max-width: 768px) {
+    body.has-unified-navbar {
+        padding-top: 80px !important;
+    }
+}
