@@ -1,0 +1,3278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+
+<!-- =====================================================
+         WEBSITE ICON
+    ====================================================== -->
+    <link rel="icon" href="logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+
+
+    <!-- =====================================================
+         WEBSITE TITLE
+    ====================================================== -->
+
+    <title>Cart| ABDULLAH PSYCHOTIC</title>
+
+    <!-- =====================================================
+         SEO
+    ====================================================== -->
+
+    <meta name="description"
+          content="Discover Abdullah Psychotic Lifestyle — iconic fashion, luxury, creativity and bold style.">
+
+    <meta name="keywords"
+          content="Abdullah Psychotic, Abdullah Psychotic Lifestyle, luxury fashion, lifestyle, creativity">
+
+    <meta name="author"
+          content="Abdullah Psychotic">
+
+
+    <!-- =====================================================
+         BROWSER THEME
+    ====================================================== -->
+
+    <meta name="theme-color"
+          content="#050505">
+
+
+    <!-- =====================================================
+         CANONICAL
+    ====================================================== -->
+
+    <link rel="canonical"
+          href="https://forhad2008.github.io/Abdullah-psychotic/">
+
+
+    <!-- =====================================================
+         WHATSAPP / FACEBOOK OPEN GRAPH
+    ====================================================== -->
+
+    <meta property="og:title"
+          content="ABDULLAH PSYCHOTIC LIFESTYLE">
+
+    <meta property="og:description"
+          content="Discover iconic fashion, luxury, creativity and the world of Abdullah Psychotic.">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:site_name"
+          content="ABDULLAH PSYCHOTIC">
+
+    <meta property="og:url"
+          content="https://forhad2008.github.io/Abdullah-psychotic/">
+
+
+    <!-- =====================================================
+         COMPACT WHATSAPP THUMBNAIL
+
+         IMPORTANT:
+         THE ACTUAL preview.jpg FILE MUST BE:
+
+         WIDTH: 200px
+         HEIGHT: 200px
+
+         Keep it below 300KB.
+
+         This is what targets the:
+         [ IMAGE ] [ TITLE / DESCRIPTION / URL ]
+         layout.
+    ====================================================== -->
+
+    <meta property="og:image"
+          content="https://forhad2008.github.io/Abdullah-psychotic/preview.jpg">
+
+    <meta property="og:image:secure_url"
+          content="https://forhad2008.github.io/Abdullah-psychotic/preview.jpg">
+
+    <meta property="og:image:type"
+          content="image/jpeg">
+
+    <meta property="og:image:width"
+          content="200">
+
+    <meta property="og:image:height"
+          content="200">
+
+    <meta property="og:image:alt"
+          content="Abdullah Psychotic Lifestyle">
+
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary">
+
+    <meta name="twitter:title"
+          content="Abdullah Psychotic Lifestyle">
+
+    <meta name="twitter:description"
+          content="Discover iconic fashion, luxury, creativity and the world of Abdullah Psychotic.">
+
+    <meta name="twitter:image"
+          content="https://forhad2008.github.io/Abdullah-psychotic/preview.jpg">
+
+
+
+
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="responsive-enhancements.css">
+
+  
+<style>
+
+:root{
+  --black:#050505;
+  --black2:#090909;
+  --card:#0b0b0b;
+  --white:#fff;
+  --soft-white:#eee;
+  --muted:#999;
+  --border:rgba(255,255,255,.10);
+
+  --heading:"Playfair Display",serif;
+  --subheading:"Cinzel",serif;
+  --body:"Montserrat",sans-serif;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--black);
+  color:#fff;
+  font-family:var(--body);
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+}
+
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+  width:6px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#444;
+  border-radius:10px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  height:86px;
+
+  display:grid;
+  grid-template-columns:70px 1fr 70px;
+  align-items:center;
+
+  background:#050505;
+
+  border-bottom:1px solid var(--border);
+}
+
+.menu-btn,
+.cart-btn{
+  position:relative;
+
+  width:38px;
+  height:38px;
+
+  margin:auto;
+
+  border:0;
+  background:transparent;
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.2s;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+.menu-btn:hover,
+.cart-btn:hover{
+  transform:scale(1.06);
+}
+
+.menu-btn:active,
+.cart-btn:active{
+  transform:scale(.92);
+}
+
+.menu-btn svg,
+.cart-btn svg{
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.menu-btn svg{
+  width:25px;
+  height:20px;
+}
+
+.cart-btn svg{
+  width:23px;
+  height:23px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo{
+  justify-self:center;
+
+  width:150px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo img{
+  width:125px;
+  height:auto;
+  object-fit:contain;
+}
+
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
+.cart-count{
+  position:absolute;
+
+  top:-3px;
+  right:-5px;
+
+  width:17px;
+  height:17px;
+
+  border-radius:50%;
+
+  background:#fff;
+  color:#050505;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:8px;
+  font-weight:700;
+
+  border:1px solid #050505;
+}
+
+
+/* =========================================================
+   MENU OVERLAY
+========================================================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.76);
+
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+
+  transition:.3s;
+
+  z-index:1100;
+}
+
+.overlay.active{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+
+/* =========================================================
+   MENU DRAWER
+========================================================= */
+
+.menu-drawer{
+  position:fixed;
+
+  top:0;
+  left:-380px;
+
+  width:350px;
+  max-width:88vw;
+  height:100dvh;
+
+  z-index:1300;
+
+  background:#080808;
+
+  border-right:1px solid var(--border);
+
+  box-shadow:18px 0 55px rgba(0,0,0,.6);
+
+  padding:28px;
+
+  display:flex;
+  flex-direction:column;
+
+  transition:left .42s cubic-bezier(.77,0,.175,1);
+}
+
+.menu-drawer.active{
+  left:0;
+}
+
+.menu-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding-bottom:22px;
+
+  border-bottom:1px solid var(--border);
+}
+
+.menu-brand{
+  font-family:var(--subheading);
+
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.menu-close{
+  width:40px;
+  height:40px;
+
+  border:1px solid var(--border);
+  border-radius:50%;
+
+  background:#111;
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:20px;
+
+  transition:.2s;
+}
+
+.menu-close:hover{
+  background:#fff;
+  color:#050505;
+}
+
+.menu-links{
+  display:flex;
+  flex-direction:column;
+
+  gap:5px;
+
+  padding-top:24px;
+}
+
+.menu-links a{
+  display:flex;
+  align-items:center;
+
+  padding:15px 14px;
+
+  color:#ccc;
+
+  border-radius:6px;
+
+  font-size:12px;
+
+  letter-spacing:1.5px;
+
+  transition:.25s;
+}
+
+.menu-links a:hover{
+  color:#fff;
+  background:#111;
+  padding-left:18px;
+}
+
+.menu-bottom{
+  margin-top:auto;
+
+  color:#555;
+
+  text-align:center;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+}
+
+
+/* =========================================================
+   CART PAGE
+========================================================= */
+
+.cart-page{
+  width:min(1180px,100%);
+
+  margin:auto;
+
+  padding:55px 20px 80px;
+}
+
+.page-header{
+  margin-bottom:38px;
+}
+
+.page-kicker{
+  font-family:var(--subheading);
+
+  font-size:10px;
+
+  letter-spacing:4px;
+
+  color:#888;
+
+  margin-bottom:12px;
+}
+
+.page-title{
+  font-family:var(--heading);
+
+  font-size:44px;
+
+  font-weight:500;
+
+  line-height:1.1;
+}
+
+.page-description{
+  margin-top:12px;
+
+  color:#777;
+
+  font-size:12px;
+
+  letter-spacing:.4px;
+}
+
+
+/* =========================================================
+   CART LAYOUT
+========================================================= */
+
+.cart-layout{
+  display:grid;
+
+  grid-template-columns:minmax(0,1fr) 350px;
+
+  gap:25px;
+
+  align-items:start;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+  background:#0b0b0b;
+
+  border:1px solid var(--border);
+}
+
+
+/* =========================================================
+   ITEMS HEADER
+========================================================= */
+
+.items-header{
+  height:58px;
+
+  padding:0 22px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  border-bottom:1px solid var(--border);
+}
+
+.items-title{
+  font-family:var(--subheading);
+
+  font-size:12px;
+
+  letter-spacing:2px;
+}
+
+.item-count-label{
+  color:#777;
+
+  font-size:10px;
+
+  letter-spacing:1px;
+}
+
+
+/* =========================================================
+   CART ITEMS
+========================================================= */
+
+.cart-items{
+  padding:0 22px;
+}
+
+.cart-item{
+  display:grid;
+
+  grid-template-columns:120px minmax(0,1fr) 100px;
+
+  gap:20px;
+
+  align-items:center;
+
+  padding:22px 0;
+
+  border-bottom:1px solid var(--border);
+}
+
+.cart-item:last-child{
+  border-bottom:0;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.item-image{
+  width:120px;
+  height:135px;
+
+  background:#111;
+
+  border:1px solid rgba(255,255,255,.06);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+}
+
+.item-image img{
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+
+  padding:5px;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.item-info{
+  min-width:0;
+}
+
+.item-brand{
+  color:#777;
+
+  font-family:var(--subheading);
+
+  font-size:8px;
+
+  letter-spacing:2px;
+
+  margin-bottom:8px;
+
+  text-transform:uppercase;
+}
+
+.item-name{
+  font-family:var(--heading);
+
+  font-size:18px;
+
+  font-weight:500;
+
+  line-height:1.3;
+
+  color:#fff;
+}
+
+.item-size{
+  margin-top:8px;
+
+  color:#aaa;
+
+  font-size:10px;
+
+  letter-spacing:1.5px;
+
+  text-transform:uppercase;
+}
+
+.item-unit-price{
+  margin-top:9px;
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+.quantity-wrapper{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-top:17px;
+}
+
+.quantity-label{
+  color:#777;
+
+  font-size:9px;
+
+  letter-spacing:1px;
+}
+
+.quantity{
+  display:flex;
+
+  align-items:center;
+
+  border:1px solid #292929;
+
+  background:#090909;
+}
+
+.quantity button{
+  width:32px;
+  height:32px;
+
+  border:0;
+
+  background:transparent;
+
+  color:#fff;
+
+  font-size:17px;
+}
+
+.quantity button:hover{
+  background:#fff;
+  color:#050505;
+}
+
+.quantity span{
+  min-width:35px;
+
+  text-align:center;
+
+  font-size:11px;
+
+  font-weight:600;
+}
+
+
+/* =========================================================
+   ITEM RIGHT
+========================================================= */
+
+.item-right{
+  align-self:stretch;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:flex-end;
+
+  justify-content:space-between;
+}
+
+.item-total{
+  font-size:14px;
+
+  font-weight:600;
+}
+
+.remove-btn{
+  border:0;
+
+  background:transparent;
+
+  color:#666;
+
+  font-size:10px;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+
+  padding:5px 0;
+
+  transition:.2s;
+}
+
+.remove-btn:hover{
+  color:#fff;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary{
+  position:sticky;
+
+  top:106px;
+
+  background:#080808;
+
+  border:1px solid var(--border);
+
+  padding:25px;
+}
+
+.summary-title{
+  font-family:var(--subheading);
+
+  font-size:14px;
+
+  letter-spacing:2.5px;
+
+  margin-bottom:25px;
+}
+
+.summary-line{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-bottom:15px;
+
+  color:#999;
+
+  font-size:12px;
+}
+
+.summary-line strong{
+  color:#fff;
+
+  font-weight:600;
+}
+
+.summary-total{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  padding-top:20px;
+
+  margin-top:20px;
+
+  border-top:1px solid var(--border);
+
+  font-family:var(--subheading);
+
+  font-size:14px;
+
+  letter-spacing:1px;
+}
+
+.summary-total strong{
+  font-family:var(--body);
+
+  font-size:18px;
+
+  letter-spacing:0;
+}
+
+
+/* =========================================================
+   COUPON
+========================================================= */
+
+.coupon{
+  display:flex;
+
+  gap:8px;
+
+  margin:24px 0;
+}
+
+.coupon input{
+  min-width:0;
+  width:100%;
+
+  height:43px;
+
+  border:1px solid #252525;
+
+  background:#050505;
+
+  color:#fff;
+
+  outline:none;
+
+  padding:0 12px;
+
+  font-size:11px;
+}
+
+.coupon input:focus{
+  border-color:#555;
+}
+
+.coupon button{
+  flex:0 0 auto;
+
+  height:43px;
+
+  padding:0 15px;
+
+  border:1px solid #333;
+
+  background:#111;
+
+  color:#fff;
+
+  font-size:10px;
+
+  letter-spacing:1px;
+
+  transition:.2s;
+}
+
+.coupon button:hover{
+  background:#fff;
+  color:#050505;
+}
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+.payment-section{
+  padding-top:20px;
+
+  margin-top:20px;
+
+  border-top:1px solid var(--border);
+}
+
+.payment-title{
+  font-family:var(--subheading);
+
+  font-size:11px;
+
+  letter-spacing:2px;
+
+  margin-bottom:13px;
+}
+
+.payment-methods{
+  display:grid;
+
+  gap:8px;
+}
+
+.payment-option{
+  width:100%;
+  min-height:50px;
+  padding:11px 13px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(12,11,16,0.65);
+  color:#fff;
+  text-align:left;
+  border-radius:8px;
+  cursor:pointer;
+  transition:all 0.22s ease;
+}
+
+.payment-option:hover{
+  border-color:rgba(193, 18, 31, 0.4);
+  background:rgba(22,17,26,0.8);
+}
+
+.payment-option.selected{
+  border-color:#c1121f;
+  background:rgba(28,14,20,0.9);
+  box-shadow:0 0 16px rgba(193,18,31,0.2);
+}
+
+.payment-radio{
+  width:16px;
+  height:16px;
+  border:1px solid rgba(255,255,255,0.3);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  transition:border-color 0.2s;
+}
+
+.payment-option.selected .payment-radio{
+  border-color:#c1121f;
+}
+
+.payment-option.selected .payment-radio::after{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#c1121f;
+  box-shadow:0 0 6px #c1121f;
+}
+
+.payment-label{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:0.5px;
+}
+
+.payment-badge{
+  margin-left:auto;
+  color:#888;
+  font-size:8.5px;
+  letter-spacing:1px;
+  font-weight:600;
+  padding:2px 6px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:4px;
+}
+
+.payment-option.selected .payment-badge{
+  color:#f59e0b;
+  border-color:rgba(245,158,11,0.3);
+  background:rgba(245,158,11,0.08);
+}
+
+.payment-empty{
+  color:#666;
+  font-size:10px;
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   CLIENT DOSSIER & DELIVERY FORM
+========================================================= */
+
+.checkout-dossier{
+  margin:20px 0 10px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+}
+
+.checkout-dossier-title{
+  font-family:var(--subheading);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:12px;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.checkout-field{
+  margin-bottom:10px;
+}
+
+.checkout-field label{
+  display:block;
+  font-size:9.5px;
+  color:#888;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.checkout-field input{
+  width:100%;
+  box-sizing:border-box;
+  background:#090909;
+  border:1px solid #252525;
+  color:#fff;
+  padding:10px 12px;
+  font-size:11px;
+  outline:none;
+  transition:.2s border-color;
+  font-family:inherit;
+}
+
+.checkout-field input:focus{
+  border-color:#777;
+}
+
+.checkout-row{
+  display:flex;
+  gap:8px;
+}
+
+.checkout-row .checkout-field{
+  flex:1;
+  min-width:0;
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout-btn{
+  width:100%;
+
+  height:54px;
+
+  margin-top:22px;
+
+  border:1px solid #fff;
+
+  background:#fff;
+
+  color:#050505;
+
+  font-size:11px;
+
+  font-weight:700;
+
+  letter-spacing:2.5px;
+
+  transition:.25s;
+}
+
+.checkout-btn:hover{
+  background:#050505;
+
+  color:#fff;
+}
+
+.checkout-btn:disabled{
+  opacity:.35;
+
+  cursor:not-allowed;
+}
+
+
+/* =========================================================
+   CONTINUE
+========================================================= */
+
+.continue-shopping{
+  display:block;
+
+  text-align:center;
+
+  color:#777;
+
+  font-size:10px;
+
+  letter-spacing:1px;
+
+  margin-top:18px;
+
+  transition:.2s;
+}
+
+.continue-shopping:hover{
+  color:#fff;
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.checkout-note{
+  margin-top:17px;
+
+  color:#555;
+
+  font-size:9px;
+
+  line-height:1.7;
+
+  text-align:center;
+}
+
+
+/* =========================================================
+   EMPTY CART
+========================================================= */
+
+.empty-cart{
+  padding:80px 25px;
+
+  text-align:center;
+}
+
+.empty-icon{
+  width:70px;
+  height:70px;
+
+  margin:0 auto 22px;
+
+  border:1px solid #292929;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#666;
+
+  font-size:26px;
+}
+
+.empty-cart h2{
+  font-family:var(--heading);
+
+  font-size:25px;
+
+  font-weight:500;
+
+  margin-bottom:10px;
+}
+
+.empty-cart p{
+  color:#666;
+
+  font-size:11px;
+
+  line-height:1.6;
+}
+
+.empty-cart a{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  height:46px;
+
+  padding:0 25px;
+
+  margin-top:23px;
+
+  background:#fff;
+
+  color:#050505;
+
+  font-size:10px;
+
+  font-weight:700;
+
+  letter-spacing:2px;
+
+  transition:.2s;
+}
+
+.empty-cart a:hover{
+  background:#111;
+
+  color:#fff;
+
+  border:1px solid #fff;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  border-top:1px solid var(--border);
+
+  padding:28px 20px;
+
+  text-align:center;
+
+  color:#555;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+  .cart-layout{
+    grid-template-columns:1fr;
+  }
+
+  .summary{
+    position:static;
+  }
+
+}
+
+
+@media(max-width:600px){
+
+  header{
+    height:80px;
+
+    grid-template-columns:50px 1fr 50px;
+
+    padding:0 6px;
+  }
+
+  .menu-btn,
+  .cart-btn{
+    width:30px;
+    height:30px;
+  }
+
+  .menu-btn svg{
+    width:19px;
+    height:15px;
+  }
+
+  .cart-btn svg{
+    width:19px;
+    height:19px;
+  }
+
+  .logo img{
+    width:115px;
+  }
+
+
+  .cart-page{
+    padding:
+      35px
+      14px
+      55px;
+  }
+
+  .page-title{
+    font-size:35px;
+  }
+
+  .cart-item{
+    grid-template-columns:82px minmax(0,1fr);
+
+    gap:13px;
+
+    padding:18px 0;
+  }
+
+  .item-image{
+    width:82px;
+    height:100px;
+  }
+
+  .item-name{
+    font-size:14px;
+  }
+
+  .item-right{
+    grid-column:2;
+
+    flex-direction:row;
+
+    align-items:center;
+
+    margin-top:-5px;
+  }
+
+  .item-total{
+    font-size:13px;
+  }
+
+  .remove-btn{
+    order:2;
+  }
+
+  .quantity-wrapper{
+    margin-top:13px;
+  }
+
+  .summary{
+    padding:20px;
+  }
+
+}
+
+
+@media(max-width:380px){
+
+  .page-title{
+    font-size:31px;
+  }
+
+  .cart-item{
+    grid-template-columns:72px minmax(0,1fr);
+
+    gap:10px;
+  }
+
+  .item-image{
+    width:72px;
+    height:88px;
+  }
+
+  .item-name{
+    font-size:13px;
+  }
+
+}
+
+
+    
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header>
+
+  <button
+    class="menu-btn"
+    onclick="openMenu()"
+    aria-label="Open menu"
+  >
+
+    <svg viewBox="0 0 32 24">
+
+      <path d="M1 2h30"/>
+      <path d="M1 12h30"/>
+      <path d="M1 22h30"/>
+
+    </svg>
+
+  </button>
+
+
+  <a
+    href="index.html"
+    class="logo"
+  >
+
+    <img
+      src="logo1.png"
+      alt="Abdullah Psychotic"
+      onerror="this.src='logo.png'"
+    >
+
+  </a>
+
+
+  <button
+    class="cart-btn"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    aria-label="Shopping cart"
+  >
+
+    <svg viewBox="0 0 32 32">
+
+      <path d="M4 6h4l3.1 14.2a2 2 0 0 0 2 1.6h10.8a2 2 0 0 0 1.9-1.4L29 11H9"/>
+
+      <circle cx="13" cy="27" r="1.8"/>
+      <circle cx="25" cy="27" r="1.8"/>
+
+    </svg>
+
+    <span
+      class="cart-count"
+      id="cart-count"
+    >
+      0
+    </span>
+
+  </button>
+
+</header>
+
+
+<!-- =======================================================
+     MENU OVERLAY
+======================================================= -->
+
+<div
+  class="overlay"
+  id="menu-overlay"
+  onclick="closeMenu()"
+></div>
+
+
+<!-- =======================================================
+     MENU
+======================================================= -->
+
+<aside
+  class="menu-drawer"
+  id="menu-drawer"
+>
+
+  <div class="menu-top">
+
+    <div class="menu-brand">
+      ABDULLAH PSYCHOTIC
+    </div>
+
+    <button
+      class="menu-close"
+      onclick="closeMenu()"
+    >
+      ×
+    </button>
+
+  </div>
+
+
+  <nav class="menu-links">
+
+    <a href="index.html">
+      HOME
+    </a>
+
+    <a href="index.html#shop">
+      ALL PRODUCTS
+    </a>
+
+    <a href="index.html#about">
+      ABOUT
+    </a>
+
+    <a href="index.html#contact">
+      CONTACT
+    </a>
+
+    <a href="profile.html" id="cart-drawer-profile-link" style="display: flex; align-items: center; justify-content: space-between;">
+      <span><i class="fa-solid fa-circle-user" style="margin-right: 8px; color: #ff4d5a;"></i> MY PROFILE & ORDERS</span>
+      <span class="dock-signedin-indicator" style="position: static; display: inline-block; width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 6px #22c55e;"></span>
+    </a>
+
+  </nav>
+
+
+  <div class="menu-bottom">
+    EST. ABDULLAH PSYCHOTIC
+  </div>
+
+</aside>
+
+
+<!-- =======================================================
+     MAIN CART
+======================================================= -->
+
+<main class="cart-page">
+
+  <div class="page-header">
+
+    <div class="page-kicker">
+      ABDULLAH PSYCHOTIC
+    </div>
+
+    <h1 class="page-title">
+      Shopping Cart
+    </h1>
+
+    <p class="page-description">
+      Review your selected pieces before checkout.
+    </p>
+
+  </div>
+
+
+  <div class="cart-layout">
+
+
+    <!-- ===================================================
+         CART ITEMS
+    ==================================================== -->
+
+    <section
+      class="card"
+      id="cart-card"
+    >
+
+      <div class="items-header">
+
+        <div class="items-title">
+          YOUR ITEMS
+        </div>
+
+        <div
+          class="item-count-label"
+          id="item-count-label"
+        >
+          0 ITEMS
+        </div>
+
+      </div>
+
+
+      <div
+        class="cart-items"
+        id="cart-items"
+      ></div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SUMMARY
+    ==================================================== -->
+
+    <aside class="summary">
+
+      <h2 class="summary-title">
+        ORDER SUMMARY
+      </h2>
+
+
+      <div class="summary-line">
+
+        <span>
+          Subtotal
+        </span>
+
+        <strong id="subtotal">
+          $0
+        </strong>
+
+      </div>
+
+
+      <div class="summary-line">
+
+        <span>
+          Shipping
+        </span>
+
+        <span>
+          Calculated at checkout
+        </span>
+
+      </div>
+
+
+      <div
+        class="summary-line"
+        id="discount-row"
+        style="display:none;"
+      >
+
+        <span>
+          Discount
+        </span>
+
+        <strong id="discount">
+          -$0
+        </strong>
+
+      </div>
+
+
+      <!-- COUPON -->
+
+      <div class="coupon">
+
+        <input
+          type="text"
+          id="coupon-input"
+          placeholder="DISCOUNT CODE"
+          autocomplete="off"
+        >
+
+        <button
+          type="button"
+          onclick="applyCoupon()"
+        >
+          APPLY
+        </button>
+
+      </div>
+
+
+      <!-- TOTAL -->
+
+      <div class="summary-total">
+
+        <span>
+          TOTAL
+        </span>
+
+        <strong id="total">
+          $0
+        </strong>
+
+      </div>
+
+
+      <!-- =================================================
+           CLIENT DOSSIER & DELIVERY DESTINATION
+      ================================================== -->
+
+      <div class="checkout-dossier">
+
+        <div class="checkout-dossier-title">
+          <span>DELIVERY & CLIENT DOSSIER</span>
+          <span id="checkout-auth-badge" style="font-size:9.5px;color:#f59e0b;letter-spacing:1px;"></span>
+        </div>
+
+        <div class="checkout-field">
+          <label for="checkout-name">Client Name *</label>
+          <input type="text" id="checkout-name" placeholder="Full Name (e.g. Abdullah Forhad)" autocomplete="name" required>
+        </div>
+
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label for="checkout-email">Contact Email *</label>
+            <input type="email" id="checkout-email" placeholder="client@domain.com" autocomplete="email" required>
+          </div>
+          <div class="checkout-field">
+            <label for="checkout-phone">WhatsApp / Phone *</label>
+            <div style="display:flex;gap:6px;">
+              <select id="checkout-country-code" style="width:85px;flex-shrink:0;background:#090909;border:1px solid #252525;color:#fff;padding:10px 4px;font-size:11px;outline:none;font-family:inherit;cursor:pointer;">
+                <option value="+880" selected>🇧🇩 +880</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+92">🇵🇰 +92</option>
+                <option value="+60">🇲🇾 +60</option>
+                <option value="+65">🇸🇬 +65</option>
+                <option value="+61">🇦🇺 +61</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+974">🇶🇦 +974</option>
+                <option value="+965">🇰🇼 +965</option>
+                <option value="+234">🇳🇬 +234</option>
+                <option value="+20">🇪🇬 +20</option>
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+82">🇰🇷 +82</option>
+                <option value="+52">🇲🇽 +52</option>
+                <option value="+55">🇧🇷 +55</option>
+              </select>
+              <input type="tel" id="checkout-phone" placeholder="01812 345678" autocomplete="tel" required style="flex:1;min-width:0;">
+            </div>
+            <div id="checkout-phone-verifier" style="display:none;align-items:center;margin-top:6px;padding:6px 10px;border-radius:6px;font-size:10px;font-weight:500;transition:all 0.25s ease;"></div>
+          </div>
+        </div>
+
+        <div class="checkout-field">
+          <label for="checkout-address">Shipping Address *</label>
+          <input type="text" id="checkout-address" placeholder="House, Road, Apartment, Area" autocomplete="street-address" required>
+        </div>
+
+        <div class="checkout-row">
+          <div class="checkout-field">
+            <label for="checkout-city">City / Area</label>
+            <input type="text" id="checkout-city" placeholder="e.g. Dhaka" autocomplete="address-level2">
+          </div>
+          <div class="checkout-field">
+            <label for="checkout-notes">Special Instructions</label>
+            <input type="text" id="checkout-notes" placeholder="Delivery notes (optional)">
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- =================================================
+           PAYMENT METHODS
+      ================================================== -->
+
+      <div class="payment-section">
+
+        <div class="payment-title" style="display:flex;justify-content:space-between;align-items:center;">
+          <span>PAYMENT METHOD *</span>
+          <span id="selected-pay-badge" style="font-size:9.5px;color:#22c55e;letter-spacing:1px;font-weight:600;">COD ACTIVE</span>
+        </div>
+
+        <div
+          class="payment-methods"
+          id="payment-methods"
+        >
+          <div class="payment-empty">
+            Loading payment options...
+          </div>
+        </div>
+
+        <!-- Dynamic Payment Instructions & TrxID Input Container -->
+        <div id="payment-instructions-box" style="margin-top:12px;display:none;"></div>
+
+      </div>
+
+
+      <button
+        class="checkout-btn"
+        id="checkout-btn"
+        onclick="checkout()"
+        disabled
+      >
+        PROCEED TO CHECKOUT
+      </button>
+
+
+      <a
+        href="index.html#shop"
+        class="continue-shopping"
+      >
+        ← CONTINUE SHOPPING
+      </a>
+
+
+      <p class="checkout-note">
+        Secure checkout. Shipping and applicable taxes
+        will be calculated during checkout.
+      </p>
+
+    </aside>
+
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 ABDULLAH PSYCHOTIC — ALL RIGHTS RESERVED.
+</footer>
+
+
+<script src="phone-verifier.js"></script>
+<script src="api.js"></script>
+<script>
+
+/* =========================================================
+   IMPORTANT CART CONNECTION
+=========================================================
+
+   YOUR SHOP USES:
+
+       localStorage key:
+       "ap_user_cart"
+
+   This cart.html uses THE SAME KEY.
+
+   Your shop saves items like:
+
+   {
+      id: 1,
+      name: "...",
+      image: "t1.webp",
+      price: 499,
+      badge: "Captain Abdullah",
+      desc: "...",
+      size: "M",
+      qty: 1
+   }
+
+========================================================= */
+
+
+const CART_KEY = "ap_user_cart";
+
+
+/* =========================================================
+   CART DATA
+========================================================= */
+
+let cart =
+  JSON.parse(
+    localStorage.getItem(CART_KEY)
+  ) || [];
+
+
+/* =========================================================
+   DISCOUNT
+========================================================= */
+
+let discountAmount = 0;
+
+
+/* =========================================================
+   PAYMENT
+========================================================= */
+
+let paymentMethods = [];
+
+let selectedPaymentMethod = null;
+
+
+/* =========================================================
+   PAYMENT API
+=========================================================
+
+   FUTURE BACKEND:
+
+   GET:
+
+      /api/payment-methods
+
+   Example:
+
+   [
+      {
+        "id":"card",
+        "name":"Credit / Debit Card",
+        "enabled":true,
+        "badge":"CARD"
+      },
+
+      {
+        "id":"bkash",
+        "name":"bKash",
+        "enabled":true,
+        "badge":"MOBILE"
+      },
+
+      {
+        "id":"nagad",
+        "name":"Nagad",
+        "enabled":false,
+        "badge":"MOBILE"
+      },
+
+      {
+        "id":"cod",
+        "name":"Cash on Delivery",
+        "enabled":true,
+        "badge":"COD"
+      }
+   ]
+
+========================================================= */
+
+const PAYMENT_METHODS_API =
+  "/api/payment-methods";
+
+
+/* =========================================================
+   AUTHENTIC PAYMENT METHODS
+========================================================= */
+
+const availablePaymentMethods = [
+  {
+    id: "cod",
+    name: "Cash on Delivery",
+    subtitle: "Pay cash upon arrival and garment inspection",
+    badge: "PAY ON ARRIVAL",
+    icon: '<i class="fa-solid fa-hand-holding-dollar" style="color:#22c55e;"></i>',
+    type: "cod",
+    enabled: true
+  },
+  {
+    id: "bkash",
+    name: "bKash Mobile Wallet",
+    subtitle: "Send Money / Payment to 01812-345678",
+    badge: "INSTANT / APP",
+    icon: '<span style="font-weight:900;color:#e2136e;font-size:11px;">bKash</span>',
+    type: "wallet",
+    walletNumber: "01812-345678",
+    enabled: true
+  },
+  {
+    id: "nagad",
+    name: "Nagad Mobile Wallet",
+    subtitle: "Send Money to 01812-345678",
+    badge: "WALLET",
+    icon: '<span style="font-weight:900;color:#f7931e;font-size:11px;">Nagad</span>',
+    type: "wallet",
+    walletNumber: "01812-345678",
+    enabled: true
+  },
+  {
+    id: "card",
+    name: "Credit / Debit Card & Online",
+    subtitle: "Visa, Mastercard, Concierge checkout",
+    badge: "CONCIERGE",
+    icon: '<i class="fa-regular fa-credit-card" style="color:#38bdf8;"></i>',
+    type: "card",
+    enabled: true
+  }
+];
+
+
+/* =========================================================
+   MONEY
+========================================================= */
+
+function money(value){
+
+  return new Intl.NumberFormat(
+    "en-US",
+    {
+      style:"currency",
+      currency:"USD"
+    }
+  ).format(
+    Number(value || 0)
+  );
+
+}
+
+
+/* =========================================================
+   SAVE CART & BACKEND PERSISTENCE
+========================================================= */
+
+let syncCartTimer = null;
+
+function syncCartToBackend() {
+  const email = (localStorage.getItem("ap_underworld_email") || (document.getElementById("checkout-email") ? document.getElementById("checkout-email").value.trim() : "")).toLowerCase();
+  if (!email || !email.includes("@")) return;
+
+  clearTimeout(syncCartTimer);
+  syncCartTimer = setTimeout(() => {
+    const cb = "saveCartCb_" + Date.now();
+    const script = document.createElement("script");
+    window[cb] = function() {
+      try { delete window[cb]; } catch(e){}
+      if (script.parentNode) script.parentNode.removeChild(script);
+    };
+    script.onerror = function() {
+      try { delete window[cb]; } catch(e){}
+      if (script.parentNode) script.parentNode.removeChild(script);
+    };
+    const params = new URLSearchParams({
+      action: "save_cart",
+      email: email,
+      items: JSON.stringify(cart),
+      callback: cb
+    });
+    script.src = `${BACKEND_URL}?${params.toString()}`;
+    document.head.appendChild(script);
+  }, 400);
+}
+
+function saveCart(){
+
+  localStorage.setItem(
+    CART_KEY,
+    JSON.stringify(cart)
+  );
+
+  syncCartToBackend();
+
+}
+
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
+function getCartCount(){
+
+  return cart.reduce(
+    (total,item) =>
+      total + Number(item.qty || 0),
+    0
+  );
+
+}
+
+
+/* =========================================================
+   SUBTOTAL
+========================================================= */
+
+function getSubtotal(){
+
+  return cart.reduce(
+    (total,item) => {
+
+      return total +
+        (
+          Number(item.price || 0) *
+          Number(item.qty || 0)
+        );
+
+    },
+    0
+  );
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+=========================================================
+
+   SAME LOGIC AS shop.html
+
+========================================================= */
+
+function changeQty(
+  id,
+  size,
+  amount
+){
+
+  const item =
+    cart.find(
+      product =>
+        product.id == id &&
+        (product.size === size || (!product.size && (size === "Standard Edition" || size === "" || size === "ONE SIZE")))
+    );
+
+
+  if(!item){
+    return;
+  }
+
+  if(amount > 0 && Number(item.qty || 0) >= 10){
+    alert("Notice: Maximum 10 units per item allowed.");
+    return;
+  }
+
+  item.qty =
+    Number(item.qty || 0) +
+    amount;
+
+
+  if(item.qty <= 0){
+
+    cart =
+      cart.filter(
+        product =>
+          !(
+            product.id == id &&
+            (product.size === size || (!product.size && (size === "Standard Edition" || size === "" || size === "ONE SIZE")))
+          )
+      );
+
+  }
+
+
+  saveCart();
+
+  updateCart();
+
+}
+
+
+/* =========================================================
+   REMOVE ITEM
+========================================================= */
+
+function removeItem(
+  id,
+  size
+){
+
+  cart =
+    cart.filter(
+      product =>
+        !(
+          product.id == id &&
+          (product.size === size || (!product.size && (size === "Standard Edition" || size === "" || size === "ONE SIZE")))
+        )
+    );
+
+
+  saveCart();
+
+  updateCart();
+
+}
+
+
+/* =========================================================
+   UPDATE CART
+========================================================= */
+
+function updateCart(){
+
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        cart = parsed;
+      }
+    }
+  } catch(e) {}
+
+  const count =
+    getCartCount();
+
+
+  const subtotal =
+    getSubtotal();
+
+
+  const total =
+    Math.max(
+      0,
+      subtotal - discountAmount
+    );
+
+
+  /* CART COUNT */
+
+  const cartCountEl = document.getElementById("cart-count");
+  if (cartCountEl) cartCountEl.textContent = count;
+
+
+  /* ITEM COUNT */
+
+  const itemCountLabel = document.getElementById("item-count-label");
+  if (itemCountLabel) {
+    itemCountLabel.textContent =
+      count + (count === 1 ? " ITEM" : " ITEMS");
+  }
+
+
+  /* SUBTOTAL */
+
+  const subtotalEl = document.getElementById("subtotal");
+  if (subtotalEl) subtotalEl.textContent = money(subtotal);
+
+
+  /* DISCOUNT */
+
+  document.getElementById(
+    "discount"
+  ).textContent =
+    "-" +
+    money(discountAmount);
+
+
+  document.getElementById(
+    "discount-row"
+  ).style.display =
+    discountAmount > 0
+      ? "flex"
+      : "none";
+
+
+  /* TOTAL */
+
+  document.getElementById(
+    "total"
+  ).textContent =
+    money(total);
+
+
+  renderCartItems();
+
+  updateCheckoutButton();
+
+  if (typeof renderPaymentInstructions === "function") {
+    renderPaymentInstructions();
+  }
+
+}
+
+
+/* =========================================================
+   RENDER CART ITEMS
+========================================================= */
+
+function renderCartItems(){
+
+  const box =
+    document.getElementById(
+      "cart-items"
+    );
+
+
+  if(!cart.length){
+
+    box.innerHTML = `
+
+      <div class="empty-cart">
+
+        <div class="empty-icon">
+          🛍
+        </div>
+
+        <h2>
+          Your cart is empty
+        </h2>
+
+        <p>
+          You haven't added anything to
+          your shopping bag yet.
+        </p>
+
+        <a href="index.html#shop">
+          EXPLORE PRODUCTS
+        </a>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    cart.map(
+      item => `
+
+        <article class="cart-item">
+
+          <div class="item-image">
+
+            <img
+              src="${escapeHTML(item.image || '19.2.webp')}"
+              alt="${escapeHTML(item.name || 'Product')}"
+              onerror="this.onerror=null; this.src='logo.png';"
+            >
+
+          </div>
+
+
+          <div class="item-info">
+
+            <div class="item-brand">
+              ${escapeHTML(
+                item.badge ||
+                "Abdullah Psychotic"
+              )}
+            </div>
+
+
+            <div class="item-name">
+              ${escapeHTML(item.name)}
+            </div>
+
+
+            <div class="item-size">
+              SIZE: ${escapeHTML(item.size || "ONE SIZE")}
+            </div>
+
+
+            <div class="item-unit-price">
+              ${money(item.price)}
+            </div>
+
+
+            <div class="quantity-wrapper">
+
+              <span class="quantity-label">
+                QTY
+              </span>
+
+              <div class="quantity">
+
+                <button
+                  type="button"
+                  onclick="changeQty(
+                    ${Number(item.id)},
+                    '${escapeJS(item.size)}',
+                    -1
+                  )"
+                >
+                  −
+                </button>
+
+                <span>
+                  ${Number(item.qty || 0)}
+                </span>
+
+                <button
+                  type="button"
+                  onclick="changeQty(
+                    ${Number(item.id)},
+                    '${escapeJS(item.size)}',
+                    1
+                  )"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="item-right">
+
+            <div class="item-total">
+
+              ${money(
+                Number(item.price || 0) *
+                Number(item.qty || 0)
+              )}
+
+            </div>
+
+
+            <button
+              type="button"
+              class="remove-btn"
+              onclick="removeItem(
+                ${Number(item.id)},
+                '${escapeJS(item.size)}'
+              )"
+            >
+              REMOVE
+            </button>
+
+          </div>
+
+        </article>
+
+      `
+    ).join("");
+
+}
+
+
+/* =========================================================
+   ESCAPE JS STRING
+========================================================= */
+
+function escapeJS(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(/\\/g,"\\\\")
+  .replace(/'/g,"\\'")
+  .replace(/"/g,'\\"');
+
+}
+
+
+/* =========================================================
+   COUPON
+========================================================= */
+
+function applyCoupon(){
+
+  const input =
+    document.getElementById(
+      "coupon-input"
+    );
+
+  const code =
+    input.value
+      .trim()
+      .toUpperCase();
+
+  const subtotal =
+    getSubtotal();
+
+  if(!code){
+    discountAmount = 0;
+    updateCart();
+    alert(
+      "Please enter a discount code."
+    );
+    return;
+  }
+
+  function checkLocalCoupons() {
+    if(code === "WELCOME10"){
+      discountAmount =
+        subtotal * 0.10;
+      alert(
+        "10% discount applied."
+      );
+      updateCart();
+    }
+    else if(code === "PSYCHOTIC20"){
+      discountAmount =
+        Math.min(
+          20,
+          subtotal
+        );
+      alert(
+        "$20 discount applied."
+      );
+      updateCart();
+    }
+    else{
+      discountAmount = 0;
+      alert(
+        "Invalid discount code."
+      );
+      updateCart();
+    }
+  }
+
+  /* Real production backend coupon verification with fallback */
+  if (window.AP_API && window.location.protocol.startsWith('http')) {
+    window.AP_API.verifyCoupon(code, subtotal).then(res => {
+      if (res && res.ok) {
+        discountAmount = res.calculatedDiscount;
+        updateCart();
+        alert(`🎉 COUPON ACTIVATED: ${res.code}\n\nDiscount Applied: ${money(discountAmount)}`);
+      } else {
+        discountAmount = 0;
+        updateCart();
+        alert(res?.message || "Invalid coupon code.");
+      }
+    }).catch(err => {
+      console.warn("Backend coupon verification failed, checking local codes...", err);
+      checkLocalCoupons();
+    });
+    return;
+  }
+
+  checkLocalCoupons();
+}
+
+
+/* =========================================================
+   PAYMENT METHODS
+========================================================= */
+
+function loadPaymentMethods(){
+  paymentMethods = availablePaymentMethods;
+  if (!selectedPaymentMethod) {
+    selectedPaymentMethod = "cod";
+  }
+  renderPaymentMethods();
+  updateCheckoutButton();
+}
+
+function copyWalletNumber(num, btn) {
+  function showSuccess() {
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> COPIED';
+    btn.style.background = '#22c55e';
+    setTimeout(() => {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+    }, 2000);
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(num).then(showSuccess).catch(doFallback);
+  } else {
+    doFallback();
+  }
+  function doFallback() {
+    const ta = document.createElement('textarea');
+    ta.value = num;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+    showSuccess();
+  }
+}
+
+function renderPaymentInstructions() {
+  const instrBox = document.getElementById("payment-instructions-box");
+  const badgeEl = document.getElementById("selected-pay-badge");
+  if (!instrBox) return;
+
+  const currentTotal = money(Math.max(0, getSubtotal() - discountAmount));
+  const existingTrx = document.getElementById("payment-trx-id") ? document.getElementById("payment-trx-id").value : "";
+
+  if (selectedPaymentMethod === "bkash") {
+    if (badgeEl) { badgeEl.textContent = "BKASH ACTIVE"; badgeEl.style.color = "#ff4081"; }
+    instrBox.style.display = "block";
+    instrBox.innerHTML = `
+      <div style="background:rgba(226,19,110,0.06);border:1px solid rgba(226,19,110,0.45);border-radius:10px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#ff4081;text-transform:uppercase;">
+            <i class="fa-solid fa-mobile-screen" style="margin-right:6px;"></i> bKash Payment Instructions
+          </div>
+          <span style="font-size:9.5px;padding:2px 8px;background:rgba(226,19,110,0.18);border:1px solid rgba(226,19,110,0.3);border-radius:999px;color:#ff80ab;font-weight:600;">Personal / Send Money</span>
+        </div>
+        
+        <div style="background:#09080c;border:1px dashed rgba(226,19,110,0.4);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <div>
+            <div style="font-size:9.5px;color:#888;letter-spacing:1px;text-transform:uppercase;">AP Official bKash Number</div>
+            <div style="font-family:monospace;font-size:15px;font-weight:800;color:#fff;letter-spacing:1.5px;margin-top:2px;">01812-345678</div>
+          </div>
+          <button type="button" onclick="copyWalletNumber('01812345678', this)" style="background:#e2136e;color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.2s ease;">
+            COPY NUMBER
+          </button>
+        </div>
+
+        <div style="font-size:11px;color:#ccc;line-height:1.6;margin-bottom:12px;">
+          1. Send the verified order total <strong style="color:#22c55e;font-size:12px;" class="dynamic-pay-total">${currentTotal}</strong> via <strong>Send Money</strong> to the bKash number above.<br>
+          2. Enter the <strong>Transaction ID (TrxID)</strong> from your bKash SMS/app confirmation below to verify your order.
+        </div>
+
+        <div class="checkout-field" style="margin-bottom:0;">
+          <label for="payment-trx-id" style="font-size:10.5px;font-weight:700;color:#ff80ab;letter-spacing:1px;">bKash Transaction ID (TrxID) *</label>
+          <input type="text" id="payment-trx-id" value="${escapeHTML(existingTrx)}" placeholder="e.g. 9J3K8L2P1X" maxlength="30" autocomplete="off" style="font-family:monospace;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-color:rgba(226,19,110,0.5);">
+          <div style="font-size:9.5px;color:#888;margin-top:4px;">Minimum 6 characters. Recorded to Google Sheet & admin email manifest.</div>
+        </div>
+      </div>
+    `;
+  } else if (selectedPaymentMethod === "nagad") {
+    if (badgeEl) { badgeEl.textContent = "NAGAD ACTIVE"; badgeEl.style.color = "#ffa726"; }
+    instrBox.style.display = "block";
+    instrBox.innerHTML = `
+      <div style="background:rgba(247,147,30,0.06);border:1px solid rgba(247,147,30,0.45);border-radius:10px;padding:14px;box-shadow:0 8px 24px rgba(0,0,0,0.4);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;color:#ffa726;text-transform:uppercase;">
+            <i class="fa-solid fa-wallet" style="margin-right:6px;"></i> Nagad Payment Instructions
+          </div>
+          <span style="font-size:9.5px;padding:2px 8px;background:rgba(247,147,30,0.18);border:1px solid rgba(247,147,30,0.3);border-radius:999px;color:#ffb74d;font-weight:600;">Personal / Send Money</span>
+        </div>
+        
+        <div style="background:#09080c;border:1px dashed rgba(247,147,30,0.4);border-radius:8px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <div>
+            <div style="font-size:9.5px;color:#888;letter-spacing:1px;text-transform:uppercase;">AP Official Nagad Number</div>
+            <div style="font-family:monospace;font-size:15px;font-weight:800;color:#fff;letter-spacing:1.5px;margin-top:2px;">01812-345678</div>
+          </div>
+          <button type="button" onclick="copyWalletNumber('01812345678', this)" style="background:#f7931e;color:#fff;border:none;padding:7px 14px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.2s ease;">
+            COPY NUMBER
+          </button>
+        </div>
+
+        <div style="font-size:11px;color:#ccc;line-height:1.6;margin-bottom:12px;">
+          1. Send the verified order total <strong style="color:#22c55e;font-size:12px;" class="dynamic-pay-total">${currentTotal}</strong> via <strong>Send Money</strong> to the Nagad number above.<br>
+          2. Enter the <strong>Transaction ID (TrxID)</strong> from your Nagad SMS/app confirmation below to verify your order.
+        </div>
+
+        <div class="checkout-field" style="margin-bottom:0;">
+          <label for="payment-trx-id" style="font-size:10.5px;font-weight:700;color:#ffb74d;letter-spacing:1px;">Nagad Transaction ID (TrxID) *</label>
+          <input type="text" id="payment-trx-id" value="${escapeHTML(existingTrx)}" placeholder="e.g. 7M2K9L4P8Q" maxlength="30" autocomplete="off" style="font-family:monospace;font-size:13px;letter-spacing:1px;text-transform:uppercase;border-color:rgba(247,147,30,0.5);">
+          <div style="font-size:9.5px;color:#888;margin-top:4px;">Minimum 6 characters. Recorded to Google Sheet & admin email manifest.</div>
+        </div>
+      </div>
+    `;
+  } else if (selectedPaymentMethod === "card") {
+    if (badgeEl) { badgeEl.textContent = "ONLINE CONCIERGE"; badgeEl.style.color = "#38bdf8"; }
+    instrBox.style.display = "block";
+    instrBox.innerHTML = `
+      <div style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.3);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
+        <i class="fa-solid fa-shield-halved" style="color:#38bdf8;font-size:18px;flex-shrink:0;"></i>
+        <div style="font-size:11px;color:#bae6fd;line-height:1.5;">
+          <strong>Secure Digital Payment Concierge:</strong> Once your order is registered in our Google Sheet database, an encrypted payment link will be sent to your WhatsApp and verified email.
+        </div>
+      </div>
+    `;
+  } else {
+    // COD
+    if (badgeEl) { badgeEl.textContent = "COD ACTIVE"; badgeEl.style.color = "#22c55e"; }
+    instrBox.style.display = "block";
+    instrBox.innerHTML = `
+      <div style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.3);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;">
+        <i class="fa-solid fa-circle-check" style="color:#22c55e;font-size:18px;flex-shrink:0;"></i>
+        <div style="font-size:11px;color:#bbf7d0;line-height:1.5;">
+          <strong>Cash on Delivery:</strong> Pay cash upon arrival and garment inspection. Our logistics concierge will contact your verified phone number before dispatch.
+        </div>
+      </div>
+    `;
+  }
+}
+
+function renderPaymentMethods(){
+  const box = document.getElementById("payment-methods");
+  if (!box) return;
+
+  const enabledMethods = (paymentMethods && paymentMethods.length) ? paymentMethods.filter(m => m.enabled !== false) : availablePaymentMethods;
+
+  if(!enabledMethods.length){
+    selectedPaymentMethod = null;
+    box.innerHTML = `<div class="payment-empty">No payment methods are currently available.</div>`;
+    renderPaymentInstructions();
+    return;
+  }
+
+  if(!enabledMethods.some(m => m.id === selectedPaymentMethod)){
+    selectedPaymentMethod = enabledMethods[0].id;
+  }
+
+  box.innerHTML = enabledMethods.map(method => `
+    <button
+      type="button"
+      class="payment-option ${method.id === selectedPaymentMethod ? "selected" : ""}"
+      data-payment-id="${escapeHTML(method.id)}"
+    >
+      <span class="payment-radio"></span>
+      <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0;">
+        <span style="font-size:13px;display:inline-flex;align-items:center;width:24px;justify-content:center;">${method.icon || ''}</span>
+        <div>
+          <div class="payment-label">${escapeHTML(method.name)}</div>
+          ${method.subtitle ? `<div style="font-size:9.5px;color:#888;margin-top:2px;">${escapeHTML(method.subtitle)}</div>` : ''}
+        </div>
+      </div>
+      ${method.badge ? `<span class="payment-badge">${escapeHTML(method.badge)}</span>` : ""}
+    </button>
+  `).join("");
+
+  box.querySelectorAll(".payment-option").forEach(button => {
+    button.addEventListener("click", function(){
+      selectedPaymentMethod = this.dataset.paymentId;
+      renderPaymentMethods();
+      updateCheckoutButton();
+    });
+  });
+
+  renderPaymentInstructions();
+}
+
+
+/* =========================================================
+   CHECKOUT BUTTON
+========================================================= */
+
+function updateCheckoutButton(){
+
+  const button =
+    document.getElementById(
+      "checkout-btn"
+    );
+
+
+  button.disabled =
+    cart.length === 0 ||
+    !selectedPaymentMethod;
+
+}
+
+
+/* =========================================================
+   REAL BACKEND ORDER PROCESSING & CHECKOUT
+========================================================= */
+
+const BACKEND_URL = (window.AP_API && window.AP_API.baseUrl) ? (window.AP_API.baseUrl + '/exec') : ((window.location.protocol.startsWith('http') && (window.location.port === '5000' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) ? '/exec' : 'https://script.google.com/macros/s/AKfycbyHik2t4HnaeQsY9A992qOPdMHxjV0YeS-pcSnfisZYwJW5JJbH55RxhRHPHbGO2hztSA/exec');
+
+function initDossier() {
+  const email = (localStorage.getItem("ap_underworld_email") || "").toLowerCase();
+  const phone = localStorage.getItem("ap_underworld_phone") || "";
+  let profile = {};
+  try {
+    profile = JSON.parse(localStorage.getItem("ap_user_profile") || localStorage.getItem("ap_user") || "{}");
+  } catch(e){}
+
+  const nameEl = document.getElementById("checkout-name");
+  const emailEl = document.getElementById("checkout-email");
+  const phoneEl = document.getElementById("checkout-phone");
+  const addrEl = document.getElementById("checkout-address");
+  const cityEl = document.getElementById("checkout-city");
+  const notesEl = document.getElementById("checkout-notes");
+  const authBadge = document.getElementById("checkout-auth-badge");
+
+  if (email) {
+    if (emailEl) {
+      emailEl.value = email;
+      emailEl.readOnly = true;
+      emailEl.style.opacity = "0.85";
+    }
+    if (authBadge) authBadge.textContent = "● VERIFIED CLIENT";
+  } else {
+    if (authBadge) authBadge.textContent = "CLIENT CHECKOUT";
+  }
+
+  if (nameEl && !nameEl.value && (profile.name || profile.fullName)) {
+    nameEl.value = profile.name || profile.fullName;
+  }
+  if (phoneEl && !phoneEl.value && (phone || profile.phone)) {
+    phoneEl.value = phone || profile.phone;
+  }
+  if (addrEl && !addrEl.value && profile.address) {
+    addrEl.value = profile.address;
+  }
+  if (cityEl && !cityEl.value && profile.city) {
+    cityEl.value = profile.city;
+  }
+
+  // Initialize Intelligent Phone Verifier & Country Auto-Detector
+  if (window.PhoneVerifier) {
+    window.PhoneVerifier.attachToInput({
+      phoneInput: phoneEl,
+      countrySelect: document.getElementById("checkout-country-code"),
+      statusEl: document.getElementById("checkout-phone-verifier")
+    });
+  }
+}
+
+function fetchCartFromBackend() {
+  const email = (localStorage.getItem("ap_underworld_email") || "").toLowerCase();
+  if (!email || !email.includes("@")) return;
+
+  const cb = "getCartCb_" + Date.now();
+  const script = document.createElement("script");
+  window[cb] = function(res) {
+    try { delete window[cb]; } catch(e){}
+    if (script.parentNode) script.parentNode.removeChild(script);
+
+    if (res && res.ok && Array.isArray(res.items)) {
+      if (res.items.length > 0) {
+        if (!cart || cart.length === 0) {
+          cart = res.items;
+          localStorage.setItem(CART_KEY, JSON.stringify(cart));
+          updateCart();
+        }
+      }
+    }
+  };
+  script.onerror = function() {
+    try { delete window[cb]; } catch(e){}
+    if (script.parentNode) script.parentNode.removeChild(script);
+  };
+  const params = new URLSearchParams({
+    action: "get_cart",
+    email: email,
+    callback: cb
+  });
+  script.src = `${BACKEND_URL}?${params.toString()}`;
+  document.head.appendChild(script);
+}
+
+async function checkout(){
+
+  if(!cart.length){
+    alert("Your shopping bag is empty. Please select garments before placing an order.");
+    return;
+  }
+
+  if(!selectedPaymentMethod){
+    alert("Please select a preferred payment method.");
+    return;
+  }
+
+  const nameEl = document.getElementById("checkout-name");
+  const emailEl = document.getElementById("checkout-email");
+  const phoneEl = document.getElementById("checkout-phone");
+  const addrEl = document.getElementById("checkout-address");
+  const cityEl = document.getElementById("checkout-city");
+  const notesEl = document.getElementById("checkout-notes");
+
+  const name = (nameEl?.value || "").trim();
+  const email = (emailEl?.value || localStorage.getItem("ap_underworld_email") || "").trim().toLowerCase();
+  const phone = (phoneEl?.value || localStorage.getItem("ap_underworld_phone") || "").trim();
+  const address = (addrEl?.value || "").trim();
+  const city = (cityEl?.value || "").trim();
+  const notes = (notesEl?.value || "").trim();
+
+  // 1. Strictly validate customer name
+  if (!name || name.length < 2 || name.toLowerCase() === "valued client" || /^[0-9]+$/.test(name)) {
+    alert("Please provide your authentic full name for the client dossier and order manifest.");
+    if (nameEl) {
+      nameEl.focus();
+      nameEl.style.borderColor = "#ef4444";
+    }
+    return;
+  }
+  if (nameEl) nameEl.style.borderColor = "";
+
+  // 2. Strictly validate email
+  if (!email || !email.includes("@") || email.length < 5) {
+    alert("Please provide a valid contact email address for your order manifest.");
+    if (emailEl) {
+      emailEl.focus();
+      emailEl.style.borderColor = "#ef4444";
+    }
+    return;
+  }
+  if (emailEl) emailEl.style.borderColor = "";
+
+  // 3. Strictly enforce authentic phone number — ZERO FAKE NUMBERS ALLOWED
+  const countryCode = document.getElementById("checkout-country-code") ? document.getElementById("checkout-country-code").value : "+880";
+  let finalPhone = phone;
+
+  if (window.PhoneVerifier) {
+    const vRes = window.PhoneVerifier.verify(phone, countryCode);
+    if (!vRes.isValid) {
+      alert("❌ INVALID PHONE NUMBER\n\n" + (vRes.error || "Please enter an authentic personal mobile number.\nSequential (e.g. 12345678) and dummy numbers are strictly forbidden."));
+      if (phoneEl) {
+        phoneEl.focus();
+        phoneEl.style.borderColor = "#ef4444";
+      }
+      return;
+    }
+    finalPhone = vRes.formattedNumber || vRes.e164Number;
+  } else if (!phone || phone.length < 7) {
+    alert("Please provide a valid contact phone or WhatsApp number for delivery coordination.");
+    if (phoneEl) phoneEl.focus();
+    return;
+  }
+  if (phoneEl) phoneEl.style.borderColor = "";
+
+  // 4. Strictly validate delivery shipping address
+  if (!address || address.length < 5) {
+    alert("Please provide your detailed delivery shipping address (House, Road, Apartment, Area).");
+    if (addrEl) {
+      addrEl.focus();
+      addrEl.style.borderColor = "#ef4444";
+    }
+    return;
+  }
+  if (addrEl) addrEl.style.borderColor = "";
+
+  // 5. Strictly validate payment method and Transaction ID if wallet is selected
+  let finalPaymentMethod = "Cash on Delivery (COD)";
+  let trxId = "";
+
+  if (selectedPaymentMethod === "bkash" || selectedPaymentMethod === "nagad") {
+    const trxEl = document.getElementById("payment-trx-id");
+    trxId = (trxEl?.value || "").trim().toUpperCase();
+    if (!trxId || trxId.length < 5) {
+      const provider = selectedPaymentMethod === "bkash" ? "bKash" : "Nagad";
+      alert(`❌ TRANSACTION ID (TRXID) REQUIRED\n\nPlease enter the authentic Transaction ID received from your ${provider} mobile transfer to verify your payment.`);
+      if (trxEl) {
+        trxEl.focus();
+        trxEl.style.borderColor = "#ef4444";
+      }
+      return;
+    }
+    if (trxEl) trxEl.style.borderColor = "";
+    finalPaymentMethod = `${selectedPaymentMethod === "bkash" ? "bKash" : "Nagad"} (TrxID: ${trxId})`;
+  } else if (selectedPaymentMethod === "card") {
+    finalPaymentMethod = "Credit / Debit Card & Online Concierge";
+  } else {
+    finalPaymentMethod = "Cash on Delivery (COD)";
+  }
+
+  // Update profile and contact memory
+  let savedUser = {};
+  try {
+    savedUser = JSON.parse(localStorage.getItem("ap_user_profile") || localStorage.getItem("ap_user") || "{}");
+  } catch(e){}
+
+  const existingUserId = (localStorage.getItem("ap_underworld_user_id") || savedUser.userId || savedUser.accessId || "").trim();
+
+  savedUser.name = name;
+  savedUser.email = email;
+  savedUser.phone = finalPhone;
+  savedUser.address = address;
+  if (city) savedUser.city = city;
+  if (notes) savedUser.notes = notes;
+  localStorage.setItem("ap_user_profile", JSON.stringify(savedUser));
+  localStorage.setItem("ap_underworld_email", email);
+  localStorage.setItem("ap_underworld_phone", finalPhone);
+
+  const btn = document.getElementById("checkout-btn");
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "DISPATCHING REAL ORDER TO GOOGLE SHEET...";
+  }
+
+  const subtotalFormatted = money(getSubtotal());
+  const discountFormatted = money(discountAmount);
+  const totalFormatted = money(Math.max(0, getSubtotal() - discountAmount));
+  const couponVal = document.getElementById("coupon-input") ? document.getElementById("coupon-input").value.trim() : "";
+  const fullAddress = address + (city ? ", " + city : "");
+
+  // Call Google Apps Script backend with action=create_order via JSONP
+  const cb = "orderCb_" + Date.now();
+  const script = document.createElement("script");
+
+  function cleanupScript() {
+    try { delete window[cb]; } catch (e) {}
+    if (script.parentNode) script.parentNode.removeChild(script);
+  }
+
+  window[cb] = function(res) {
+    cleanupScript();
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "PROCEED TO CHECKOUT";
+    }
+
+    if (res && res.ok && res.orderId) {
+      const orderId = res.orderId;
+      const assignedUserId = res.userId || existingUserId || "AP-USR-CLIENT";
+      const verifiedTotal = res.total || totalFormatted;
+
+      // Persist confirmed User ID in client memory
+      try {
+        localStorage.setItem("ap_underworld_user_id", assignedUserId);
+        savedUser.userId = assignedUserId;
+        savedUser.accessId = assignedUserId;
+        localStorage.setItem("ap_user_profile", JSON.stringify(savedUser));
+      } catch (e) {}
+
+      const orderRecord = {
+        orderId: orderId,
+        userId: assignedUserId,
+        email: email,
+        name: name,
+        phone: finalPhone,
+        address: fullAddress,
+        itemsSummary: cart.map(i => `${i.name} (${i.size || 'M'}, x${i.qty || 1})`).join(", "),
+        total: verifiedTotal,
+        subtotal: subtotalFormatted,
+        discount: discountFormatted,
+        paymentMethod: finalPaymentMethod,
+        status: "CONFIRMED",
+        timestamp: new Date().toISOString(),
+        items: JSON.parse(JSON.stringify(cart))
+      };
+
+      // Save real verified order in customer record
+      try {
+        const orderKey = "ap_user_orders_" + email.toLowerCase();
+        const existingOrders = JSON.parse(localStorage.getItem(orderKey) || "[]");
+        existingOrders.unshift(orderRecord);
+        localStorage.setItem(orderKey, JSON.stringify(existingOrders));
+        localStorage.setItem("ap_last_order", JSON.stringify(orderRecord));
+      } catch (e) {}
+
+      // Clear local cart
+      cart = [];
+      saveCart();
+      updateCart();
+
+      // Clear backend cart
+      try {
+        const clearCb = "clearCartCb_" + Date.now();
+        const clearScript = document.createElement("script");
+        window[clearCb] = function() {
+          try { delete window[clearCb]; } catch(e){}
+          if (clearScript.parentNode) clearScript.parentNode.removeChild(clearScript);
+        };
+        clearScript.src = `${BACKEND_URL}?action=clear_cart&email=${encodeURIComponent(email)}&callback=${clearCb}`;
+        document.head.appendChild(clearScript);
+      } catch(e){}
+
+      alert(`🎉 REAL ORDER RECORDED IN GOOGLE SHEET!\n\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n` +
+            `• Order Identifier : ${orderId}\n` +
+            `• Customer User ID : ${assignedUserId}\n` +
+            `• Payment Method   : ${finalPaymentMethod}\n` +
+            `• Verified Total   : ${verifiedTotal}\n` +
+            `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n` +
+            `Your customer dossier has been registered in the Users database and an automated luxury manifest has been emailed to the admin. You can track this order in real time.`);
+      window.location.href = "order.html?order=" + encodeURIComponent(orderId);
+    } else {
+      // Real backend error handling — NO FAKE ORDER CREATION!
+      const errorMsg = (res && res.message) ? res.message : "The Google Sheet backend was unable to place this order. Please check your details and try again.";
+      alert(`❌ ORDER PLACEMENT FAILED\n\n${errorMsg}\n\nYour garments have been preserved in your cart. No fake records were created.`);
+    }
+  };
+
+  script.onerror = function() {
+    cleanupScript();
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "PROCEED TO CHECKOUT";
+    }
+    alert("❌ CONNECTION ERROR\n\nUnable to communicate with the Google Sheet backend. Your garments are safe in your shopping bag. Please check your internet connection and try again.");
+  };
+
+  const queryParams = new URLSearchParams({
+    action: "create_order",
+    userId: existingUserId,
+    email: email,
+    name: name,
+    phone: finalPhone,
+    address: address,
+    city: city,
+    paymentMethod: finalPaymentMethod,
+    trxId: trxId,
+    subtotal: subtotalFormatted,
+    discount: discountFormatted,
+    total: totalFormatted,
+    coupon: couponVal,
+    items: JSON.stringify(cart),
+    callback: cb
+  });
+
+
+  if (window.AP_API && window.location.protocol.startsWith('http')) {
+    window.AP_API.createOrder({
+      name: name,
+      email: email,
+      phone: finalPhone,
+      address: address,
+      city: city,
+      payment_method: finalPaymentMethod,
+      trx_id: trxId,
+      coupon_code: couponVal,
+      notes: notes,
+      items: cart
+    }).then(res => {
+      window[cb](res);
+    }).catch(err => {
+      console.warn("AP_API direct call failed, falling back to JSONP:", err);
+      script.src = `${BACKEND_URL}?${queryParams.toString()}`;
+      document.head.appendChild(script);
+    });
+    return;
+  }
+
+  script.src = `${BACKEND_URL}?${queryParams.toString()}`;
+  document.head.appendChild(script);
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+function openMenu(){
+
+  closeMenu();
+
+
+  document
+    .getElementById(
+      "menu-drawer"
+    )
+    .classList.add("active");
+
+
+  document
+    .getElementById(
+      "menu-overlay"
+    )
+    .classList.add("active");
+
+
+  document.body.classList.add(
+    "locked"
+  );
+
+}
+
+
+function closeMenu(){
+
+  document
+    .getElementById(
+      "menu-drawer"
+    )
+    .classList.remove("active");
+
+
+  document
+    .getElementById(
+      "menu-overlay"
+    )
+    .classList.remove("active");
+
+
+  document.body.classList.remove(
+    "locked"
+  );
+
+}
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closeMenu();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   CROSS-TAB CART SYNC
+=========================================================
+
+   If the shop is open in another browser tab and
+   changes the cart, this cart page will update.
+
+========================================================= */
+
+window.addEventListener(
+  "storage",
+  function(event){
+
+    if(
+      event.key === CART_KEY
+    ){
+
+      try{
+
+        cart =
+          JSON.parse(
+            event.newValue
+          ) || [];
+
+      }
+
+      catch(error){
+
+        cart = [];
+
+      }
+
+
+      updateCart();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INITIALIZE & LIFECYCLE LISTENERS
+========================================================= */
+
+updateCart();
+
+window.addEventListener("pageshow", updateCart);
+window.addEventListener("focus", updateCart);
+document.addEventListener("visibilitychange", function() {
+  if (document.visibilityState === "visible") {
+    updateCart();
+  }
+});
+
+loadPaymentMethods();
+
+initDossier();
+
+fetchCartFromBackend();
+
+</script>
+
+
+    
+
+
+</body>
+</html>
