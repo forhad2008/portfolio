@@ -7,6 +7,9 @@
 <title>Privacy Policy | Abdullah Forhad</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="navbar.css">
+<script src="navbar.js" defer></script>
 
 <style>
 :root {
@@ -329,17 +332,129 @@ footer {
 </style>
 </head>
 
-<body>
+<body class="has-unified-navbar">
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo1.png" alt="Abdullah Forhad Logo">
+        </a>
+        <ul class="desktop-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#shop">Drops</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
 
-<header>
-<a href="index.html" class="logo">
-    <img src="logo1.png" alt="Abdullah Forhad Logo">
-</a>
+        <div class="nav-actions">
+            <!-- Luxury Shopping Cart Trigger -->
+            <a href="cart.html" class="cart-icon-btn" id="cart-icon-btn" aria-label="Shopping Bag">
+                <svg viewBox="0 0 32 32" class="cart-svg" aria-hidden="true">
+                    <path d="M4 6h4l3.1 14.2a2 2 0 0 0 2 1.6h10.8a2 2 0 0 0 1.9-1.4L29 11H9"/>
+                    <circle cx="13" cy="27" r="1.8"/>
+                    <circle cx="25" cy="27" r="1.8"/>
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
 
-    <a href="index.html" class="home-btn">
-        ← Home
-    </a>
-</header>
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Luxury Atelier Mobile Drawer Menu -->
+    <div class="menu-window" id="menu-window" aria-modal="true" role="dialog" aria-label="Mobile Navigation Menu">
+        <div class="menu-window-content">
+            <div class="menu-window-header">
+                <div class="menu-brand">
+                    <span class="menu-monogram">AP</span>
+                    <div class="menu-brand-text">
+                        <span class="menu-brand-name">Abdullah Psychotic</span>
+                        <span class="menu-brand-kicker">Haute Digital Atelier</span>
+                    </div>
+                </div>
+                <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="Close navigation menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="menu-kicker-bar">
+                <span>Atelier Directory · 2026 Editions</span>
+                <span class="menu-status-pill"><span class="menu-status-dot"></span> Commissions Open</span>
+            </div>
+
+            <ul class="mobile-nav-list" id="mobile-nav-links">
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">Curated Home</span>
+                        <span class="nav-desc">Portfolio Front</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#shop" class="mobile-nav-link">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">Exclusive Drops</span>
+                        <span class="nav-desc">17 Bespoke Pieces</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="cart.html" class="mobile-nav-link">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">Shopping Bag</span>
+                        <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="service.html" class="mobile-nav-link">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">Atelier Services</span>
+                        <span class="nav-desc">Identity & Engineering</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="about.html" class="mobile-nav-link">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">About Abdullah</span>
+                        <span class="nav-desc">Philosophy & Profile</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="resume.html" class="mobile-nav-link">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">Curriculum Vitae</span>
+                        <span class="nav-desc">Experience & Skills</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#contact" class="mobile-nav-link">
+                        <span class="nav-num">07</span>
+                        <span class="nav-title">Private Commission</span>
+                        <span class="nav-desc">Inquire / Meeting</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="menu-window-footer">
+                <a href="index.html#contact" class="btn-menu-cta">
+                    <span>Start Bespoke Project</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <div class="menu-socials">
+                    <a href="https://wa.me/8801342900364" target="_blank" class="menu-social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank" class="menu-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/forhad2008" target="_blank" class="menu-social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423" target="_blank" class="menu-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:forhadalpha08@gmail.com" class="menu-social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div class="menu-legal">© 2026 ABDULLAH PSYCHOTIC · ALL RIGHTS RESERVED</div>
+            </div>
+        </div>
+    </div>
 
 <div class="container">
     <div class="policy-card">

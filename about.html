@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="navbar.js" defer></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <style>
@@ -73,148 +75,7 @@ body::after {
     background: rgba(85, 0, 18, 0.5);
 }
 
-/* --- PREMIER NAVIGATION --- */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 28px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2000;
-    background: rgba(2, 3, 4, 0.7);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-bottom: 1px solid var(--border-glow);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
-
-.logo img {
-        height: 55px;
-    width: auto;
-
-    object-fit: contain;
-    display: block;
-    transition: var(--transition-tactile);
-}
-
-.logo img:hover {
-    transform: scale(1.05);
-}
-
-    
-    
-.desktop-nav {
-    display: flex;
-    list-style: none;
-    gap: 45px;
-}
-
-.desktop-nav a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    transition: color 0.4s var(--ease-premium);
-    position: relative;
-}
-
-.desktop-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent-crimson);
-    transition: width 0.4s var(--ease-premium);
-}
-
-.desktop-nav a:hover::after,
-.desktop-nav li.active a::after { 
-    width: 100%; 
-}
-
-.desktop-nav a:hover,
-.desktop-nav li.active a { 
-    color: var(--text-primary); 
-}
-
-.hamburger {
-    cursor: pointer;
-    z-index: 2100;
-    display: none;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.hamburger div {
-    width: 24px;
-    height: 2px;
-    background: var(--text-primary);
-    transition: transform 0.4s var(--ease-premium), opacity 0.4s;
-}
-
-.hamburger.active div:nth-child(1) { 
-    transform: translateY(9px) rotate(45deg); 
-}
-
-.hamburger.active div:nth-child(2) { 
-    opacity: 0; 
-}
-
-.hamburger.active div:nth-child(3) { 
-    transform: translateY(-9px) rotate(-45deg); 
-}
-
-.menu-window {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: var(--bg-main);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1500;
-    transform: translateX(100%);
-    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-}
-
-.menu-window.open { 
-    transform: translateX(0); 
-}
-
-.menu-window ul { 
-    list-style: none; 
-    text-align: center; 
-}
-
-.menu-window li { 
-    margin: 28px 0; 
-}
-
-.menu-window a {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-weight: 800;
-    transition: color 0.3s;
-}
-
-.menu-window a:hover { 
-    color: var(--accent-crimson); 
-}
+/* --- NAVIGATION: Handled by navbar.css --- */
 
 /* --- MODERN OPEN WORKSPACE LAYOUT --- */
 .workspace-grid {
@@ -417,27 +278,127 @@ nav {
 
 <body>
 
-    <nav>
+    <nav id="navbar">
         <a href="index.html" class="logo">
-    <img src="logo1.png" alt="Abdullah Forhad Logo">
+            <img src="logo1.png" alt="Abdullah Forhad Logo">
         </a>
         <ul class="desktop-nav">
             <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#shop">Drops</a></li>
             <li class="active"><a href="about.html">About</a></li>
             <li><a href="service.html">Services</a></li>
-            <li><a href="index.html#shop">Shop</a></li>
-            <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> Cart</a></li>
+            <li><a href="resume.html">Resume</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
+
+        <div class="nav-actions">
+            <!-- Luxury Shopping Cart Trigger -->
+            <a href="cart.html" class="cart-icon-btn" id="cart-icon-btn" aria-label="Shopping Bag">
+                <svg viewBox="0 0 32 32" class="cart-svg" aria-hidden="true">
+                    <path d="M4 6h4l3.1 14.2a2 2 0 0 0 2 1.6h10.8a2 2 0 0 0 1.9-1.4L29 11H9"/>
+                    <circle cx="13" cy="27" r="1.8"/>
+                    <circle cx="25" cy="27" r="1.8"/>
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
+
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     </nav>
 
-    <div class="menu-window" id="menu-window">
-        <ul id="mobile-nav-links"></ul>
+    <!-- Luxury Atelier Mobile Drawer Menu -->
+    <div class="menu-window" id="menu-window" aria-modal="true" role="dialog" aria-label="Mobile Navigation Menu">
+        <div class="menu-window-content">
+            <div class="menu-window-header">
+                <div class="menu-brand">
+                    <span class="menu-monogram">AP</span>
+                    <div class="menu-brand-text">
+                        <span class="menu-brand-name">Abdullah Psychotic</span>
+                        <span class="menu-brand-kicker">Haute Digital Atelier</span>
+                    </div>
+                </div>
+                <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="Close navigation menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="menu-kicker-bar">
+                <span>Atelier Directory · 2026 Editions</span>
+                <span class="menu-status-pill"><span class="menu-status-dot"></span> Commissions Open</span>
+            </div>
+
+            <ul class="mobile-nav-list" id="mobile-nav-links">
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">Curated Home</span>
+                        <span class="nav-desc">Portfolio Front</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#shop" class="mobile-nav-link">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">Exclusive Drops</span>
+                        <span class="nav-desc">17 Bespoke Pieces</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="cart.html" class="mobile-nav-link">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">Shopping Bag</span>
+                        <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="service.html" class="mobile-nav-link">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">Atelier Services</span>
+                        <span class="nav-desc">Identity & Engineering</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="about.html" class="mobile-nav-link">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">About Abdullah</span>
+                        <span class="nav-desc">Philosophy & Profile</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="resume.html" class="mobile-nav-link">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">Curriculum Vitae</span>
+                        <span class="nav-desc">Experience & Skills</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#contact" class="mobile-nav-link">
+                        <span class="nav-num">07</span>
+                        <span class="nav-title">Private Commission</span>
+                        <span class="nav-desc">Inquire / Meeting</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="menu-window-footer">
+                <a href="index.html#contact" class="btn-menu-cta">
+                    <span>Start Bespoke Project</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <div class="menu-socials">
+                    <a href="https://wa.me/8801342900364" target="_blank" class="menu-social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank" class="menu-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/forhad2008" target="_blank" class="menu-social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423" target="_blank" class="menu-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:forhadalpha08@gmail.com" class="menu-social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div class="menu-legal">© 2026 ABDULLAH PSYCHOTIC · ALL RIGHTS RESERVED</div>
+            </div>
+        </div>
     </div>
 
     <div class="workspace-grid">
@@ -503,34 +464,6 @@ nav {
     </div>
 
     <script>
-        // MOBILE OVERLAY NAVIGATION ENGINE
-        document.addEventListener("DOMContentLoaded", () => {
-            const menuItems = [
-                { label: "Home", url: "index.html" },
-                { label: "About", url: "about.html" },
-                { label: "Services", url: "service.html" },
-                { label: "Shop", url: "index.html#shop" },
-                { label: "Cart", url: "cart.html" },
-                { label: "Contact", url: "index.html#contact" }
-            ];
-
-            const hamburger = document.getElementById('hamburger');
-            const menuWindow = document.getElementById('menu-window');
-            const mobileNavLinksContainer = document.getElementById('mobile-nav-links');
-
-            if (mobileNavLinksContainer) {
-                mobileNavLinksContainer.innerHTML = menuItems.map(item => `
-                    <li><a href="${item.url}">${item.label}</a></li>
-                `).join('');
-            }
-
-            if (hamburger && menuWindow) {
-                hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
-                    menuWindow.classList.toggle('open');
-                });
-            }
-        });
 
         // PREMIER GSAP REVEAL ANIMATIONS ON LOAD
         window.addEventListener('DOMContentLoaded', () => {
