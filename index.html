@@ -1404,27 +1404,85 @@
 
 
 
-        /* --- RESPONSIVE FIXES & LUXURY MOBILE MEDIA QUERIES --- */
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); /* Clearance for edge-to-edge bottom bar */
-                background-color: #040404;
-                background-image: url('');
-                background-position: center top;
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: fixed;
-            }
+@media (max-width: 768px) {
 
-            body::before {
-                background: url('32.png') center top / cover no-repeat !important;
-                opacity: 1 !important;
-                z-index: -2 !important;
-            }
+    html {
+        min-height: 100%;
+        background: #040404 !important;
+    }
 
-            body::after {
-                display: none !important;
-            }
+    body {
+        min-height: 100%;
+        background: #040404 !important;
+        background-image: none !important;
+        background-attachment: initial !important;
+
+        /* IMPORTANT FIX */
+        isolation: isolate;
+        position: relative;
+    }
+
+    /* ==========================================
+       MOBILE REAL IMAGE BACKGROUND
+       ========================================== */
+    body::before {
+        content: "";
+
+        position: fixed;
+        top: 2vh;
+        left: 0;
+        right: 0;
+        bottom: 2vh;
+
+        width: 100%;
+        height: auto;
+
+        background-image: url("./32.png") !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+
+        /* IMPORTANT */
+        z-index: -2 !important;
+
+        pointer-events: none;
+
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+
+        /* Image rendering */
+        will-change: transform;
+    }
+
+    /* ==========================================
+       DARK GLASS OVERLAY
+       ========================================== */
+    body::after {
+        content: "";
+
+        position: fixed;
+        top: 2vh;
+        left: 0;
+        right: 0;
+        bottom: 2vh;
+
+        width: 100%;
+        height: auto;
+
+        background: rgba(0, 0, 0, 0.12);
+
+        z-index: -1 !important;
+
+        pointer-events: none;
+
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+
+    /* Your existing mobile CSS continues below */
+
 
             .design-showcase {
                 background: transparent !important;
