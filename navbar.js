@@ -1,6 +1,6 @@
 /**
- * UNIFIED LUXURY ATELIER NAVBAR & MOBILE DRAWER CONTROLLER
- * Shared across all pages (excluding cart.html)
+ * UNIFIED LUXURY ATELIER NAVBAR & ADVANCE MOBILE VIEW CONTROLLER
+ * Shared across all pages for perfect responsive UI & instant cart sync
  */
 (function () {
     'use strict';
@@ -12,20 +12,102 @@
         const closeBtn = document.getElementById('menu-close-btn');
         const cartBtn = document.getElementById('cart-icon-btn');
 
-        // 1. Scroll effect for navbar frosted glass
+        // 1. Scroll Effect for Navbar Frosted Glass
         if (navbar) {
+            let ticking = false;
             const handleScroll = () => {
-                if (window.scrollY > 20) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        if (window.scrollY > 20) {
+                            navbar.classList.add('scrolled');
+                        } else {
+                            navbar.classList.remove('scrolled');
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
                 }
             };
             window.addEventListener('scroll', handleScroll, { passive: true });
             handleScroll();
         }
 
-        // 2. Mobile Drawer Open/Close Handlers
+        // 2. Auto-Highlight Active Nav Links Based on Current URL
+        function highlightActiveLinks() {
+            const path = window.location.pathname.toLowerCase();
+            const hash = window.location.hash.toLowerCase();
+
+            // Match targets
+            let currentPage = 'home';
+            if (path.includes('collection.html')) {
+                currentPage = 'collection';
+            } else if (path.includes('about.html')) {
+                currentPage = 'about';
+            } else if (path.includes('service.html')) {
+                currentPage = 'service';
+            } else if (path.includes('resume.html')) {
+                currentPage = 'resume';
+            } else if (path.includes('privacy.html')) {
+                currentPage = 'privacy';
+            }
+
+            // Desktop Nav
+            document.querySelectorAll('.desktop-nav li, .desktop-nav a, .nav-menu a').forEach(el => {
+                const href = (el.getAttribute('href') || '').toLowerCase();
+                const isMatch = (
+                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './')) ||
+                    (currentPage === 'collection' && href.includes('collection.html')) ||
+                    (currentPage === 'about' && href.includes('about.html')) ||
+                    (currentPage === 'service' && href.includes('service.html')) ||
+                    (currentPage === 'resume' && href.includes('resume.html'))
+                );
+
+                if (isMatch) {
+                    if (el.tagName === 'LI') {
+                        el.classList.add('active');
+                    } else {
+                        el.classList.add('active');
+                        if (el.parentElement && el.parentElement.tagName === 'LI') {
+                            el.parentElement.classList.add('active');
+                        }
+                    }
+                }
+            });
+
+            // Mobile Drawer Links
+            document.querySelectorAll('.mobile-nav-link, .menu-nav-links a').forEach(link => {
+                const href = (link.getAttribute('href') || '').toLowerCase();
+                const isMatch = (
+                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './')) ||
+                    (currentPage === 'collection' && href.includes('collection.html')) ||
+                    (currentPage === 'about' && href.includes('about.html')) ||
+                    (currentPage === 'service' && href.includes('service.html')) ||
+                    (currentPage === 'resume' && href.includes('resume.html'))
+                );
+
+                if (isMatch) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Mobile Bottom Dock
+            document.querySelectorAll('.mobile-bottom-dock .dock-item').forEach(item => {
+                const href = (item.getAttribute('href') || '').toLowerCase();
+                const isMatch = (
+                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './')) ||
+                    (currentPage === 'collection' && href.includes('collection.html')) ||
+                    (currentPage === 'service' && href.includes('service.html'))
+                );
+
+                if (isMatch) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        highlightActiveLinks();
+
+        // 3. Mobile Drawer Open/Close Logic
         function openDrawer() {
             if (!menuWindow) return;
             menuWindow.classList.add('open');
@@ -33,7 +115,7 @@
                 hamburger.classList.add('active');
                 hamburger.setAttribute('aria-expanded', 'true');
             }
-            document.body.style.overflow = 'hidden';
+            document.body.classList.add('menu-open');
             updateCartBadges();
         }
 
@@ -44,13 +126,13 @@
                 hamburger.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
             }
-            document.body.style.overflow = '';
+            document.body.classList.remove('menu-open');
         }
 
-        if (hamburger && menuWindow) {
+        if (hamburger) {
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (menuWindow.classList.contains('open')) {
+                if (menuWindow && menuWindow.classList.contains('open')) {
                     closeDrawer();
                 } else {
                     openDrawer();
@@ -66,16 +148,16 @@
         }
 
         if (menuWindow) {
-            // Close when clicking outside content box
+            // Close when tapping outside the content box
             menuWindow.addEventListener('click', (e) => {
                 if (e.target === menuWindow) {
                     closeDrawer();
                 }
             });
 
-            // Close on link click
-            const links = menuWindow.querySelectorAll('a');
-            links.forEach(link => {
+            // Close when clicking any navigation link
+            const navLinks = menuWindow.querySelectorAll('a');
+            navLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     closeDrawer();
                 });
@@ -89,18 +171,24 @@
             }
         });
 
-        // 3. Cart Button Behavior
+        // Close drawer if resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 992 && menuWindow && menuWindow.classList.contains('open')) {
+                closeDrawer();
+            }
+        }, { passive: true });
+
+        // 4. Cart Button Behavior
         if (cartBtn) {
             cartBtn.addEventListener('click', (e) => {
                 if (typeof window.openCartDrawer === 'function') {
                     e.preventDefault();
                     window.openCartDrawer();
                 }
-                // Otherwise normal link navigation to cart.html executes
             });
         }
 
-        // 4. Synchronize Cart Counters
+        // 5. Synchronize All Cart Counters Across Document
         function updateCartBadges() {
             let count = 0;
             try {
@@ -119,6 +207,7 @@
                 document.getElementById('cart-count'),
                 document.getElementById('mobile-cart-count'),
                 document.getElementById('dock-cart-count'),
+                document.getElementById('drawer-cart-count'),
                 document.getElementById('detail-cart-count')
             ];
 
@@ -139,14 +228,14 @@
             });
         }
 
-        // Initial sync
         updateCartBadges();
 
         // Listen for storage events across tabs or local triggers
         window.addEventListener('storage', updateCartBadges);
         window.addEventListener('cartUpdated', updateCartBadges);
         window.updateNavbarCart = updateCartBadges;
-        // Register Service Worker across all pages for instant loading
+
+        // Register Service Worker across all pages
         if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js').catch(() => {});
