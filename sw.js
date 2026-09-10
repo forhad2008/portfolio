@@ -5,12 +5,14 @@
  * Eliminates repeated network downloads on mobile ("ekbar load houer por barbar load na hoy")
  */
 
-const CACHE_NAME = 'ap-atelier-v2';
+const CACHE_NAME = 'ap-atelier-v3';
 
 // Core assets to pre-cache immediately upon install
 const PRECACHE_ASSETS = [
     './',
     './index.html',
+    './collection.html',
+    './collection.css',
     './navbar.css',
     './navbar.js',
     './product-detail.css',
