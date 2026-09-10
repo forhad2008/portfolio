@@ -146,6 +146,12 @@
         window.addEventListener('storage', updateCartBadges);
         window.addEventListener('cartUpdated', updateCartBadges);
         window.updateNavbarCart = updateCartBadges;
+        // Register Service Worker across all pages for instant loading
+        if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
+            });
+        }
     }
 
     if (document.readyState === 'loading') {
