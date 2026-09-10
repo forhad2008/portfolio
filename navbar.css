@@ -237,88 +237,158 @@ nav.site-navbar.scrolled {
     transform: scale(1.4);
 }
 
-/* Hamburger Button with 44px Touch Target */
-.hamburger, .hamburger-btn {
-    cursor: pointer;
+
+/* =========================================================
+   HAMBURGER — CLEAN 3 LINE MOBILE MENU
+   ========================================================= */
+
+.hamburger,
+.hamburger-btn {
+    position: relative;
     z-index: 2600;
+
     display: none;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+
     width: 44px;
     height: 44px;
     min-width: 44px;
     min-height: 44px;
+
+    padding: 0;
+    margin: 0;
+
+    gap: 4px;
+
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(248, 113, 113, 0.25);
-    padding: 0;
-    transition: all 0.3s var(--ease-luxury);
+
+    cursor: pointer;
     outline: none;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+
     box-sizing: border-box;
+
+    transition:
+        background 0.3s var(--ease-luxury),
+        border-color 0.3s var(--ease-luxury),
+        box-shadow 0.3s var(--ease-luxury),
+        transform 0.3s var(--ease-luxury);
 }
 
-.hamburger:hover, .hamburger-btn:hover {
-    background: rgba(185, 28, 28, 0.2);
+
+/* THREE LINES */
+
+.hamburger > div,
+.hamburger > span,
+.hamburger-btn > div,
+.hamburger-btn > span {
+    display: block;
+
+    width: 20px;
+    height: 2px;
+
+    margin: 0;
+    padding: 0;
+
+    flex: 0 0 auto;
+
+    background: #ffffff;
+
+    border-radius: 999px;
+
+    transform-origin: center;
+
+    transition:
+        transform 0.35s var(--ease-luxury),
+        opacity 0.25s ease,
+        background 0.3s ease;
+}
+
+
+/* HOVER */
+
+.hamburger:hover,
+.hamburger-btn:hover {
+    background: rgba(185, 28, 28, 0.20);
     border-color: rgba(212, 175, 55, 0.5);
 }
 
-.hamburger-lines-box {
-    width: 20px;
-    height: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
 
-/* Lines Support (div or span) */
-.hamburger div,
-.hamburger span,
-.hamburger-btn div,
-.hamburger-btn span {
-    width: 20px;
-    height: 2px;
-    background: #ffffff;
-    border-radius: 2px;
-    transition: transform 0.35s var(--ease-luxury), 
-                opacity 0.25s ease, 
-                background 0.3s ease;
-    display: block;
-}
+/* ACTIVE / X */
 
-/* Animated Hamburger to "X" State */
-.hamburger.active, .hamburger-btn.active {
+.hamburger.active,
+.hamburger-btn.active {
     background: rgba(133, 0, 9, 0.35);
     border-color: var(--nav-accent-gold);
-    box-shadow: 0 0 20px rgba(133, 0, 9, 0.6), 0 0 10px rgba(212, 175, 55, 0.3);
+
+    box-shadow:
+        0 0 20px rgba(133, 0, 9, 0.6),
+        0 0 10px rgba(212, 175, 55, 0.3);
 }
 
-.hamburger.active div:nth-child(1),
-.hamburger.active span:nth-child(1),
-.hamburger-btn.active div:nth-child(1),
-.hamburger-btn.active span:nth-child(1) {
+
+/* FIRST LINE */
+
+.hamburger.active > div:nth-child(1),
+.hamburger.active > span:nth-child(1),
+.hamburger-btn.active > div:nth-child(1),
+.hamburger-btn.active > span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
     background: var(--nav-accent-gold);
 }
 
-.hamburger.active div:nth-child(2),
-.hamburger.active span:nth-child(2),
-.hamburger-btn.active div:nth-child(2),
-.hamburger-btn.active span:nth-child(2) {
+
+/* MIDDLE LINE */
+
+.hamburger.active > div:nth-child(2),
+.hamburger.active > span:nth-child(2),
+.hamburger-btn.active > div:nth-child(2),
+.hamburger-btn.active > span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
 
-.hamburger.active div:nth-child(3),
-.hamburger.active span:nth-child(3),
-.hamburger-btn.active div:nth-child(3),
-.hamburger-btn.active span:nth-child(3) {
+
+/* THIRD LINE */
+
+.hamburger.active > div:nth-child(3),
+.hamburger.active > span:nth-child(3),
+.hamburger-btn.active > div:nth-child(3),
+.hamburger-btn.active > span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
     background: var(--nav-accent-gold);
 }
 
+
+/* MOBILE */
+
+@media (max-width: 991px) {
+
+    .hamburger,
+    .hamburger-btn {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+    }
+
+}
+
+
+/* DESKTOP */
+
+@media (min-width: 992px) {
+
+    .hamburger,
+    .hamburger-btn {
+        display: none !important;
+    }
+
+}
 /* =========================================================
    2. ADVANCE MOBILE VIEW: NAVBAR BREAKPOINT
    ========================================================= */
@@ -327,9 +397,7 @@ nav.site-navbar.scrolled {
         display: none !important;
     }
 
-    .hamburger, .hamburger-btn {
-        display: flex !important;
-    }
+  
 
     #navbar, nav.site-navbar {
         height: var(--navbar-height-mobile);
