@@ -23,10 +23,8 @@
     <link rel="stylesheet" href="navbar.css">
     <!-- Immediate Preload for Mobile Wallpaper & Critical Above-The-Fold Product Images -->
     <link rel="preload" as="image" href="32.png" media="(max-width: 768px)">
-    <link rel="preload" as="image" href="19.2.webp" type="image/webp">
+    <link rel="preload" as="image" href="19.2.webp" type="image/webp" fetchpriority="high">
     <link rel="preload" as="image" href="24.2.webp" type="image/webp">
-    <link rel="preload" as="image" href="27.2.webp" type="image/webp">
-    <link rel="preload" as="image" href="28.2.webp" type="image/webp">
     <script src="navbar.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
@@ -964,6 +962,8 @@
                         box-shadow 0.45s ease;
             box-shadow: 0 15px 35px rgba(0,0,0,0.7);
             position: relative;
+            content-visibility: auto;
+            contain-intrinsic-size: 350px 420px;
         }
 
         .card:hover {
@@ -2360,7 +2360,7 @@
             <article class="card" data-id="1" data-category="business-card">
                 <a href="1.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge">EXCLUSIVE DROP</span>
-                    <img src="19.2.webp" alt="Minimalist Business Card Concept" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Minimalist%20Business%20Card%20Concept'">
+                    <img src="19.2.webp" alt="Minimalist Business Card Concept" width="600" height="413" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Minimalist%20Business%20Card%20Concept'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2389,7 +2389,7 @@
             <article class="card" data-id="2" data-category="business-card">
                 <a href="2.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge">MINIMALIST</span>
-                    <img src="24.2.webp" alt="Geometric Pattern Business Card" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Geometric%20Pattern%20Business%20Card'">
+                    <img src="24.2.webp" alt="Geometric Pattern Business Card" width="600" height="413" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Geometric%20Pattern%20Business%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2418,7 +2418,7 @@
             <article class="card luxury-card" data-id="3" data-category="business-card">
                 <a href="3.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge luxury-badge">PREMIUM DROP</span>
-                    <img src="27.2.webp" alt="Creative Agency Executive Card" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Creative%20Agency%20Executive%20Card'">
+                    <img src="27.2.webp" alt="Creative Agency Executive Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Creative%20Agency%20Executive%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2447,7 +2447,7 @@
             <article class="card" data-id="4" data-category="business-card">
                 <a href="4.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge">HERITAGE</span>
-                    <img src="28.2.webp" alt="Vintage Luxury Sovereign Card" loading="eager" fetchpriority="high" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Vintage%20Luxury%20Sovereign%20Card'">
+                    <img src="28.2.webp" alt="Vintage Luxury Sovereign Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Vintage%20Luxury%20Sovereign%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2476,7 +2476,7 @@
             <article class="card" data-id="5" data-category="business-card">
                 <a href="5.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge">SIGNATURE</span>
-                    <img src="29.2.webp" alt="Premium Finished Noir Card" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Premium%20Finished%20Noir%20Card'">
+                    <img src="29.2.webp" alt="Premium Finished Noir Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Premium%20Finished%20Noir%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2505,7 +2505,7 @@
             <article class="card luxury-card" data-id="6" data-category="business-card">
                 <a href="6.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge luxury-badge">EXECUTIVE</span>
-                    <img src="30.2.webp" alt="Corporate Executive Business Card" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Corporate%20Executive%20Business%20Card'">
+                    <img src="30.2.webp" alt="Corporate Executive Business Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Corporate%20Executive%20Business%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2534,7 +2534,7 @@
             <article class="card luxury-card" data-id="7" data-category="business-card">
                 <a href="7.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge luxury-badge">PRESTIGE</span>
-                    <img src="33.2.webp" alt="Emerald Prestige Business Card" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Emerald%20Prestige%20Business%20Card'">
+                    <img src="33.2.webp" alt="Emerald Prestige Business Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Emerald%20Prestige%20Business%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2563,7 +2563,7 @@
             <article class="card" data-id="8" data-category="business-card">
                 <a href="8.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge">BESPOKE</span>
-                    <img src="1.2.webp" alt="Sapphire Royal Business Card" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Sapphire%20Royal%20Business%20Card'">
+                    <img src="1.2.webp" alt="Sapphire Royal Business Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Sapphire%20Royal%20Business%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2592,7 +2592,7 @@
             <article class="card" data-id="9" data-category="business-card">
                 <a href="9.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge">CREATIVE DROP</span>
-                    <img src="7.1.webp" alt="Radio Crimson Creative Card" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Radio%20Crimson%20Creative%20Card'">
+                    <img src="7.1.webp" alt="Radio Crimson Creative Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Radio%20Crimson%20Creative%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2621,7 +2621,7 @@
             <article class="card luxury-card" data-id="10" data-category="business-card">
                 <a href="10.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge luxury-badge">LIMITED DROP</span>
-                    <img src="14.2.webp" alt="Violet Noir Creative Card" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Violet%20Noir%20Creative%20Card'">
+                    <img src="14.2.webp" alt="Violet Noir Creative Card" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Violet%20Noir%20Creative%20Card'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2650,7 +2650,7 @@
             <article class="card luxury-card" data-id="11" data-category="logo">
                 <a href="11.html" class="card-img-wrapper" target="_self">
                     <span class="card-badge luxury-badge">HAUTE COUTURE</span>
-                    <img src="26.webp" alt="Fashion Monogram Logo Concept" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Fashion%20Monogram%20Logo%20Concept'">
+                    <img src="26.webp" alt="Fashion Monogram Logo Concept" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Fashion%20Monogram%20Logo%20Concept'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2677,15 +2677,15 @@
                 </div>
             </article>
             <article class="card luxury-card" data-id="12" data-category="logo">
-                <a href="3.png" class="card-img-wrapper" target="_self">
+                <a href="3.webp" class="card-img-wrapper" target="_self">
                     <span class="card-badge luxury-badge">SOVEREIGN GOLD</span>
-                    <img src="3.png" alt="Sovereign Golden Crown Monogram" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Sovereign%20Golden%20Crown%20Monogram'">
+                    <img src="3.webp" alt="Sovereign Golden Crown Monogram" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='3.png'">
                 </a>
                 <div class="card-content">
                     <div>
                         <span class="card-category-kicker">System Logo</span>
                         <h3 class="card-title">
-                            <a href="3.png" target="_self">Sovereign Golden Crown Monogram</a>
+                            <a href="3.webp" target="_self">Sovereign Golden Crown Monogram</a>
                         </h3>
                         <p class="card-desc">Regal insignia with intricate vector linework and royal gold aesthetics.</p>
                         <div class="card-specs">
@@ -2708,7 +2708,7 @@
             <article class="card luxury-card" data-id="13" data-category="website">
                 <a href="https://forhad2008.github.io/boraldo-store/" class="card-img-wrapper" target="_blank">
                     <span class="card-badge luxury-badge">DIGITAL ATELIER</span>
-                    <img src="bag2.webp" alt="Aesthetic Lifestyle Branding Website" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Aesthetic%20Lifestyle%20Branding%20Website'">
+                    <img src="bag2.webp" alt="Aesthetic Lifestyle Branding Website" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Aesthetic%20Lifestyle%20Branding%20Website'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2737,7 +2737,7 @@
             <article class="card luxury-card" data-id="14" data-category="website">
                 <a href="https://forhad2008.github.io/restaurant1-/" class="card-img-wrapper" target="_blank">
                     <span class="card-badge luxury-badge">SIGNATURE WEB</span>
-                    <img src="res.png" alt="Luxury Gastronomy Web Identity" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Luxury%20Gastronomy%20Web%20Identity'">
+                    <img src="res.webp" alt="Luxury Gastronomy Web Identity" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='res.png'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2766,7 +2766,7 @@
             <article class="card luxury-card" data-id="15" data-category="website">
                 <a href="https://forhad2008.github.io/Abdullah-psychotic/" class="card-img-wrapper" target="_blank">
                     <span class="card-badge luxury-badge">FLAGSHIP</span>
-                    <img src="Neg.webp" alt="Abdullah Psychotic Lifestyle Portal" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Abdullah%20Psychotic%20Lifestyle%20Portal'">
+                    <img src="Neg.webp" alt="Abdullah Psychotic Lifestyle Portal" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Abdullah%20Psychotic%20Lifestyle%20Portal'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2795,7 +2795,7 @@
             <article class="card" data-id="16" data-category="website">
                 <a href="https://forhad2008.github.io/png-to-webp-converter/" class="card-img-wrapper" target="_blank">
                     <span class="card-badge">PRO SOFTWARE</span>
-                    <img src="pw.jpeg" alt="High-Speed Web Image Processor" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=High-Speed%20Web%20Image%20Processor'">
+                    <img src="pw.jpeg" alt="High-Speed Web Image Processor" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=High-Speed%20Web%20Image%20Processor'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -2824,7 +2824,7 @@
             <article class="card luxury-card" data-id="17" data-category="wedding-card">
                 <a href="wedding card presentation.pdf" class="card-img-wrapper" target="_blank">
                     <span class="card-badge luxury-badge">CEREMONIAL</span>
-                    <img src="wed.webp" alt="Royal Crimson & Gold Wedding Suite" loading="eager" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Royal%20Crimson%20%26%20Gold%20Wedding%20Suite'">
+                    <img src="wed.webp" alt="Royal Crimson & Gold Wedding Suite" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Royal%20Crimson%20%26%20Gold%20Wedding%20Suite'">
                 </a>
                 <div class="card-content">
                     <div>
@@ -3241,8 +3241,8 @@
                     title: "Sovereign Golden Crown Monogram",
                     subtitle: "Heraldic Luxury Identity System",
                     desc: "Regal insignia with intricate vector linework and royal gold aesthetics.",
-                    img: "3.png",
-                    detailUrl: "3.png",
+                    img: "3.webp",
+                    detailUrl: "3.webp",
                     price: 30,
                     badge: "SOVEREIGN GOLD",
                     isLuxury: true,
@@ -3269,7 +3269,7 @@
                     title: "Luxury Gastronomy Web Identity",
                     subtitle: "Editorial Culinary Experience",
                     desc: "Atmospheric digital restaurant showcase with reservation flow and menu storytelling.",
-                    img: "res.png",
+                    img: "res.webp",
                     detailUrl: "https://forhad2008.github.io/restaurant1-/",
                     price: 180,
                     badge: "SIGNATURE WEB",
@@ -3612,16 +3612,17 @@
 
                 const filtered = projectData.filter(item => currentFilter === 'all' || item.category === currentFilter);
 
-                designGrid.innerHTML = filtered.map(item => {
+                designGrid.innerHTML = filtered.map((item, index) => {
                     const badgeClass = item.isLuxury ? 'card-badge luxury-badge' : 'card-badge';
                     const cardClass = item.isLuxury ? 'card luxury-card' : 'card';
                     const specsHTML = item.specs ? item.specs.map(s => `<span class="spec-tag">${s}</span>`).join('') : '';
+                    const loadAttr = index < 2 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
 
                     return `
                         <article class="${cardClass}" data-id="${item.id}" data-category="${item.category}">
                             <a href="${item.detailUrl}" class="card-img-wrapper" target="${item.detailUrl.startsWith('http') || item.detailUrl.endsWith('.pdf') ? '_blank' : '_self'}">
                                 <span class="${badgeClass}">${item.badge}</span>
-                                <img src="${item.img}" alt="${item.title}" loading="eager" decoding="async" fetchpriority="auto" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=${encodeURIComponent(item.title)}'">
+                                <img src="${item.img}" alt="${item.title}" width="600" height="413" ${loadAttr} decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=${encodeURIComponent(item.title)}'">
                             </a>
                             <div class="card-content">
                                 <div>
@@ -3915,7 +3916,7 @@
                 const preloadList = [
                     '19.2.webp', '24.2.webp', '27.2.webp', '28.2.webp', '29.2.webp',
                     '30.2.webp', '33.2.webp', '1.2.webp', '7.1.webp', '14.2.webp',
-                    '26.webp', '3.png', 'bag2.webp', 'res.png', 'Neg.webp', 'pw.jpeg', 'wed.webp',
+                    '26.webp', '3.webp', 'bag2.webp', 'res.webp', 'Neg.webp', 'pw.jpeg', 'wed.webp',
                     '32.png', '2.jpg', 'logo.png', 'logo1.png'
                 ];
 
@@ -3927,7 +3928,7 @@
 
                 // Cache in persistent browser CacheStorage if supported
                 if ('caches' in window) {
-                    caches.open('ap-atelier-v1').then(cache => {
+                    caches.open('ap-atelier-v2').then(cache => {
                         cache.addAll(preloadList).catch(() => {});
                     });
                 }
