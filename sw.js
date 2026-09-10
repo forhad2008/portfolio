@@ -13,6 +13,7 @@ const PRECACHE_ASSETS = [
     './index.html',
     './navbar.css',
     './navbar.js',
+    './product-detail.css',
     './32.png',
     './2.jpg',
     './logo.png',
