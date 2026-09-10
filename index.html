@@ -1412,58 +1412,87 @@
     }
 
     body {
-        min-height: 100%;
+        min-height: 100vh;
         background: #040404 !important;
         background-image: none !important;
         background-attachment: initial !important;
 
-        /* IMPORTANT FIX */
         isolation: isolate;
         position: relative;
+        overflow-x: hidden;
     }
 
-    /* ==========================================
-       MOBILE REAL IMAGE BACKGROUND
-       ========================================== */
-    body::before {
-        content: "";
+    /* =====================================================
+       32.PNG — TRUE IMAGE ELEMENT BEHAVIOR
+       ===================================================== */
 
-        position: top;
-        inset: 0 !important;
+    body::before {
+        /*
+         * Using content:url() makes the pseudo-element behave
+         * like a real replaced image element.
+         */
+        content: url("./32.png") !important;
+
+        display: block !important;
+
+        position: absolute !important;
+
         top: 0 !important;
         left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
+
+        /*
+         * FULL MOBILE WIDTH
+         */
         width: 100% !important;
-        height: 100% !important;
 
-        background-image: url("./32.png") !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
+        /*
+         * AUTO HEIGHT
+         * Keeps original image aspect ratio.
+         */
+        height: auto !important;
 
-        /* IMPORTANT: Static fixed layer prevents mobile scroll repaints */
+        /*
+         * Prevent the browser from forcing/cropping
+         * the image into a fixed box.
+         */
+        max-width: none !important;
+        max-height: none !important;
+
+        object-fit: contain !important;
+        object-position: top center !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
         z-index: -2 !important;
 
-        pointer-events: none;
+        pointer-events: none !important;
 
         transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
+
+        /*
+         * IMPORTANT:
+         * Do NOT use:
+         * background-size: cover;
+         * height: 500px;
+         */
     }
 
-    /* ==========================================
-       DARK GLASS OVERLAY
-       ========================================== */
-    body::after {
-        content: "";
 
-        position: fixed;
-        inset: 0 !important;
+    /* =====================================================
+       DARK OVERLAY
+       ===================================================== */
+
+    body::after {
+        content: "" !important;
+
+        position: absolute !important;
+
         top: 0 !important;
         left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
+
         width: 100% !important;
         height: 100% !important;
 
@@ -1471,35 +1500,35 @@
 
         z-index: -1 !important;
 
-        pointer-events: none;
+        pointer-events: none !important;
 
         transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
     }
 
-    /* Your existing mobile CSS continues below */
 
+    /* =====================================================
+       EXISTING MOBILE DESIGN
+       ===================================================== */
 
-            .design-showcase {
-                background: transparent !important;
-            }
+    .design-showcase {
+        background: transparent !important;
+    }
 
-            /* Enable Mobile Floating Dock at Bottom */
-            .mobile-bottom-dock {
-                display: flex;
-            }
+    .mobile-bottom-dock {
+        display: flex;
+    }
 
-            /* Hero Section Mobile Polish */
-            .hero-section {
-                padding: 110px 16px 45px;
-                min-height: auto;
-            }
+    .hero-section {
+        padding: 110px 16px 45px;
+        min-height: auto;
+    }
 
-            .hero-grid {
-                gap: 32px;
-            }
-
+    .hero-grid {
+        width: 100%;
+    }
+    
             .hero-badge {
                 padding: 6px 14px;
                 font-size: 0.7rem;
