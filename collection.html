@@ -719,7 +719,7 @@
         id="atelierModal"
         class="atelier-modal"
         aria-modal="true"
-        aria-labelledby="modalProductTitle"
+        aria-label="Product Inspection Window"
     >
 
         <div class="modal-inner-wrapper">
@@ -730,37 +730,14 @@
             ================================================== -->
             <div class="modal-header-bar">
 
-                <div class="modal-serial-badge">
-
-                    <span>
-                        ATELIER PIECE
-                    </span>
-
-                    <strong id="modalSerialIndex">
-                        01
-                    </strong>
-
-                    <span>/</span>
-
-                    <span id="modalSerialTotal">
-                        43
-                    </span>
-
-                </div>
-
-
-                <div class="modal-header-actions">
-
-                    <button
-                        class="modal-close-btn"
-                        id="modalCloseBtn"
-                        type="button"
-                        aria-label="Close modal window"
-                    >
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-
-                </div>
+                <button
+                    class="modal-close-btn"
+                    id="modalCloseBtn"
+                    type="button"
+                    aria-label="Close modal window"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
             </div>
 
@@ -770,7 +747,6 @@
             ================================================== -->
             <div class="modal-grid-body">
 
-
                 <!-- =============================================
                      IMAGE / MEDIA
                 ============================================== -->
@@ -779,33 +755,6 @@
                     id="modalMediaStage"
                 >
 
-                    <span
-                        class="modal-stage-badge"
-                        id="modalBadge"
-                    >
-                        ARCHIVE
-                    </span>
-
-
-                    <!-- =========================================
-                         PREVIOUS
-                         
-                         ONLY POPUP NAVIGATION
-                    ========================================== -->
-                    <button
-                        class="modal-nav-arrow nav-prev"
-                        id="modalPrevBtn"
-                        type="button"
-                        aria-label="Previous Product"
-                        title="Previous Product"
-                    >
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-
-
-                    <!-- =========================================
-                         IMAGE
-                    ========================================== -->
                     <div class="modal-image-wrap">
 
                         <img
@@ -819,232 +768,38 @@
 
                     </div>
 
-
                     <!-- =========================================
-                         NEXT
-                         
-                         ONLY POPUP NAVIGATION
+                         BOTTOM NAVIGATION CONTROLS
                     ========================================== -->
-                    <button
-                        class="modal-nav-arrow nav-next"
-                        id="modalNextBtn"
-                        type="button"
-                        aria-label="Next Product"
-                        title="Next Product"
-                    >
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-
-                </div>
-
-
-                <!-- =============================================
-                     PRODUCT DETAILS
-                ============================================== -->
-                <div class="modal-details-stage">
-
-                    <span
-                        class="modal-meta-kicker"
-                        id="modalCategoryLabel"
-                    >
-                        Identity Unit · Exclusive
-                    </span>
-
-
-                    <h2
-                        class="modal-product-title"
-                        id="modalProductTitle"
-                    >
-                        Minimalist Business Card Concept
-                    </h2>
-
-
-                    <h3
-                        class="modal-product-subtitle"
-                        id="modalProductSubtitle"
-                    >
-                        Architectural Noir · Print Ready
-                    </h3>
-
-
-                    <div
-                        class="modal-desc-box"
-                        id="modalDesc"
-                    >
-                        Precision typography with structural grid
-                        composition and clean negative space engineered
-                        for luxury leaders.
-                    </div>
-
-
-                    <!-- =========================================
-                         SPECIFICATIONS
-                    ========================================== -->
-                    <div class="modal-specs-section">
-
-                        <div class="modal-specs-heading">
-                            ATELIER SPECIFICATIONS
-                        </div>
-
-                        <div
-                            class="modal-specs-chips"
-                            id="modalSpecsChips"
-                        >
-
-                            <span class="modal-spec-badge">
-
-                                <i class="fa-solid fa-ruler-combined"></i>
-
-                                High-resolution artwork
-
-                            </span>
-
-
-                            <span class="modal-spec-badge">
-
-                                <i class="fa-solid fa-print"></i>
-
-                                Editorial composition
-
-                            </span>
-
-
-                            <span class="modal-spec-badge">
-
-                                <i class="fa-solid fa-layer-group"></i>
-
-                                Abdullah Psychotic archive
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- =========================================
-                         PRICE
-                    ========================================== -->
-                    <div class="modal-price-box">
-
-                        <div class="price-license-tag">
-
-                            ACQUISITION LICENSE
-
-                            <span>
-
-                                <i class="fa-solid fa-circle-check"></i>
-
-                                Commercial Rights Included
-
-                            </span>
-
-                        </div>
-
-
-                        <div
-                            class="modal-price-display"
-                            id="modalPrice"
-                        >
-                            $0 USD
-                        </div>
-
-                    </div>
-
-
-                    <!-- =========================================
-                         ACTIONS
-                    ========================================== -->
-                    <div class="modal-actions-hub">
-
+                    <div class="modal-bottom-nav" id="modalBottomNav">
 
                         <button
-                            class="btn-modal-cart"
-                            id="modalAddToCartBtn"
+                            class="modal-nav-arrow nav-prev"
+                            id="modalPrevBtn"
                             type="button"
+                            aria-label="Previous Product"
+                            title="Previous Product"
                         >
-
-                            <i class="fa-solid fa-bag-shopping"></i>
-
-                            <span>
-                                Add To Bag
-                            </span>
-
+                            <i class="fa-solid fa-chevron-left"></i>
                         </button>
 
+                        <div class="atelier-gallery-strip" id="atelierGalleryStrip"></div>
 
-                        <div class="modal-secondary-actions">
-
-
-                            <a
-                                href="#"
-                                target="_blank"
-                                rel="noopener"
-                                class="btn-modal-whatsapp"
-                                id="modalWhatsAppBtn"
-                            >
-
-                                <i class="fa-brands fa-whatsapp"></i>
-
-                                <span>
-                                    Order WhatsApp
-                                </span>
-
-                            </a>
-
-
-                            <a
-                                href="1.html"
-                                class="btn-modal-direct"
-                                id="modalDirectLink"
-                            >
-
-                                <span>
-                                    Full Details
-                                </span>
-
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                            </a>
-
-                        </div>
+                        <button
+                            class="modal-nav-arrow nav-next"
+                            id="modalNextBtn"
+                            type="button"
+                            aria-label="Next Product"
+                            title="Next Product"
+                        >
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
 
                     </div>
 
                 </div>
 
             </div>
-
-
-            <!-- =================================================
-                 MODAL FOOTER
-            ================================================== -->
-            <footer class="modal-keyboard-hints">
-
-                <span>
-                    <span class="kbd-badge">←</span>
-                    Previous
-                </span>
-
-                <span>
-                    <span class="kbd-badge">→</span>
-                    Next
-                </span>
-
-                <span>
-                    <span class="kbd-badge">ESC</span>
-                    Close Window
-                </span>
-
-                <span>
-                    <i
-                        class="fa-solid fa-hand-point-up"
-                        style="color:var(--gold-accent);"
-                    ></i>
-                    Swipe on mobile
-                </span>
-
-            </footer>
 
         </div>
 
@@ -1085,71 +840,38 @@
     <!-- =========================================================
          MOBILE BOTTOM DOCK
     ========================================================== -->
-    <nav
-        class="mobile-bottom-dock"
-        id="mobile-bottom-dock"
-        aria-label="Mobile Navigation Dock"
-    >
-
-        <a
-            href="index.html"
-            class="dock-item"
-        >
+    <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
+        <a href="index.html" class="dock-item" id="dock-item-home" aria-label="Home">
             <i class="fa-solid fa-house"></i>
             <span>Home</span>
         </a>
-
-
-        <a
-            href="collection.html"
-            class="dock-item active"
-        >
+        <a href="collection.html" class="dock-item active" id="dock-item-collection" aria-label="Collection">
             <i class="fa-solid fa-layer-group"></i>
             <span>Collection</span>
         </a>
-
-
-        <a
-            href="cart.html"
-            class="dock-item dock-cart-btn"
-            id="dockCartBtn"
-        >
-
-            <div class="dock-icon-wrap">
-
-                <i class="fa-solid fa-bag-shopping"></i>
-
-                <span
-                    class="dock-badge"
-                    id="dock-cart-count"
-                >
-                    0
-                </span>
-
-            </div>
-
-            <span>Bag</span>
-
+        <a href="index.html#shop" class="dock-item" id="dock-item-shop" aria-label="Atelier Drops">
+            <i class="fa-solid fa-gem"></i>
+            <span>Drops</span>
         </a>
-
-
-        <a
-            href="service.html"
-            class="dock-item"
-        >
+        <a href="cart.html" class="dock-item dock-cart-btn" id="dock-cart-btn" aria-label="Shopping Bag">
+            <div class="dock-icon-wrap">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="dock-badge" id="dock-cart-count">0</span>
+            </div>
+            <span>Bag</span>
+        </a>
+        <a href="service.html" class="dock-item" id="dock-item-service" aria-label="Services">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>Services</span>
         </a>
-
-
-        <a
-            href="index.html#contact"
-            class="dock-item"
-        >
+        <a href="about.html" class="dock-item" id="dock-item-about" aria-label="About">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>About</span>
+        </a>
+        <a href="index.html#contact" class="dock-item" id="dock-item-contact" aria-label="Contact / Inquire">
             <i class="fa-solid fa-paper-plane"></i>
             <span>Inquire</span>
         </a>
-
     </nav>
 
 
@@ -1644,16 +1366,10 @@ document.addEventListener("DOMContentLoaded", () => {
             card.dataset.index = index;
 
             card.innerHTML = `
-                <div class="card-number">
-                    <span>${String(index + 1).padStart(2, "0")}</span>
-                    <i></i>
-                    <span>${String(filteredProducts.length).padStart(2, "0")}</span>
-                </div>
-
                 <button
                     class="collection-card-button"
                     type="button"
-                    aria-label="Open ${escapeHTML(product.title)}"
+                    aria-label="View Graphic Piece ${product.id}"
                 >
                     <div class="card-media">
 
@@ -1666,52 +1382,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             <img
                                 src="${product.thumbImg}"
-                                alt="${escapeHTML(product.title)}"
+                                alt="Poster ${product.id}"
                                 class="collection-product-image"
-                                loading="${index < 3 ? "eager" : "lazy"}"
+                                loading="${index < 4 ? "eager" : "lazy"}"
                                 draggable="false"
                             >
 
                             <div class="card-image-shade"></div>
 
                             <div class="card-image-overlay">
-                                <span class="card-view-label">
+                                <span class="card-view-label" aria-hidden="true">
                                     <i class="fa-solid fa-expand"></i>
-                                    VIEW PIECE
                                 </span>
                             </div>
 
                         </div>
 
-                        <div class="card-archive-label">
-                            <span>${product.badge}</span>
-                            <span>${categoryName(product.category)}</span>
-                        </div>
-
                     </div>
                 </button>
-
-                <div class="card-footer">
-
-                    <div class="card-footer-left">
-                        <span class="card-index">
-                            ${String(product.id)}
-                        </span>
-
-                        <span class="card-title">
-                            ${escapeHTML(product.title)}
-                        </span>
-                    </div>
-
-                    <div class="card-footer-right">
-                        <span>
-                            ${categoryName(product.category)}
-                        </span>
-
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </div>
-
-                </div>
             `;
 
             const image = card.querySelector("img");
@@ -1813,15 +1501,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function createGalleryStrip() {
 
-        const stage =
-            document.getElementById("modalMediaStage");
-
-        if (!stage) return;
-
         let strip =
             document.getElementById("atelierGalleryStrip");
 
         if (!strip) {
+            const container =
+                document.getElementById("modalBottomNav") ||
+                document.getElementById("modalMediaStage");
+
+            if (!container) return;
 
             strip =
                 document.createElement("div");
@@ -1832,9 +1520,15 @@ document.addEventListener("DOMContentLoaded", () => {
             strip.className =
                 "atelier-gallery-strip";
 
-            stage.appendChild(strip);
+            container.appendChild(strip);
         }
 
+        if (strip.dataset.categoryKey === activeCategory && strip.children.length === filteredProducts.length) {
+            updateActiveThumbnail();
+            return;
+        }
+
+        strip.dataset.categoryKey = activeCategory;
         strip.innerHTML = "";
 
         filteredProducts.forEach((product, index) => {
@@ -1852,14 +1546,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             button.setAttribute(
                 "aria-label",
-                `Open ${product.title}`
+                `Open piece ${product.id}`
             );
 
             button.innerHTML = `
-                <span class="gallery-thumb-number">
-                    ${String(index + 1).padStart(2, "0")}
-                </span>
-
                 <img
                     src="${product.thumbImg}"
                     alt=""
@@ -2783,6 +2473,14 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove(
         "atelier-gallery-open"
     );
+
+    const hash = window.location.hash;
+    if (hash && hash.startsWith("#product-")) {
+        const id = Number(hash.replace("#product-", ""));
+        if (id) {
+            openProductModal(id);
+        }
+    }
 
     console.log(
         `%cABDULLAH PSYCHOTIC%c — Atelier Collection loaded: ${products.length} works`,

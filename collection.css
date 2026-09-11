@@ -453,62 +453,11 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   CARD NUMBER
+   CARD NUMBER (HIDDEN - NO TEXT)
    ========================================================= */
 
 .card-number {
-    position: absolute;
-
-    top: 11px;
-    left: 11px;
-
-    z-index: 15;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding:
-        6px 8px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.13);
-
-    border-radius: 999px;
-
-    background:
-        rgba(0,0,0,.48);
-
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
-
-    color:
-        rgba(255,255,255,.72);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 7px;
-    font-weight: 600;
-
-    letter-spacing: .13em;
-}
-
-.card-number i {
-    display: block;
-
-    width: 10px;
-    height: 1px;
-
-    background:
-        rgba(200,169,107,.55);
+    display: none !important;
 }
 
 
@@ -657,17 +606,18 @@ body.atelier-gallery-open {
     display: inline-flex;
 
     align-items: center;
+    justify-content: center;
 
-    gap: 8px;
+    width: 38px;
+    height: 38px;
 
-    padding:
-        9px 13px;
+    padding: 0;
 
     border:
         1px solid
-        rgba(255,255,255,.23);
+        rgba(255,255,255,.25);
 
-    border-radius: 999px;
+    border-radius: 50%;
 
     background:
         rgba(0,0,0,.52);
@@ -681,14 +631,7 @@ body.atelier-gallery-open {
     color:
         white;
 
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 7px;
-    font-weight: 700;
-
-    letter-spacing: .14em;
+    font-size: 13px;
 }
 
 
@@ -763,163 +706,12 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   ARCHIVE LABEL
+   REMOVED TEXT: ARCHIVE LABEL & FOOTER (HIDDEN)
    ========================================================= */
 
-.card-archive-label {
-    position: absolute;
-
-    right: 10px;
-    bottom: 10px;
-
-    z-index: 12;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding:
-        5px 7px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.08);
-
-    border-radius: 999px;
-
-    background:
-        rgba(0,0,0,.45);
-
-    backdrop-filter:
-        blur(10px);
-
-    -webkit-backdrop-filter:
-        blur(10px);
-
-    color:
-        rgba(255,255,255,.62);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 6px;
-    font-weight: 600;
-
-    letter-spacing: .1em;
-
-    text-transform: uppercase;
-}
-
-.card-archive-label span:first-child {
-    color:
-        var(--collection-gold);
-}
-
-
-/* =========================================================
-   CARD FOOTER
-   ========================================================= */
-
+.card-archive-label,
 .card-footer {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: 46px;
-
-    padding:
-        0 12px;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
-
-    background:
-        rgba(255,255,255,.012);
-
-    gap: 8px;
-}
-
-.card-footer-left {
-    display: flex;
-
-    align-items: center;
-
-    min-width: 0;
-
-    gap: 8px;
-}
-
-.card-index {
-    flex: 0 0 auto;
-
-    color:
-        var(--collection-gold);
-
-    font-family:
-        "Cinzel",
-        serif;
-
-    font-size: 8px;
-}
-
-.card-title {
-    min-width: 0;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
-
-    color:
-        rgba(255,255,255,.74);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 7px;
-    font-weight: 600;
-
-    letter-spacing: .06em;
-
-    text-transform: uppercase;
-}
-
-.card-footer-right {
-    display: flex;
-
-    align-items: center;
-
-    flex: 0 0 auto;
-
-    gap: 7px;
-
-    color:
-        rgba(255,255,255,.28);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 6px;
-    font-weight: 600;
-
-    letter-spacing: .08em;
-
-    text-transform: uppercase;
-}
-
-.card-footer-right i {
-    color:
-        var(--collection-gold);
-
-    font-size: 8px;
+    display: none !important;
 }
 
 
@@ -1091,6 +883,7 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
+/* =========================================================
    MODAL HEADER
    ========================================================= */
 
@@ -1106,61 +899,18 @@ body.atelier-gallery-open {
     display: flex;
 
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     padding:
-        20px 26px;
+        18px 24px;
 
     pointer-events: none;
 }
 
-.modal-serial-badge {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    padding:
-        9px 13px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.14);
-
-    border-radius: 999px;
-
-    background:
-        rgba(0,0,0,.48);
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    color:
-        rgba(255,255,255,.55);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 8px;
-    font-weight: 600;
-
-    letter-spacing: .13em;
-}
-
-.modal-serial-badge strong {
-    color:
-        var(--collection-gold);
-
-    font-size: 11px;
-}
-
-.modal-header-actions {
-    pointer-events: auto;
+.modal-serial-badge,
+.modal-stage-badge,
+.gallery-thumb-number {
+    display: none !important;
 }
 
 
@@ -1174,48 +924,49 @@ body.atelier-gallery-open {
     align-items: center;
     justify-content: center;
 
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
 
     padding: 0;
 
-    border:
-        1px solid
-        rgba(255,255,255,.12);
+    border: none;
 
     border-radius: 50%;
 
     background:
-        rgba(0,0,0,.4);
+        rgba(0,0,0,.35);
 
     backdrop-filter:
-        blur(16px);
+        blur(12px);
 
     -webkit-backdrop-filter:
-        blur(16px);
+        blur(12px);
 
     color:
-        rgba(255,255,255,.86);
+        #ffffff;
 
-    font-size: 21px;
+    font-size: 24px;
 
     cursor: pointer;
+    pointer-events: auto;
 
     transition:
-        background .25s ease,
-        border-color .25s ease,
-        transform .25s ease;
+        transform .25s ease,
+        opacity .25s ease,
+        background .25s ease;
 }
 
 .modal-close-btn:hover {
-    transform:
-        rotate(90deg);
-
-    border-color:
-        rgba(200,169,107,.45);
+    transform: scale(1.12);
 
     background:
-        rgba(168,4,15,.22);
+        rgba(255,255,255,.18);
+}
+
+.modal-close-btn:focus,
+.modal-close-btn:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 
@@ -1249,6 +1000,7 @@ body.atelier-gallery-open {
     height: 100%;
 
     display: flex;
+    flex-direction: column;
 
     align-items: center;
     justify-content: center;
@@ -1256,8 +1008,8 @@ body.atelier-gallery-open {
     box-sizing: border-box;
 
     padding:
-        70px 70px
-        115px;
+        60px 16px
+        125px;
 
     overflow: hidden;
 
@@ -1265,8 +1017,9 @@ body.atelier-gallery-open {
         radial-gradient(
             ellipse at center,
             rgba(255,255,255,.035),
-            transparent 57%
-        );
+            transparent 65%
+        ),
+        #030303;
 }
 
 
@@ -1277,11 +1030,11 @@ body.atelier-gallery-open {
 .modal-image-wrap {
     position: relative;
 
-    width:
-        min(76vw, 1080px);
+    width: 100%;
+    max-width: 920px;
 
-    height:
-        min(76vh, 820px);
+    height: 100%;
+    max-height: calc(100vh - 190px);
 
     display: flex;
 
@@ -1290,14 +1043,13 @@ body.atelier-gallery-open {
 
     overflow: hidden;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
-    background:
-        rgba(0,0,0,.18);
+    background: transparent;
 
     box-shadow:
-        0 45px 120px
-        rgba(0,0,0,.7);
+        0 25px 80px
+        rgba(0,0,0,.8);
 }
 
 .modal-preview-img {
@@ -1307,6 +1059,8 @@ body.atelier-gallery-open {
     height: 100%;
 
     object-fit: contain;
+
+    border-radius: 8px;
 
     user-select: none;
 
@@ -1341,125 +1095,107 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   MODAL BADGE
+   BOTTOM NAVIGATION BAR
    ========================================================= */
 
-.modal-stage-badge {
+.modal-bottom-nav {
     position: absolute;
 
-    top: 82px;
-    left: 50%;
+    bottom: 20px;
+    left: 0;
+    right: 0;
 
-    transform:
-        translateX(-50%);
-
-    z-index: 20;
-
-    padding:
-        7px 12px;
-
-    border:
-        1px solid
-        rgba(200,169,107,.25);
-
-    border-radius: 999px;
-
-    background:
-        rgba(0,0,0,.45);
-
-    backdrop-filter:
-        blur(14px);
-
-    color:
-        var(--collection-gold);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 8px;
-    font-weight: 700;
-
-    letter-spacing: .17em;
-}
-
-
-/* =========================================================
-   MODAL ARROWS
-   ========================================================= */
-
-.modal-nav-arrow {
-    position: absolute;
-
-    top: 50%;
-
-    transform:
-        translateY(-50%);
-
-    z-index: 80;
+    z-index: 100;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    width: 54px;
-    height: 100px;
+    gap: 12px;
+
+    padding: 0 16px;
+
+    box-sizing: border-box;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PILL NAVIGATION ARROWS (< and >)
+   ========================================================= */
+
+.modal-nav-arrow {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+
+    pointer-events: auto;
+
+    flex: 0 0 44px;
+    width: 44px;
+    height: 84px;
 
     padding: 0;
 
     border:
         1px solid
-        rgba(255,255,255,.11);
+        rgba(255,255,255,.14);
 
-    border-radius: 16px;
+    border-radius: 999px;
 
     background:
-        rgba(0,0,0,.38);
+        rgba(18,18,18,.75);
 
     backdrop-filter:
-        blur(17px);
+        blur(18px);
 
     -webkit-backdrop-filter:
-        blur(17px);
+        blur(18px);
 
     color:
-        rgba(255,255,255,.75);
+        #ffffff;
 
-    font-size: 17px;
+    font-size: 16px;
 
     cursor: pointer;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,.5);
+
     transition:
-        width .25s ease,
-        background .25s ease,
-        border-color .25s ease,
-        color .25s ease;
+        all .25s ease;
 }
 
 .modal-nav-arrow:hover {
-    width: 61px;
+    background:
+        rgba(45,45,45,.85);
 
     border-color:
-        rgba(200,169,107,.42);
-
-    background:
-        rgba(168,4,15,.17);
+        rgba(255,255,255,.38);
 
     color:
-        white;
+        #ffffff;
+
+    transform:
+        scale(1.04);
+}
+
+.modal-nav-arrow:active {
+    transform: scale(.96);
 }
 
 .modal-nav-arrow:disabled {
     opacity: .35;
-}
-
-.modal-nav-arrow.nav-prev {
-    left: 18px;
-}
-
-.modal-nav-arrow.nav-next {
-    right: 18px;
+    pointer-events: none;
 }
 
 
@@ -1468,137 +1204,100 @@ body.atelier-gallery-open {
    ========================================================= */
 
 .atelier-gallery-strip {
-    position: absolute;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
 
-    left: 50%;
-    bottom: 22px;
-
-    transform:
-        translateX(-50%);
-
-    z-index: 100;
+    pointer-events: auto;
 
     display: flex;
-
     align-items: center;
 
-    width:
-        min(
-            calc(100vw - 180px),
-            1320px
-        );
+    gap: 10px;
 
-    height: 84px;
+    max-width:
+        min(calc(100vw - 140px), 820px);
 
-    padding: 8px;
+    height: 88px;
 
-    gap: 8px;
+    padding: 4px;
 
     overflow-x: auto;
     overflow-y: hidden;
 
-    border:
-        1px solid
-        rgba(255,255,255,.11);
+    scroll-behavior: smooth;
 
-    border-radius: 15px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
-    background:
-        rgba(5,5,5,.76);
-
-    backdrop-filter:
-        blur(24px)
-        saturate(130%);
-
-    -webkit-backdrop-filter:
-        blur(24px)
-        saturate(130%);
-
-    box-shadow:
-        0 20px 70px
-        rgba(0,0,0,.6);
-
-    scrollbar-width: thin;
-
-    scrollbar-color:
-        rgba(200,169,107,.5)
-        transparent;
+    box-sizing: border-box;
 }
 
 .atelier-gallery-strip::-webkit-scrollbar {
-    height: 3px;
-}
-
-.atelier-gallery-strip::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.atelier-gallery-strip::-webkit-scrollbar-thumb {
-    background:
-        rgba(200,169,107,.4);
-
-    border-radius: 999px;
+    display: none;
 }
 
 
 /* =========================================================
-   GALLERY THUMB
+   GALLERY THUMB (PORTRAIT POSTER)
    ========================================================= */
 
 .gallery-thumb {
     position: relative;
 
-    flex:
-        0 0 104px;
-
-    width: 104px;
-    height: 66px;
+    flex: 0 0 60px;
+    width: 60px;
+    height: 84px;
 
     padding: 0;
 
     overflow: hidden;
 
     border:
-        1px solid
-        rgba(255,255,255,.08);
+        2.5px solid transparent;
 
-    border-radius: 7px;
+    border-radius: 8px;
 
     background:
-        #080808;
+        #0a0a0a;
 
     cursor: pointer;
 
-    opacity: .58;
+    opacity: .65;
+
+    box-sizing: border-box;
 
     transition:
         opacity .25s ease,
         border-color .25s ease,
-        transform .25s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
 }
 
 .gallery-thumb:hover {
-    opacity: .9;
-
-    transform:
-        translateY(-2px);
-
-    border-color:
-        rgba(255,255,255,.25);
+    opacity: .88;
+    transform: scale(1.02);
 }
 
 .gallery-thumb.active {
     opacity: 1;
 
     border:
-        2px solid
-        var(--collection-gold);
+        2.5px solid
+        #ffffff;
+
+    border-radius: 8px;
 
     box-shadow:
-        0 0 0 2px
-        rgba(200,169,107,.1),
-        0 8px 25px
-        rgba(0,0,0,.5);
+        0 6px 20px
+        rgba(0,0,0,.7),
+        0 0 0 1px
+        rgba(255,255,255,.2);
+
+    transform:
+        scale(1.04);
 }
 
 .gallery-thumb img {
@@ -1609,49 +1308,19 @@ body.atelier-gallery-open {
 
     object-fit: cover;
 
+    border-radius: 5px;
+
     user-select: none;
 
     pointer-events: none;
 }
 
-.gallery-thumb-number {
-    position: absolute;
-
-    top: 4px;
-    left: 5px;
-
-    z-index: 3;
-
-    padding:
-        3px 5px;
-
-    border-radius: 4px;
-
-    background:
-        rgba(0,0,0,.65);
-
-    color:
-        rgba(255,255,255,.8);
-
-    font-family:
-        "Montserrat",
-        sans-serif;
-
-    font-size: 7px;
-    font-weight: 700;
-
-    letter-spacing: .08em;
-}
-
 
 /* =========================================================
-   HIDE OLD DETAILS
+   HIDE OLD DETAILS & HINTS
    ========================================================= */
 
-.modal-details-stage {
-    display: none !important;
-}
-
+.modal-details-stage,
 .modal-keyboard-hints {
     display: none !important;
 }
@@ -2123,88 +1792,92 @@ body.atelier-gallery-open {
 
     .modal-header-bar {
         padding:
-            14px 15px;
+            14px 16px;
+
+        justify-content: flex-end;
     }
 
     .modal-close-btn {
-        width: 43px;
-        height: 43px;
+        width: 42px;
+        height: 42px;
 
-        font-size: 18px;
-    }
+        font-size: 24px;
 
-    .modal-serial-badge {
-        font-size: 7px;
+        background: transparent;
+        border: none;
     }
 
     .modal-media-stage {
         padding:
-            70px 8px
-            105px;
+            60px 8px
+            115px;
     }
 
     .modal-image-wrap {
         width: 100%;
-        height: 72vh;
+        max-width: 100%;
 
-        border-radius: 3px;
+        height: 100%;
+        max-height: calc(100vh - 175px);
+        max-height: calc(100dvh - 175px);
+
+        border-radius: 6px;
     }
 
-    .modal-stage-badge {
-        top: 69px;
+    .modal-preview-img {
+        border-radius: 6px;
+    }
 
-        font-size: 7px;
+    .modal-bottom-nav {
+        bottom: 14px;
+
+        gap: 8px;
+
+        padding: 0 8px;
     }
 
     .modal-nav-arrow {
-        width: 43px;
-        height: 72px;
-
-        border-radius: 12px;
+        flex: 0 0 38px;
+        width: 38px;
+        height: 74px;
 
         font-size: 14px;
+
+        border-radius: 999px;
     }
 
     .modal-nav-arrow:hover {
-        width: 43px;
-    }
-
-    .modal-nav-arrow.nav-prev {
-        left: 8px;
-    }
-
-    .modal-nav-arrow.nav-next {
-        right: 8px;
+        width: 38px;
+        transform: none;
     }
 
     .atelier-gallery-strip {
-        left: 8px;
-        right: 8px;
+        height: 78px;
 
-        bottom: 9px;
+        max-width:
+            calc(100vw - 100px);
 
-        transform: none;
+        gap: 7px;
 
-        width: auto;
-
-        height: 67px;
-
-        padding: 6px;
-
-        gap: 6px;
-
-        border-radius: 11px;
+        padding: 2px;
     }
 
     .gallery-thumb {
-        flex-basis: 79px;
+        flex: 0 0 52px;
+        width: 52px;
+        height: 74px;
 
-        width: 79px;
-        height: 53px;
+        border-radius: 7px;
     }
 
-    .gallery-thumb-number {
-        font-size: 6px;
+    .gallery-thumb.active {
+        border:
+            2.5px solid
+            #ffffff;
+
+        border-radius: 7px;
+
+        transform: none;
     }
 
     .luxury-toast {
@@ -2481,111 +2154,97 @@ body.atelier-gallery-open {
 
     .modal-header-bar {
         padding:
-            11px 11px;
+            10px 12px;
+
+        justify-content: flex-end;
     }
 
     .modal-close-btn {
-        width: 39px;
-        height: 39px;
+        width: 38px;
+        height: 38px;
 
-        font-size: 16px;
-    }
+        font-size: 22px;
 
-    .modal-serial-badge {
-        gap: 6px;
-
-        padding:
-            7px 9px;
-
-        font-size: 6px;
-    }
-
-    .modal-serial-badge strong {
-        font-size: 9px;
+        background: transparent;
+        border: none;
     }
 
     .modal-media-stage {
         padding:
-            62px 5px
-            96px;
+            50px 6px
+            105px;
     }
 
     .modal-image-wrap {
         width: 100%;
+        max-width: 100%;
 
-        height: 67vh;
-    }
-
-    .modal-stage-badge {
-        top: 61px;
-
-        padding:
-            5px 8px;
-
-        font-size: 6px;
-    }
-
-    .modal-nav-arrow {
-        width: 37px;
-        height: 60px;
-
-        border-radius: 10px;
-
-        font-size: 12px;
-    }
-
-    .modal-nav-arrow:hover {
-        width: 37px;
-    }
-
-    .modal-nav-arrow.nav-prev {
-        left: 4px;
-    }
-
-    .modal-nav-arrow.nav-next {
-        right: 4px;
-    }
-
-    .atelier-gallery-strip {
-        left: 6px;
-        right: 6px;
-
-        bottom: 6px;
-
-        width: auto;
-
-        height: 59px;
-
-        padding: 5px;
-
-        gap: 5px;
-
-        border-radius: 9px;
-    }
-
-    .gallery-thumb {
-        flex-basis: 68px;
-
-        width: 68px;
-        height: 48px;
+        height: 100%;
+        max-height: calc(100vh - 160px);
+        max-height: calc(100dvh - 160px);
 
         border-radius: 6px;
     }
 
-    .gallery-thumb-number {
-        top: 3px;
-        left: 3px;
+    .modal-preview-img {
+        border-radius: 6px;
+    }
 
-        padding:
-            2px 4px;
+    .modal-bottom-nav {
+        bottom: 10px;
 
-        font-size: 5px;
+        gap: 7px;
+
+        padding: 0 6px;
+    }
+
+    .modal-nav-arrow {
+        flex: 0 0 36px;
+        width: 36px;
+        height: 72px;
+
+        border-radius: 999px;
+
+        font-size: 13px;
+    }
+
+    .modal-nav-arrow:hover {
+        width: 36px;
+        transform: none;
+    }
+
+    .atelier-gallery-strip {
+        height: 76px;
+
+        max-width:
+            calc(100vw - 94px);
+
+        gap: 6px;
+
+        padding: 2px;
+    }
+
+    .gallery-thumb {
+        flex: 0 0 50px;
+        width: 50px;
+        height: 72px;
+
+        border-radius: 7px;
+    }
+
+    .gallery-thumb.active {
+        border:
+            2.5px solid
+            #ffffff;
+
+        border-radius: 7px;
+
+        transform: none;
     }
 
     .luxury-toast {
         left: 9px;
         right: 9px;
-
         bottom: 82px;
 
         min-width: 0;
@@ -2640,19 +2299,60 @@ body.atelier-gallery-open {
         font-size: 5px;
     }
 
-    .card-archive-label {
-        display: none;
+    .modal-media-stage {
+        padding:
+            45px 4px
+            95px;
     }
 
     .modal-image-wrap {
-        height: 64vh;
+        width: 100%;
+        max-width: 100%;
+
+        height: 100%;
+        max-height: calc(100vh - 145px);
+        max-height: calc(100dvh - 145px);
+    }
+
+    .modal-bottom-nav {
+        bottom: 8px;
+
+        gap: 5px;
+
+        padding: 0 4px;
+    }
+
+    .modal-nav-arrow {
+        flex: 0 0 32px;
+        width: 32px;
+        height: 64px;
+
+        font-size: 12px;
+    }
+
+    .atelier-gallery-strip {
+        height: 68px;
+
+        max-width:
+            calc(100vw - 82px);
+
+        gap: 5px;
     }
 
     .gallery-thumb {
-        flex-basis: 62px;
+        flex: 0 0 44px;
+        width: 44px;
+        height: 64px;
 
-        width: 62px;
-        height: 44px;
+        border-radius: 6px;
+    }
+
+    .gallery-thumb.active {
+        border:
+            2px solid
+            #ffffff;
+
+        border-radius: 6px;
     }
 }
 

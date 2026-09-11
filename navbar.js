@@ -47,19 +47,24 @@
                 currentPage = 'service';
             } else if (path.includes('resume.html')) {
                 currentPage = 'resume';
+            } else if (path.includes('cart.html')) {
+                currentPage = 'cart';
             } else if (path.includes('privacy.html')) {
                 currentPage = 'privacy';
+            } else if (path.match(/\/(?:[1-9]|1[0-1])\.html/)) {
+                currentPage = 'drops';
             }
 
             // Desktop Nav
             document.querySelectorAll('.desktop-nav li, .desktop-nav a, .nav-menu a').forEach(el => {
                 const href = (el.getAttribute('href') || '').toLowerCase();
                 const isMatch = (
-                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './')) ||
+                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
                     (currentPage === 'collection' && href.includes('collection.html')) ||
                     (currentPage === 'about' && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
-                    (currentPage === 'resume' && href.includes('resume.html'))
+                    (currentPage === 'resume' && href.includes('resume.html')) ||
+                    (currentPage === 'drops' && href.includes('#shop'))
                 );
 
                 if (isMatch) {
@@ -78,11 +83,13 @@
             document.querySelectorAll('.mobile-nav-link, .menu-nav-links a').forEach(link => {
                 const href = (link.getAttribute('href') || '').toLowerCase();
                 const isMatch = (
-                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './')) ||
+                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
                     (currentPage === 'collection' && href.includes('collection.html')) ||
                     (currentPage === 'about' && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
-                    (currentPage === 'resume' && href.includes('resume.html'))
+                    (currentPage === 'resume' && href.includes('resume.html')) ||
+                    (currentPage === 'cart' && href.includes('cart.html')) ||
+                    (currentPage === 'drops' && href.includes('#shop'))
                 );
 
                 if (isMatch) {
@@ -94,13 +101,19 @@
             document.querySelectorAll('.mobile-bottom-dock .dock-item').forEach(item => {
                 const href = (item.getAttribute('href') || '').toLowerCase();
                 const isMatch = (
-                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './')) ||
+                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
                     (currentPage === 'collection' && href.includes('collection.html')) ||
-                    (currentPage === 'service' && href.includes('service.html'))
+                    (currentPage === 'drops' && (href.includes('#shop') || href.includes('drops'))) ||
+                    (currentPage === 'cart' && href.includes('cart.html')) ||
+                    (currentPage === 'service' && href.includes('service.html')) ||
+                    (currentPage === 'about' && href.includes('about.html')) ||
+                    (currentPage === 'resume' && (href.includes('resume.html') || href.includes('about.html')))
                 );
 
                 if (isMatch) {
                     item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
                 }
             });
         }
