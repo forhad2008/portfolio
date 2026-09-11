@@ -1,12 +1,14 @@
 /* =========================================================
    ABDULLAH PSYCHOTIC
    THE ATELIER COLLECTION
-   CLEAN IMAGE-ONLY EDITION
+   RESPONSIVE PRODUCT GRID
+   DESKTOP 4 | LAPTOP 4 | TABLET 3 | MOBILE 2
    ========================================================= */
 
 :root {
     --collection-bg: #030303;
     --collection-card: #080808;
+    --collection-panel: #0b0b0b;
 
     --collection-white: #f5f5f2;
     --collection-muted: rgba(245,245,242,.58);
@@ -16,6 +18,7 @@
     --collection-red-dark: #640008;
 
     --collection-gold: #c8a96b;
+    --collection-gold-soft: rgba(200,169,107,.42);
 
     --collection-border: rgba(255,255,255,.10);
     --collection-border-soft: rgba(255,255,255,.055);
@@ -25,7 +28,7 @@
 
 
 /* =========================================================
-   GLOBAL
+   BASE
    ========================================================= */
 
 html {
@@ -39,7 +42,7 @@ body {
         radial-gradient(
             circle at 50% 0%,
             rgba(168,4,15,.055),
-            transparent 38rem
+            transparent 36rem
         ),
         var(--collection-bg);
 
@@ -54,7 +57,7 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   MAIN COLLECTION CONTAINER
+   MAIN CONTAINER
    ========================================================= */
 
 .collection-container {
@@ -83,10 +86,7 @@ body.atelier-gallery-open {
 
 .hero-pill-badge {
     display: inline-flex;
-
     align-items: center;
-    justify-content: center;
-
     gap: 9px;
 
     padding:
@@ -112,7 +112,6 @@ body.atelier-gallery-open {
     font-weight: 600;
 
     letter-spacing: .18em;
-
     text-transform: uppercase;
 }
 
@@ -198,7 +197,7 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   FILTER BAR
+   FILTER / CONTROL BAR
    ========================================================= */
 
 .collection-controls-wrap {
@@ -289,7 +288,6 @@ body.atelier-gallery-open {
     display: inline-flex;
 
     align-items: center;
-    justify-content: center;
 
     gap: 7px;
 
@@ -326,7 +324,8 @@ body.atelier-gallery-open {
     transition:
         color .25s ease,
         border-color .25s ease,
-        background .25s ease;
+        background .25s ease,
+        transform .25s ease;
 }
 
 .filter-btn:hover,
@@ -342,7 +341,7 @@ body.atelier-gallery-open {
 
 .filter-btn.active,
 .size-btn.active {
-    color: white;
+    color: #fff;
 
     border-color:
         rgba(168,4,15,.6);
@@ -378,7 +377,7 @@ body.atelier-gallery-open {
 
 /* =========================================================
    MAIN PRODUCT GRID
-   DESKTOP — 4 PRODUCTS
+   DESKTOP = 4 COLUMNS
    ========================================================= */
 
 .collection-grid {
@@ -387,28 +386,27 @@ body.atelier-gallery-open {
     grid-template-columns:
         repeat(4, minmax(0, 1fr));
 
+    align-items: start;
+
+    gap:
+        18px;
+
     width: 100%;
 
     margin: 0;
     padding: 0;
-
-    gap: 18px;
-
-    align-items: start;
 }
 
 
 /* =========================================================
    PRODUCT CARD
-   IMAGE ONLY
    ========================================================= */
 
 .collection-card {
     position: relative;
 
-    display: block;
-
     width: 100%;
+
     min-width: 0;
 
     margin: 0;
@@ -416,47 +414,101 @@ body.atelier-gallery-open {
 
     overflow: hidden;
 
-    border: 0 !important;
+    border:
+        1px solid
+        rgba(255,255,255,.075);
 
     border-radius: 16px;
 
-    background: transparent !important;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.018),
+            rgba(255,255,255,.006)
+        );
 
-    box-shadow: none !important;
+    box-shadow:
+        0 22px 55px
+        rgba(0,0,0,.28);
 
     isolation: isolate;
 
-    cursor: zoom-in;
-
     transition:
-        transform .45s var(--collection-ease);
+        transform .45s var(--collection-ease),
+        border-color .4s ease,
+        box-shadow .45s ease;
 }
 
 .collection-card:hover {
     transform:
-        translateY(-4px);
+        translateY(-5px);
 
-    border: 0 !important;
+    border-color:
+        rgba(200,169,107,.26);
 
-    box-shadow: none !important;
+    box-shadow:
+        0 30px 75px
+        rgba(0,0,0,.46);
 }
 
 
 /* =========================================================
-   REMOVE ALL CARD TEXT / LABELS / DECORATIONS
+   CARD NUMBER
    ========================================================= */
 
-.collection-card .card-number,
-.collection-card .card-archive-label,
-.collection-card .card-image-overlay,
-.collection-card .card-footer,
-.collection-card .card-corner,
-.collection-card .card-title,
-.collection-card .card-index,
-.collection-card .card-footer-left,
-.collection-card .card-footer-right,
-.collection-card .card-view-label {
-    display: none !important;
+.card-number {
+    position: absolute;
+
+    top: 11px;
+    left: 11px;
+
+    z-index: 15;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding:
+        6px 8px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    border-radius: 999px;
+
+    background:
+        rgba(0,0,0,.48);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: .13em;
+}
+
+.card-number i {
+    display: block;
+
+    width: 10px;
+    height: 1px;
+
+    background:
+        rgba(200,169,107,.55);
 }
 
 
@@ -474,8 +526,6 @@ body.atelier-gallery-open {
 
     border: 0;
 
-    outline: 0;
-
     background: transparent;
 
     color: inherit;
@@ -487,26 +537,17 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   IMAGE AREA
+   CARD MEDIA
    ========================================================= */
 
 .card-media {
     position: relative;
 
-    display: block;
-
     width: 100%;
 
     aspect-ratio: 1 / 1;
 
-    margin: 0;
-    padding: 0;
-
     overflow: hidden;
-
-    border: 0;
-
-    border-radius: 16px;
 
     background:
         #070707;
@@ -522,32 +563,21 @@ body.atelier-gallery-open {
 
     inset: 0;
 
-    width: 100%;
-    height: 100%;
-
     overflow: hidden;
 
     background:
-        #070707;
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.045),
+            transparent 70%
+        );
 }
 
-
-/* =========================================================
-   PRODUCT IMAGE
-   ========================================================= */
-
 .collection-product-image {
-    display: block !important;
+    display: block;
 
-    width: 100% !important;
-    height: 100% !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    border: 0 !important;
-
-    outline: none;
+    width: 100%;
+    height: 100%;
 
     object-fit: cover;
 
@@ -556,29 +586,345 @@ body.atelier-gallery-open {
     -webkit-user-drag: none;
 
     transition:
-        transform .65s var(--collection-ease);
+        transform .7s var(--collection-ease),
+        filter .5s ease;
 }
 
 .collection-card:hover
 .collection-product-image {
     transform:
-        scale(1.025);
+        scale(1.035);
 
-    filter: none;
+    filter:
+        brightness(1.045)
+        contrast(1.025);
 }
 
 
 /* =========================================================
-   REMOVE IMAGE SHADE
+   IMAGE SHADE
    ========================================================= */
 
 .card-image-shade {
-    display: none !important;
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.08),
+            transparent 35%,
+            transparent 68%,
+            rgba(0,0,0,.45)
+        );
 }
 
 
 /* =========================================================
-   BROKEN IMAGE
+   IMAGE HOVER OVERLAY
+   ========================================================= */
+
+.card-image-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+
+    background:
+        rgba(0,0,0,.16);
+
+    transition:
+        opacity .35s ease;
+}
+
+.collection-card:hover
+.card-image-overlay {
+    opacity: 1;
+}
+
+.card-view-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding:
+        9px 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.23);
+
+    border-radius: 999px;
+
+    background:
+        rgba(0,0,0,.52);
+
+    backdrop-filter:
+        blur(13px);
+
+    -webkit-backdrop-filter:
+        blur(13px);
+
+    color:
+        white;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 7px;
+    font-weight: 700;
+
+    letter-spacing: .14em;
+}
+
+
+/* =========================================================
+   CORNER DECORATION
+   ========================================================= */
+
+.card-corner {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 19px;
+    height: 19px;
+
+    opacity: .62;
+
+    pointer-events: none;
+}
+
+.corner-tl {
+    top: 10px;
+    left: 10px;
+
+    border-top:
+        1px solid
+        rgba(200,169,107,.65);
+
+    border-left:
+        1px solid
+        rgba(200,169,107,.65);
+}
+
+.corner-tr {
+    top: 10px;
+    right: 10px;
+
+    border-top:
+        1px solid
+        rgba(200,169,107,.65);
+
+    border-right:
+        1px solid
+        rgba(200,169,107,.65);
+}
+
+.corner-bl {
+    bottom: 10px;
+    left: 10px;
+
+    border-bottom:
+        1px solid
+        rgba(200,169,107,.65);
+
+    border-left:
+        1px solid
+        rgba(200,169,107,.65);
+}
+
+.corner-br {
+    bottom: 10px;
+    right: 10px;
+
+    border-bottom:
+        1px solid
+        rgba(200,169,107,.65);
+
+    border-right:
+        1px solid
+        rgba(200,169,107,.65);
+}
+
+
+/* =========================================================
+   ARCHIVE LABEL
+   ========================================================= */
+
+.card-archive-label {
+    position: absolute;
+
+    right: 10px;
+    bottom: 10px;
+
+    z-index: 12;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding:
+        5px 7px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 999px;
+
+    background:
+        rgba(0,0,0,.45);
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    color:
+        rgba(255,255,255,.62);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 6px;
+    font-weight: 600;
+
+    letter-spacing: .1em;
+
+    text-transform: uppercase;
+}
+
+.card-archive-label span:first-child {
+    color:
+        var(--collection-gold);
+}
+
+
+/* =========================================================
+   CARD FOOTER
+   ========================================================= */
+
+.card-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 46px;
+
+    padding:
+        0 12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+
+    background:
+        rgba(255,255,255,.012);
+
+    gap: 8px;
+}
+
+.card-footer-left {
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 8px;
+}
+
+.card-index {
+    flex: 0 0 auto;
+
+    color:
+        var(--collection-gold);
+
+    font-family:
+        "Cinzel",
+        serif;
+
+    font-size: 8px;
+}
+
+.card-title {
+    min-width: 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color:
+        rgba(255,255,255,.74);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: .06em;
+
+    text-transform: uppercase;
+}
+
+.card-footer-right {
+    display: flex;
+
+    align-items: center;
+
+    flex: 0 0 auto;
+
+    gap: 7px;
+
+    color:
+        rgba(255,255,255,.28);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 6px;
+    font-weight: 600;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+}
+
+.card-footer-right i {
+    color:
+        var(--collection-gold);
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   MISSING IMAGE
    ========================================================= */
 
 .image-missing {
@@ -588,20 +934,35 @@ body.atelier-gallery-open {
     justify-content: center;
 
     background:
-        #070707;
+        radial-gradient(
+            circle,
+            rgba(168,4,15,.13),
+            transparent 65%
+        );
 }
 
 .collection-product-image.image-load-error {
-    display: none !important;
+    opacity: 0;
 }
 
 .image-error-label {
-    display: none !important;
+    position: absolute;
+
+    color:
+        rgba(255,255,255,.24);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: .12em;
 }
 
 
 /* =========================================================
-   EMPTY COLLECTION
+   EMPTY STATE
    ========================================================= */
 
 .collection-empty {
@@ -618,9 +979,6 @@ body.atelier-gallery-open {
         rgba(255,255,255,.07);
 
     border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.01);
 }
 
 .empty-symbol {
@@ -655,7 +1013,7 @@ body.atelier-gallery-open {
 
 /* =========================================================
    =========================================================
-   PRODUCT POPUP / FULLSCREEN IMAGE WINDOW
+   FULLSCREEN PRODUCT GALLERY
    =========================================================
    ========================================================= */
 
@@ -675,10 +1033,8 @@ body.atelier-gallery-open {
 
     border: 0;
 
-    outline: none;
-
     background:
-        #020202;
+        #030303;
 
     color: white;
 
@@ -698,7 +1054,13 @@ body.atelier-gallery-open {
 
 .atelier-modal::backdrop {
     background:
-        rgba(0,0,0,.94);
+        rgba(0,0,0,.9);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
 }
 
 
@@ -720,11 +1082,11 @@ body.atelier-gallery-open {
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(255,255,255,.025),
-            transparent 52%
+            circle at 50% 42%,
+            rgba(255,255,255,.035),
+            transparent 42%
         ),
-        #020202;
+        #030303;
 }
 
 
@@ -739,41 +1101,65 @@ body.atelier-gallery-open {
     left: 0;
     right: 0;
 
-    z-index: 500;
+    z-index: 100;
 
     display: flex;
 
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
 
     padding:
-        18px 22px;
+        20px 26px;
 
     pointer-events: none;
 }
 
-
-/* =========================================================
-   REMOVE POPUP SERIAL
-   ========================================================= */
-
 .modal-serial-badge {
-    display: none !important;
-}
-
-
-/* =========================================================
-   CLOSE AREA
-   ========================================================= */
-
-.modal-header-actions {
-    display: flex;
+    display: inline-flex;
 
     align-items: center;
-    justify-content: flex-end;
 
-    margin-left: auto;
+    gap: 9px;
 
+    padding:
+        9px 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 999px;
+
+    background:
+        rgba(0,0,0,.48);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: .13em;
+}
+
+.modal-serial-badge strong {
+    color:
+        var(--collection-gold);
+
+    font-size: 11px;
+}
+
+.modal-header-actions {
     pointer-events: auto;
 }
 
@@ -791,48 +1177,45 @@ body.atelier-gallery-open {
     width: 48px;
     height: 48px;
 
-    margin: 0;
     padding: 0;
 
     border:
         1px solid
-        rgba(255,255,255,.14);
+        rgba(255,255,255,.12);
 
     border-radius: 50%;
 
-    outline: none;
-
     background:
-        rgba(0,0,0,.5);
+        rgba(0,0,0,.4);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
 
     color:
-        rgba(255,255,255,.9);
+        rgba(255,255,255,.86);
 
     font-size: 21px;
 
     cursor: pointer;
 
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
     transition:
-        transform .25s ease,
         background .25s ease,
-        border-color .25s ease;
+        border-color .25s ease,
+        transform .25s ease;
 }
 
 .modal-close-btn:hover {
     transform:
         rotate(90deg);
 
-    background:
-        rgba(168,4,15,.2);
-
     border-color:
-        rgba(200,169,107,.4);
+        rgba(200,169,107,.45);
+
+    background:
+        rgba(168,4,15,.22);
 }
 
 
@@ -846,13 +1229,15 @@ body.atelier-gallery-open {
     width: 100%;
     height: 100%;
 
-    margin: 0;
+    display: block;
+
     padding: 0;
+    margin: 0;
 }
 
 
 /* =========================================================
-   IMAGE STAGE
+   MEDIA STAGE
    ========================================================= */
 
 .modal-media-stage {
@@ -868,11 +1253,11 @@ body.atelier-gallery-open {
     align-items: center;
     justify-content: center;
 
-    padding:
-        35px 75px
-        125px;
-
     box-sizing: border-box;
+
+    padding:
+        70px 70px
+        115px;
 
     overflow: hidden;
 
@@ -880,69 +1265,46 @@ body.atelier-gallery-open {
         radial-gradient(
             ellipse at center,
             rgba(255,255,255,.035),
-            transparent 62%
+            transparent 57%
         );
 }
 
 
 /* =========================================================
-   REMOVE POPUP BADGE
-   ========================================================= */
-
-.modal-stage-badge {
-    display: none !important;
-}
-
-
-/* =========================================================
-   IMAGE WRAPPER
+   MODAL IMAGE
    ========================================================= */
 
 .modal-image-wrap {
     position: relative;
 
     width:
-        min(88vw, 1350px);
+        min(76vw, 1080px);
 
     height:
-        min(87vh, 900px);
+        min(76vh, 820px);
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    margin: 0;
-    padding: 0;
-
     overflow: hidden;
 
-    border: 0;
+    border-radius: 6px;
 
-    border-radius: 0;
+    background:
+        rgba(0,0,0,.18);
 
-    background: transparent;
-
-    box-shadow: none;
+    box-shadow:
+        0 45px 120px
+        rgba(0,0,0,.7);
 }
 
-
-/* =========================================================
-   POPUP PRODUCT IMAGE
-   ========================================================= */
-
 .modal-preview-img {
-    display: block !important;
+    display: block;
 
-    width: 100% !important;
-    height: 100% !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    border: 0 !important;
-
-    outline: none;
+    width: 100%;
+    height: 100%;
 
     object-fit: contain;
 
@@ -951,14 +1313,9 @@ body.atelier-gallery-open {
     -webkit-user-drag: none;
 
     transition:
-        opacity .2s ease,
-        transform .25s ease;
+        opacity .22s ease,
+        transform .3s ease;
 }
-
-
-/* =========================================================
-   IMAGE CHANGE ANIMATION
-   ========================================================= */
 
 .gallery-image-changing {
     animation:
@@ -984,9 +1341,51 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   =========================================================
-   POPUP PREVIOUS / NEXT ARROWS
-   =========================================================
+   MODAL BADGE
+   ========================================================= */
+
+.modal-stage-badge {
+    position: absolute;
+
+    top: 82px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 20;
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(200,169,107,.25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(0,0,0,.45);
+
+    backdrop-filter:
+        blur(14px);
+
+    color:
+        var(--collection-gold);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: .17em;
+}
+
+
+/* =========================================================
+   MODAL ARROWS
    ========================================================= */
 
 .modal-nav-arrow {
@@ -997,42 +1396,39 @@ body.atelier-gallery-open {
     transform:
         translateY(-50%);
 
-    z-index: 700;
+    z-index: 80;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    width: 58px;
+    width: 54px;
     height: 100px;
 
-    margin: 0;
     padding: 0;
 
     border:
         1px solid
-        rgba(255,255,255,.13);
+        rgba(255,255,255,.11);
 
     border-radius: 16px;
 
-    outline: none;
-
     background:
-        rgba(0,0,0,.45);
+        rgba(0,0,0,.38);
+
+    backdrop-filter:
+        blur(17px);
+
+    -webkit-backdrop-filter:
+        blur(17px);
 
     color:
-        rgba(255,255,255,.78);
+        rgba(255,255,255,.75);
 
     font-size: 17px;
 
     cursor: pointer;
-
-    backdrop-filter:
-        blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
 
     transition:
         width .25s ease,
@@ -1042,67 +1438,45 @@ body.atelier-gallery-open {
 }
 
 .modal-nav-arrow:hover {
-    width: 66px;
-
-    background:
-        rgba(168,4,15,.2);
+    width: 61px;
 
     border-color:
         rgba(200,169,107,.42);
+
+    background:
+        rgba(168,4,15,.17);
 
     color:
         white;
 }
 
-.modal-nav-arrow:active {
-    transform:
-        translateY(-50%)
-        scale(.96);
-}
-
 .modal-nav-arrow:disabled {
-    opacity: .3;
-
-    pointer-events: none;
+    opacity: .35;
 }
 
 .modal-nav-arrow.nav-prev {
-    left: 17px;
+    left: 18px;
 }
 
 .modal-nav-arrow.nav-next {
-    right: 17px;
+    right: 18px;
 }
 
 
 /* =========================================================
-   REMOVE DETAILS SECTION COMPLETELY
-   ========================================================= */
-
-.modal-details-stage {
-    display: none !important;
-}
-
-.modal-keyboard-hints {
-    display: none !important;
-
-
-/* =========================================================
-   =========================================================
-   IMAGE THUMBNAIL STRIP
-   =========================================================
+   THUMBNAIL STRIP
    ========================================================= */
 
 .atelier-gallery-strip {
     position: absolute;
 
     left: 50%;
-    bottom: 18px;
+    bottom: 22px;
 
     transform:
         translateX(-50%);
 
-    z-index: 600;
+    z-index: 100;
 
     display: flex;
 
@@ -1111,12 +1485,12 @@ body.atelier-gallery-open {
     width:
         min(
             calc(100vw - 180px),
-            1380px
+            1320px
         );
 
-    height: 82px;
+    height: 84px;
 
-    padding: 7px;
+    padding: 8px;
 
     gap: 8px;
 
@@ -1125,12 +1499,12 @@ body.atelier-gallery-open {
 
     border:
         1px solid
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.11);
 
-    border-radius: 14px;
+    border-radius: 15px;
 
     background:
-        rgba(5,5,5,.78);
+        rgba(5,5,5,.76);
 
     backdrop-filter:
         blur(24px)
@@ -1142,7 +1516,7 @@ body.atelier-gallery-open {
 
     box-shadow:
         0 20px 70px
-        rgba(0,0,0,.65);
+        rgba(0,0,0,.6);
 
     scrollbar-width: thin;
 
@@ -1161,14 +1535,14 @@ body.atelier-gallery-open {
 
 .atelier-gallery-strip::-webkit-scrollbar-thumb {
     background:
-        rgba(200,169,107,.45);
+        rgba(200,169,107,.4);
 
     border-radius: 999px;
 }
 
 
 /* =========================================================
-   THUMBNAILS
+   GALLERY THUMB
    ========================================================= */
 
 .gallery-thumb {
@@ -1180,7 +1554,6 @@ body.atelier-gallery-open {
     width: 104px;
     height: 66px;
 
-    margin: 0;
     padding: 0;
 
     overflow: hidden;
@@ -1191,14 +1564,12 @@ body.atelier-gallery-open {
 
     border-radius: 7px;
 
-    outline: none;
-
     background:
         #080808;
 
     cursor: pointer;
 
-    opacity: .55;
+    opacity: .58;
 
     transition:
         opacity .25s ease,
@@ -1225,24 +1596,16 @@ body.atelier-gallery-open {
 
     box-shadow:
         0 0 0 2px
-        rgba(200,169,107,.1);
+        rgba(200,169,107,.1),
+        0 8px 25px
+        rgba(0,0,0,.5);
 }
-
-
-/* =========================================================
-   THUMB IMAGE
-   ========================================================= */
 
 .gallery-thumb img {
     display: block;
 
     width: 100%;
     height: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    border: 0;
 
     object-fit: cover;
 
@@ -1251,12 +1614,45 @@ body.atelier-gallery-open {
     pointer-events: none;
 }
 
+.gallery-thumb-number {
+    position: absolute;
+
+    top: 4px;
+    left: 5px;
+
+    z-index: 3;
+
+    padding:
+        3px 5px;
+
+    border-radius: 4px;
+
+    background:
+        rgba(0,0,0,.65);
+
+    color:
+        rgba(255,255,255,.8);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: 7px;
+    font-weight: 700;
+
+    letter-spacing: .08em;
+}
+
 
 /* =========================================================
-   REMOVE THUMBNAIL NUMBERS
+   HIDE OLD DETAILS
    ========================================================= */
 
-.gallery-thumb-number {
+.modal-details-stage {
+    display: none !important;
+}
+
+.modal-keyboard-hints {
     display: none !important;
 }
 
@@ -1368,8 +1764,10 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   DESKTOP
+   =========================================================
+   LARGE DESKTOP
    1500px+
+   =========================================================
    ========================================================= */
 
 @media (min-width: 1500px) {
@@ -1381,8 +1779,16 @@ body.atelier-gallery-open {
         gap: 22px;
     }
 
-    .card-media {
+    .collection-card {
         border-radius: 18px;
+    }
+
+    .card-media {
+        aspect-ratio: 1 / 1;
+    }
+
+    .card-footer {
+        min-height: 50px;
     }
 }
 
@@ -1390,7 +1796,7 @@ body.atelier-gallery-open {
 /* =========================================================
    LAPTOP
    1101px — 1499px
-   4 PRODUCTS
+   4 PRODUCTS PER ROW
    ========================================================= */
 
 @media (min-width: 1101px) and (max-width: 1499px) {
@@ -1410,16 +1816,31 @@ body.atelier-gallery-open {
         gap: 16px;
     }
 
-    .card-media {
+    .collection-card {
         border-radius: 14px;
+    }
+
+    .card-footer {
+        min-height: 45px;
+
+        padding:
+            0 10px;
+    }
+
+    .card-title {
+        font-size: 6.5px;
+    }
+
+    .card-footer-right {
+        font-size: 5.5px;
     }
 }
 
 
 /* =========================================================
-   TABLET
+   TABLET / SMALL LAPTOP
    769px — 1100px
-   3 PRODUCTS
+   3 PRODUCTS PER ROW
    ========================================================= */
 
 @media (min-width: 769px) and (max-width: 1100px) {
@@ -1448,8 +1869,53 @@ body.atelier-gallery-open {
         gap: 15px;
     }
 
-    .card-media {
+    .collection-card {
         border-radius: 13px;
+    }
+
+    .card-media {
+        aspect-ratio: 1 / 1;
+    }
+
+    .card-number {
+        top: 9px;
+        left: 9px;
+
+        padding:
+            5px 7px;
+
+        font-size: 6.5px;
+    }
+
+    .card-footer {
+        min-height: 44px;
+
+        padding:
+            0 9px;
+    }
+
+    .card-footer-left {
+        gap: 6px;
+    }
+
+    .card-title {
+        font-size: 6px;
+    }
+
+    .card-index {
+        font-size: 7px;
+    }
+
+    .card-footer-right span {
+        display: none;
+    }
+
+    .card-footer-right i {
+        font-size: 8px;
+    }
+
+    .card-archive-label {
+        font-size: 5.5px;
     }
 
     .collection-controls-wrap {
@@ -1483,48 +1949,13 @@ body.atelier-gallery-open {
     .size-btn {
         flex: 0 0 auto;
     }
-
-    /* Popup */
-
-    .modal-media-stage {
-        padding:
-            30px 65px
-            115px;
-    }
-
-    .modal-image-wrap {
-        width: 90vw;
-        height: 84vh;
-    }
-
-    .modal-nav-arrow {
-        width: 48px;
-        height: 85px;
-    }
-
-    .modal-nav-arrow:hover {
-        width: 48px;
-    }
-
-    .modal-nav-arrow.nav-prev {
-        left: 10px;
-    }
-
-    .modal-nav-arrow.nav-next {
-        right: 10px;
-    }
-
-    .atelier-gallery-strip {
-        width:
-            calc(100vw - 110px);
-    }
 }
 
 
 /* =========================================================
-   MOBILE TABLET
+   MOBILE
    481px — 768px
-   2 PRODUCTS
+   EXACTLY 2 PRODUCTS PER ROW
    ========================================================= */
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -1565,8 +1996,90 @@ body.atelier-gallery-open {
         gap: 12px;
     }
 
-    .card-media {
+    .collection-card {
         border-radius: 11px;
+    }
+
+    .card-media {
+        aspect-ratio: 1 / 1;
+    }
+
+    .card-number {
+        top: 7px;
+        left: 7px;
+
+        padding:
+            4px 6px;
+
+        font-size: 6px;
+
+        gap: 4px;
+    }
+
+    .card-number i {
+        width: 7px;
+    }
+
+    .card-corner {
+        width: 14px;
+        height: 14px;
+    }
+
+    .corner-tl {
+        top: 7px;
+        left: 7px;
+    }
+
+    .corner-tr {
+        top: 7px;
+        right: 7px;
+    }
+
+    .corner-bl {
+        bottom: 7px;
+        left: 7px;
+    }
+
+    .corner-br {
+        bottom: 7px;
+        right: 7px;
+    }
+
+    .card-archive-label {
+        right: 7px;
+        bottom: 7px;
+
+        padding:
+            4px 5px;
+
+        font-size: 5px;
+    }
+
+    .card-footer {
+        min-height: 39px;
+
+        padding:
+            0 7px;
+    }
+
+    .card-footer-left {
+        gap: 5px;
+    }
+
+    .card-index {
+        font-size: 6.5px;
+    }
+
+    .card-title {
+        font-size: 5.8px;
+    }
+
+    .card-footer-right span {
+        display: none;
+    }
+
+    .card-footer-right i {
+        font-size: 7px;
     }
 
     .collection-controls-wrap {
@@ -1606,11 +2119,11 @@ body.atelier-gallery-open {
     }
 
 
-    /* Popup */
+    /* Gallery mobile */
 
     .modal-header-bar {
         padding:
-            13px 14px;
+            14px 15px;
     }
 
     .modal-close-btn {
@@ -1620,68 +2133,83 @@ body.atelier-gallery-open {
         font-size: 18px;
     }
 
+    .modal-serial-badge {
+        font-size: 7px;
+    }
+
     .modal-media-stage {
         padding:
-            15px 50px
-            98px;
+            70px 8px
+            105px;
     }
 
     .modal-image-wrap {
         width: 100%;
-        height: 78vh;
+        height: 72vh;
+
+        border-radius: 3px;
+    }
+
+    .modal-stage-badge {
+        top: 69px;
+
+        font-size: 7px;
     }
 
     .modal-nav-arrow {
-        width: 42px;
+        width: 43px;
         height: 72px;
 
-        border-radius: 11px;
+        border-radius: 12px;
 
         font-size: 14px;
     }
 
     .modal-nav-arrow:hover {
-        width: 42px;
+        width: 43px;
     }
 
     .modal-nav-arrow.nav-prev {
-        left: 6px;
+        left: 8px;
     }
 
     .modal-nav-arrow.nav-next {
-        right: 6px;
+        right: 8px;
     }
 
     .atelier-gallery-strip {
-        left: 7px;
-        right: 7px;
+        left: 8px;
+        right: 8px;
 
-        bottom: 8px;
+        bottom: 9px;
 
         transform: none;
 
         width: auto;
 
-        height: 66px;
+        height: 67px;
 
         padding: 6px;
 
         gap: 6px;
 
-        border-radius: 10px;
+        border-radius: 11px;
     }
 
     .gallery-thumb {
-        flex-basis: 80px;
+        flex-basis: 79px;
 
-        width: 80px;
-        height: 52px;
+        width: 79px;
+        height: 53px;
+    }
+
+    .gallery-thumb-number {
+        font-size: 6px;
     }
 
     .luxury-toast {
         left: 12px;
         right: 12px;
-
         bottom: 88px;
 
         min-width: 0;
@@ -1690,9 +2218,9 @@ body.atelier-gallery-open {
 
 
 /* =========================================================
-   MOBILE
+   SMALL MOBILE
    480px AND BELOW
-   EXACTLY 2 PRODUCTS
+   EXACTLY 2 PRODUCTS PER ROW
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -1815,18 +2343,18 @@ body.atelier-gallery-open {
 
 
     /* -----------------------------------------
-       TWO PRODUCT COLUMNS
+       TWO COLUMN PRODUCT GRID
        ----------------------------------------- */
 
     .collection-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
 
-        gap: 8px;
+        gap: 9px;
     }
 
     .collection-card {
-        border-radius: 8px;
+        border-radius: 9px;
     }
 
     .collection-card:hover {
@@ -1836,18 +2364,124 @@ body.atelier-gallery-open {
 
     .card-media {
         aspect-ratio: 1 / 1;
-
-        border-radius: 8px;
     }
 
 
     /* -----------------------------------------
-       POPUP
+       CARD DECORATION
+       ----------------------------------------- */
+
+    .card-number {
+        top: 5px;
+        left: 5px;
+
+        padding:
+            3px 5px;
+
+        gap: 3px;
+
+        font-size: 5px;
+    }
+
+    .card-number i {
+        width: 6px;
+    }
+
+    .card-corner {
+        width: 11px;
+        height: 11px;
+    }
+
+    .corner-tl {
+        top: 5px;
+        left: 5px;
+    }
+
+    .corner-tr {
+        top: 5px;
+        right: 5px;
+    }
+
+    .corner-bl {
+        bottom: 5px;
+        left: 5px;
+    }
+
+    .corner-br {
+        bottom: 5px;
+        right: 5px;
+    }
+
+    .card-archive-label {
+        right: 5px;
+        bottom: 5px;
+
+        padding:
+            3px 4px;
+
+        gap: 3px;
+
+        font-size: 4px;
+    }
+
+
+    /* -----------------------------------------
+       CARD FOOTER
+       ----------------------------------------- */
+
+    .card-footer {
+        min-height: 34px;
+
+        padding:
+            0 6px;
+
+        gap: 4px;
+    }
+
+    .card-footer-left {
+        gap: 4px;
+    }
+
+    .card-index {
+        font-size: 5.5px;
+    }
+
+    .card-title {
+        max-width: 90px;
+
+        font-size: 5px;
+    }
+
+    .card-footer-right span {
+        display: none;
+    }
+
+    .card-footer-right i {
+        font-size: 6px;
+    }
+
+
+    /* -----------------------------------------
+       HOVER LABEL
+       ----------------------------------------- */
+
+    .card-view-label {
+        padding:
+            7px 9px;
+
+        gap: 5px;
+
+        font-size: 5.5px;
+    }
+
+
+    /* -----------------------------------------
+       GALLERY
        ----------------------------------------- */
 
     .modal-header-bar {
         padding:
-            10px 10px;
+            11px 11px;
     }
 
     .modal-close-btn {
@@ -1857,33 +2491,51 @@ body.atelier-gallery-open {
         font-size: 16px;
     }
 
+    .modal-serial-badge {
+        gap: 6px;
+
+        padding:
+            7px 9px;
+
+        font-size: 6px;
+    }
+
+    .modal-serial-badge strong {
+        font-size: 9px;
+    }
+
     .modal-media-stage {
         padding:
-            10px 42px
-            91px;
+            62px 5px
+            96px;
     }
 
     .modal-image-wrap {
         width: 100%;
 
-        height: 78vh;
+        height: 67vh;
     }
 
-    .modal-preview-img {
-        object-fit: contain !important;
+    .modal-stage-badge {
+        top: 61px;
+
+        padding:
+            5px 8px;
+
+        font-size: 6px;
     }
 
     .modal-nav-arrow {
-        width: 36px;
+        width: 37px;
         height: 60px;
 
-        border-radius: 9px;
+        border-radius: 10px;
 
         font-size: 12px;
     }
 
     .modal-nav-arrow:hover {
-        width: 36px;
+        width: 37px;
     }
 
     .modal-nav-arrow.nav-prev {
@@ -1894,44 +2546,41 @@ body.atelier-gallery-open {
         right: 4px;
     }
 
-
-    /* -----------------------------------------
-       THUMBNAIL BAR
-       ----------------------------------------- */
-
     .atelier-gallery-strip {
-        left: 5px;
-        right: 5px;
+        left: 6px;
+        right: 6px;
 
-        bottom: 5px;
-
-        transform: none;
+        bottom: 6px;
 
         width: auto;
 
-        height: 57px;
+        height: 59px;
 
         padding: 5px;
 
         gap: 5px;
 
-        border-radius: 8px;
+        border-radius: 9px;
     }
 
     .gallery-thumb {
-        flex:
-            0 0 66px;
+        flex-basis: 68px;
 
-        width: 66px;
-        height: 46px;
+        width: 68px;
+        height: 48px;
 
-        border-radius: 5px;
+        border-radius: 6px;
     }
 
+    .gallery-thumb-number {
+        top: 3px;
+        left: 3px;
 
-    /* -----------------------------------------
-       TOAST
-       ----------------------------------------- */
+        padding:
+            2px 4px;
+
+        font-size: 5px;
+    }
 
     .luxury-toast {
         left: 9px;
@@ -1942,7 +2591,7 @@ body.atelier-gallery-open {
         min-width: 0;
 
         padding:
-            10px 11px;
+            11px 12px;
     }
 
     .toast-content {
@@ -1962,10 +2611,7 @@ body.atelier-gallery-open {
 @media (max-width: 360px) {
 
     .collection-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 6px;
+        gap: 7px;
     }
 
     .collection-container {
@@ -1973,61 +2619,41 @@ body.atelier-gallery-open {
             calc(100% - 10px);
     }
 
-    .card-media {
-        border-radius: 7px;
+    .card-footer {
+        min-height: 31px;
+
+        padding:
+            0 5px;
     }
 
-    .modal-media-stage {
-        padding:
-            8px 38px
-            88px;
+    .card-title {
+        max-width: 74px;
+
+        font-size: 4.5px;
+    }
+
+    .card-index {
+        font-size: 5px;
+    }
+
+    .card-footer-right i {
+        font-size: 5px;
+    }
+
+    .card-archive-label {
+        display: none;
     }
 
     .modal-image-wrap {
-        height: 75vh;
-    }
-
-    .modal-nav-arrow {
-        width: 33px;
-        height: 55px;
-    }
-
-    .modal-nav-arrow:hover {
-        width: 33px;
-    }
-
-    .modal-nav-arrow.nav-prev {
-        left: 3px;
-    }
-
-    .modal-nav-arrow.nav-next {
-        right: 3px;
+        height: 64vh;
     }
 
     .gallery-thumb {
-        flex-basis: 60px;
+        flex-basis: 62px;
 
-        width: 60px;
-        height: 43px;
+        width: 62px;
+        height: 44px;
     }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
-.collection-card-button:focus-visible,
-.filter-btn:focus-visible,
-.size-btn:focus-visible,
-.modal-close-btn:focus-visible,
-.modal-nav-arrow:focus-visible,
-.gallery-thumb:focus-visible {
-    outline:
-        2px solid
-        var(--collection-gold);
-
-    outline-offset: 3px;
 }
 
 
@@ -2044,15 +2670,13 @@ body.atelier-gallery-open {
     *,
     *::before,
     *::after {
+        transition-duration:
+            .01ms !important;
+
         animation-duration:
             .01ms !important;
 
         animation-iteration-count:
             1 !important;
-
-        transition-duration:
-            .01ms !important;
     }
-
-}
 }
