@@ -2547,7 +2547,707 @@
                 scroll-behavior: auto !important;
             }
         }
-</style>
+
+        /* =========================================================
+           HAUTE TYPE FOUNDRY & SUPER PRESENTATION SUITE
+        ========================================================= */
+        .typography-foundry-section {
+            padding: 100px 5% 120px;
+            background: linear-gradient(180deg, rgba(6, 6, 6, 0.98) 0%, rgba(4, 4, 4, 1) 100%);
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .foundry-header {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 56px;
+        }
+
+        .foundry-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(133, 0, 9, 0.16);
+            border: 1px solid rgba(133, 0, 9, 0.4);
+            border-radius: 20px;
+            font-family: var(--font-subheading);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ff5e6c;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+        }
+
+        .foundry-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 3.8vw, 3.2rem);
+            color: #ffffff;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .foundry-title span {
+            background: linear-gradient(135deg, #ffffff 40%, #ff8a95 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .foundry-desc {
+            font-family: var(--font-body);
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.68;
+            font-weight: 300;
+        }
+
+        /* 3-Column Triple Stage Grid */
+        .foundry-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1320px;
+            margin: 0 auto 50px;
+        }
+
+        @media (max-width: 1024px) {
+            .foundry-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .foundry-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .typography-foundry-section {
+                padding: 70px 4% 90px;
+            }
+        }
+
+        /* Foundry Card with Window Morphism */
+        .foundry-card {
+            background: rgba(12, 12, 12, 0.88);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--morphism-window);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s ease,
+                        box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .foundry-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(193, 18, 31, 0.5);
+            box-shadow: var(--morphism-window-hover);
+        }
+
+        /* Visual Mockup Frame with Inner Shadow */
+        .foundry-visual-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background: #060606;
+            cursor: pointer;
+            box-shadow: var(--morphism-inner);
+        }
+
+        .foundry-visual-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+        }
+
+        .foundry-card:hover .foundry-visual-frame img {
+            transform: scale(1.08);
+        }
+
+        .foundry-card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 5px 12px;
+            background: linear-gradient(135deg, rgba(133, 0, 9, 0.95), rgba(74, 0, 5, 0.98));
+            color: #ffffff;
+            font-family: var(--font-subheading);
+            font-size: 8.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+
+        .foundry-zoom-indicator {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .foundry-visual-frame:hover .foundry-zoom-indicator {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Content Area */
+        .foundry-body {
+            padding: 24px 24px 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .foundry-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .foundry-kicker {
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-accent);
+        }
+
+        .foundry-format-pill {
+            font-size: 9px;
+            padding: 2px 7px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            color: var(--text-dim);
+            letter-spacing: 0.5px;
+        }
+
+        .foundry-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+
+        .foundry-card-desc {
+            font-family: var(--font-body);
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+            margin-bottom: 16px;
+            font-weight: 300;
+        }
+
+        .foundry-traits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .foundry-trait-item {
+            font-size: 11px;
+            color: #d1d5db;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .foundry-trait-item i {
+            color: #850009;
+            font-size: 10px;
+        }
+
+        /* Card Footer & Price */
+        .foundry-footer {
+            margin-top: auto;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .foundry-price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .foundry-price-val {
+            font-family: var(--font-subheading);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .foundry-price-note {
+            font-size: 9px;
+            color: var(--text-dim);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .foundry-btn-group {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 8px;
+        }
+
+        .foundry-buy-btn {
+            height: 42px;
+            padding: 0 14px;
+            background: #ffffff !important;
+            color: #050505 !important;
+            border: 1px solid rgba(255, 255, 255, 0.9) !important;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: var(--morphism-btn-light) !important;
+            transition: var(--transition-tactile);
+        }
+
+        .foundry-buy-btn:hover {
+            background: #850009 !important;
+            color: #ffffff !important;
+            border-color: #a3000b !important;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.8), inset 0 0 14px rgba(212, 55, 55, 0.5), 0 4px 18px rgba(133, 0, 9, 0.45) !important;
+            transform: translateY(-2px);
+        }
+
+        .foundry-buy-btn:active {
+            transform: translateY(1px) scale(0.985);
+            box-shadow: var(--morphism-drop-btn-active) !important;
+        }
+
+        .foundry-specimen-btn {
+            height: 42px;
+            padding: 0 12px;
+            background: rgba(255, 255, 255, 0.04) !important;
+            color: #e4e4e7 !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: var(--morphism-btn-dark) !important;
+            transition: var(--transition-tactile);
+        }
+
+        .foundry-specimen-btn:hover {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: var(--gold-accent) !important;
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: var(--morphism-drop-btn-hover) !important;
+        }
+
+        .foundry-specimen-btn:active {
+            transform: translateY(1px) scale(0.985);
+            box-shadow: var(--morphism-drop-btn-active) !important;
+        }
+
+        /* Interactive Type Tester Workbench */
+        .foundry-tester-workbench {
+            max-width: 1320px;
+            margin: 0 auto;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 16px;
+            padding: 34px 38px;
+            box-shadow: var(--morphism-window);
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .foundry-tester-workbench {
+                padding: 24px 18px;
+            }
+        }
+
+        .tester-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .tester-headline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-subheading);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .tester-headline i {
+            color: var(--gold-accent);
+        }
+
+        .tester-tabs {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tester-tab-btn {
+            padding: 7px 14px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-tactile);
+            box-shadow: var(--morphism-btn-dark);
+        }
+
+        .tester-tab-btn.active, .tester-tab-btn:hover {
+            background: #850009;
+            border-color: #a3000b;
+            color: #ffffff;
+            box-shadow: var(--morphism-drop-btn-hover);
+        }
+
+        .tester-input-wrap {
+            margin-bottom: 22px;
+        }
+
+        .tester-input-field {
+            width: 100%;
+            height: 52px;
+            background: #040404;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 8px;
+            padding: 0 18px;
+            color: #ffffff;
+            font-family: var(--font-body);
+            font-size: 15px;
+            box-shadow: var(--morphism-inner);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .tester-input-field:focus {
+            outline: none;
+            border-color: #850009;
+            box-shadow: var(--morphism-inner-accent);
+        }
+
+        /* Tester Display Board */
+        .tester-display-board {
+            background: #030303;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: var(--morphism-inner-deep);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tester-banner-preview {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 16px rgba(133, 0, 9, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 18px;
+            transition: transform 0.4s ease;
+        }
+
+        .tester-preview-text {
+            font-size: clamp(24px, 4vw, 46px);
+            color: #ffffff;
+            letter-spacing: 2px;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.15);
+            word-break: break-word;
+        }
+
+        .tester-preview-text.font-style-141 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
+        }
+
+        .tester-preview-text.font-style-142 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        .tester-preview-text.font-style-143 {
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 4px;
+        }
+
+        /* Bundle Box */
+        .tester-bundle-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: linear-gradient(135deg, rgba(22, 16, 12, 0.9), rgba(12, 8, 8, 0.95));
+            border: 1px solid rgba(212, 55, 55, 0.3);
+            border-radius: 12px;
+            padding: 18px 24px;
+            box-shadow: var(--morphism-inner-drop);
+        }
+
+        .bundle-text-group h4 {
+            font-family: var(--font-subheading);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .bundle-text-group p {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .bundle-buy-btn {
+            height: 44px;
+            padding: 0 22px;
+            background: #850009 !important;
+            color: #ffffff !important;
+            border: 1px solid #a3000b !important;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--morphism-btn-crimson) !important;
+            transition: var(--transition-tactile);
+        }
+
+        .bundle-buy-btn:hover {
+            background: #a3000b !important;
+            box-shadow: var(--morphism-drop-btn-hover) !important;
+            transform: translateY(-2px);
+        }
+
+        .bundle-buy-btn:active {
+            transform: translateY(1px) scale(0.985);
+            box-shadow: var(--morphism-drop-btn-active) !important;
+        }
+
+        /* Specimen Modal Window */
+        .font-specimen-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .font-specimen-modal.active {
+            display: flex;
+        }
+
+        .font-modal-container {
+            width: 100%;
+            max-width: 860px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            box-shadow: var(--morphism-window);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .font-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .font-modal-close-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: var(--transition-tactile);
+            box-shadow: var(--morphism-btn-dark);
+        }
+
+        .font-modal-close-btn:hover {
+            background: #850009;
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .font-modal-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .font-modal-preview-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--morphism-inner);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .font-modal-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .font-modal-grid-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .font-modal-grid-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .font-info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .font-info-item span:first-child {
+            font-size: 9px;
+            font-family: var(--font-body);
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 700;
+        }
+
+        .font-info-item span:last-child {
+            font-size: 11.5px;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .font-modal-footer {
+            padding: 18px 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
          
                                     
 </head>
@@ -2637,8 +3337,15 @@
                     </a>
                 </li>
                 <li class="mobile-nav-item">
+                    <a href="#fonts" class="mobile-nav-link">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">Bespoke Fonts</span>
+                        <span class="nav-desc">Haute Typography Suite ($3)</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
                     <a href="cart.html" class="mobile-nav-link">
-                        <span class="nav-num">03</span>
+                        <span class="nav-num">05</span>
                         <span class="nav-title">Shopping Bag</span>
                         <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
                     </a>
@@ -2792,6 +3499,7 @@
             <button class="filter-btn" data-filter="business-card">Business Cards</button>
             <button class="filter-btn" data-filter="logo">Luxury Logos</button>
             <button class="filter-btn" data-filter="wedding-card">Wedding Cards</button>
+            <button class="filter-btn" data-filter="font">Bespoke Fonts</button>
         </div>
         <div class="design-grid" id="designGrid">
             <article class="card" data-id="1" data-category="business-card">
@@ -3172,8 +3880,325 @@
                     </div>
                 </div>
             </article>
+
+            <!-- ================= FONT 141: ABDULLAH OLD ================= -->
+            <article class="card luxury-card" data-id="141" data-category="font">
+                <a href="#fonts" class="card-img-wrapper" onclick="openFontSpecimen(141); return false;">
+                    <span class="card-badge luxury-badge">EXCLUSIVE FONT</span>
+                    <img src="141.webp" alt="Abdullah Old Gothic Font" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Abdullah%20Old'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Bespoke Typeface</span>
+                        <h3 class="card-title">
+                            <a href="#fonts" onclick="openFontSpecimen(141); return false;">Abdullah Old</a>
+                        </h3>
+                        <p class="card-desc">Architectural gothic blackletter typeface featuring sharp terminals, deep medieval aesthetics, and high-impact editorial presence.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">OTF / TTF / WOFF2</span><span class="spec-tag">Full Latin Glyphs</span><span class="spec-tag">Commercial License</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$3</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 141)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ================= FONT 142: ABDULLAH OLD SIGNATURE ================= -->
+            <article class="card luxury-card" data-id="142" data-category="font">
+                <a href="#fonts" class="card-img-wrapper" onclick="openFontSpecimen(142); return false;">
+                    <span class="card-badge luxury-badge">SIGNATURE EDITION</span>
+                    <img src="142.webp" alt="Abdullah Old Signature Font" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Abdullah%20Old%20Signature'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Bespoke Typeface</span>
+                        <h3 class="card-title">
+                            <a href="#fonts" onclick="openFontSpecimen(142); return false;">Abdullah Old Signature</a>
+                        </h3>
+                        <p class="card-desc">Majestic calligraphic blackletter typeface fusing sweeping swashes with signature ornamental flourishes for luxury crests and branding.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">OTF / TTF / WOFF2</span><span class="spec-tag">Signature Ligatures</span><span class="spec-tag">Commercial License</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$3</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 142)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ================= FONT 143: ABDULLAH BUTTERFLY ================= -->
+            <article class="card luxury-card" data-id="143" data-category="font">
+                <a href="#fonts" class="card-img-wrapper" onclick="openFontSpecimen(143); return false;">
+                    <span class="card-badge luxury-badge">HAUTE FLOURISH</span>
+                    <img src="143.webp" alt="Abdullah Butterfly Font" width="600" height="413" loading="lazy" decoding="async" onerror="this.src='https://placehold.co/600x420/0a0a0a/d4af37?text=Abdullah%20Butterfly'">
+                </a>
+                <div class="card-content">
+                    <div>
+                        <span class="card-category-kicker">Bespoke Typeface</span>
+                        <h3 class="card-title">
+                            <a href="#fonts" onclick="openFontSpecimen(143); return false;">Abdullah Butterfly</a>
+                        </h3>
+                        <p class="card-desc">Delicate luxury display typeface adorned with intricate butterfly wings and botanical flourishes, tailored for haute couture and romantic editorial design.</p>
+                        <div class="card-specs">
+                            <span class="spec-tag">OTF / TTF / WOFF2</span><span class="spec-tag">Butterfly Wings</span><span class="spec-tag">Commercial License</span>
+                        </div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-wrap">
+                            <span class="price-label">ACQUISITION</span>
+                            <div class="price">$3</div>
+                        </div>
+                        <div class="card-cta-group">
+                            <button class="add-cart-btn" type="button" onclick="handleAddToCart(event, 143)" aria-label="Add to cart" title="Add to cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
     </section>
+
+    <!-- =======================================================
+         BESPOKE TYPE FOUNDRY · SUPER PRESENTATION SUITE
+    ======================================================= -->
+    <section class="typography-foundry-section" id="fonts">
+        <div class="foundry-header">
+            <div class="foundry-badge">
+                <i class="fa-solid fa-font"></i> Digital Type Foundry · 2026 Atelier
+            </div>
+            <h2 class="foundry-title">
+                The Haute <span>Typography Suite</span>
+            </h2>
+            <p class="foundry-desc">
+                Architectural gothic blackletter, majestic signature calligraphy, and delicate butterfly botanical flourishes. Engineered for luxury couture packaging, high-fashion editorial, and iconic digital branding. Acquirable as standalone commercial licenses at $3 each or as a complete foundry bundle.
+            </p>
+        </div>
+
+        <!-- 3-Column Triple Stage Showcase -->
+        <div class="foundry-grid">
+            <!-- Card 1: Abdullah Old -->
+            <div class="foundry-card">
+                <div class="foundry-visual-frame" onclick="openFontSpecimen(141)" title="Click to inspect specimen">
+                    <span class="foundry-card-badge">GOTHIC BLACKLETTER</span>
+                    <img src="141.webp" alt="Abdullah Old Gothic Typeface" loading="lazy" decoding="async">
+                    <div class="foundry-zoom-indicator">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                </div>
+                <div class="foundry-body">
+                    <div class="foundry-meta-row">
+                        <span class="foundry-kicker">Display Typeface</span>
+                        <span class="foundry-format-pill">OTF / TTF / WOFF2</span>
+                    </div>
+                    <h3 class="foundry-card-title">Abdullah Old</h3>
+                    <p class="foundry-card-desc">
+                        A dark medieval blackletter powerhouse built with razor-sharp terminals, angular structural geometry, and dramatic editorial gravity.
+                    </p>
+                    <ul class="foundry-traits-list">
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> High-contrast vertical fracture strokes</li>
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Full Latin uppercase & lowercase set</li>
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Commercial & web license included</li>
+                    </ul>
+                    <div class="foundry-footer">
+                        <div class="foundry-price-row">
+                            <span class="foundry-price-val">$3</span>
+                            <span class="foundry-price-note">Single Commercial License</span>
+                        </div>
+                        <div class="foundry-btn-group">
+                            <button class="foundry-buy-btn" type="button" onclick="handleAddToCart(event, 141)">
+                                <i class="fa-solid fa-cart-shopping"></i> Acquire — $3
+                            </button>
+                            <button class="foundry-specimen-btn" type="button" onclick="openFontSpecimen(141)">
+                                <i class="fa-solid fa-eye"></i> Specimen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Abdullah Old Signature -->
+            <div class="foundry-card">
+                <div class="foundry-visual-frame" onclick="openFontSpecimen(142)" title="Click to inspect specimen">
+                    <span class="foundry-card-badge">CALLIGRAPHIC SIGNATURE</span>
+                    <img src="142.webp" alt="Abdullah Old Signature Typeface" loading="lazy" decoding="async">
+                    <div class="foundry-zoom-indicator">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                </div>
+                <div class="foundry-body">
+                    <div class="foundry-meta-row">
+                        <span class="foundry-kicker">Display Typeface</span>
+                        <span class="foundry-format-pill">OTF / TTF / WOFF2</span>
+                    </div>
+                    <h3 class="foundry-card-title">Abdullah Old Signature</h3>
+                    <p class="foundry-card-desc">
+                        Majestic calligraphic blackletter typeface fusing sweeping swashes with signature ornamental flourishes for luxury crests and branding.
+                    </p>
+                    <ul class="foundry-traits-list">
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Ornate extended signature ligatures</li>
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Heraldic monolith presence & balance</li>
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Commercial & web license included</li>
+                    </ul>
+                    <div class="foundry-footer">
+                        <div class="foundry-price-row">
+                            <span class="foundry-price-val">$3</span>
+                            <span class="foundry-price-note">Single Commercial License</span>
+                        </div>
+                        <div class="foundry-btn-group">
+                            <button class="foundry-buy-btn" type="button" onclick="handleAddToCart(event, 142)">
+                                <i class="fa-solid fa-cart-shopping"></i> Acquire — $3
+                            </button>
+                            <button class="foundry-specimen-btn" type="button" onclick="openFontSpecimen(142)">
+                                <i class="fa-solid fa-eye"></i> Specimen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Abdullah Butterfly -->
+            <div class="foundry-card">
+                <div class="foundry-visual-frame" onclick="openFontSpecimen(143)" title="Click to inspect specimen">
+                    <span class="foundry-card-badge">BOTANICAL FLOURISH</span>
+                    <img src="143.webp" alt="Abdullah Butterfly Typeface" loading="lazy" decoding="async">
+                    <div class="foundry-zoom-indicator">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                </div>
+                <div class="foundry-body">
+                    <div class="foundry-meta-row">
+                        <span class="foundry-kicker">Display Typeface</span>
+                        <span class="foundry-format-pill">OTF / TTF / WOFF2</span>
+                    </div>
+                    <h3 class="foundry-card-title">Abdullah Butterfly</h3>
+                    <p class="foundry-card-desc">
+                        Delicate luxury display typeface adorned with intricate butterfly wings and botanical flourishes, tailored for couture and romantic design.
+                    </p>
+                    <ul class="foundry-traits-list">
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Handcrafted butterfly wing letter accents</li>
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Poetic romantic typography hierarchy</li>
+                        <li class="foundry-trait-item"><i class="fa-solid fa-check"></i> Commercial & web license included</li>
+                    </ul>
+                    <div class="foundry-footer">
+                        <div class="foundry-price-row">
+                            <span class="foundry-price-val">$3</span>
+                            <span class="foundry-price-note">Single Commercial License</span>
+                        </div>
+                        <div class="foundry-btn-group">
+                            <button class="foundry-buy-btn" type="button" onclick="handleAddToCart(event, 143)">
+                                <i class="fa-solid fa-cart-shopping"></i> Acquire — $3
+                            </button>
+                            <button class="foundry-specimen-btn" type="button" onclick="openFontSpecimen(143)">
+                                <i class="fa-solid fa-eye"></i> Specimen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Live Type Tester Workbench -->
+        <div class="foundry-tester-workbench">
+            <div class="tester-top-bar">
+                <div class="tester-headline">
+                    <i class="fa-solid fa-sliders"></i> Interactive Type Tester & Specimen Workbench
+                </div>
+                <div class="tester-tabs">
+                    <button class="tester-tab-btn active" data-font="141" type="button" onclick="setTesterFont(141)">Abdullah Old</button>
+                    <button class="tester-tab-btn" data-font="142" type="button" onclick="setTesterFont(142)">Abdullah Old Signature</button>
+                    <button class="tester-tab-btn" data-font="143" type="button" onclick="setTesterFont(143)">Abdullah Butterfly</button>
+                </div>
+            </div>
+
+            <div class="tester-input-wrap">
+                <input type="text" id="typeTesterInput" class="tester-input-field" placeholder="Type your brand name or phrase to preview..." value="ABDULLAH FORHAD" oninput="updateTesterDisplay()">
+            </div>
+
+            <div class="tester-display-board">
+                <img id="typeTesterBanner" class="tester-banner-preview" src="141.webp" alt="Selected Font Specimen Banner">
+                <div id="typeTesterPreview" class="tester-preview-text font-style-141">ABDULLAH FORHAD</div>
+            </div>
+
+            <div class="tester-bundle-bar">
+                <div class="bundle-text-group">
+                    <h4><i class="fa-solid fa-layer-group" style="color: #ff5e6c; margin-right: 6px;"></i> Complete 3-Typeface Foundry Suite</h4>
+                    <p>Acquire all three signature typefaces (Abdullah Old, Signature & Butterfly) in one unified commercial license.</p>
+                </div>
+                <button class="bundle-buy-btn" type="button" onclick="addFontBundleToCart(event)">
+                    <i class="fa-solid fa-bag-shopping"></i> Acquire All 3 Fonts — $9
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Font Specimen Modal -->
+    <div class="font-specimen-modal" id="fontSpecimenModal" aria-modal="true" role="dialog" aria-label="Font Specimen Modal">
+        <div class="font-modal-container">
+            <div class="font-modal-header">
+                <div>
+                    <span id="fontModalBadge" class="foundry-card-badge" style="position: static; margin-bottom: 6px; display: inline-block;">EXCLUSIVE FONT</span>
+                    <h3 id="fontModalTitle" style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin: 4px 0 0;">Abdullah Old</h3>
+                    <span id="fontModalCategory" style="font-size: 11px; color: var(--gold-accent); letter-spacing: 1.5px; text-transform: uppercase;">Gothic Blackletter</span>
+                </div>
+                <button class="font-modal-close-btn" type="button" onclick="closeFontSpecimen()" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="font-modal-body">
+                <div class="font-modal-preview-box">
+                    <img id="fontModalImg" src="141.webp" alt="Font Specimen Banner">
+                </div>
+                <p id="fontModalDesc" style="font-family: var(--font-body); font-size: 0.95rem; color: #d4d4d8; line-height: 1.6; margin: 0;">
+                    Font description details.
+                </p>
+                <div class="font-modal-grid-info">
+                    <div class="font-info-item">
+                        <span>Best Applications</span>
+                        <span id="fontModalBestFor">Luxury Streetwear · Dark Editorial</span>
+                    </div>
+                    <div class="font-info-item">
+                        <span>Included File Formats</span>
+                        <span id="fontModalFormats">OTF, TTF, WOFF, WOFF2</span>
+                    </div>
+                    <div class="font-info-item">
+                        <span>Glyph Roster</span>
+                        <span id="fontModalGlyphs">Full Latin Uppercase, Lowercase, Numerals & Punctuation</span>
+                    </div>
+                    <div class="font-info-item">
+                        <span>License Rights</span>
+                        <span id="fontModalLicense">Commercial & Personal Unlimited Royalty-Free</span>
+                    </div>
+                </div>
+            </div>
+            <div class="font-modal-footer">
+                <div>
+                    <span style="font-size: 9px; color: var(--text-dim); letter-spacing: 1.5px; text-transform: uppercase; display: block;">License Price</span>
+                    <strong id="fontModalPrice" style="font-family: var(--font-subheading); font-size: 1.6rem; color: #ffffff;">$3</strong>
+                </div>
+                <button id="fontModalAddBtn" class="foundry-buy-btn" type="button" style="height: 44px; padding: 0 24px;">
+                    <i class="fa-solid fa-cart-shopping"></i> Add to Shopping Bag ($3)
+                </button>
+            </div>
+        </div>
+    </div>
 
     <section class="contact-section" id="contact">
         <div class="section-header">
@@ -3633,7 +4658,7 @@
                 },
 
                 {
-                    id: 13,
+                    id: 17,
                     category: "wedding-card",
                     categoryLabel: "Wedding & Celebration",
                     title: "Royal Crimson & Gold Wedding Suite",
@@ -3645,6 +4670,48 @@
                     badge: "CEREMONIAL",
                     isLuxury: true,
                     specs: ["Print Ready CMYK", "Digital RSVP", "Foil Map"]
+                },
+                {
+                    id: 141,
+                    category: "font",
+                    categoryLabel: "Bespoke Typeface",
+                    title: "Abdullah Old",
+                    subtitle: "Gothic Blackletter · Digital Edition",
+                    desc: "Architectural gothic blackletter typeface featuring sharp terminals, deep medieval aesthetics, and high-impact editorial presence.",
+                    img: "141.webp",
+                    detailUrl: "#fonts",
+                    price: 3,
+                    badge: "EXCLUSIVE FONT",
+                    isLuxury: true,
+                    specs: ["OTF / TTF / WOFF2", "Full Latin Glyphs", "Commercial License"]
+                },
+                {
+                    id: 142,
+                    category: "font",
+                    categoryLabel: "Bespoke Typeface",
+                    title: "Abdullah Old Signature",
+                    subtitle: "Calligraphic Blackletter · Monolith Edition",
+                    desc: "Majestic calligraphic blackletter typeface fusing sweeping swashes with signature ornamental flourishes for luxury crests and branding.",
+                    img: "142.webp",
+                    detailUrl: "#fonts",
+                    price: 3,
+                    badge: "SIGNATURE EDITION",
+                    isLuxury: true,
+                    specs: ["OTF / TTF / WOFF2", "Signature Ligatures", "Commercial License"]
+                },
+                {
+                    id: 143,
+                    category: "font",
+                    categoryLabel: "Bespoke Typeface",
+                    title: "Abdullah Butterfly",
+                    subtitle: "Haute Flourish · Ornamental Edition",
+                    desc: "Delicate luxury display typeface adorned with intricate butterfly wings and botanical flourishes, tailored for haute couture and romantic editorial design.",
+                    img: "143.webp",
+                    detailUrl: "#fonts",
+                    price: 3,
+                    badge: "HAUTE FLOURISH",
+                    isLuxury: true,
+                    specs: ["OTF / TTF / WOFF2", "Butterfly Wings", "Commercial License"]
                 }
             ];
 
@@ -3652,8 +4719,12 @@
                 { slug: "all", label: "All Exclusive Works" },
                 { slug: "business-card", label: "Business Cards" },
                 { slug: "logo", label: "Luxury Logos" },
-                { slug: "wedding-card", label: "Wedding Cards" }
+                { slug: "wedding-card", label: "Wedding Cards" },
+                { slug: "font", label: "Bespoke Fonts" }
             ];
+
+            window.projectData = projectData;
+            window.filterCategories = filterCategories;
 
             let currentFilter = 'all';
 
@@ -3683,10 +4754,10 @@
             window.handleAddToCart = function(event, productId) {
                 if (event) event.stopPropagation();
 
-                const product = projectData.find(p => p.id === productId);
+                const product = projectData.find(p => p.id === productId || (productId === 17 && p.id === 13) || (productId === 13 && p.id === 17));
                 if (!product) return;
 
-                const defaultSize = "Standard Edition";
+                const defaultSize = product.category === 'font' ? "Commercial License" : "Standard Edition";
                 const cartKey = `${product.id}-${defaultSize}`;
                 let cart = getCart();
 
@@ -3703,7 +4774,7 @@
                         size: defaultSize,
                         cartKey: cartKey,
                         qty: 1,
-                        badge: product.categoryLabel || "Bespoke Atelier"
+                        badge: product.categoryLabel || "Bespoke Typeface"
                     });
                     saveCart(cart);
                     showToast(`Added "${product.title}" to your Shopping Bag!`, true);
@@ -3722,6 +4793,177 @@
                 }
 
                 // Open the sleek slide-out cart drawer smoothly
+                setTimeout(() => {
+                    openCartDrawer();
+                }, 220);
+            };
+
+            /* =========================================================
+               HAUTE TYPE FOUNDRY DATA & SUPER PRESENTATION WORKBENCH
+            ========================================================= */
+            const fontSpecimenData = {
+                141: {
+                    id: 141,
+                    title: "Abdullah Old",
+                    category: "Gothic Blackletter / Dark Medieval Display",
+                    price: 3,
+                    img: "141.webp",
+                    badge: "EXCLUSIVE FONT",
+                    desc: "Architectural gothic blackletter typeface featuring sharp terminals, deep medieval aesthetics, and high-impact editorial presence. Engineered with precision geometric fracture strokes, high vertical contrast, and dramatic sharp flourishes.",
+                    bestFor: "Luxury Streetwear · Dark Aesthetic Editorial · Album Covers · High-Fashion Lookbooks",
+                    formats: "OTF, TTF, WOFF, WOFF2 (Desktop & WebFont Included)",
+                    glyphs: "Full A-Z Latin Capitals, Lowercase, Numerals 0-9, Standard Punctuation & Symbols",
+                    license: "Full Commercial & Personal Royalty-Free Worldwide License"
+                },
+                142: {
+                    id: 142,
+                    title: "Abdullah Old Signature",
+                    category: "Calligraphic Blackletter / Royal Monolith Edition",
+                    price: 3,
+                    img: "142.webp",
+                    badge: "SIGNATURE EDITION",
+                    desc: "Majestic calligraphic blackletter typeface fusing sweeping swashes with signature ornamental flourishes for luxury crests and branding. Features fluid pen angle transitions that bridge traditional illuminated manuscript mastery with modern editorial swagger.",
+                    bestFor: "Royal Monograms · High-End Packaging · Cinematic Title Cards · Signature Emblems",
+                    formats: "OTF, TTF, WOFF, WOFF2 (Desktop & WebFont Included)",
+                    glyphs: "Full Extended Latin Capitals, Lowercase, Dynamic Swash Ligatures, Numerals & Punctuation",
+                    license: "Full Commercial & Personal Royalty-Free Worldwide License"
+                },
+                143: {
+                    id: 143,
+                    title: "Abdullah Butterfly",
+                    category: "Haute Flourish / Botanical Serif Display",
+                    price: 3,
+                    img: "143.webp",
+                    badge: "HAUTE FLOURISH",
+                    desc: "Delicate luxury display typeface adorned with intricate butterfly wings and botanical flourishes, tailored for haute couture and romantic editorial design. Every glyph is individually crafted with wing venation details and floral tendril terminals.",
+                    bestFor: "Haute Couture · Fragrance & Beauty Packaging · Wedding Invitations · Romantic Luxury",
+                    formats: "OTF, TTF, WOFF, WOFF2 (Desktop & WebFont Included)",
+                    glyphs: "Full Decorative Display Caps, Stylistic Alternates, Butterfly Ligatures, Numerals & Symbols",
+                    license: "Full Commercial & Personal Royalty-Free Worldwide License"
+                }
+            };
+
+            window.openFontSpecimen = function(fontId) {
+                const data = fontSpecimenData[fontId];
+                if (!data) return;
+
+                const modal = document.getElementById('fontSpecimenModal');
+                if (!modal) return;
+
+                const img = document.getElementById('fontModalImg');
+                if (img) {
+                    img.src = data.img;
+                    img.alt = data.title;
+                }
+                const badge = document.getElementById('fontModalBadge');
+                if (badge) badge.textContent = data.badge;
+                const title = document.getElementById('fontModalTitle');
+                if (title) title.textContent = data.title;
+                const cat = document.getElementById('fontModalCategory');
+                if (cat) cat.textContent = data.category;
+                const desc = document.getElementById('fontModalDesc');
+                if (desc) desc.textContent = data.desc;
+                const bestFor = document.getElementById('fontModalBestFor');
+                if (bestFor) bestFor.textContent = data.bestFor;
+                const formats = document.getElementById('fontModalFormats');
+                if (formats) formats.textContent = data.formats;
+                const glyphs = document.getElementById('fontModalGlyphs');
+                if (glyphs) glyphs.textContent = data.glyphs;
+                const license = document.getElementById('fontModalLicense');
+                if (license) license.textContent = data.license;
+                const price = document.getElementById('fontModalPrice');
+                if (price) price.textContent = `$${data.price}`;
+
+                const addBtn = document.getElementById('fontModalAddBtn');
+                if (addBtn) {
+                    addBtn.onclick = function(e) {
+                        handleAddToCart(e, data.id);
+                        closeFontSpecimen();
+                    };
+                }
+
+                modal.classList.add('active');
+                document.body.classList.add('no-scroll');
+            };
+
+            window.closeFontSpecimen = function() {
+                const modal = document.getElementById('fontSpecimenModal');
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            };
+
+            // Interactive Type Tester
+            window.activeTesterFont = 141;
+            window.setTesterFont = function(fontId) {
+                window.activeTesterFont = fontId;
+                document.querySelectorAll('.tester-tab-btn').forEach(b => {
+                    b.classList.toggle('active', Number(b.dataset.font) === fontId);
+                });
+                updateTesterDisplay();
+            };
+
+            window.updateTesterDisplay = function() {
+                const input = document.getElementById('typeTesterInput');
+                const display = document.getElementById('typeTesterPreview');
+                const banner = document.getElementById('typeTesterBanner');
+                const data = fontSpecimenData[window.activeTesterFont || 141];
+                if (!data) return;
+
+                if (banner) banner.src = data.img;
+                if (display && input) {
+                    const text = input.value.trim() || 'ABDULLAH FORHAD';
+                    display.textContent = text;
+                    display.className = `tester-preview-text font-style-${window.activeTesterFont}`;
+                }
+            };
+
+            window.addFontBundleToCart = function(event) {
+                if (event) event.stopPropagation();
+                const fontIds = [141, 142, 143];
+                let cart = getCart();
+                let addedCount = 0;
+
+                fontIds.forEach(id => {
+                    const product = projectData.find(p => p.id === id);
+                    if (!product) return;
+                    const defaultSize = "Commercial License";
+                    const cartKey = `${product.id}-${defaultSize}`;
+                    const existingItem = cart.find(i => (i.id === product.id && (i.size === defaultSize || !i.size)) || i.cartKey === cartKey);
+                    if (!existingItem) {
+                        cart.push({
+                            id: product.id,
+                            name: product.title,
+                            image: product.img,
+                            price: Number(product.price),
+                            size: defaultSize,
+                            cartKey: cartKey,
+                            qty: 1,
+                            badge: "Bespoke Typeface"
+                        });
+                        addedCount++;
+                    }
+                });
+
+                if (addedCount > 0) {
+                    saveCart(cart);
+                    showToast(`Added Complete 3-Font Foundry Suite (${addedCount} fonts) to your bag!`, true);
+                } else {
+                    showToast(`All 3 Foundry Typefaces are already in your Shopping Bag!`, true);
+                }
+
+                const badge = document.getElementById('cart-count');
+                if (badge) {
+                    badge.classList.add('pop');
+                    setTimeout(() => badge.classList.remove('pop'), 350);
+                }
+                const dockBadge = document.getElementById('dock-cart-count');
+                if (dockBadge) {
+                    dockBadge.classList.add('pop');
+                    setTimeout(() => dockBadge.classList.remove('pop'), 350);
+                }
+
                 setTimeout(() => {
                     openCartDrawer();
                 }, 220);
@@ -3983,11 +5225,12 @@
                 }).join('');
             }
 
-            // ESC Key Handler (Closes Drawer or Mobile Menu)
+            // ESC Key Handler (Closes Drawer, Mobile Menu, or Specimen Modal)
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeMobileMenuWindow();
                     closeCartDrawer();
+                    closeFontSpecimen();
                 }
             });
 
