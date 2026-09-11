@@ -82,6 +82,11 @@
             --morphism-drop-btn-hover: inset 0 2px 4px rgba(255, 255, 255, 0.25), inset 0 -2px 6px rgba(0, 0, 0, 0.8), inset 0 0 16px rgba(193, 18, 31, 0.45), 6px 6px 20px rgba(0, 0, 0, 0.85), -3px -3px 10px rgba(255, 255, 255, 0.05);
             --morphism-drop-btn-active: inset 4px 4px 8px rgba(0, 0, 0, 0.95), inset -2px -2px 6px rgba(255, 255, 255, 0.06), inset 0 0 14px rgba(0, 0, 0, 0.85);
 
+            /* Normal Button Inner Morphism Tokens (Tactile Sculpted Inset + Drop Elevation) */
+            --morphism-btn-light: inset 3px 3px 6px rgba(0, 0, 0, 0.30), inset 1px 1px 2px rgba(0, 0, 0, 0.22), inset -3px -3px 6px rgba(255, 255, 255, 0.95), inset -1px -1px 2px rgba(255, 255, 255, 0.90), 0 8px 22px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.40);
+            --morphism-btn-dark: inset 3px 3px 7px rgba(0, 0, 0, 0.92), inset 1px 1px 2px rgba(0, 0, 0, 0.98), inset -2px -2px 6px rgba(255, 255, 255, 0.16), inset -1px -1px 2px rgba(255, 255, 255, 0.22), inset 0 0 12px rgba(0, 0, 0, 0.70), 0 6px 18px rgba(0, 0, 0, 0.75), 0 2px 5px rgba(0, 0, 0, 0.50);
+            --morphism-btn-crimson: inset 3px 3px 7px rgba(0, 0, 0, 0.80), inset 1px 1px 2px rgba(0, 0, 0, 0.90), inset -3px -3px 7px rgba(255, 255, 255, 0.28), inset -1px -1px 2px rgba(255, 255, 255, 0.35), inset 0 0 14px rgba(74, 0, 5, 0.60), 0 6px 18px rgba(133, 0, 9, 0.45), 0 2px 6px rgba(0, 0, 0, 0.50);
+
             --shadow-morphism-window: var(--morphism-window);
             --shadow-morphism-card: var(--morphism-inner-drop);
             --shadow-morphism-card-hover: var(--morphism-window-hover);
@@ -805,7 +810,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            box-shadow: var(--morphism-drop-btn);
+            box-shadow: var(--morphism-btn-light);
         }
 
         .btn:hover {
@@ -822,12 +827,12 @@
         }
 
         .btn-secondary {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.02);
             color: var(--text-primary);
             border-color: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            box-shadow: var(--morphism-drop-btn);
+            box-shadow: var(--morphism-btn-dark);
         }
 
         .btn-secondary:hover {
@@ -1238,7 +1243,7 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+            box-shadow: var(--morphism-btn-light) !important;
         }
 
         .add-cart-btn:hover {
@@ -1250,8 +1255,8 @@
         }
 
         .add-cart-btn:active {
-            transform: translateY(1px);
-            box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.95), inset 0 -1px 2px rgba(255, 255, 255, 0.1) !important;
+            transform: translateY(1px) scale(0.985);
+            box-shadow: var(--morphism-drop-btn-active) !important;
         }
 
         .card-detail-btn {
@@ -1259,13 +1264,14 @@
             height: 36px;
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
             display: inline-flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             font-size: 12px;
+            box-shadow: var(--morphism-btn-dark);
             transition: var(--transition-tactile);
         }
 
@@ -1273,8 +1279,13 @@
             color: #ffffff;
             background: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.6);
+            box-shadow: var(--morphism-drop-btn-hover);
             transform: translateY(-2px);
+        }
+
+        .card-detail-btn:active {
+            transform: translateY(1px) scale(0.985);
+            box-shadow: var(--morphism-drop-btn-active) !important;
         }
 
         /* --- CONTACT SECTION (Haute Couture Noir Atelier Palette) --- */
@@ -1429,7 +1440,7 @@
             justify-content: center;
             gap: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 16px rgba(255, 255, 255, 0.12);
+            box-shadow: var(--morphism-btn-light) !important;
             transition: var(--transition-tactile);
             box-sizing: border-box;
         }
@@ -1443,8 +1454,8 @@
         }
 
         #submitFormBtn:active {
-            transform: translateY(1px);
-            box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.95), inset 0 -1px 2px rgba(255, 255, 255, 0.1) !important;
+            transform: translateY(1px) scale(0.985);
+            box-shadow: var(--morphism-drop-btn-active) !important;
         }
 
         .form-status {
@@ -2298,16 +2309,19 @@
           font-weight: 700;
           letter-spacing: 1.2px;
           cursor: pointer;
+          box-shadow: var(--morphism-btn-crimson) !important;
           transition: background .25s ease, opacity .25s ease, box-shadow .25s ease, transform .2s ease;
         }
 
         .newsletter-form button:hover {
           background: #780000;
-          box-shadow: var(--shadow-morphism-btn-hover);
+          box-shadow: var(--morphism-drop-btn-hover) !important;
+          transform: translateY(-1px);
         }
 
         .newsletter-form button:active {
-          box-shadow: var(--shadow-morphism-btn-active);
+          box-shadow: var(--morphism-drop-btn-active) !important;
+          transform: translateY(1px) scale(0.985);
         }
 
         .newsletter-form button:disabled {
