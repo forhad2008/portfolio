@@ -191,15 +191,138 @@
             }
         }, { passive: true });
 
-        // 4. Cart Button Behavior
+        // 4. Cart Drawer Controller (Universal across pages)
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartOverlay = document.getElementById('cart-overlay');
+        const cartCloseBtn = document.getElementById('cart-close-btn');
+        const cartContinueBtn = document.getElementById('cart-continue-btn');
+
+        function getCartData() {
+            try {
+                const stored = localStorage.getItem('ap_user_cart');
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveCartData(cart) {
+            localStorage.setItem('ap_user_cart', JSON.stringify(cart));
+            updateCartBadges();
+            renderDrawerItems();
+            window.dispatchEvent(new Event('cartUpdated'));
+        }
+
+        function renderDrawerItems() {
+            const container = document.getElementById('cart-items-container');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            if (!container) return;
+
+            const cart = getCartData();
+            const subtotal = cart.reduce((sum, item) => sum + (Number(item.price || 0) * (item.qty || 1)), 0);
+            if (subtotalEl) {
+                subtotalEl.textContent = `$${subtotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            }
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty-state">
+                        <i class="fa-solid fa-bag-shopping cart-empty-icon"></i>
+                        <h4>Your Bag is Empty</h4>
+                        <p>Explore our bespoke identity collections and add an exclusive piece to start.</p>
+                        <a href="index.html#shop" class="btn btn-secondary" onclick="if(window.closeCartDrawer)window.closeCartDrawer();">Explore Collections</a>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="cart-drawer-item">
+                    <img src="${item.image || item.img || 'logo.png'}" alt="${item.name || 'Artwork'}" onerror="this.src='logo.png'">
+                    <div class="cart-drawer-item-details">
+                        <span class="cart-drawer-item-badge">${item.badge || 'Bespoke Item'}</span>
+                        <div class="cart-drawer-item-title">${item.name || 'Graphic Piece'}</div>
+                        <span class="cart-drawer-item-size">Edition: ${item.size || 'Standard'}</span>
+                        <div class="cart-drawer-item-bottom">
+                            <div class="cart-drawer-item-price">$${Number(item.price || 0).toLocaleString()}</div>
+                            <div class="cart-qty-ctrls">
+                                <button class="cart-qty-btn" type="button" aria-label="Decrease quantity" onclick="changeCartDrawerQty(${Number(item.id)}, '${item.size || 'Standard Edition'}', -1)">-</button>
+                                <span class="cart-qty-num">${item.qty || 1}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="cart-drawer-item-remove" type="button" aria-label="Remove item" onclick="removeCartDrawerItem(${Number(item.id)}, '${item.size || 'Standard Edition'}')">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        window.changeCartDrawerQty = function(id, size, delta) {
+            let cart = getCartData();
+            const item = cart.find(i => i.id === id && (i.size === size || (!i.size && size === "Standard Edition")));
+            if (!item) return;
+            item.qty = (item.qty || 1) + delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i !== item);
+            }
+            saveCartData(cart);
+        };
+
+        window.removeCartDrawerItem = function(id, size) {
+            let cart = getCartData();
+            cart = cart.filter(i => !(i.id === id && (i.size === size || (!i.size && size === "Standard Edition"))));
+            saveCartData(cart);
+        };
+
+        function openCartDrawer() {
+            closeDrawer();
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            if (drawer) {
+                drawer.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+                document.body.classList.add('cart-drawer-open', 'no-scroll');
+                renderDrawerItems();
+                updateCartBadges();
+            }
+        }
+
+        function closeCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            if (drawer) {
+                drawer.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
+                document.body.classList.remove('cart-drawer-open', 'no-scroll');
+            }
+        }
+
+        if (!window.openCartDrawer) window.openCartDrawer = openCartDrawer;
+        if (!window.closeCartDrawer) window.closeCartDrawer = closeCartDrawer;
+
         if (cartBtn) {
             cartBtn.addEventListener('click', (e) => {
-                if (typeof window.openCartDrawer === 'function') {
+                if (document.getElementById('cart-drawer')) {
                     e.preventDefault();
                     window.openCartDrawer();
                 }
             });
         }
+
+        const dockCartBtn = document.getElementById('dock-cart-btn') || document.querySelector('.dock-cart-btn');
+        if (dockCartBtn) {
+            dockCartBtn.addEventListener('click', (e) => {
+                if (document.getElementById('cart-drawer')) {
+                    e.preventDefault();
+                    window.openCartDrawer();
+                }
+            });
+        }
+
+        if (cartCloseBtn) cartCloseBtn.addEventListener('click', window.closeCartDrawer);
+        if (cartContinueBtn) cartContinueBtn.addEventListener('click', window.closeCartDrawer);
+        if (cartOverlay) cartOverlay.addEventListener('click', window.closeCartDrawer);
 
         // 5. Synchronize All Cart Counters Across Document
         function updateCartBadges() {

@@ -45,6 +45,7 @@
     ========================================================== -->
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="collection.css">
+    <script src="navbar.js" defer></script>
 </head>
 
 <body>
@@ -95,11 +96,12 @@
 
         <div class="nav-actions">
 
-            <!-- Shopping Bag -->
-            <a
-                href="cart.html"
+            <!-- Shopping Bag Trigger -->
+            <button
+                type="button"
                 class="cart-icon-btn"
                 id="cart-icon-btn"
+                onclick="if(typeof openCartDrawer==='function')openCartDrawer();"
                 aria-label="Shopping Bag"
             >
 
@@ -118,7 +120,7 @@
                     id="cart-count"
                 >0</span>
 
-            </a>
+            </button>
 
             <!-- Mobile Hamburger -->
             <div
@@ -491,6 +493,46 @@
 
     </div>
 
+    <!-- =========================================================
+         SLIDE-OUT LUXURY SHOPPING CART DRAWER
+    ========================================================== -->
+    <div class="cart-overlay" id="cart-overlay" onclick="if(window.closeCartDrawer)window.closeCartDrawer();"></div>
+
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Bag Drawer">
+        <div class="cart-drawer-header">
+            <div class="cart-drawer-title">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>SHOPPING BAG</span>
+            </div>
+            <button class="cart-drawer-close" id="cart-close-btn" type="button" aria-label="Close Cart" onclick="if(window.closeCartDrawer)window.closeCartDrawer();">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-items-container">
+            <!-- Dynamic Cart Items Populated via JS -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="cart-drawer-subtotal">
+                <span>ORDER SUBTOTAL</span>
+                <strong id="cart-subtotal">$0.00</strong>
+            </div>
+            <p class="cart-shipping-note">
+                <i class="fa-solid fa-shield-halved"></i> Verified Checkout · Instant Dispatch & Digital Delivery
+            </p>
+            <div class="cart-drawer-actions">
+                <a href="cart.html" class="btn-checkout">
+                    <span>PROCEED TO SECURE CHECKOUT</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button class="btn-continue" id="cart-continue-btn" type="button" onclick="if(window.closeCartDrawer)window.closeCartDrawer();">
+                    ← Continue Exploring Collections
+                </button>
+            </div>
+        </div>
+    </aside>
+
 
     <!-- =========================================================
          MAIN COLLECTION
@@ -671,18 +713,44 @@
                 >
 
                     <span class="filter-label">
-
-                        <i class="fa-solid fa-table-cells-large"></i>
-
-                        View:
-
+                        <i class="fa-solid fa-shapes"></i>
+                        Style:
                     </span>
 
                     <button
                         class="size-btn active"
-                        data-size="all"
+                        data-size="bento"
+                        title="Curated Editorial Masonry Layout"
                     >
-                        All Works
+                        <i class="fa-solid fa-table-cells"></i>
+                        <span>Dynamic Bento</span>
+                    </button>
+
+                    <button
+                        class="size-btn"
+                        data-size="portrait"
+                        title="3:4 Exhibition Poster Format"
+                    >
+                        <i class="fa-solid fa-image"></i>
+                        <span>Poster (3:4)</span>
+                    </button>
+
+                    <button
+                        class="size-btn"
+                        data-size="square"
+                        title="1:1 Catalog Grid"
+                    >
+                        <i class="fa-solid fa-square"></i>
+                        <span>Square (1:1)</span>
+                    </button>
+
+                    <button
+                        class="size-btn"
+                        data-size="landscape"
+                        title="16:10 Cinematic Landscape Format"
+                    >
+                        <i class="fa-solid fa-film"></i>
+                        <span>Landscape</span>
                     </button>
 
                 </div>
@@ -719,47 +787,105 @@
         id="atelierModal"
         class="atelier-modal"
         aria-modal="true"
-        aria-label="Product Inspection Window"
+        aria-label="Atelier Graphic Inspection Window"
     >
 
         <div class="modal-inner-wrapper">
 
+            <!-- Ambient Atmospheric Glow Backdrop -->
+            <div class="modal-ambient-glow" id="modalAmbientGlow" aria-hidden="true"></div>
 
             <!-- =================================================
-                 MODAL HEADER
+                 CREATIVE HUD HEADER
             ================================================== -->
-            <div class="modal-header-bar">
+            <header class="modal-hud-header" aria-label="Inspection Controls">
 
-                <button
-                    class="modal-close-btn"
-                    id="modalCloseBtn"
-                    type="button"
-                    aria-label="Close modal window"
-                >
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
+                <div class="modal-hud-brand">
+                    <span class="hud-monogram">AP</span>
+                    <div class="hud-brand-text">
+                        <span class="hud-brand-name">Abdullah Psychotic</span>
+                        <span class="hud-brand-kicker">Graphic Archive · 2026</span>
+                    </div>
+                </div>
 
-            </div>
+                <div class="modal-hud-counter" id="modalCounterHud">
+                    <span class="hud-counter-kicker">PIECE</span>
+                    <span class="hud-counter-num" id="modalSerialIndex">01</span>
+                    <span class="hud-counter-sep">/</span>
+                    <span class="hud-counter-total" id="modalSerialTotal">43</span>
+                </div>
+
+                <div class="modal-hud-actions">
+
+                    <button
+                        class="modal-hud-btn"
+                        id="modalZoomBtn"
+                        type="button"
+                        aria-label="Toggle Magnification Zoom"
+                        title="Toggle Zoom (or double-click artwork)"
+                    >
+                        <i class="fa-solid fa-magnifying-glass-plus" id="modalZoomIcon"></i>
+                        <span class="hud-btn-hint">ZOOM</span>
+                    </button>
+
+                    <button
+                        class="modal-hud-btn modal-close-btn"
+                        id="modalCloseBtn"
+                        type="button"
+                        aria-label="Close inspection window"
+                        title="Close Window (ESC)"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                        <span class="hud-btn-hint">ESC</span>
+                    </button>
+
+                </div>
+
+            </header>
 
 
             <!-- =================================================
-                 MODAL BODY
+                 MODAL BODY & MEDIA STAGE
             ================================================== -->
             <div class="modal-grid-body">
 
-                <!-- =============================================
-                     IMAGE / MEDIA
-                ============================================== -->
+                <!-- Floating Desktop Navigation Arrows -->
+                <button
+                    class="stage-nav-arrow stage-prev"
+                    id="stagePrevBtn"
+                    type="button"
+                    aria-label="Previous Graphic Piece"
+                    title="Previous Piece (Left Arrow)"
+                >
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <button
+                    class="stage-nav-arrow stage-next"
+                    id="stageNextBtn"
+                    type="button"
+                    aria-label="Next Graphic Piece"
+                    title="Next Piece (Right Arrow)"
+                >
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <!-- Centered Interactive Media Stage -->
                 <div
                     class="modal-media-stage"
                     id="modalMediaStage"
                 >
 
-                    <div class="modal-image-wrap">
+                    <div class="modal-image-wrap" id="modalImageWrap">
+
+                        <div class="modal-corner corner-tl"></div>
+                        <div class="modal-corner corner-tr"></div>
+                        <div class="modal-corner corner-bl"></div>
+                        <div class="modal-corner corner-br"></div>
 
                         <img
                             src="170.webp"
-                            alt="Product Preview"
+                            alt="Artwork Preview"
                             id="modalPreviewImg"
                             class="modal-preview-img"
                             loading="eager"
@@ -769,7 +895,7 @@
                     </div>
 
                     <!-- =========================================
-                         BOTTOM NAVIGATION CONTROLS
+                         BOTTOM GALLERY CAROUSEL CONTROLS
                     ========================================== -->
                     <div class="modal-bottom-nav" id="modalBottomNav">
 
@@ -853,13 +979,13 @@
             <i class="fa-solid fa-gem"></i>
             <span>Drops</span>
         </a>
-        <a href="cart.html" class="dock-item dock-cart-btn" id="dock-cart-btn" aria-label="Shopping Bag">
+        <button type="button" class="dock-item dock-cart-btn" id="dock-cart-btn" onclick="if(typeof openCartDrawer==='function')openCartDrawer();" aria-label="Shopping Bag">
             <div class="dock-icon-wrap">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span class="dock-badge" id="dock-cart-count">0</span>
             </div>
             <span>Bag</span>
-        </a>
+        </button>
         <a href="service.html" class="dock-item" id="dock-item-service" aria-label="Services">
             <i class="fa-solid fa-wand-magic-sparkles"></i>
             <span>Services</span>
@@ -1276,6 +1402,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalNextBtn =
         document.getElementById("modalNextBtn");
 
+    const stagePrevBtn =
+        document.getElementById("stagePrevBtn");
+
+    const stageNextBtn =
+        document.getElementById("stageNextBtn");
+
+    const modalZoomBtn =
+        document.getElementById("modalZoomBtn");
+
+    const modalZoomIcon =
+        document.getElementById("modalZoomIcon");
+
+    const modalImageWrap =
+        document.getElementById("modalImageWrap");
+
     const statsTotal =
         document.getElementById("statsTotal");
 
@@ -1283,15 +1424,63 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("count-all");
 
     /* =========================================================
-       STATE
+       STATE & ZOOM CONTROLLER
        ========================================================= */
 
     let activeCategory = "all";
+    let activeSizeStyle = "bento";
     let activeProductId = null;
     let filteredProducts = [...products];
+    let isZoomed = false;
 
     let touchStartX = 0;
     let touchStartY = 0;
+
+    function setZoomState(zoomed) {
+        isZoomed = Boolean(zoomed);
+        if (modalImageWrap) {
+            modalImageWrap.classList.toggle("is-zoomed", isZoomed);
+        }
+        if (modalPreviewImg) {
+            modalPreviewImg.classList.toggle("is-zoomed", isZoomed);
+            if (!isZoomed) {
+                modalPreviewImg.style.transform = "";
+            }
+        }
+        if (modalZoomIcon) {
+            modalZoomIcon.className = isZoomed
+                ? "fa-solid fa-magnifying-glass-minus"
+                : "fa-solid fa-magnifying-glass-plus";
+        }
+    }
+
+    if (modalZoomBtn) {
+        modalZoomBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            setZoomState(!isZoomed);
+        });
+    }
+
+    if (modalPreviewImg) {
+        modalPreviewImg.addEventListener("dblclick", (e) => {
+            e.stopPropagation();
+            setZoomState(!isZoomed);
+        });
+    }
+
+    if (stagePrevBtn) {
+        stagePrevBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navigateProduct(-1);
+        });
+    }
+
+    if (stageNextBtn) {
+        stageNextBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navigateProduct(1);
+        });
+    }
 
     /* =========================================================
        CATEGORY NAME
@@ -1335,6 +1524,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        grid.className = `collection-grid size-style-${activeSizeStyle}`;
+
         filteredProducts = getFilteredProducts();
 
         grid.innerHTML = "";
@@ -1360,9 +1551,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const card = document.createElement("article");
 
-            card.className = "collection-card size-standard";
+            // Curated Dynamic Bento formatting:
+            let formatClass = "format-square";
+            if (product.id === 170 || product.id === 180 || product.id === 195 || product.id === 210) {
+                formatClass = "format-hero";
+            } else if (product.category === "certificate") {
+                formatClass = "format-landscape";
+            } else if (product.category === "fashion" || product.category === "editorial") {
+                formatClass = "format-portrait";
+            } else if (index % 5 === 0) {
+                formatClass = "format-portrait";
+            } else if (index % 7 === 0) {
+                formatClass = "format-landscape";
+            }
+
+            card.className = `collection-card ${formatClass}`;
             card.dataset.productId = product.id;
             card.dataset.category = product.category;
+            card.dataset.format = formatClass;
             card.dataset.index = index;
 
             card.innerHTML = `
@@ -1656,6 +1862,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!modal) return;
 
+        setZoomState(false);
+
         document.body.classList.remove(
             "atelier-gallery-open"
         );
@@ -1805,6 +2013,8 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================= */
 
     window.navigateProduct = function(direction) {
+
+        setZoomState(false);
 
         if (!filteredProducts.length) return;
 
@@ -2068,6 +2278,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 closeProductModal();
             }
+
+            if (event.key === "z" || event.key === "Z") {
+
+                event.preventDefault();
+
+                setZoomState(!isZoomed);
+            }
         }
     );
 
@@ -2202,33 +2419,32 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     /* =========================================================
-       SIZE BUTTON
+       SIZE FORMAT SWITCHER
        ========================================================= */
 
     document
         .querySelectorAll(
-            ".size-btn[data-size]"
+            "#sizeFilters .size-btn[data-size]"
         )
         .forEach(button => {
 
             button.addEventListener(
                 "click",
                 () => {
+                    const size = button.dataset.size || "bento";
+                    activeSizeStyle = size;
 
                     document
                         .querySelectorAll(
-                            ".size-btn[data-size]"
+                            "#sizeFilters .size-btn[data-size]"
                         )
                         .forEach(btn => {
-
-                            btn.classList.remove(
-                                "active"
-                            );
+                            btn.classList.toggle("active", btn === button);
                         });
 
-                    button.classList.add(
-                        "active"
-                    );
+                    if (grid) {
+                        grid.className = `collection-grid size-style-${activeSizeStyle}`;
+                    }
                 }
             );
         });
