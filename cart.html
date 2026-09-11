@@ -569,8 +569,9 @@ header{
 
 .card{
   background:#0b0b0b;
-
   border:1px solid var(--border);
+  border-radius:12px;
+  box-shadow:var(--morphism-inner-drop);
 }
 
 
@@ -915,49 +916,47 @@ header{
 .coupon input{
   min-width:0;
   width:100%;
-
   height:43px;
-
   border:1px solid #252525;
-
   background:#050505;
-
   color:#fff;
-
   outline:none;
-
   padding:0 12px;
-
   font-size:11px;
+  border-radius:6px;
+  box-shadow:var(--morphism-inner);
 }
 
 .coupon input:focus{
-  border-color:#555;
+  border-color:rgba(193,18,31,0.6);
+  box-shadow:var(--morphism-inner-accent);
 }
 
 .coupon button{
   flex:0 0 auto;
-
   height:43px;
-
   padding:0 15px;
-
   border:1px solid #333;
-
   background:#111;
-
   color:#fff;
-
   font-size:10px;
-
   letter-spacing:1px;
-
-  transition:.2s;
+  border-radius:6px;
+  box-shadow:var(--morphism-drop-btn);
+  transition:.25s ease;
 }
 
 .coupon button:hover{
-  background:#fff;
-  color:#050505;
+  background:#a8040f;
+  color:#fff;
+  border-color:#c1121f;
+  box-shadow:var(--morphism-drop-btn-hover);
+  transform:translateY(-2px);
+}
+
+.coupon button:active{
+  box-shadow:var(--morphism-drop-btn-active);
+  transform:translateY(1px) scale(0.985);
 }
 
 

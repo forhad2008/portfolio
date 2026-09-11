@@ -218,7 +218,7 @@ body::after {
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     overflow: hidden;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    box-shadow: var(--morphism-inner-drop);
     position: relative;
 }
 
@@ -439,6 +439,7 @@ body::after {
     border-radius: 6px;
     font-size: 0.85rem;
     border: 1px solid rgba(212, 55, 55, 0.2);
+    box-shadow: var(--morphism-inner);
 }
 
 /* Interactive CTA Hub */
@@ -470,13 +471,19 @@ body::after {
     transition: var(--transition-tactile);
     cursor: pointer;
     text-align: center;
+    box-shadow: var(--morphism-drop-btn);
+}
+
+.action-button:active {
+    box-shadow: var(--morphism-drop-btn-active) !important;
+    transform: translateY(1px) scale(0.985) !important;
 }
 
 .action-button-cart {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-deep));
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 8px 25px var(--accent-glow);
+    box-shadow: var(--morphism-drop-btn);
     grid-column: 1 / -1;
     font-family: var(--font-subheading);
     font-size: 0.9rem;
@@ -486,7 +493,7 @@ body::after {
     background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 12px 35px var(--accent-glow-deep);
+    box-shadow: var(--morphism-drop-btn-hover);
 }
 
 .action-button-primary {
@@ -494,6 +501,7 @@ body::after {
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.12);
     font-family: var(--font-body);
+    box-shadow: var(--morphism-drop-btn);
 }
 
 .action-button-primary:hover {
@@ -501,7 +509,7 @@ body::after {
     border-color: #25D366;
     color: #25D366;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
+    box-shadow: var(--morphism-drop-btn-hover);
 }
 
 .action-button-secondary {
@@ -509,6 +517,7 @@ body::after {
     color: var(--text-muted);
     border: 1px solid rgba(255, 255, 255, 0.1);
     font-family: var(--font-body);
+    box-shadow: var(--morphism-drop-btn);
 }
 
 .action-button-secondary:hover {
@@ -516,7 +525,7 @@ body::after {
     color: #ffffff;
     background: rgba(212, 55, 55, 0.08);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px var(--gold-glow);
+    box-shadow: var(--morphism-drop-btn-hover);
 }
 
 /* Toast Feedback Notification */
@@ -529,7 +538,7 @@ body::after {
     padding: 14px 22px;
     border-radius: 10px;
     border: 1px solid rgba(212, 55, 55, 0.4);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
+    box-shadow: var(--morphism-window);
     font-size: 0.88rem;
     font-weight: 500;
     display: flex;
