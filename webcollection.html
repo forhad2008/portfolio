@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Websites & Platforms | Abdullah Forhad</title>
+
+    <meta name="description" content="Curated web projects, production applications, bespoke client platforms, and interactive digital experiences engineered by Abdullah Forhad.">
+    <meta name="theme-color" content="#020304">
+    <link rel="icon" href="icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Unified Navbar Styles & Script -->
+    <link rel="stylesheet" href="navbar.css">
+    <script src="navbar.js" defer></script>
+
+    <style>
+        /* =========================================================
+           HAUTE DIGITAL ATELIER — BLACK INNER SHADOW MORPHISM THEME
+           ========================================================= */
+        :root {
+            --bg-main: #020304;
+            --bg-surface: #07090d;
+            --bg-card: rgba(11, 14, 20, 0.82);
+            --bg-card-hover: rgba(16, 20, 30, 0.95);
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-crimson: #9B0026;
+            --accent-crimson-bright: #e11d48;
+            --accent-glow: rgba(155, 0, 38, 0.45);
+            --accent-gold: #c8a96b;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-crimson: rgba(155, 0, 38, 0.35);
+
+            /* Master Neumorphic Black Inner Shadow & Drop Morphism Suite */
+            --morphism-inner: inset 3px 3px 8px rgba(0, 0, 0, 0.92), inset -2px -2px 6px rgba(255, 255, 255, 0.04), inset 0 0 14px rgba(0, 0, 0, 0.75);
+            --morphism-inner-deep: inset 4px 4px 12px rgba(0, 0, 0, 0.98), inset -3px -3px 8px rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(0, 0, 0, 0.85);
+            --morphism-inner-accent: inset 3px 3px 8px rgba(0, 0, 0, 0.95), inset -2px -2px 6px rgba(255, 255, 255, 0.08), inset 0 0 16px rgba(193, 18, 31, 0.45);
+            --morphism-window: inset 1px 1px 2.5px rgba(255, 255, 255, 0.15), inset -3px -3px 10px rgba(0, 0, 0, 0.96), inset 0 0 32px rgba(0, 0, 0, 0.85), 0 24px 60px rgba(0, 0, 0, 0.94), 0 0 32px rgba(193, 18, 31, 0.12);
+            --morphism-window-hover: inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.2), inset -3px -3px 12px rgba(0, 0, 0, 0.98), inset 0 0 35px rgba(0, 0, 0, 0.9), 0 32px 75px rgba(0, 0, 0, 0.98), 0 0 40px rgba(193, 18, 31, 0.22);
+            --morphism-btn-dark: inset 3px 3px 7px rgba(0, 0, 0, 0.92), inset 1px 1px 2px rgba(0, 0, 0, 0.98), inset -2px -2px 6px rgba(255, 255, 255, 0.16), inset -1px -1px 2px rgba(255, 255, 255, 0.22), inset 0 0 12px rgba(0, 0, 0, 0.70), 0 6px 18px rgba(0, 0, 0, 0.75), 0 2px 5px rgba(0, 0, 0, 0.50);
+            --morphism-btn-crimson: inset 3px 3px 7px rgba(0, 0, 0, 0.80), inset 1px 1px 2px rgba(0, 0, 0, 0.90), inset -3px -3px 7px rgba(255, 255, 255, 0.28), inset -1px -1px 2px rgba(255, 255, 255, 0.35), inset 0 0 14px rgba(74, 0, 5, 0.60), 0 6px 18px rgba(133, 0, 9, 0.45), 0 2px 6px rgba(0, 0, 0, 0.50);
+
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-tactile: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        html, body {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            padding-top: 110px;
+            padding-bottom: 120px;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(155, 0, 38, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 85% 70%, rgba(133, 0, 9, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(200, 169, 107, 0.05) 0%, transparent 55%);
+            background-attachment: fixed;
+        }
+
+        /* Ambient Glow Spheres */
+        body::before, body::after {
+            content: '';
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(160px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::before {
+            top: 5%;
+            left: -120px;
+            background: var(--accent-glow);
+        }
+
+        body::after {
+            bottom: 5%;
+            right: -120px;
+            background: rgba(85, 0, 18, 0.45);
+        }
+
+        /* Container */
+        .web-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 4%;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Top Action Bar / Breadcrumb */
+        .top-action-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: all 0.35s var(--ease-tactile);
+            padding: 8px 18px;
+            background: rgba(10, 13, 20, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 999px;
+            box-shadow: var(--morphism-btn-dark);
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+            border-color: rgba(225, 29, 72, 0.4);
+            transform: translateX(-4px);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fda4af;
+            background: rgba(155, 0, 38, 0.14);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 15px rgba(155, 0, 38, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        /* Hero Header */
+        .collection-hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .meta-kicker {
+            font-family: var(--font-body);
+            color: var(--accent-crimson-bright);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .hero-title span.shimmer {
+            font-style: italic;
+            background: linear-gradient(135deg, #ffffff 20%, #f43f5e 65%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+            color: var(--text-secondary);
+            max-width: 680px;
+            line-height: 1.7;
+            margin: 0 auto;
+        }
+
+        /* =========================================================
+           CLEAN WEBSITES GRID WITH BLACK INNER SHADOW MORPHISM
+           ========================================================= */
+        .web-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+            width: 100%;
+        }
+
+        .web-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1.5px solid rgba(225, 29, 72, 0.4);
+            border-radius: 22px;
+            box-shadow: var(--morphism-window);
+            overflow: hidden;
+            transition: all 0.4s var(--ease-luxury);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .web-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), var(--accent-crimson-bright), transparent);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .web-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: rgba(225, 29, 72, 0.45);
+            box-shadow: var(--morphism-window-hover);
+        }
+
+        /* Clickable Image Container */
+        .web-img-link {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 220px;
+            background: #040507;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .web-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.6s var(--ease-luxury), filter 0.4s ease;
+            display: block;
+        }
+
+        .web-img-link:hover .web-img,
+        .web-card:hover .web-img {
+            transform: scale(1.05);
+            filter: brightness(1.05);
+        }
+
+        /* Hover Overlay on Image */
+        .img-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(2, 3, 5, 0.55);
+            backdrop-filter: blur(2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: 2;
+        }
+
+        .web-img-link:hover .img-overlay {
+            opacity: 1;
+        }
+
+        .img-overlay-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 999px;
+            background: rgba(155, 0, 38, 0.9);
+            color: #ffffff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 20px rgba(225, 29, 72, 0.5);
+            transform: translateY(6px);
+            transition: transform 0.35s var(--ease-tactile);
+        }
+
+        .web-img-link:hover .img-overlay-badge {
+            transform: translateY(0);
+        }
+
+        /* Card Content Area */
+        .web-card-content {
+            padding: 28px 26px 26px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-between;
+        }
+
+        .web-card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .web-card-tag {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #fda4af;
+            background: rgba(155, 0, 38, 0.12);
+            padding: 3px 9px;
+            border-radius: 6px;
+            border: 1px solid rgba(225, 29, 72, 0.25);
+        }
+
+        .web-card-url {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: monospace;
+        }
+
+        .web-card-title {
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+            letter-spacing: -0.2px;
+            line-height: 1.25;
+        }
+
+        .web-card-desc {
+            color: var(--text-secondary);
+            font-size: 0.74rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex-grow: 1;
+        }
+
+        /* Action Row with Visit Site Button */
+        .web-card-action {
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .btn-visit-site {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            padding: 9px 18px;
+            border-radius: 10px;
+            background: rgba(12, 16, 24, 0.9);
+            box-shadow: var(--morphism-btn-dark);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s var(--ease-tactile);
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .btn-visit-site i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-visit-site:hover,
+        .web-card:hover .btn-visit-site {
+            background: linear-gradient(135deg, #9B0026, #6b001a);
+            box-shadow: var(--morphism-btn-crimson);
+            border-color: rgba(225, 29, 72, 0.45);
+            color: #ffffff;
+        }
+
+        .btn-visit-site:hover i,
+        .web-card:hover .btn-visit-site i {
+            transform: translate(2px, -2px);
+        }
+
+        /* Responsive Media */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+                padding-bottom: 85px;
+            }
+
+            .collection-hero {
+                margin-bottom: 28px;
+            }
+
+            .web-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .web-img-link {
+                height: 155px;
+            }
+
+            .web-card-content {
+                padding: 13px 13px 12px;
+            }
+
+            .web-card-meta {
+                margin-bottom: 6px;
+            }
+
+            .web-card-tag {
+                font-size: 0.58rem;
+                padding: 2px 6px;
+            }
+
+            .web-card-url {
+                font-size: 0.58rem;
+            }
+
+            .web-card-title {
+                font-size: 0.80rem;
+                margin-bottom: 4px;
+                line-height: 1.25;
+            }
+
+            .web-card-desc {
+                font-size: 0.65rem;
+                line-height: 1.42;
+                margin-bottom: 10px;
+            }
+
+            .web-card-action {
+                padding-top: 9px;
+            }
+
+            .btn-visit-site {
+                font-size: 0.68rem;
+                padding: 8px 12px;
+                border-radius: 8px;
+                letter-spacing: 1px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Atelier Desktop Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo1.png" alt="Abdullah Forhad Logo">
+        </a>
+        <ul class="desktop-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#shop">Drops</a></li>
+            <li><a href="collection.html">Collection</a></li>
+            <li class="active"><a href="webcollection.html">Websites</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <!-- Shopping Cart Trigger -->
+            <a href="cart.html" class="cart-icon-btn" id="cart-icon-btn" aria-label="Shopping Bag">
+                <svg viewBox="0 0 32 32" class="cart-svg" aria-hidden="true">
+                    <path d="M4 6h4l3.1 14.2a2 2 0 0 0 2 1.6h10.8a2 2 0 0 0 1.9-1.4L29 11H9"/>
+                    <circle cx="13" cy="27" r="1.8"/>
+                    <circle cx="25" cy="27" r="1.8"/>
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
+
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Luxury Atelier Mobile Drawer Menu -->
+    <div class="menu-window" id="menu-window" aria-modal="true" role="dialog" aria-label="Mobile Navigation Menu">
+        <div class="menu-window-content">
+            <div class="menu-window-header">
+                <div class="menu-brand">
+                    <span class="menu-monogram">AP</span>
+                    <div class="menu-brand-text">
+                        <span class="menu-brand-name">Abdullah Psychotic</span>
+                        <span class="menu-brand-kicker">Haute Digital Atelier</span>
+                    </div>
+                </div>
+                <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="Close navigation menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="menu-kicker-bar">
+                <span>Atelier Directory · 2026 Editions</span>
+                <span class="menu-status-pill"><span class="menu-status-dot"></span> Commissions Open</span>
+            </div>
+
+            <ul class="mobile-nav-list" id="mobile-nav-links">
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">Curated Home</span>
+                        <span class="nav-desc">Portfolio Front</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#shop" class="mobile-nav-link">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">Exclusive Drops</span>
+                        <span class="nav-desc">17 Bespoke Pieces</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="collection.html" class="mobile-nav-link">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">The Collection</span>
+                        <span class="nav-desc">Graphic Arts & Poster Archive</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="webcollection.html" class="mobile-nav-link active">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">Websites & Platforms</span>
+                        <span class="nav-desc">Production Apps & Live Builds</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="cart.html" class="mobile-nav-link">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">Shopping Bag</span>
+                        <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="service.html" class="mobile-nav-link">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">Atelier Services</span>
+                        <span class="nav-desc">Identity & Engineering</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="about.html" class="mobile-nav-link">
+                        <span class="nav-num">07</span>
+                        <span class="nav-title">About Abdullah</span>
+                        <span class="nav-desc">Philosophy & Profile</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="resume.html" class="mobile-nav-link">
+                        <span class="nav-num">08</span>
+                        <span class="nav-title">Curriculum Vitae</span>
+                        <span class="nav-desc">Experience & Capabilities</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#contact" class="mobile-nav-link">
+                        <span class="nav-num">09</span>
+                        <span class="nav-title">Private Commission</span>
+                        <span class="nav-desc">Inquire / Meeting</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="menu-window-footer">
+                <a href="index.html#contact" class="btn-menu-cta">
+                    <span>Start Bespoke Project</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <div class="menu-socials">
+                    <a href="https://wa.me/8801342900364" target="_blank" class="menu-social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank" class="menu-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/forhad2008" target="_blank" class="menu-social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423" target="_blank" class="menu-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:forhadalpha08@gmail.com" class="menu-social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div class="menu-legal">© 2026 ABDULLAH PSYCHOTIC · ALL RIGHTS RESERVED</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="web-container">
+
+        <!-- Top Action Bar & Breadcrumb -->
+        <div class="top-action-bar">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Return to Atelier
+            </a>
+            <div class="status-pill">
+                <span class="status-dot"></span> Live Deployments · 2026
+            </div>
+        </div>
+
+        <!-- Hero Header -->
+        <header class="collection-hero">
+            <span class="meta-kicker">Digital Ecosystem</span>
+            <h1 class="hero-title">Websites & <span class="shimmer">Platforms</span></h1>
+            <p class="hero-description">
+                Curated production applications, client platforms, and high-fashion digital experiences engineered with bespoke aesthetics and modern web architecture.
+            </p>
+        </header>
+
+        <!-- Clean Showcase Grid -->
+        <section class="web-grid" aria-label="Websites Showcase Grid">
+
+            <!-- Website 1: Abdullah Psychotic Atelier -->
+            <article class="web-card" data-url="https://forhad2008.github.io/Abdullah-psychotic/">
+                <a href="https://forhad2008.github.io/Abdullah-psychotic/" target="_blank" rel="noopener noreferrer" class="web-img-link" aria-label="Visit Abdullah Psychotic Fashion Atelier">
+                    <img src="bg2.webp" alt="Abdullah Psychotic Fashion Atelier Preview" class="web-img" loading="lazy">
+                    <div class="img-overlay">
+                        <span class="img-overlay-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site</span>
+                    </div>
+                </a>
+                <div class="web-card-content">
+                    <div class="web-card-meta">
+                        <span class="web-card-tag">Haute Couture Atelier</span>
+                        <span class="web-card-url"><i class="fa-solid fa-link"></i> forhad2008.github.io</span>
+                    </div>
+                    <h2 class="web-card-title">Abdullah Psychotic Atelier</h2>
+                    <p class="web-card-desc">
+                        Flagship luxury fashion brand experience with interactive product drops, real-time shopping cart synchronization, bespoke audio, and high-fashion digital editorial design.
+                    </p>
+                    <div class="web-card-action">
+                        <a href="https://forhad2008.github.io/Abdullah-psychotic/" target="_blank" rel="noopener noreferrer" class="btn-visit-site">
+                            <span>Visit Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Website 2: Captain Abdullah Underworld -->
+            <article class="web-card" data-url="https://forhad2008.github.io/Captain-Abdullah/">
+                <a href="https://forhad2008.github.io/Captain-Abdullah/" target="_blank" rel="noopener noreferrer" class="web-img-link" aria-label="Visit Captain Abdullah The Underworld">
+                    <img src="Neg.webp" alt="Captain Abdullah Underworld Experience Preview" class="web-img" loading="lazy">
+                    <div class="img-overlay">
+                        <span class="img-overlay-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site</span>
+                    </div>
+                </a>
+                <div class="web-card-content">
+                    <div class="web-card-meta">
+                        <span class="web-card-tag">Cinematic Experience</span>
+                        <span class="web-card-url"><i class="fa-solid fa-link"></i> forhad2008.github.io</span>
+                    </div>
+                    <h2 class="web-card-title">Captain Abdullah: Underworld</h2>
+                    <p class="web-card-desc">
+                        Cinematic dark fantasy digital experience exploring secret underworld lore, atmospheric motion, interactive audio soundscapes, and cyber visual architecture.
+                    </p>
+                    <div class="web-card-action">
+                        <a href="https://forhad2008.github.io/Captain-Abdullah/" target="_blank" rel="noopener noreferrer" class="btn-visit-site">
+                            <span>Visit Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Website 3: Graphic Artwork Archive -->
+            <article class="web-card" data-url="https://forhad2008.github.io/Abdullah-psychotic-collections/">
+                <a href="https://forhad2008.github.io/Abdullah-psychotic-collections/" target="_blank" rel="noopener noreferrer" class="web-img-link" aria-label="Visit Graphic Artwork Archive">
+                    <img src="171.webp" alt="Graphic Artwork Archive Preview" class="web-img" loading="lazy">
+                    <div class="img-overlay">
+                        <span class="img-overlay-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site</span>
+                    </div>
+                </a>
+                <div class="web-card-content">
+                    <div class="web-card-meta">
+                        <span class="web-card-tag">Visual Archives</span>
+                        <span class="web-card-url"><i class="fa-solid fa-link"></i> forhad2008.github.io</span>
+                    </div>
+                    <h2 class="web-card-title">Graphic Artwork Collection</h2>
+                    <p class="web-card-desc">
+                        Curated collection showcase of 40+ creative posters, digital artwork editions, certificate designs, and fashion merchandise with high-resolution viewing.
+                    </p>
+                    <div class="web-card-action">
+                        <a href="https://forhad2008.github.io/Abdullah-psychotic-collections/" target="_blank" rel="noopener noreferrer" class="btn-visit-site">
+                            <span>Visit Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Website 4: Haute Atelier Store & Drops -->
+            <article class="web-card" data-url="index.html#shop">
+                <a href="index.html#shop" class="web-img-link" aria-label="Visit Haute Atelier Store & Drops">
+                    <img src="bag2.webp" alt="Haute Atelier Store & Drops Preview" class="web-img" loading="lazy">
+                    <div class="img-overlay">
+                        <span class="img-overlay-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Store</span>
+                    </div>
+                </a>
+                <div class="web-card-content">
+                    <div class="web-card-meta">
+                        <span class="web-card-tag">Digital Commerce</span>
+                        <span class="web-card-url"><i class="fa-solid fa-link"></i> abdullahforhad.com/shop</span>
+                    </div>
+                    <h2 class="web-card-title">Haute Digital Drops & Bag</h2>
+                    <p class="web-card-desc">
+                        Full-stack front-end checkout engine with instant shopping cart synchronization across all pages, dynamic price tallying, and responsive acquisition drawers.
+                    </p>
+                    <div class="web-card-action">
+                        <a href="index.html#shop" class="btn-visit-site">
+                            <span>Visit Store</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Website 5: Wedding & Invitation Suite -->
+            <article class="web-card" data-url="wedding card presentation.pdf">
+                <a href="wedding card presentation.pdf" target="_blank" rel="noopener noreferrer" class="web-img-link" aria-label="View Wedding & Invitation Suite">
+                    <img src="wed.webp" alt="Wedding Invitation Suite Preview" class="web-img" loading="lazy">
+                    <div class="img-overlay">
+                        <span class="img-overlay-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Project</span>
+                    </div>
+                </a>
+                <div class="web-card-content">
+                    <div class="web-card-meta">
+                        <span class="web-card-tag">Print & Editorial</span>
+                        <span class="web-card-url"><i class="fa-solid fa-file-pdf"></i> presentation.pdf</span>
+                    </div>
+                    <h2 class="web-card-title">Wedding Stationery Suite</h2>
+                    <p class="web-card-desc">
+                        Luxury bespoke invitation layouts, gold-foil architectural typography, and comprehensive editorial wedding card presentations.
+                    </p>
+                    <div class="web-card-action">
+                        <a href="wedding card presentation.pdf" target="_blank" rel="noopener noreferrer" class="btn-visit-site">
+                            <span>Visit Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Website 6: Technical Resume & Profile -->
+            <article class="web-card" data-url="resume.html">
+                <a href="resume.html" class="web-img-link" aria-label="Visit Curriculum Vitae">
+                    <img src="res.webp" alt="Interactive Resume Platform Preview" class="web-img" loading="lazy">
+                    <div class="img-overlay">
+                        <span class="img-overlay-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Profile</span>
+                    </div>
+                </a>
+                <div class="web-card-content">
+                    <div class="web-card-meta">
+                        <span class="web-card-tag">Interactive CV</span>
+                        <span class="web-card-url"><i class="fa-solid fa-link"></i> resume.html</span>
+                    </div>
+                    <h2 class="web-card-title">Curriculum Vitae Platform</h2>
+                    <p class="web-card-desc">
+                        Full interactive technical CV showcasing engineering capabilities, credentials, verified skills, honors, and architectural design philosophy.
+                    </p>
+                    <div class="web-card-action">
+                        <a href="resume.html" class="btn-visit-site">
+                            <span>Visit Site</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Luxury Mobile Bottom Floating Dock with Web Menu Active -->
+    <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
+        <a href="index.html" class="dock-item" id="dock-item-home" aria-label="Home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="collection.html" class="dock-item" id="dock-item-collection" aria-label="Collection">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Collection</span>
+        </a>
+        <a href="webcollection.html" class="dock-item active" id="dock-item-web" aria-label="Web">
+            <i class="fa-solid fa-globe"></i>
+            <span>Web</span>
+        </a>
+        <a href="cart.html" class="dock-item dock-cart-btn" id="dock-cart-btn" aria-label="Shopping Bag">
+            <div class="dock-icon-wrap">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="dock-badge" id="dock-cart-count">0</span>
+            </div>
+            <span>Bag</span>
+        </a>
+        <a href="service.html" class="dock-item" id="dock-item-service" aria-label="Services">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Services</span>
+        </a>
+        <a href="about.html" class="dock-item" id="dock-item-about" aria-label="About">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>About</span>
+        </a>
+        <a href="index.html#contact" class="dock-item" id="dock-item-contact" aria-label="Contact / Inquire">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Inquire</span>
+        </a>
+    </nav>
+
+    <script>
+        // System to ensure clicking any card image or card image container opens the website
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.web-card');
+            cards.forEach(card => {
+                const imgLink = card.querySelector('.web-img-link');
+                const targetUrl = card.getAttribute('data-url');
+
+                if (imgLink && targetUrl) {
+                    imgLink.addEventListener('click', (e) => {
+                        // Allow natural anchor navigation or trigger new window
+                        if (!imgLink.getAttribute('target') && targetUrl.startsWith('http')) {
+                            e.preventDefault();
+                            window.open(targetUrl, '_blank', 'noopener,noreferrer');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

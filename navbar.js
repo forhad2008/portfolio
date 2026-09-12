@@ -39,7 +39,9 @@
 
             // Match targets
             let currentPage = 'home';
-            if (path.includes('collection.html')) {
+            if (path.includes('webcollection.html')) {
+                currentPage = 'webcollection';
+            } else if (path.includes('collection.html')) {
                 currentPage = 'collection';
             } else if (path.includes('about.html')) {
                 currentPage = 'about';
@@ -60,7 +62,8 @@
                 const href = (el.getAttribute('href') || '').toLowerCase();
                 const isMatch = (
                     (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
-                    (currentPage === 'collection' && href.includes('collection.html')) ||
+                    (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
+                    (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
                     (currentPage === 'about' && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
                     (currentPage === 'resume' && href.includes('resume.html')) ||
@@ -84,7 +87,8 @@
                 const href = (link.getAttribute('href') || '').toLowerCase();
                 const isMatch = (
                     (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
-                    (currentPage === 'collection' && href.includes('collection.html')) ||
+                    (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
+                    (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
                     (currentPage === 'about' && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
                     (currentPage === 'resume' && href.includes('resume.html')) ||
@@ -102,7 +106,8 @@
                 const href = (item.getAttribute('href') || '').toLowerCase();
                 const isMatch = (
                     (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
-                    (currentPage === 'collection' && href.includes('collection.html')) ||
+                    (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
+                    (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
                     (currentPage === 'drops' && (href.includes('#shop') || href.includes('drops'))) ||
                     (currentPage === 'cart' && href.includes('cart.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||

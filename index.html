@@ -3281,6 +3281,7 @@
             <li class="active"><a href="#home">Home</a></li>
             <li><a href="#shop">Drops</a></li>
             <li><a href="collection.html">Design</a></li>
+            <li><a href="webcollection.html">Websites</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="resume.html">Resume</a></li>
@@ -3351,43 +3352,50 @@
                     </a>
                 </li>
                 <li class="mobile-nav-item">
-                    <a href="#fonts" class="mobile-nav-link">
+                    <a href="webcollection.html" class="mobile-nav-link">
                         <span class="nav-num">04</span>
+                        <span class="nav-title">Websites & Platforms</span>
+                        <span class="nav-desc">Production Apps & Live Builds</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="#fonts" class="mobile-nav-link">
+                        <span class="nav-num">05</span>
                         <span class="nav-title">Bespoke Fonts</span>
                         <span class="nav-desc">Haute Typography Suite ($3)</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="cart.html" class="mobile-nav-link">
-                        <span class="nav-num">05</span>
+                        <span class="nav-num">06</span>
                         <span class="nav-title">Shopping Bag</span>
                         <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="service.html" class="mobile-nav-link">
-                        <span class="nav-num">04</span>
+                        <span class="nav-num">07</span>
                         <span class="nav-title">Services</span>
                         <span class="nav-desc">Identity & Engineering</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="about.html" class="mobile-nav-link">
-                        <span class="nav-num">05</span>
+                        <span class="nav-num">08</span>
                         <span class="nav-title">About Abdullah</span>
                         <span class="nav-desc">Philosophy & Profile</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="resume.html" class="mobile-nav-link">
-                        <span class="nav-num">06</span>
+                        <span class="nav-num">09</span>
                         <span class="nav-title">Curriculum Vitae</span>
                         <span class="nav-desc">Experience & Skills</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="#contact" class="mobile-nav-link">
-                        <span class="nav-num">07</span>
+                        <span class="nav-num">10</span>
                         <span class="nav-title">Private Commission</span>
                         <span class="nav-desc">Inquire / Meeting</span>
                     </a>
@@ -4467,9 +4475,9 @@
             <i class="fa-solid fa-layer-group"></i>
             <span>Collection</span>
         </a>
-        <a href="#shop" class="dock-item" id="dock-item-shop" aria-label="Atelier Drops">
-            <i class="fa-solid fa-gem"></i>
-            <span>Drops</span>
+        <a href="webcollection.html" class="dock-item" id="dock-item-web" aria-label="Web">
+            <i class="fa-solid fa-globe"></i>
+            <span>Web</span>
         </a>
         <button type="button" class="dock-item dock-cart-btn" id="dock-cart-btn" onclick="openCartDrawer()" aria-label="Shopping Bag">
             <div class="dock-icon-wrap">
@@ -5258,7 +5266,6 @@
                - DOM is mutated only when the active state actually changes
             ========================================================= */
             const dockHome = document.getElementById('dock-item-home');
-            const dockShop = document.getElementById('dock-item-shop');
             const dockContact = document.getElementById('dock-item-contact');
             const nav = document.getElementById('navbar');
 
@@ -5278,7 +5285,6 @@
 
             const dockItems = {
                 home: dockHome,
-                shop: dockShop,
                 contact: dockContact
             };
 

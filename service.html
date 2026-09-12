@@ -8,9 +8,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="navbar.css">
     <script src="navbar.js" defer></script>
 
@@ -18,25 +18,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
-        /* --- HIGH-CONTRAST LIGHT MODE SYSTEM (DEEP RED THEME) --- */
+        /* =========================================================
+           HAUTE DIGITAL ATELIER — BLACK INNER SHADOW MORPHISM THEME
+           ========================================================= */
         :root {
-            --bg-dark: #FFFFFF;
-            --bg-card: #F4F7FA;
-            --text-primary: #0F172A;
-            --text-muted: #475569; /* টেক্সট আরও স্পষ্ট করার জন্য একটু ডার্ক করা হয়েছে */
-            --accent-neon: #991B1B; /* Deep Crimson/Burgundy Red */
-            --accent-glow: rgba(153, 27, 27, 0.18);
-            --border-color: rgba(15, 23, 42, 0.12);
-            --font-accent: 'Syne', sans-serif;
-            --font-main: 'Inter', sans-serif; /* নতুন মডার্ন ফন্ট */
-            --transition-tactile: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --bg-main: #020304;
+            --bg-surface: #07090d;
+            --bg-card: rgba(11, 14, 20, 0.82);
+            --bg-card-hover: rgba(16, 20, 30, 0.95);
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-crimson: #9B0026;
+            --accent-crimson-bright: #e11d48;
+            --accent-glow: rgba(155, 0, 38, 0.45);
+            --accent-glow-subtle: rgba(155, 0, 38, 0.20);
+            --accent-gold: #c8a96b;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-crimson: rgba(155, 0, 38, 0.35);
+
+            /* Master Neumorphic Black Inner Shadow & Drop Morphism Suite */
+            --morphism-inner: inset 3px 3px 8px rgba(0, 0, 0, 0.92), inset -2px -2px 6px rgba(255, 255, 255, 0.04), inset 0 0 14px rgba(0, 0, 0, 0.75);
+            --morphism-inner-deep: inset 4px 4px 12px rgba(0, 0, 0, 0.98), inset -3px -3px 8px rgba(255, 255, 255, 0.05), inset 0 0 20px rgba(0, 0, 0, 0.85);
+            --morphism-inner-accent: inset 3px 3px 8px rgba(0, 0, 0, 0.95), inset -2px -2px 6px rgba(255, 255, 255, 0.08), inset 0 0 16px rgba(193, 18, 31, 0.45);
+            --morphism-window: inset 1px 1px 2.5px rgba(255, 255, 255, 0.15), inset -3px -3px 10px rgba(0, 0, 0, 0.96), inset 0 0 32px rgba(0, 0, 0, 0.85), 0 24px 60px rgba(0, 0, 0, 0.94), 0 0 32px rgba(193, 18, 31, 0.12);
+            --morphism-window-hover: inset 1.5px 1.5px 3px rgba(255, 255, 255, 0.2), inset -3px -3px 12px rgba(0, 0, 0, 0.98), inset 0 0 35px rgba(0, 0, 0, 0.9), 0 32px 75px rgba(0, 0, 0, 0.98), 0 0 40px rgba(193, 18, 31, 0.22);
+            --morphism-drop-btn: 4px 4px 12px rgba(0, 0, 0, 0.75), -2px -2px 8px rgba(255, 255, 255, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+            --morphism-btn-dark: inset 3px 3px 7px rgba(0, 0, 0, 0.92), inset 1px 1px 2px rgba(0, 0, 0, 0.98), inset -2px -2px 6px rgba(255, 255, 255, 0.16), inset -1px -1px 2px rgba(255, 255, 255, 0.22), inset 0 0 12px rgba(0, 0, 0, 0.70), 0 6px 18px rgba(0, 0, 0, 0.75), 0 2px 5px rgba(0, 0, 0, 0.50);
+            --morphism-btn-crimson: inset 3px 3px 7px rgba(0, 0, 0, 0.80), inset 1px 1px 2px rgba(0, 0, 0, 0.90), inset -3px -3px 7px rgba(255, 255, 255, 0.28), inset -1px -1px 2px rgba(255, 255, 255, 0.35), inset 0 0 14px rgba(74, 0, 5, 0.60), 0 6px 18px rgba(133, 0, 9, 0.45), 0 2px 6px rgba(0, 0, 0, 0.50);
+
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-tactile: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: var(--font-main);
+            font-family: var(--font-body);
         }
 
         #canvas-container {
@@ -54,81 +75,199 @@
             width: 100%;
             max-width: 100vw;
             overflow-x: hidden;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 160px 8% 80px;
+            padding: 130px 6% 100px;
             position: relative;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(155, 0, 38, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 85% 70%, rgba(133, 0, 9, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 90%, rgba(200, 169, 107, 0.05) 0%, transparent 55%);
+            background-attachment: fixed;
         }
 
-        body::before {
+        /* Ambient Glow Spheres */
+        body::before, body::after {
             content: '';
             position: fixed;
-            top: -10%;
-            right: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(153, 27, 27, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(160px);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* --- NAVIGATION: Handled by navbar.css --- */
+        body::before {
+            top: 5%;
+            left: -120px;
+            background: var(--accent-glow);
+        }
 
-        /* --- TITLE --- */
+        body::after {
+            bottom: 5%;
+            right: -120px;
+            background: rgba(85, 0, 18, 0.45);
+        }
+
+        /* --- TOP ACTION BAR / BREADCRUMB --- */
+        .top-action-bar {
+            max-width: 1240px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            transition: all 0.35s var(--ease-tactile);
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+            transform: translateX(-4px);
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #fda4af;
+            background: rgba(155, 0, 38, 0.14);
+            border: 1px solid rgba(225, 29, 72, 0.3);
+            box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.8), 0 0 15px rgba(155, 0, 38, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        /* --- TITLE SECTION --- */
         .section-title {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 60px;
             z-index: 10;
+            max-width: 860px;
+        }
+
+        .section-kicker {
+            font-family: var(--font-body);
+            color: var(--accent-crimson-bright);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: inline-block;
         }
 
         .section-title h1 {
-            font-family: var(--font-accent);
-            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 5.5vw, 4.2rem);
             font-weight: 800;
-            letter-spacing: -2px;
-            color: var(--text-primary);
-            line-height: 1.05;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+            line-height: 1.08;
+            margin-bottom: 16px;
         }
 
-        .section-title h1 span {
-            color: var(--accent-neon);
+        .section-title h1 span.shimmer {
+            font-style: italic;
+            background: linear-gradient(135deg, #ffffff 20%, #f43f5e 65%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* --- SERVICES GRID --- */
+        .section-desc {
+            color: var(--text-muted);
+            font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+            line-height: 1.65;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* --- SERVICES GRID WITH BLACK INNER SHADOW MORPHISM --- */
         .services-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            max-width: 1240px;
             width: 100%;
             z-index: 10;
+            margin-bottom: 40px;
         }
 
         .service-card {
             background: var(--bg-card);
-            padding: 50px 40px;
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 44px 36px;
+            border: 1px solid var(--border-subtle);
+            border-top: 1.5px solid rgba(225, 29, 72, 0.4);
+            border-radius: 22px;
+            box-shadow: var(--morphism-window);
             text-align: left;
-            transition: var(--transition-tactile);
+            transition: all 0.4s var(--ease-luxury);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), var(--accent-crimson-bright), transparent);
+            pointer-events: none;
         }
 
         .service-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(153, 27, 27, 0.3);
-            box-shadow: 0 30px 60px rgba(153, 27, 27, 0.08);
-            background: var(--bg-dark);
+            background: var(--bg-card-hover);
+            border-color: rgba(225, 29, 72, 0.45);
+            box-shadow: var(--morphism-window-hover);
         }
 
         .glow-point {
@@ -137,106 +276,184 @@
             height: 100%;
             top: 0;
             left: 0;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(153, 27, 27, 0.08) 0%, transparent 60%);
+            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(225, 29, 72, 0.14) 0%, transparent 60%);
             pointer-events: none;
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.4s ease;
         }
 
         .service-card:hover .glow-point {
             opacity: 1;
         }
 
+        .card-header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        /* Black Inner Shadow Recessed Icon Bevel */
         .icon-box {
-            font-size: 34px;
-            color: var(--accent-neon);
-            margin-bottom: 30px;
-            transition: var(--transition-tactile);
-            display: inline-block;
+            width: 62px;
+            height: 62px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, #090c12, #040507);
+            box-shadow: var(--morphism-inner);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--accent-crimson-bright);
+            transition: all 0.4s var(--ease-tactile);
+            text-shadow: 0 0 18px var(--accent-glow);
         }
 
         .service-card:hover .icon-box {
-            transform: translateY(-4px) scale(1.05);
+            color: #ffffff;
+            background: linear-gradient(145deg, #180307, #090c12);
+            box-shadow: var(--morphism-inner-accent);
+            border-color: rgba(225, 29, 72, 0.4);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .service-number {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.15);
+            letter-spacing: 1px;
+            transition: color 0.35s ease;
+        }
+
+        .service-card:hover .service-number {
+            color: rgba(225, 29, 72, 0.5);
         }
 
         .service-card h2 {
-            font-family: var(--font-main);
-            font-size: 1.5rem;
-            font-weight: 800; /* এক্সট্রা বোল্ড শিরোনাম */
-            margin-bottom: 15px;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+            letter-spacing: -0.3px;
         }
 
         .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-weight: 600; /* প্যারাগ্রাফ টেক্সটও বোল্ড করা হয়েছে */
-            line-height: 1.75;
-            margin-bottom: 35px;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: 22px;
         }
 
+        /* Inner Shadow Capability Badges */
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .service-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            padding: 4px 11px;
+            border-radius: 999px;
+            background: rgba(4, 5, 8, 0.75);
+            box-shadow: inset 1.5px 1.5px 4px rgba(0, 0, 0, 0.95), inset -1px -1px 2px rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-tag {
+            border-color: rgba(225, 29, 72, 0.25);
+            color: #e2e8f0;
+        }
+
+        .card-action-wrap {
+            margin-top: auto;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .service-tier-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tactile Neumorphic Buttons */
         .service-btn {
             display: inline-flex;
             align-items: center;
+            gap: 10px;
             text-decoration: none;
-            color: var(--text-primary);
-            font-size: 0.8rem;
-            font-weight: 900; /* সুপার বোল্ড বাটন টেক্সট */
+            color: #ffffff;
+            font-size: 0.76rem;
+            font-weight: 800;
             letter-spacing: 1.5px;
             text-transform: uppercase;
+            padding: 11px 22px;
+            border-radius: 12px;
+            background: rgba(12, 16, 24, 0.9);
+            box-shadow: var(--morphism-btn-dark);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.35s var(--ease-tactile);
             position: relative;
             z-index: 2;
-            transition: var(--transition-tactile);
         }
 
-        .service-btn::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2.5px;
-            background-color: var(--accent-neon);
-            transform: scaleX(0.3);
-            transform-origin: left;
-            transition: var(--transition-tactile);
+        .service-btn i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover .service-btn {
-            color: var(--accent-neon);
+            background: linear-gradient(135deg, #9B0026, #6b001a);
+            box-shadow: var(--morphism-btn-crimson);
+            border-color: rgba(225, 29, 72, 0.45);
+            color: #ffffff;
         }
 
-        .service-card:hover .service-btn::after {
-            transform: scaleX(1);
+        .service-card:hover .service-btn i {
+            transform: translateX(3px);
         }
 
         /* --- FOOTER BUTTON --- */
         .back-home {
-            margin-top: 80px;
+            margin-top: 50px;
             text-decoration: none;
-            color: var(--text-primary);
+            color: #ffffff;
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            font-size: 0.85rem;
-            font-weight: 800; /* অতিরিক্ত বোল্ড */
+            font-size: 0.82rem;
+            font-weight: 700;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            padding: 14px 28px;
-            background: transparent;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            transition: var(--transition-tactile);
+            padding: 15px 32px;
+            border-radius: 999px;
+            background: rgba(11, 14, 22, 0.9);
+            box-shadow: var(--morphism-btn-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.35s var(--ease-tactile);
             z-index: 10;
         }
 
         .back-home:hover {
-            background: var(--accent-neon);
-            color: #ffffff;
-            border-color: var(--accent-neon);
+            background: linear-gradient(135deg, #9B0026, #7a001d);
+            box-shadow: var(--morphism-btn-crimson);
+            border-color: rgba(225, 29, 72, 0.45);
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px var(--accent-glow);
         }
 
         .reveal {
@@ -256,15 +473,11 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 120px 16px 60px;
-            }
-
-            nav {
-                padding: 16px 16px;
+                padding: 110px 16px 80px;
             }
 
             .section-title {
-                margin-bottom: 45px;
+                margin-bottom: 40px;
             }
 
             .services-container {
@@ -273,8 +486,12 @@
             }
 
             .service-card {
-                padding: 40px 24px;
-                border-radius: 16px;
+                padding: 34px 24px;
+                border-radius: 18px;
+            }
+
+            .top-action-bar {
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -284,6 +501,7 @@
 
     <div id="canvas-container"></div>
 
+    <!-- Atelier Desktop Navigation -->
     <nav id="navbar">
         <a href="index.html" class="logo">
             <img src="logo1.png" alt="Abdullah Forhad Logo">
@@ -291,6 +509,8 @@
         <ul class="desktop-nav">
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#shop">Drops</a></li>
+            <li><a href="collection.html">Collection</a></li>
+            <li><a href="webcollection.html">Websites</a></li>
             <li><a href="about.html">About</a></li>
             <li class="active"><a href="service.html">Services</a></li>
             <li><a href="resume.html">Resume</a></li>
@@ -354,36 +574,50 @@
                     </a>
                 </li>
                 <li class="mobile-nav-item">
-                    <a href="cart.html" class="mobile-nav-link">
+                    <a href="collection.html" class="mobile-nav-link">
                         <span class="nav-num">03</span>
+                        <span class="nav-title">The Collection</span>
+                        <span class="nav-desc">Graphic Arts & Poster Archive</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="webcollection.html" class="mobile-nav-link">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">Websites & Platforms</span>
+                        <span class="nav-desc">Production Apps & Live Builds</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="cart.html" class="mobile-nav-link">
+                        <span class="nav-num">05</span>
                         <span class="nav-title">Shopping Bag</span>
                         <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
-                    <a href="service.html" class="mobile-nav-link">
-                        <span class="nav-num">04</span>
+                    <a href="service.html" class="mobile-nav-link active">
+                        <span class="nav-num">06</span>
                         <span class="nav-title">Atelier Services</span>
                         <span class="nav-desc">Identity & Engineering</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="about.html" class="mobile-nav-link">
-                        <span class="nav-num">05</span>
+                        <span class="nav-num">07</span>
                         <span class="nav-title">About Abdullah</span>
                         <span class="nav-desc">Philosophy & Profile</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="resume.html" class="mobile-nav-link">
-                        <span class="nav-num">06</span>
+                        <span class="nav-num">08</span>
                         <span class="nav-title">Curriculum Vitae</span>
-                        <span class="nav-desc">Experience & Skills</span>
+                        <span class="nav-desc">Experience & Capabilities</span>
                     </a>
                 </li>
                 <li class="mobile-nav-item">
                     <a href="index.html#contact" class="mobile-nav-link">
-                        <span class="nav-num">07</span>
+                        <span class="nav-num">09</span>
                         <span class="nav-title">Private Commission</span>
                         <span class="nav-desc">Inquire / Meeting</span>
                     </a>
@@ -407,49 +641,132 @@
         </div>
     </div>
 
+    <!-- Top Action Bar & Breadcrumb -->
+    <div class="top-action-bar reveal">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Return to Atelier
+        </a>
+        <div class="status-pill">
+            <span class="status-dot"></span> Commissions Open · 2026
+        </div>
+    </div>
+
+    <!-- Section Title -->
     <div class="section-title">
-        <h1 class="reveal">The Future of <span>Design</span></h1>
+        <span class="section-kicker reveal">Atelier Capabilities</span>
+        <h1 class="reveal">The Future of <span class="shimmer">Design</span></h1>
+        <p class="section-desc reveal">Bespoke technical craftsmanship fusing haute digital aesthetics, neural engineering, and scalable architectural systems.</p>
     </div>
 
+    <!-- Services Grid with Black Inner Shadow Morphism -->
     <div class="services-container">
+        <!-- Service 1 -->
         <div class="service-card reveal">
             <div class="glow-point"></div>
-            <div class="icon-box"><i class="fas fa-microchip"></i></div>
-            <h2>Architecture & Code</h2>
-            <p>Mastering performance and scalability with high-end backend logic and clean, modular frontend systems.</p>
-            <a href="#" class="service-btn">Details</a>
+            <div>
+                <div class="card-header-flex">
+                    <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                    <span class="service-number">01</span>
+                </div>
+                <h2>Architecture & Code</h2>
+                <p>Mastering performance and scalability with high-end backend logic, resilient cloud deployments, and clean modular frontend systems.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Full-Stack Systems</span>
+                    <span class="service-tag">API Engineering</span>
+                    <span class="service-tag">Ultra Performance</span>
+                </div>
+            </div>
+            <div class="card-action-wrap">
+                <span class="service-tier-label">Bespoke Tier</span>
+                <a href="index.html#contact" class="service-btn">
+                    <span>Inquire</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
 
+        <!-- Service 2 -->
         <div class="service-card reveal">
             <div class="glow-point"></div>
-            <div class="icon-box"><i class="fas fa-wand-magic-sparkles"></i></div>
-            <h2>Visual Strategy</h2>
-            <p>Creating immersive brand languages that utilize light, shadow, and geometry to tell a compelling story.</p>
-            <a href="#" class="service-btn">Details</a>
+            <div>
+                <div class="card-header-flex">
+                    <div class="icon-box"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <span class="service-number">02</span>
+                </div>
+                <h2>Visual Strategy</h2>
+                <p>Creating immersive brand languages that utilize light, shadow, and geometry to tell an unmistakably compelling luxury story.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Brand Systems</span>
+                    <span class="service-tag">Art Direction</span>
+                    <span class="service-tag">Motion Aesthetics</span>
+                </div>
+            </div>
+            <div class="card-action-wrap">
+                <span class="service-tier-label">Identity Tier</span>
+                <a href="index.html#contact" class="service-btn">
+                    <span>Inquire</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
 
+        <!-- Service 3 -->
         <div class="service-card reveal">
             <div class="glow-point"></div>
-            <div class="icon-box"><i class="fas fa-rocket"></i></div>
-            <h2>Experience Design</h2>
-            <p>Analyzing human behavior to build frictionless interfaces that feel intuitive and technologically superior.</p>
-            <a href="#" class="service-btn">Details</a>
+            <div>
+                <div class="card-header-flex">
+                    <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                    <span class="service-number">03</span>
+                </div>
+                <h2>Experience Design</h2>
+                <p>Analyzing human behavior to build frictionless, haptic interfaces that feel intuitively tactile, responsive, and technologically superior.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Tactile UI/UX</span>
+                    <span class="service-tag">Micro-Interactions</span>
+                    <span class="service-tag">Conversion Flows</span>
+                </div>
+            </div>
+            <div class="card-action-wrap">
+                <span class="service-tier-label">Product Tier</span>
+                <a href="index.html#contact" class="service-btn">
+                    <span>Inquire</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
 
+        <!-- Service 4 -->
         <div class="service-card reveal">
             <div class="glow-point"></div>
-            <div class="icon-box"><i class="fas fa-brain"></i></div>
-            <h2>AI & Automation</h2>
-            <p>Integrating tailored neural logic models and smart workflows to automate operations and power modern apps.</p>
-            <a href="#" class="service-btn">Details</a>
+            <div>
+                <div class="card-header-flex">
+                    <div class="icon-box"><i class="fas fa-brain"></i></div>
+                    <span class="service-number">04</span>
+                </div>
+                <h2>AI & Automation</h2>
+                <p>Integrating tailored neural logic models and intelligent workflows to automate operations, elevate data workflows, and power modern apps.</p>
+                <div class="service-tags">
+                    <span class="service-tag">Neural Models</span>
+                    <span class="service-tag">Autonomous Flow</span>
+                    <span class="service-tag">Smart Integrations</span>
+                </div>
+            </div>
+            <div class="card-action-wrap">
+                <span class="service-tier-label">Intelligent Tier</span>
+                <a href="index.html#contact" class="service-btn">
+                    <span>Inquire</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
         </div>
     </div>
 
+    <!-- Return to Home CTA -->
     <a href="index.html" class="back-home reveal">
         <i class="fas fa-arrow-left"></i> Return to Home
     </a>
 
-    <!-- Luxury Mobile Bottom Floating Dock -->
+    <!-- Luxury Mobile Bottom Floating Dock with Web Menu Linked to webcollection.html -->
     <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
         <a href="index.html" class="dock-item" id="dock-item-home" aria-label="Home">
             <i class="fa-solid fa-house"></i>
@@ -459,9 +776,9 @@
             <i class="fa-solid fa-layer-group"></i>
             <span>Collection</span>
         </a>
-        <a href="index.html#shop" class="dock-item" id="dock-item-shop" aria-label="Atelier Drops">
-            <i class="fa-solid fa-gem"></i>
-            <span>Drops</span>
+        <a href="webcollection.html" class="dock-item" id="dock-item-web" aria-label="Web">
+            <i class="fa-solid fa-globe"></i>
+            <span>Web</span>
         </a>
         <a href="cart.html" class="dock-item dock-cart-btn" id="dock-cart-btn" aria-label="Shopping Bag">
             <div class="dock-icon-wrap">
@@ -485,8 +802,7 @@
     </nav>
 
     <script>
-
-        // --- THREE.JS ENGINE ---
+        // --- LUXURY THREE.JS RUBY GLASS FACET ENGINE ---
         const container = document.getElementById('canvas-container');
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -498,31 +814,32 @@
 
         camera.position.z = 30;
 
-        const planeCount = 20;
+        const planeCount = 22;
         const planes = [];
         const planeGroup = new THREE.Group();
-        const planeGeo = new THREE.PlaneGeometry(1.2, 1.8);
+        const planeGeo = new THREE.PlaneGeometry(1.4, 2.1);
 
         function createPlaneMaterial() {
             return new THREE.MeshPhysicalMaterial({
-                color: 0x991B1B, // Deep red background planes
-                emissive: 0xFFFFFF,
-                emissiveIntensity: 0.04,
-                roughness: 0.05,
-                metalness: 0.1,
+                color: 0x9B0026, // Luxury Crimson Ruby Facets
+                emissive: 0x220008,
+                emissiveIntensity: 0.15,
+                roughness: 0.12,
+                metalness: 0.22,
                 clearcoat: 1.0,
-                transmission: 0.88,
-                ior: 1.25,
-                thickness: 1.2,
+                clearcoatRoughness: 0.1,
+                transmission: 0.72,
+                ior: 1.35,
+                thickness: 1.5,
                 transparent: true,
-                opacity: 0.15,
+                opacity: 0.28,
                 side: THREE.DoubleSide
             });
         }
 
         for (let i = 0; i < planeCount; i++) {
             const mesh = new THREE.Mesh(planeGeo, createPlaneMaterial());
-            const scale = Math.random() * 1.2 + 0.6;
+            const scale = Math.random() * 1.3 + 0.6;
             mesh.scale.set(scale, scale, scale);
 
             mesh.position.x = (Math.random() - 0.5) * 60;
@@ -543,11 +860,15 @@
         }
         scene.add(planeGroup);
 
-        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 2.0);
+        const skyLight = new THREE.DirectionalLight(0xFFFFFF, 1.6);
         skyLight.position.set(15, 25, 10);
         scene.add(skyLight);
 
-        const fillLight = new THREE.AmbientLight(0x991B1B, 0.25); // Deep red ambient light
+        const crimsonLight = new THREE.PointLight(0xe11d48, 2.5, 80);
+        crimsonLight.position.set(-10, 10, 15);
+        scene.add(crimsonLight);
+
+        const fillLight = new THREE.AmbientLight(0x2b000a, 1.1);
         scene.add(fillLight);
 
         const mouse = { x: 0, y: 0 };
@@ -580,17 +901,22 @@
         }
         animate();
 
+        // Cursor Spotlight Tracking on Service Cards
         const cards = document.querySelectorAll('.service-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                card.querySelector('.glow-point').style.setProperty('--x', `${x}px`);
-                card.querySelector('.glow-point').style.setProperty('--y', `${y}px`);
+                const glowPoint = card.querySelector('.glow-point');
+                if (glowPoint) {
+                    glowPoint.style.setProperty('--x', `${x}px`);
+                    glowPoint.style.setProperty('--y', `${y}px`);
+                }
             });
         });
 
+        // GSAP Reveal Animations
         gsap.to(".reveal", {
             opacity: 1,
             y: 0,
@@ -605,8 +931,6 @@
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
-
-
     </script>
 </body>
 
