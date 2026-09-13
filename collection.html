@@ -1,532 +1,1160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" href="logo1.png">
+<title>Graphic Collection — Abdullah Psychotic</title>
+<meta name="description" content="A curated graphic design collection by Abdullah Psychotic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<!-- Unified Navbar & Mobile Dock Styles & Script -->
+<link rel="stylesheet" href="navbar.css">
+<script src="navbar.js" defer></script>
+<style>
+:root{
+  --bg:#08080a;
+  --panel:#111116;
+  --panel2:#17171e;
+  --line:rgba(255,255,255,.1);
+  --muted:#9d9292;
+  --text:#f7f7fa;
+  --gold:#d66a6a;
+  --red:#d7193f;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
 
-    <link rel="icon" href="icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    <title>The Graphic Collection — Abdullah Psychotic</title>
+html{
+  background:var(--bg);
+  scroll-behavior:smooth;
+}
 
-    <meta
-        name="description"
-        content="Explore the complete Abdullah Psychotic graphic archive — posters, campaigns, certificates, editorial artwork, and commercial visuals from 170 to 212."
-    >
+body{
+  font-family:"DM Sans",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at 50% -180px,rgba(214,182,106,.12),transparent 65%),
+    var(--bg);
+  overflow-x:hidden;
+}
 
-    <meta name="theme-color" content="#040404">
+body.lock{
+  overflow:hidden;
+}
 
-    <link
-        rel="canonical"
-        href="https://forhad2008.github.io/portfolio/collection.html"
-    >
+body.lock .mobile-bottom-dock,
+body.modal-open .mobile-bottom-dock {
+  transform: translateY(100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
 
-    <!-- =========================================================
-         GOOGLE FONTS
-    ========================================================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+/* =========================================================
+   MAIN
+========================================================= */
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+main{
+  width:min(1540px,calc(100% - 40px));
+  margin:auto;
+  padding:132px 0 90px;
+}
 
-    <!-- =========================================================
-         FONT AWESOME
-    ========================================================== -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    >
+.hero{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 48px;
+}
 
-    <!-- =========================================================
-         SITE STYLES
-    ========================================================== -->
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="collection.css">
-    <script src="navbar.js" defer></script>
+.eyebrow{
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+.hero h1{
+  font:700 clamp(2.5rem,6vw,5.7rem)/.98 "Space Grotesk",sans-serif;
+  letter-spacing:-.065em;
+}
+
+.hero h1 span{
+  color:var(--gold);
+}
+
+.hero p{
+  max-width:650px;
+  margin:22px auto 0;
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.8;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar{
+  position:sticky;
+  top:var(--navbar-height-desktop, 78px);
+  z-index:900;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  padding:16px 0;
+  margin-bottom:30px;
+  background:rgba(8,8,10,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.filters{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filters button{
+  flex:0 0 auto;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--muted);
+  border-radius:999px;
+  padding:10px 15px;
+  font:600 .75rem "DM Sans",sans-serif;
+  cursor:pointer;
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.filters button:hover{
+  border-color:rgba(214,182,106,.4);
+  color:#fff;
+}
+
+.filters button.active{
+  background:#fff;
+  color:#08080a;
+  border-color:#fff;
+}
+
+.search{
+  position:relative;
+  flex:0 0 260px;
+}
+
+.search i{
+  position:absolute;
+  left:14px;
+  top:13px;
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+.search input{
+  width:100%;
+  height:40px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--panel);
+  color:#fff;
+  padding:0 15px 0 36px;
+  outline:none;
+  font-family:"DM Sans",sans-serif;
+  transition:border-color .25s ease,background .25s ease;
+}
+
+.search input::placeholder{
+  color:#666670;
+}
+
+.search input:focus{
+  border-color:var(--gold);
+  background:#15151a;
+}
+
+/* =========================================================
+   PRODUCT GRID
+   IMPORTANT:
+   No fixed aspect-ratio.
+   Every image determines its own height.
+========================================================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:24px;
+  align-items:start;
+}
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.card{
+  grid-column:span 4;
+  min-width:0;
+  align-self:start;
+
+  background:var(--panel);
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  overflow:hidden;
+  cursor:pointer;
+
+  transition:
+    transform .35s var(--ease),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(214,182,106,.5);
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+
+/* =========================================================
+   ACTUAL IMAGE CONTAINER
+   No fixed height.
+   No aspect ratio.
+   No artificial black area.
+========================================================= */
+
+.visual{
+  position:relative;
+
+  width:100%;
+  height:auto;
+
+  display:block;
+
+  overflow:hidden;
+
+  background:transparent;
+  line-height:0;
+}
+
+/*
+   Image defines the actual product-box height.
+   Width remains 100%, height stays auto.
+*/
+.visual img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  max-width:100%;
+
+  object-fit:initial;
+
+  margin:0;
+  padding:0;
+
+  background:transparent;
+
+  transition:
+    transform .5s var(--ease),
+    filter .4s ease;
+}
+
+.card:hover .visual img{
+  transform:scale(1.025);
+}
+
+/* =========================================================
+   IMAGE OVERLAYS
+========================================================= */
+
+.number{
+  position:absolute;
+  top:13px;
+  left:13px;
+  z-index:3;
+
+  background:rgba(0,0,0,.58);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:999px;
+
+  padding:5px 9px;
+
+  font-size:.65rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  line-height:1.2;
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.open-icon{
+  position:absolute;
+  right:13px;
+  bottom:13px;
+  z-index:3;
+
+  width:36px;
+  height:36px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#fff;
+  color:#000;
+
+  opacity:0;
+  transform:translateY(8px);
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.card:hover .open-icon{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================================================
+   PRODUCT META
+========================================================= */
+
+.meta{
+  padding:18px 19px 20px;
+  background:var(--panel);
+}
+
+.meta h2{
+  font:600 1rem/1.35 "Space Grotesk",sans-serif;
+  margin-bottom:9px;
+}
+
+.meta-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color:var(--muted);
+  font-size:.72rem;
+  line-height:1.4;
+}
+
+.meta-row b{
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  text-align:center;
+  border-top:1px solid var(--line);
+  padding:48px 20px;
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+footer strong{
+  display:block;
+  color:#fff;
+  font:700 1.15rem "Space Grotesk",sans-serif;
+  margin-bottom:8px;
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:22px 0;
+}
+
+.socials a{
+  color:var(--muted);
+  font-size:1.1rem;
+  transition:color .25s ease,transform .25s ease;
+}
+
+.socials a:hover{
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+dialog{
+  border:0;
+  padding:0;
+  margin:0;
+
+  width:100vw;
+  height:100dvh;
+
+  max-width:none;
+  max-height:none;
+
+  background:rgba(0,0,0,.96);
+  color:#fff;
+}
+
+dialog::backdrop{
+  background:rgba(0,0,0,.92);
+}
+
+.modal-top{
+  height:72px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 28px;
+
+  border-bottom:1px solid var(--line);
+  background:#0d0d11;
+}
+
+.counter{
+  font-size:.8rem;
+  color:var(--muted);
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+.close{
+  width:42px;
+  height:42px;
+
+  border:1px solid var(--line);
+  border-radius:50%;
+
+  background:#191920;
+  color:#fff;
+
+  cursor:pointer;
+  font-size:1rem;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.close:hover{
+  background:#fff;
+  color:#000;
+  transform:rotate(90deg);
+}
+
+.modal-layout{
+  height:calc(100dvh - 72px);
+
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 390px;
+}
+
+/* =========================================================
+   MODAL IMAGE STAGE
+========================================================= */
+
+.stage{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:34px;
+
+  min-width:0;
+
+  background:
+    radial-gradient(
+      500px 350px at 50% 50%,
+      #1a1a22,
+      #050507 70%
+    );
+}
+
+.stage img{
+  display:block;
+
+  width:auto;
+  height:auto;
+
+  max-width:100%;
+  max-height:calc(100dvh - 140px);
+
+  object-fit:contain;
+
+  box-shadow:0 25px 80px #000;
+
+  border-radius:6px;
+}
+
+.arrow{
+  position:absolute;
+
+  top:50%;
+  transform:translateY(-50%);
+
+  width:48px;
+  height:48px;
+
+  border-radius:50%;
+  border:1px solid var(--line);
+
+  background:rgba(20,20,25,.9);
+  color:#fff;
+
+  cursor:pointer;
+
+  z-index:2;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.arrow:hover{
+  background:#fff;
+  color:#000;
+}
+
+.prev{
+  left:22px;
+}
+
+.next{
+  right:22px;
+}
+
+/* =========================================================
+   MODAL INFORMATION
+========================================================= */
+
+.info{
+  padding:42px 32px;
+
+  background:#111116;
+
+  border-left:1px solid var(--line);
+
+  overflow:auto;
+}
+
+.tag{
+  display:inline-block;
+
+  color:var(--gold);
+
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+  border:1px solid rgba(214,182,106,.3);
+
+  padding:7px 10px;
+
+  border-radius:999px;
+}
+
+.info h2{
+  font:700 clamp(1.6rem,2.4vw,2.5rem)/1.08 "Space Grotesk",sans-serif;
+
+  letter-spacing:-.04em;
+
+  margin:22px 0 16px;
+}
+
+.info p{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.8;
+}
+
+.details{
+  margin-top:30px;
+  border-top:1px solid var(--line);
+}
+
+.detail{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:.8rem;
+}
+
+.detail span:first-child{
+  color:var(--muted);
+}
+
+.detail span:last-child{
+  text-align:right;
+  font-weight:700;
+}
+
+.actions{
+  display:grid;
+  gap:10px;
+  margin-top:30px;
+}
+
+.actions a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+
+  padding:14px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-size:.8rem;
+  font-weight:800;
+
+  transition:
+    transform .25s ease,
+    filter .25s ease;
+}
+
+.actions a:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
+}
+
+.whatsapp{
+  background:#25d366;
+  color:#071b0e;
+}
+
+.original{
+  border:1px solid var(--line);
+  color:#fff;
+  background:#191920;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty{
+  grid-column:1/-1;
+
+  text-align:center;
+
+  padding:80px 20px;
+
+  color:var(--muted);
+}
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+  .card{
+    grid-column:span 6;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+  main{
+    width:calc(100% - 28px);
+    padding-top:104px;
+  }
+
+  .hero{
+    margin-bottom:34px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.3rem,12vw,4rem);
+  }
+
+  .hero p{
+    font-size:.88rem;
+  }
+
+  /* =======================================================
+     MOBILE TOOLBAR
+  ======================================================= */
+
+  .toolbar{
+    top:var(--navbar-height-mobile, 62px);
+
+    display:block;
+
+    padding:12px 0;
+  }
+
+  .filters{
+    margin-bottom:10px;
+  }
+
+  .search{
+    width:100%;
+  }
+
+  /* =======================================================
+     MOBILE PRODUCT GRID
+     Natural image height preserved.
+  ======================================================= */
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+
+    align-items:start;
+  }
+
+  .card{
+    grid-column:span 1;
+
+    border-radius:13px;
+
+    align-self:start;
+  }
+
+  /*
+     IMPORTANT:
+     No aspect-ratio here.
+     No fixed height.
+  */
+
+  .visual{
+    width:100%;
+    height:auto;
+
+    display:block;
+
+    background:transparent;
+  }
+
+  .visual img{
+    width:100%;
+    height:auto;
+
+    max-width:100%;
+
+    object-fit:initial;
+
+    display:block;
+  }
+
+  .meta{
+    padding:12px;
+  }
+
+  .meta h2{
+    font-size:.78rem;
+    margin-bottom:7px;
+  }
+
+  .meta-row{
+    font-size:.61rem;
+    display:block;
+  }
+
+  .meta-row b{
+    display:block;
+    margin-bottom:4px;
+  }
+
+  .open-icon{
+    opacity:1;
+    transform:none;
+
+    width:29px;
+    height:29px;
+
+    font-size:.7rem;
+
+    right:9px;
+    bottom:9px;
+  }
+
+  .number{
+    top:9px;
+    left:9px;
+
+    padding:4px 7px;
+
+    font-size:.58rem;
+  }
+
+  /* =======================================================
+     MOBILE MODAL
+  ======================================================= */
+
+  .modal-top{
+    height:62px;
+    padding:0 16px;
+  }
+
+  .modal-layout{
+    height:calc(100dvh - 62px);
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:auto;
+  }
+
+  .stage{
+    flex:0 0 auto;
+
+    min-height:0;
+
+    padding:18px;
+
+    background:
+      radial-gradient(
+        350px 260px at 50% 50%,
+        #1a1a22,
+        #050507 72%
+      );
+  }
+
+  .stage img{
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+    max-height:44dvh;
+
+    object-fit:contain;
+  }
+
+  .arrow{
+    width:38px;
+    height:38px;
+  }
+
+  .prev{
+    left:10px;
+  }
+
+  .next{
+    right:10px;
+  }
+
+  .info{
+    border-left:0;
+    border-top:1px solid var(--line);
+
+    padding:25px 20px 35px;
+  }
+
+  .info h2{
+    font-size:1.65rem;
+  }
+
+  .info p{
+    font-size:.84rem;
+  }
+
+  .details{
+    margin-top:22px;
+  }
+
+  .actions{
+    margin-top:24px;
+  }
+
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media(max-width:420px){
+
+  main{
+    width:calc(100% - 20px);
+  }
+
+  .grid{
+    gap:9px;
+  }
+
+  .card{
+    border-radius:11px;
+  }
+
+  .meta{
+    padding:10px;
+  }
+
+  .meta h2{
+    font-size:.72rem;
+  }
+
+  .meta-row{
+    font-size:.57rem;
+  }
+
+  .number{
+    top:7px;
+    left:7px;
+    padding:3px 6px;
+    font-size:.52rem;
+  }
+
+  .open-icon{
+    right:7px;
+    bottom:7px;
+    width:27px;
+    height:27px;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+}
+</style>
 </head>
-
 <body>
-
-    <!-- =========================================================
-         SITE NAVBAR
-    ========================================================== -->
+    <!-- Atelier Desktop Navigation -->
     <nav id="navbar">
-
         <a href="index.html" class="logo">
-            <img
-                src="logo1.png"
-                alt="Abdullah Forhad Logo"
-            >
+            <img src="logo1.png" alt="Abdullah Forhad Logo">
         </a>
-
         <ul class="desktop-nav">
-
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-
-            <li>
-                <a href="index.html#shop">Drops</a>
-            </li>
-
-            <li class="active">
-                <a href="collection.html">Collection</a>
-            </li>
-
-            <li>
-                <a href="webcollection.html">Websites</a>
-            </li>
-
-            <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="service.html">Services</a>
-            </li>
-
-            <li>
-                <a href="resume.html">Resume</a>
-            </li>
-
-            <li>
-                <a href="index.html#contact">Contact</a>
-            </li>
-
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#shop">Drops</a></li>
+            <li class="active"><a href="collection.html">Collection</a></li>
+            <li><a href="webcollection.html">Websites</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
-
-            <!-- Shopping Bag Trigger -->
-            <button
-                type="button"
-                class="cart-icon-btn"
-                id="cart-icon-btn"
-                onclick="if(typeof openCartDrawer==='function')openCartDrawer();"
-                aria-label="Shopping Bag"
-            >
-
-                <svg
-                    viewBox="0 0 32 32"
-                    class="cart-svg"
-                    aria-hidden="true"
-                >
+            <!-- Shopping Cart Trigger -->
+            <a href="cart.html" class="cart-icon-btn" id="cart-icon-btn" aria-label="Shopping Bag">
+                <svg viewBox="0 0 32 32" class="cart-svg" aria-hidden="true">
                     <path d="M4 6h4l3.1 14.2a2 2 0 0 0 2 1.6h10.8a2 2 0 0 0 1.9-1.4L29 11H9"/>
                     <circle cx="13" cy="27" r="1.8"/>
                     <circle cx="25" cy="27" r="1.8"/>
                 </svg>
-
-                <span
-                    class="cart-badge"
-                    id="cart-count"
-                >0</span>
-
-            </button>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
 
             <!-- Mobile Hamburger -->
-            <div
-                class="hamburger"
-                id="hamburger"
-                aria-label="Open navigation menu"
-                role="button"
-                tabindex="0"
-            >
+            <div class="hamburger" id="hamburger" aria-label="Open navigation menu">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
-
         </div>
-
     </nav>
 
-
-    <!-- =========================================================
-         MOBILE ATELIER DRAWER
-    ========================================================== -->
-    <div
-        class="menu-window"
-        id="menu-window"
-        aria-modal="true"
-        role="dialog"
-        aria-label="Mobile Navigation Menu"
-    >
-
+    <!-- Luxury Atelier Mobile Drawer Menu -->
+    <div class="menu-window" id="menu-window" aria-modal="true" role="dialog" aria-label="Mobile Navigation Menu">
         <div class="menu-window-content">
-
             <div class="menu-window-header">
-
                 <div class="menu-brand">
-
-                    <span class="menu-monogram">
-                        AP
-                    </span>
-
+                    <span class="menu-monogram">AP</span>
                     <div class="menu-brand-text">
-
-                        <span class="menu-brand-name">
-                            Abdullah Psychotic
-                        </span>
-
-                        <span class="menu-brand-kicker">
-                            Haute Digital Atelier
-                        </span>
-
+                        <span class="menu-brand-name">Abdullah Psychotic</span>
+                        <span class="menu-brand-kicker">Haute Digital Atelier</span>
                     </div>
-
                 </div>
-
-                <button
-                    class="menu-close-btn"
-                    id="menu-close-btn"
-                    type="button"
-                    aria-label="Close navigation menu"
-                >
+                <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="Close navigation menu">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
-
             </div>
-
 
             <div class="menu-kicker-bar">
-
-                <span>
-                    Atelier Directory · 2026 Editions
-                </span>
-
-                <span class="menu-status-pill">
-                    <span class="menu-status-dot"></span>
-                    Commissions Open
-                </span>
-
+                <span>Atelier Directory · 2026 Editions</span>
+                <span class="menu-status-pill"><span class="menu-status-dot"></span> Commissions Open</span>
             </div>
 
-
-            <ul
-                class="mobile-nav-list"
-                id="mobile-nav-links"
-            >
-
+            <ul class="mobile-nav-list" id="mobile-nav-links">
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="index.html"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="index.html" class="mobile-nav-link">
                         <span class="nav-num">01</span>
-
-                        <div>
-                            <span class="nav-title">
-                                Home
-                            </span>
-
-                            <span class="nav-desc">
-                                Portfolio Main Exhibition
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">Curated Home</span>
+                        <span class="nav-desc">Portfolio Front</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="collection.html"
-                        class="mobile-nav-link active"
-                    >
-
+                    <a href="index.html#shop" class="mobile-nav-link">
                         <span class="nav-num">02</span>
-
-                        <div>
-                            <span class="nav-title">
-                                The Collection
-                            </span>
-
-                            <span class="nav-desc">
-                                43 Works & Inspection Window
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">Exclusive Drops</span>
+                        <span class="nav-desc">17 Bespoke Pieces</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="webcollection.html"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="collection.html" class="mobile-nav-link active">
                         <span class="nav-num">03</span>
-
-                        <div>
-                            <span class="nav-title">
-                                Websites & Platforms
-                            </span>
-
-                            <span class="nav-desc">
-                                Production Apps & Live Builds
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">The Collection</span>
+                        <span class="nav-desc">Graphic Arts & Poster Archive</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="index.html#shop"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="webcollection.html" class="mobile-nav-link">
                         <span class="nav-num">04</span>
-
-                        <div>
-                            <span class="nav-title">
-                                All Design Collection
-                            </span>
-
-                            <span class="nav-desc">
-                                Haute Couture Stationery
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">Websites & Platforms</span>
+                        <span class="nav-desc">Production Apps & Live Builds</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="service.html"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="cart.html" class="mobile-nav-link">
                         <span class="nav-num">05</span>
-
-                        <div>
-                            <span class="nav-title">
-                                Services
-                            </span>
-
-                            <span class="nav-desc">
-                                Identity & Engineering
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">Shopping Bag</span>
+                        <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="about.html"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="service.html" class="mobile-nav-link">
                         <span class="nav-num">06</span>
-
-                        <div>
-                            <span class="nav-title">
-                                About Abdullah
-                            </span>
-
-                            <span class="nav-desc">
-                                Philosophy & Profile
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">Atelier Services</span>
+                        <span class="nav-desc">Identity & Engineering</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="resume.html"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="about.html" class="mobile-nav-link">
                         <span class="nav-num">07</span>
-
-                        <div>
-                            <span class="nav-title">
-                                Curriculum Vitae
-                            </span>
-
-                            <span class="nav-desc">
-                                Experience & Capabilities
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">About Abdullah</span>
+                        <span class="nav-desc">Philosophy & Profile</span>
                     </a>
-
                 </li>
-
-
                 <li class="mobile-nav-item">
-
-                    <a
-                        href="index.html#contact"
-                        class="mobile-nav-link"
-                    >
-
+                    <a href="resume.html" class="mobile-nav-link">
                         <span class="nav-num">08</span>
-
-                        <div>
-                            <span class="nav-title">
-                                Private Commission
-                            </span>
-
-                            <span class="nav-desc">
-                                Inquire / Book Meeting
-                            </span>
-                        </div>
-
-                        <i class="fa-solid fa-chevron-right nav-arrow"></i>
-
+                        <span class="nav-title">Curriculum Vitae</span>
+                        <span class="nav-desc">Experience & Capabilities</span>
                     </a>
-
                 </li>
-
+                <li class="mobile-nav-item">
+                    <a href="index.html#contact" class="mobile-nav-link">
+                        <span class="nav-num">09</span>
+                        <span class="nav-title">Private Commission</span>
+                        <span class="nav-desc">Inquire / Meeting</span>
+                    </a>
+                </li>
             </ul>
 
-
             <div class="menu-window-footer">
-
-                <a
-                    href="cart.html"
-                    class="btn-menu-cta"
-                >
-                    <i class="fa-solid fa-bag-shopping"></i>
-
-                    <span>
-                        View Shopping Bag
-                        (<span id="drawer-cart-count">0</span>)
-                    </span>
+                <a href="index.html#contact" class="btn-menu-cta">
+                    <span>Start Bespoke Project</span>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </a>
-
-
-                <div class="menu-contact-grid">
-
-                    <a
-                        href="https://wa.me/8801342900364"
-                        target="_blank"
-                        rel="noopener"
-                        class="menu-contact-chip whatsapp"
-                    >
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span>WhatsApp</span>
-                    </a>
-
-                    <a
-                        href="mailto:forhadalpha08@gmail.com"
-                        class="menu-contact-chip email"
-                    >
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>Email Brief</span>
-                    </a>
-
-                </div>
-
-
                 <div class="menu-socials">
-
-                    <a
-                        href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2"
-                        target="_blank"
-                        rel="noopener"
-                        class="menu-social-link"
-                        title="Instagram"
-                    >
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a
-                        href="https://www.tiktok.com/@abdullah.thelegen?_r=1&_t=ZS-988bupiVj1w"
-                        target="_blank"
-                        rel="noopener"
-                        class="menu-social-link"
-                        title="TikTok"
-                    >
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-
-                    <a
-                        href="https://www.facebook.com/profile.php?id=61580779565120"
-                        target="_blank"
-                        rel="noopener"
-                        class="menu-social-link"
-                        title="Facebook"
-                    >
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-
-                    <a
-                        href="https://www.youtube.com/@abdullahforhadthelegend"
-                        target="_blank"
-                        rel="noopener"
-                        class="menu-social-link"
-                        title="YouTube"
-                    >
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-
-                    <a
-                        href="https://t.me/abdullah_psychotic"
-                        target="_blank"
-                        rel="noopener"
-                        class="menu-social-link"
-                        title="Telegram"
-                    >
-                        <i class="fa-brands fa-telegram"></i>
-                    </a>
-
+                    <a href="https://wa.me/8801342900364" target="_blank" class="menu-social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank" class="menu-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/forhad2008" target="_blank" class="menu-social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423" target="_blank" class="menu-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:forhadalpha08@gmail.com" class="menu-social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
                 </div>
-
-
-                <div class="menu-legal">
-                    © 2026 Abdullah Psychotic · All Rights Reserved
-                </div>
-
+                <div class="menu-legal">© 2026 ABDULLAH PSYCHOTIC · ALL RIGHTS RESERVED</div>
             </div>
-
         </div>
-
     </div>
+<main>
+<section class="hero"><div class="eyebrow">Archive / 2025—2026</div><h1>Graphic <span>Collection</span></h1><p>A carefully presented archive of visual identities, cinematic posters, editorial campaigns, commercial artwork and brand systems.</p></section>
+<section class="toolbar"><div class="filters" id="filters"><button class="active" data-filter="all">All Works</button><button data-filter="branding">Branding</button><button data-filter="posters">Posters & Films</button><button data-filter="art">Art & Exhibitions</button><button data-filter="commercial">Commercial</button><button data-filter="sports">Sports</button><button data-filter="certificates">Certificates</button></div><label class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" placeholder="Search the archive…"></label></section>
+<section class="grid" id="grid" aria-label="Graphic design collection"></section>
+</main>
+<footer><strong>ABDULLAH PSYCHOTIC</strong><p>Haute digital atelier & graphic design. Available for commissions and brand art direction worldwide.</p><div class="socials"><a href="https://www.instagram.com/abdullah.thelegend2008" target="_blank"><i class="fa-brands fa-instagram"></i></a><a href="https://www.tiktok.com/@abdullah.thelegen" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank"><i class="fa-brands fa-youtube"></i></a><a href="https://t.me/abdullah_psychotic" target="_blank"><i class="fa-brands fa-telegram"></i></a></div><div>© 2025–2026 Abdullah Psychotic · All Rights Reserved</div></footer>
+<dialog id="modal"><div class="modal-top"><span class="counter" id="counter"></span><button class="close" id="close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-layout"><section class="stage" id="stage"><button class="arrow prev" id="prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button><img id="modalImg" src="" alt=""><button class="arrow next" id="next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button></section><aside class="info"><span class="tag" id="modalCategory"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="details"><div class="detail"><span>Client</span><span id="modalClient"></span></div><div class="detail"><span>Year</span><span id="modalYear"></span></div><div class="detail"><span>Archive ID</span><span id="modalId"></span></div></div><div class="actions"><a class="whatsapp" id="whatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Commission Similar Work</a><a class="original" id="original" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Original Image</a></div></aside></div></dialog>
 
-    <!-- =========================================================
-         SLIDE-OUT LUXURY SHOPPING CART DRAWER
-    ========================================================== -->
-    <div class="cart-overlay" id="cart-overlay" onclick="if(window.closeCartDrawer)window.closeCartDrawer();"></div>
+    <!-- Luxury Mobile Bottom Floating Dock with Collection Menu Active -->
+    <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
+        <a href="index.html" class="dock-item" id="dock-item-home" aria-label="Home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="collection.html" class="dock-item active" id="dock-item-collection" aria-label="Collection">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Collection</span>
+        </a>
+        <a href="webcollection.html" class="dock-item" id="dock-item-web" aria-label="Web">
+            <i class="fa-solid fa-globe"></i>
+            <span>Web</span>
+        </a>
+        <a href="cart.html" class="dock-item dock-cart-btn" id="dock-cart-btn" aria-label="Shopping Bag">
+            <div class="dock-icon-wrap">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="dock-badge" id="dock-cart-count">0</span>
+            </div>
+            <span>Bag</span>
+        </a>
+        <a href="service.html" class="dock-item" id="dock-item-service" aria-label="Services">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Services</span>
+        </a>
+        <a href="about.html" class="dock-item" id="dock-item-about" aria-label="About">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>About</span>
+        </a>
+        <a href="index.html#contact" class="dock-item" id="dock-item-contact" aria-label="Contact / Inquire">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Inquire</span>
+        </a>
+    </nav>
+
+    <!-- Slide-Out Luxury Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
 
     <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Bag Drawer">
         <div class="cart-drawer-header">
@@ -534,7 +1162,7 @@
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span>SHOPPING BAG</span>
             </div>
-            <button class="cart-drawer-close" id="cart-close-btn" type="button" aria-label="Close Cart" onclick="if(window.closeCartDrawer)window.closeCartDrawer();">
+            <button class="cart-drawer-close" id="cart-close-btn" aria-label="Close Cart">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -556,2185 +1184,28 @@
                     <span>PROCEED TO SECURE CHECKOUT</span>
                     <i class="fa-solid fa-arrow-right"></i>
                 </a>
-                <button class="btn-continue" id="cart-continue-btn" type="button" onclick="if(window.closeCartDrawer)window.closeCartDrawer();">
+                <button class="btn-continue" id="cart-continue-btn" type="button">
                     ← Continue Exploring Collections
                 </button>
             </div>
         </div>
     </aside>
-
-
-    <!-- =========================================================
-         MAIN COLLECTION
-    ========================================================== -->
-    <main class="collection-container">
-
-
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
-        <header class="collection-hero">
-
-            <div class="hero-pill-badge">
-
-                <i class="fa-solid fa-gem"></i>
-
-                <span>
-                    Curated Archive · 2026 Edition
-                </span>
-
-            </div>
-
-
-            <h1 class="collection-title">
-                The Atelier
-                <span>Collection</span>
-            </h1>
-
-
-            <p class="collection-lead">
-                An editorial exhibition of bespoke brand identities,
-                haute couture stationery, and digital software systems.
-                Decorated across multiple formats with an interactive
-                inspection window.
-            </p>
-
-
-            <div class="collection-stats">
-
-                <div class="stat-item">
-                    <strong id="statsTotal">43</strong>
-                    Graphic Works
-                </div>
-
-                <span class="collection-stat-divider">|</span>
-
-                <div class="stat-item">
-                    <strong>6</strong>
-                    Creative Categories
-                </div>
-
-                <span class="collection-stat-divider">|</span>
-
-                <div class="stat-item">
-
-                    <i
-                        class="fa-solid fa-arrows-left-right"
-                        style="color:var(--gold-accent);margin-right:4px;"
-                    ></i>
-
-                    Serial Navigation
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- =====================================================
-             FILTER CONTROLS
-        ====================================================== -->
-        <section
-            class="collection-controls-wrap"
-            id="controlsWrap"
-        >
-
-            <div class="controls-bar">
-
-
-                <div
-                    class="filter-group"
-                    id="categoryFilters"
-                    role="tablist"
-                    aria-label="Filter by Category"
-                >
-
-                    <span class="filter-label">
-
-                        <i class="fa-solid fa-sliders"></i>
-
-                        Filter:
-
-                    </span>
-
-
-                    <button
-                        class="filter-btn active"
-                        data-category="all"
-                        role="tab"
-                        aria-selected="true"
-                    >
-                        <span>All Works</span>
-                        <span
-                            class="count-tag"
-                            id="count-all"
-                        >43</span>
-                    </button>
-
-
-                    <button
-                        class="filter-btn"
-                        data-category="fashion"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        <span>Fashion</span>
-                    </button>
-
-
-                    <button
-                        class="filter-btn"
-                        data-category="editorial"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        <span>Editorial</span>
-                    </button>
-
-
-                    <button
-                        class="filter-btn"
-                        data-category="sports"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        <span>Sports</span>
-                    </button>
-
-
-                    <button
-                        class="filter-btn"
-                        data-category="commercial"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        <span>Commercial</span>
-                    </button>
-
-
-                    <button
-                        class="filter-btn"
-                        data-category="certificate"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        <span>Certificates</span>
-                    </button>
-
-
-                    <button
-                        class="filter-btn"
-                        data-category="travel"
-                        role="tab"
-                        aria-selected="false"
-                    >
-                        <span>Travel</span>
-                    </button>
-
-                </div>
-
-
-                <div
-                    class="size-sorter"
-                    id="sizeFilters"
-                    role="group"
-                    aria-label="Format Sorter"
-                >
-
-                    <span class="filter-label">
-                        <i class="fa-solid fa-shapes"></i>
-                        Style:
-                    </span>
-
-                    <button
-                        class="size-btn active"
-                        data-size="bento"
-                        title="Curated Editorial Masonry Layout"
-                    >
-                        <i class="fa-solid fa-table-cells"></i>
-                        <span>Dynamic Bento</span>
-                    </button>
-
-                    <button
-                        class="size-btn"
-                        data-size="portrait"
-                        title="3:4 Exhibition Poster Format"
-                    >
-                        <i class="fa-solid fa-image"></i>
-                        <span>Poster (3:4)</span>
-                    </button>
-
-                    <button
-                        class="size-btn"
-                        data-size="square"
-                        title="1:1 Catalog Grid"
-                    >
-                        <i class="fa-solid fa-square"></i>
-                        <span>Square (1:1)</span>
-                    </button>
-
-                    <button
-                        class="size-btn"
-                        data-size="landscape"
-                        title="16:10 Cinematic Landscape Format"
-                    >
-                        <i class="fa-solid fa-film"></i>
-                        <span>Landscape</span>
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             IMPORTANT:
-             SINGLE VERTICAL COLLECTION
-             
-             JS populates this section.
-             No main collection navigation arrows.
-        ====================================================== -->
-        <section
-            class="collection-grid"
-            id="collectionGrid"
-            aria-label="Graphic Collection"
-        >
-        </section>
-
-    </main>
-
-
-    <!-- =========================================================
-         ATELIER IMAGE INSPECTION MODAL
-         
-         IMPORTANT:
-         Navigation arrows exist ONLY inside this popup.
-    ========================================================== -->
-    <dialog
-        id="atelierModal"
-        class="atelier-modal"
-        aria-modal="true"
-        aria-label="Atelier Graphic Inspection Window"
-    >
-
-        <div class="modal-inner-wrapper">
-
-            <!-- Ambient Atmospheric Glow Backdrop -->
-            <div class="modal-ambient-glow" id="modalAmbientGlow" aria-hidden="true"></div>
-
-            <!-- =================================================
-                 CREATIVE HUD HEADER
-            ================================================== -->
-            <header class="modal-hud-header" aria-label="Inspection Controls">
-
-                <div class="modal-hud-brand">
-                    <span class="hud-monogram">AP</span>
-                    <div class="hud-brand-text">
-                        <span class="hud-brand-name">Abdullah Psychotic</span>
-                        <span class="hud-brand-kicker">Graphic Archive · 2026</span>
-                    </div>
-                </div>
-
-                <div class="modal-hud-counter" id="modalCounterHud">
-                    <span class="hud-counter-kicker">PIECE</span>
-                    <span class="hud-counter-num" id="modalSerialIndex">01</span>
-                    <span class="hud-counter-sep">/</span>
-                    <span class="hud-counter-total" id="modalSerialTotal">43</span>
-                </div>
-
-                <div class="modal-hud-actions">
-
-                    <button
-                        class="modal-hud-btn"
-                        id="modalZoomBtn"
-                        type="button"
-                        aria-label="Toggle Magnification Zoom"
-                        title="Toggle Zoom (or double-click artwork)"
-                    >
-                        <i class="fa-solid fa-magnifying-glass-plus" id="modalZoomIcon"></i>
-                        <span class="hud-btn-hint">ZOOM</span>
-                    </button>
-
-                    <button
-                        class="modal-hud-btn modal-close-btn"
-                        id="modalCloseBtn"
-                        type="button"
-                        aria-label="Close inspection window"
-                        title="Close Window (ESC)"
-                    >
-                        <i class="fa-solid fa-xmark"></i>
-                        <span class="hud-btn-hint">ESC</span>
-                    </button>
-
-                </div>
-
-            </header>
-
-
-            <!-- =================================================
-                 MODAL BODY & MEDIA STAGE
-            ================================================== -->
-            <div class="modal-grid-body">
-
-                <!-- Floating Desktop Navigation Arrows -->
-                <button
-                    class="stage-nav-arrow stage-prev"
-                    id="stagePrevBtn"
-                    type="button"
-                    aria-label="Previous Graphic Piece"
-                    title="Previous Piece (Left Arrow)"
-                >
-                    <i class="fa-solid fa-chevron-left"></i>
-                </button>
-
-                <button
-                    class="stage-nav-arrow stage-next"
-                    id="stageNextBtn"
-                    type="button"
-                    aria-label="Next Graphic Piece"
-                    title="Next Piece (Right Arrow)"
-                >
-                    <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <!-- Centered Interactive Media Stage -->
-                <div
-                    class="modal-media-stage"
-                    id="modalMediaStage"
-                >
-
-                    <div class="modal-image-wrap" id="modalImageWrap">
-
-                        <div class="modal-corner corner-tl"></div>
-                        <div class="modal-corner corner-tr"></div>
-                        <div class="modal-corner corner-bl"></div>
-                        <div class="modal-corner corner-br"></div>
-
-                        <img
-                            src="170.webp"
-                            alt="Artwork Preview"
-                            id="modalPreviewImg"
-                            class="modal-preview-img"
-                            loading="eager"
-                            draggable="false"
-                        >
-
-                    </div>
-
-                    <!-- =========================================
-                         BOTTOM GALLERY CAROUSEL CONTROLS
-                    ========================================== -->
-                    <div class="modal-bottom-nav" id="modalBottomNav">
-
-                        <button
-                            class="modal-nav-arrow nav-prev"
-                            id="modalPrevBtn"
-                            type="button"
-                            aria-label="Previous Product"
-                            title="Previous Product"
-                        >
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </button>
-
-                        <div class="atelier-gallery-strip" id="atelierGalleryStrip"></div>
-
-                        <button
-                            class="modal-nav-arrow nav-next"
-                            id="modalNextBtn"
-                            type="button"
-                            aria-label="Next Product"
-                            title="Next Product"
-                        >
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </dialog>
-
-
-    <!-- =========================================================
-         TOAST
-    ========================================================== -->
-    <div
-        class="luxury-toast"
-        id="luxuryToast"
-        role="alert"
-        aria-live="polite"
-    >
-
-        <div class="toast-content">
-
-            <i class="fa-solid fa-circle-check toast-icon"></i>
-
-            <span id="toastMessage">
-                Acquisition added to bag
-            </span>
-
-        </div>
-
-
-        <a
-            href="cart.html"
-            class="toast-link"
-        >
-            View Bag
-        </a>
-
-    </div>
-
-
-    <!-- =========================================================
-         MOBILE BOTTOM DOCK
-    ========================================================== -->
-    <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
-        <a href="index.html" class="dock-item" id="dock-item-home" aria-label="Home">
-            <i class="fa-solid fa-house"></i>
-            <span>Home</span>
-        </a>
-        <a href="collection.html" class="dock-item active" id="dock-item-collection" aria-label="Collection">
-            <i class="fa-solid fa-layer-group"></i>
-            <span>Collection</span>
-        </a>
-        <a href="webcollection.html" class="dock-item" id="dock-item-web" aria-label="Web">
-            <i class="fa-solid fa-globe"></i>
-            <span>Web</span>
-        </a>
-        <button type="button" class="dock-item dock-cart-btn" id="dock-cart-btn" onclick="if(typeof openCartDrawer==='function')openCartDrawer();" aria-label="Shopping Bag">
-            <div class="dock-icon-wrap">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span class="dock-badge" id="dock-cart-count">0</span>
-            </div>
-            <span>Bag</span>
-        </button>
-        <a href="service.html" class="dock-item" id="dock-item-service" aria-label="Services">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span>Services</span>
-        </a>
-        <a href="about.html" class="dock-item" id="dock-item-about" aria-label="About">
-            <i class="fa-solid fa-user-tie"></i>
-            <span>About</span>
-        </a>
-        <a href="index.html#contact" class="dock-item" id="dock-item-contact" aria-label="Contact / Inquire">
-            <i class="fa-solid fa-paper-plane"></i>
-            <span>Inquire</span>
-        </a>
-    </nav>
-
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    "use strict";
-
-    /* =========================================================
-       ABDULLAH PSYCHOTIC — THE ATELIER COLLECTION
-       FULLSCREEN PRODUCT GALLERY CONTROLLER
-       ========================================================= */
-
-    const CART_KEY = "ap_user_cart";
-
-    /* =========================================================
-       PRODUCT DATABASE
-       170 → 212 = 43 PRODUCTS
-       ========================================================= */
-
-    const collectionData = [
-        {
-            id: 170,
-            category: "fashion",
-            title: "Graphic Collection 170",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A cinematic editorial composition built around dark atmosphere, dramatic portrait lighting, and a powerful red-black identity."
-        },
-        {
-            id: 171,
-            category: "editorial",
-            title: "Graphic Collection 171",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A live-podcast announcement poster combining bold typography, broadcast energy, and a striking monochrome microphone graphic."
-        },
-        {
-            id: 172,
-            category: "certificate",
-            title: "Graphic Collection 172",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A refined visual-art exhibition poster with sculptural imagery, high contrast, and a gallery-inspired layout."
-        },
-        {
-            id: 173,
-            category: "sports",
-            title: "Graphic Collection 173",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A premium automotive racing poster with motion, metallic detail, and an intense performance-driven mood."
-        },
-        {
-            id: 174,
-            category: "fashion",
-            title: "Graphic Collection 174",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A dark action-film style poster featuring a lone figure, deep shadows, and a suspenseful cinematic narrative."
-        },
-        {
-            id: 175,
-            category: "fashion",
-            title: "Graphic Collection 175",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A psychological portrait poster using red-black contrast, expressive photography, and a tense editorial atmosphere."
-        },
-        {
-            id: 176,
-            category: "travel",
-            title: "Graphic Collection 176",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A travel campaign design that pairs an expansive landscape with elegant typography and a calm, aspirational mood."
-        },
-        {
-            id: 177,
-            category: "commercial",
-            title: "Graphic Collection 177",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A food advertisement focused on a premium steak presentation, appetizing lighting, and clear promotional hierarchy."
-        },
-        {
-            id: 178,
-            category: "certificate",
-            title: "Graphic Collection 178",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A formal achievement certificate with a portrait-led composition, refined borders, and a prestigious award aesthetic."
-        },
-        {
-            id: 179,
-            category: "sports",
-            title: "Graphic Collection 179",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "An athletics championship poster designed with high-energy sports imagery, bold type, and competitive movement."
-        },
-        {
-            id: 180,
-            category: "certificate",
-            title: "Graphic Collection 180",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A formal recognition certificate combining portrait photography, dark luxury styling, and an authoritative layout."
-        },
-        {
-            id: 181,
-            category: "editorial",
-            title: "Graphic Collection 181",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A creative art exhibition announcement with expressive imagery, strong editorial typography, and a contemporary gallery feel."
-        },
-        {
-            id: 182,
-            category: "commercial",
-            title: "Graphic Collection 182",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A premium headphone advertisement featuring product drama, dark red accents, and a polished luxury presentation."
-        },
-        {
-            id: 183,
-            category: "fashion",
-            title: "Graphic Collection 183",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A fashion editorial poster with a powerful portrait, graphic red accents, and a bold magazine-cover composition."
-        },
-        {
-            id: 184,
-            category: "fashion",
-            title: "Graphic Collection 184",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A cinematic promotional design using layered portraits, dramatic lighting, and a high-impact entertainment aesthetic."
-        },
-        {
-            id: 185,
-            category: "fashion",
-            title: "Graphic Collection 185",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A futuristic human-robot concept poster blending cinematic portraiture, technology, and atmospheric blue tones."
-        },
-        {
-            id: 186,
-            category: "fashion",
-            title: "Graphic Collection 186",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A conceptual human-action poster with cinematic framing, controlled contrast, and a mysterious narrative feel."
-        },
-        {
-            id: 187,
-            category: "fashion",
-            title: "Graphic Collection 187",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A fantasy adventure poster featuring an ancient landscape, heroic atmosphere, and rich cinematic color depth."
-        },
-        {
-            id: 188,
-            category: "fashion",
-            title: "Graphic Collection 188",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A gangster-fighter promotional poster with gritty portraits, dark textures, and intense red highlights."
-        },
-        {
-            id: 189,
-            category: "editorial",
-            title: "Graphic Collection 189",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A back-to-school campaign poster using a moody campus scene, strong title treatment, and youthful storytelling."
-        },
-        {
-            id: 190,
-            category: "sports",
-            title: "Graphic Collection 190",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A sports announcement graphic with dynamic athlete photography, angular composition, and energetic red-black branding."
-        },
-        {
-            id: 191,
-            category: "sports",
-            title: "Graphic Collection 191",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A sports sponsorship poster built around movement, dramatic lighting, and a powerful promotional headline."
-        },
-        {
-            id: 192,
-            category: "fashion",
-            title: "Graphic Collection 192",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A back-to-school editorial poster with a solitary student figure, cinematic shadows, and a reflective mood."
-        },
-        {
-            id: 193,
-            category: "sports",
-            title: "Graphic Collection 193",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A premium golf advertisement presenting an open course, atmospheric sky, and clean outdoor-lifestyle typography."
-        },
-        {
-            id: 194,
-            category: "fashion",
-            title: "Graphic Collection 194",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A dark cinematic poster with a commanding title, dramatic silhouettes, and a high-tension visual narrative."
-        },
-        {
-            id: 195,
-            category: "sports",
-            title: "Graphic Collection 195",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A supercar racing poster emphasizing speed, aggressive perspective, and glossy automotive detail."
-        },
-        {
-            id: 196,
-            category: "sports",
-            title: "Graphic Collection 196",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A supercar racing campaign with a dramatic vehicle close-up, motion atmosphere, and premium motorsport styling."
-        },
-        {
-            id: 197,
-            category: "sports",
-            title: "Graphic Collection 197",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A Red Bull-inspired wings campaign graphic using bold blue-red contrast and an energetic sports identity."
-        },
-        {
-            id: 198,
-            category: "fashion",
-            title: "Graphic Collection 198",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A fashion portrait poster with a confident subject, sharp typography, and a modern street-luxury mood."
-        },
-        {
-            id: 199,
-            category: "fashion",
-            title: "Graphic Collection 199",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A new-drop fashion announcement with editorial portraiture, layered typography, and strong red-black styling."
-        },
-        {
-            id: 200,
-            category: "fashion",
-            title: "Graphic Collection 200",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A conceptual human-canvas poster combining portrait photography, artistic paint treatment, and gallery-like balance."
-        },
-        {
-            id: 201,
-            category: "commercial",
-            title: "Graphic Collection 201",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A luxury watch advertisement with precision product detail, elegant typography, and a premium black-gold palette."
-        },
-        {
-            id: 202,
-            category: "commercial",
-            title: "Graphic Collection 202",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A clean food campaign design presenting a healthy meal, warm photography, and a clear lifestyle message."
-        },
-        {
-            id: 203,
-            category: "certificate",
-            title: "Graphic Collection 203",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A polished brand certificate with a clean white layout, formal seals, and a trustworthy corporate presentation."
-        },
-        {
-            id: 204,
-            category: "fashion",
-            title: "Graphic Collection 204",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A premium fashion brand campaign featuring product styling, dark luxury tones, and a refined editorial arrangement."
-        },
-        {
-            id: 205,
-            category: "fashion",
-            title: "Graphic Collection 205",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A new-arrival fashion poster with a bright layout, product photography, and a clear retail announcement."
-        },
-        {
-            id: 206,
-            category: "fashion",
-            title: "Graphic Collection 206",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A luxury fashion wordmark composition with elegant script, dark red accents, and a sophisticated brand mood."
-        },
-        {
-            id: 207,
-            category: "fashion",
-            title: "Graphic Collection 207",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A fashion campaign presentation combining apparel photography, product callouts, and a clean commercial layout."
-        },
-        {
-            id: 208,
-            category: "commercial",
-            title: "Graphic Collection 208",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A premium watch advertisement built around close-up mechanics, dark textures, and precise technical detailing."
-        },
-        {
-            id: 209,
-            category: "fashion",
-            title: "Graphic Collection 209",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A dramatic fashion portrait poster with expressive lighting, bold red lettering, and an intense editorial identity."
-        },
-        {
-            id: 210,
-            category: "fashion",
-            title: "Graphic Collection 210",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A psychological fashion poster using a striking portrait, distressed typography, and a dark cinematic composition."
-        },
-        {
-            id: 211,
-            category: "editorial",
-            title: "Graphic Collection 211",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A podcast promotion poster featuring a bold red microphone, oversized type, and a high-impact broadcast identity."
-        },
-        {
-            id: 212,
-            category: "fashion",
-            title: "Graphic Collection 212",
-            subtitle: "Abdullah Psychotic · Visual Archive",
-            description: "A new-arrival fashion campaign with a cinematic product scene, cool tones, and a strong retail headline."
-        }
-    ];
-
-    /* =========================================================
-       NORMALIZE PRODUCTS
-       ========================================================= */
-
-    const products = collectionData.map((item, index) => ({
-        ...item,
-        index: index,
-        serial: index + 1,
-        total: collectionData.length,
-
-        thumbImg: `${item.id}.webp`,
-        previewImg: `${item.id}.webp`,
-        detailUrl: `${item.id}.webp`,
-
-        price: 0,
-        badge: "ARCHIVE",
-        isLuxury: true,
-        sizeFormat: "standard",
-
-        specs: [
-            "High-resolution artwork",
-            "Editorial composition",
-            "Abdullah Psychotic archive"
-        ]
-    }));
-
-    /* =========================================================
-       DOM
-       ========================================================= */
-
-    const grid = document.getElementById("collectionGrid");
-    const modal = document.getElementById("atelierModal");
-
-    const modalPreviewImg =
-        document.getElementById("modalPreviewImg");
-
-    const modalSerialIndex =
-        document.getElementById("modalSerialIndex");
-
-    const modalSerialTotal =
-        document.getElementById("modalSerialTotal");
-
-    const modalProductTitle =
-        document.getElementById("modalProductTitle");
-
-    const modalProductSubtitle =
-        document.getElementById("modalProductSubtitle");
-
-    const modalDesc =
-        document.getElementById("modalDesc");
-
-    const modalBadge =
-        document.getElementById("modalBadge");
-
-    const modalCategoryLabel =
-        document.getElementById("modalCategoryLabel");
-
-    const modalDirectLink =
-        document.getElementById("modalDirectLink");
-
-    const modalWhatsAppBtn =
-        document.getElementById("modalWhatsAppBtn");
-
-    const modalPrice =
-        document.getElementById("modalPrice");
-
-    const modalSpecsChips =
-        document.getElementById("modalSpecsChips");
-
-    const modalAddToCartBtn =
-        document.getElementById("modalAddToCartBtn");
-
-    const modalCloseBtn =
-        document.getElementById("modalCloseBtn");
-
-    const modalPrevBtn =
-        document.getElementById("modalPrevBtn");
-
-    const modalNextBtn =
-        document.getElementById("modalNextBtn");
-
-    const stagePrevBtn =
-        document.getElementById("stagePrevBtn");
-
-    const stageNextBtn =
-        document.getElementById("stageNextBtn");
-
-    const modalZoomBtn =
-        document.getElementById("modalZoomBtn");
-
-    const modalZoomIcon =
-        document.getElementById("modalZoomIcon");
-
-    const modalImageWrap =
-        document.getElementById("modalImageWrap");
-
-    const statsTotal =
-        document.getElementById("statsTotal");
-
-    const countAll =
-        document.getElementById("count-all");
-
-    /* =========================================================
-       STATE & ZOOM CONTROLLER
-       ========================================================= */
-
-    let activeCategory = "all";
-    let activeSizeStyle = "bento";
-    let activeProductId = null;
-    let filteredProducts = [...products];
-    let isZoomed = false;
-
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    function setZoomState(zoomed) {
-        isZoomed = Boolean(zoomed);
-        if (modalImageWrap) {
-            modalImageWrap.classList.toggle("is-zoomed", isZoomed);
-        }
-        if (modalPreviewImg) {
-            modalPreviewImg.classList.toggle("is-zoomed", isZoomed);
-            if (!isZoomed) {
-                modalPreviewImg.style.transform = "";
-            }
-        }
-        if (modalZoomIcon) {
-            modalZoomIcon.className = isZoomed
-                ? "fa-solid fa-magnifying-glass-minus"
-                : "fa-solid fa-magnifying-glass-plus";
-        }
-    }
-
-    if (modalZoomBtn) {
-        modalZoomBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            setZoomState(!isZoomed);
-        });
-    }
-
-    if (modalPreviewImg) {
-        modalPreviewImg.addEventListener("dblclick", (e) => {
-            e.stopPropagation();
-            setZoomState(!isZoomed);
-        });
-    }
-
-    if (stagePrevBtn) {
-        stagePrevBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            navigateProduct(-1);
-        });
-    }
-
-    if (stageNextBtn) {
-        stageNextBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            navigateProduct(1);
-        });
-    }
-
-    /* =========================================================
-       CATEGORY NAME
-       ========================================================= */
-
-    function categoryName(category) {
-        const names = {
-            fashion: "Fashion",
-            editorial: "Editorial",
-            sports: "Sports",
-            commercial: "Commercial",
-            certificate: "Certificates",
-            travel: "Travel"
-        };
-
-        return names[category] || "Archive";
-    }
-
-    /* =========================================================
-       FILTER PRODUCTS
-       ========================================================= */
-
-    function getFilteredProducts() {
-        if (activeCategory === "all") {
-            return [...products];
-        }
-
-        return products.filter(
-            product => product.category === activeCategory
-        );
-    }
-
-    /* =========================================================
-       RENDER MAIN COLLECTION
-       ========================================================= */
-
-    function renderGrid() {
-
-        if (!grid) {
-            console.error("collectionGrid not found.");
-            return;
-        }
-
-        grid.className = `collection-grid size-style-${activeSizeStyle}`;
-
-        filteredProducts = getFilteredProducts();
-
-        grid.innerHTML = "";
-
-        if (!filteredProducts.length) {
-
-            grid.innerHTML = `
-                <div class="collection-empty">
-                    <div class="empty-symbol">∅</div>
-                    <h3>No Works Found</h3>
-                    <p>This category currently contains no archive pieces.</p>
-                </div>
-            `;
-
-            updateStatistics();
-
-            return;
-        }
-
-        const fragment = document.createDocumentFragment();
-
-        filteredProducts.forEach((product, index) => {
-
-            const card = document.createElement("article");
-
-            // Curated Dynamic Bento formatting:
-            let formatClass = "format-square";
-            if (product.id === 170 || product.id === 180 || product.id === 195 || product.id === 210) {
-                formatClass = "format-hero";
-            } else if (product.category === "certificate") {
-                formatClass = "format-landscape";
-            } else if (product.category === "fashion" || product.category === "editorial") {
-                formatClass = "format-portrait";
-            } else if (index % 5 === 0) {
-                formatClass = "format-portrait";
-            } else if (index % 7 === 0) {
-                formatClass = "format-landscape";
-            }
-
-            card.className = `collection-card ${formatClass}`;
-            card.dataset.productId = product.id;
-            card.dataset.category = product.category;
-            card.dataset.format = formatClass;
-            card.dataset.index = index;
-
-            card.innerHTML = `
-                <button
-                    class="collection-card-button"
-                    type="button"
-                    aria-label="View Graphic Piece ${product.id}"
-                >
-                    <div class="card-media">
-
-                        <div class="card-corner corner-tl"></div>
-                        <div class="card-corner corner-tr"></div>
-                        <div class="card-corner corner-bl"></div>
-                        <div class="card-corner corner-br"></div>
-
-                        <div class="card-image-frame">
-
-                            <img
-                                src="${product.thumbImg}"
-                                alt="Poster ${product.id}"
-                                class="collection-product-image"
-                                loading="${index < 4 ? "eager" : "lazy"}"
-                                draggable="false"
-                            >
-
-                            <div class="card-image-shade"></div>
-
-                            <div class="card-image-overlay">
-                                <span class="card-view-label" aria-hidden="true">
-                                    <i class="fa-solid fa-expand"></i>
-                                </span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </button>
-            `;
-
-            const image = card.querySelector("img");
-
-            if (image) {
-                image.addEventListener("error", () => {
-                    image.classList.add("image-load-error");
-
-                    image.parentElement.classList.add(
-                        "image-missing"
-                    );
-
-                    const errorText =
-                        document.createElement("span");
-
-                    errorText.className = "image-error-label";
-
-                    errorText.textContent =
-                        `${product.id}.webp`;
-
-                    image.parentElement.appendChild(errorText);
-                });
-            }
-
-            fragment.appendChild(card);
-        });
-
-        grid.appendChild(fragment);
-
-        updateStatistics();
-    }
-
-    /* =========================================================
-       ESCAPE HTML
-       ========================================================= */
-
-    function escapeHTML(value) {
-        return String(value)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-    }
-
-    /* =========================================================
-       STATISTICS
-       ========================================================= */
-
-    function updateStatistics() {
-
-        if (statsTotal) {
-            statsTotal.textContent =
-                filteredProducts.length;
-        }
-
-        if (countAll) {
-            countAll.textContent =
-                products.length;
-        }
-
-        document.querySelectorAll(
-            ".filter-btn[data-category]"
-        ).forEach(button => {
-
-            const category =
-                button.dataset.category;
-
-            const count =
-                category === "all"
-                    ? products.length
-                    : products.filter(
-                        product =>
-                            product.category === category
-                    ).length;
-
-            let tag =
-                button.querySelector(".count-tag");
-
-            if (!tag && category !== "all") {
-
-                tag =
-                    document.createElement("span");
-
-                tag.className = "count-tag";
-
-                button.appendChild(tag);
-            }
-
-            if (tag) {
-                tag.textContent = count;
-            }
-        });
-    }
-
-    /* =========================================================
-       CREATE GALLERY THUMBNAILS
-       ========================================================= */
-
-    function createGalleryStrip() {
-
-        let strip =
-            document.getElementById("atelierGalleryStrip");
-
-        if (!strip) {
-            const container =
-                document.getElementById("modalBottomNav") ||
-                document.getElementById("modalMediaStage");
-
-            if (!container) return;
-
-            strip =
-                document.createElement("div");
-
-            strip.id =
-                "atelierGalleryStrip";
-
-            strip.className =
-                "atelier-gallery-strip";
-
-            container.appendChild(strip);
-        }
-
-        if (strip.dataset.categoryKey === activeCategory && strip.children.length === filteredProducts.length) {
-            updateActiveThumbnail();
-            return;
-        }
-
-        strip.dataset.categoryKey = activeCategory;
-        strip.innerHTML = "";
-
-        filteredProducts.forEach((product, index) => {
-
-            const button =
-                document.createElement("button");
-
-            button.type = "button";
-
-            button.className =
-                "gallery-thumb";
-
-            button.dataset.productId =
-                product.id;
-
-            button.setAttribute(
-                "aria-label",
-                `Open piece ${product.id}`
-            );
-
-            button.innerHTML = `
-                <img
-                    src="${product.thumbImg}"
-                    alt=""
-                    draggable="false"
-                    loading="lazy"
-                >
-            `;
-
-            button.addEventListener(
-                "click",
-                event => {
-
-                    event.stopPropagation();
-
-                    openProductModal(product.id);
-                }
-            );
-
-            strip.appendChild(button);
-        });
-    }
-
-    /* =========================================================
-       OPEN PRODUCT MODAL
-       ========================================================= */
-
-    window.openProductModal = function(productId) {
-
-        const numericId =
-            Number(productId);
-
-        const product =
-            filteredProducts.find(
-                item => item.id === numericId
-            );
-
-        if (!product) {
-            console.warn(
-                "Product not found:",
-                productId
-            );
-            return;
-        }
-
-        activeProductId =
-            numericId;
-
-        createGalleryStrip();
-
-        updateModalContent(product);
-
-        if (!modal) return;
-
-        document.body.classList.add(
-            "atelier-gallery-open"
-        );
-
-        try {
-
-            if (typeof modal.showModal === "function") {
-
-                if (!modal.open) {
-                    modal.showModal();
-                }
-
-            } else {
-
-                modal.setAttribute(
-                    "open",
-                    ""
-                );
-            }
-
-        } catch (error) {
-
-            modal.setAttribute(
-                "open",
-                ""
-            );
-        }
-
-        requestAnimationFrame(() => {
-
-            document
-                .querySelectorAll(".gallery-thumb")
-                .forEach(thumb => {
-
-                    thumb.classList.toggle(
-                        "active",
-                        Number(thumb.dataset.productId) ===
-                        numericId
-                    );
-                });
-
-            scrollActiveThumbnailIntoView();
-        });
-    };
-
-    /* =========================================================
-       CLOSE PRODUCT MODAL
-       ========================================================= */
-
-    window.closeProductModal = function() {
-
-        if (!modal) return;
-
-        setZoomState(false);
-
-        document.body.classList.remove(
-            "atelier-gallery-open"
-        );
-
-        try {
-
-            if (
-                typeof modal.close === "function" &&
-                modal.open
-            ) {
-                modal.close();
-            }
-
-        } catch (error) {
-            // Fallback below
-        }
-
-        modal.removeAttribute("open");
-
-        activeProductId = null;
-    };
-
-    /* =========================================================
-       UPDATE MODAL
-       ========================================================= */
-
-    function updateModalContent(product) {
-
-        const currentIndex =
-            filteredProducts.findIndex(
-                item => item.id === product.id
-            );
-
-        const total =
-            filteredProducts.length;
-
-        if (modalSerialIndex) {
-
-            modalSerialIndex.textContent =
-                String(currentIndex + 1)
-                    .padStart(2, "0");
-        }
-
-        if (modalSerialTotal) {
-
-            modalSerialTotal.textContent =
-                String(total)
-                    .padStart(2, "0");
-        }
-
-        if (modalPreviewImg) {
-
-            modalPreviewImg.src =
-                product.previewImg;
-
-            modalPreviewImg.alt =
-                product.title;
-
-            modalPreviewImg.dataset.productId =
-                product.id;
-        }
-
-        if (modalProductTitle) {
-
-            modalProductTitle.textContent =
-                product.title;
-        }
-
-        if (modalProductSubtitle) {
-
-            modalProductSubtitle.textContent =
-                product.subtitle;
-        }
-
-        if (modalDesc) {
-
-            modalDesc.textContent =
-                product.description;
-        }
-
-        if (modalBadge) {
-
-            modalBadge.textContent =
-                product.badge;
-        }
-
-        if (modalCategoryLabel) {
-
-            modalCategoryLabel.textContent =
-                `${categoryName(product.category)} · Archive`;
-        }
-
-        if (modalPrice) {
-
-            modalPrice.textContent =
-                "ARCHIVE";
-        }
-
-        if (modalDirectLink) {
-
-            modalDirectLink.href =
-                product.detailUrl;
-        }
-
-        if (modalWhatsAppBtn) {
-
-            const message =
-                `Hello Abdullah Psychotic,\n\nI am interested in Graphic Collection ${product.id}.`;
-
-            modalWhatsAppBtn.href =
-                `https://wa.me/8801342900364?text=${encodeURIComponent(message)}`;
-        }
-
-        if (modalSpecsChips) {
-
-            modalSpecsChips.innerHTML = "";
-
-            product.specs.forEach(spec => {
-
-                const chip =
-                    document.createElement("span");
-
-                chip.className =
-                    "modal-spec-badge";
-
-                chip.innerHTML = `
-                    <i class="fa-solid fa-circle-check"></i>
-                    ${escapeHTML(spec)}
-                `;
-
-                modalSpecsChips.appendChild(chip);
-            });
-        }
-
-        if (modalAddToCartBtn) {
-
-            modalAddToCartBtn.dataset.productId =
-                product.id;
-        }
-
-        updateNavigationButtons();
-        updateActiveThumbnail();
-    }
-
-    /* =========================================================
-       PREVIOUS / NEXT
-       ========================================================= */
-
-    window.navigateProduct = function(direction) {
-
-        setZoomState(false);
-
-        if (!filteredProducts.length) return;
-
-        const currentIndex =
-            filteredProducts.findIndex(
-                product =>
-                    product.id === activeProductId
-            );
-
-        if (currentIndex === -1) return;
-
-        let nextIndex =
-            currentIndex + Number(direction);
-
-        if (nextIndex < 0) {
-            nextIndex =
-                filteredProducts.length - 1;
-        }
-
-        if (nextIndex >= filteredProducts.length) {
-            nextIndex = 0;
-        }
-
-        const nextProduct =
-            filteredProducts[nextIndex];
-
-        activeProductId =
-            nextProduct.id;
-
-        updateModalContent(nextProduct);
-
-        if (modalPreviewImg) {
-
-            modalPreviewImg.classList.remove(
-                "gallery-image-changing"
-            );
-
-            void modalPreviewImg.offsetWidth;
-
-            modalPreviewImg.classList.add(
-                "gallery-image-changing"
-            );
-        }
-
-        scrollActiveThumbnailIntoView();
-    };
-
-    /* =========================================================
-       NAVIGATION BUTTONS
-       ========================================================= */
-
-    function updateNavigationButtons() {
-
-        if (!filteredProducts.length) return;
-
-        if (modalPrevBtn) {
-            modalPrevBtn.disabled = false;
-        }
-
-        if (modalNextBtn) {
-            modalNextBtn.disabled = false;
-        }
-    }
-
-    if (modalPrevBtn) {
-
-        modalPrevBtn.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                navigateProduct(-1);
-            }
-        );
-    }
-
-    if (modalNextBtn) {
-
-        modalNextBtn.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                navigateProduct(1);
-            }
-        );
-    }
-
-    /* =========================================================
-       ACTIVE THUMBNAIL
-       ========================================================= */
-
-    function updateActiveThumbnail() {
-
-        document
-            .querySelectorAll(".gallery-thumb")
-            .forEach(thumb => {
-
-                thumb.classList.toggle(
-                    "active",
-                    Number(thumb.dataset.productId) ===
-                    Number(activeProductId)
-                );
-            });
-    }
-
-    function scrollActiveThumbnailIntoView() {
-
-        const active =
-            document.querySelector(
-                `.gallery-thumb[data-product-id="${activeProductId}"]`
-            );
-
-        if (!active) return;
-
-        active.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center"
-        });
-    }
-
-    /* =========================================================
-       MAIN PRODUCT CLICK
-       ========================================================= */
-
-    if (grid) {
-
-        grid.addEventListener(
-            "click",
-            event => {
-
-                const card =
-                    event.target.closest(
-                        ".collection-card"
-                    );
-
-                if (!card) return;
-
-                const id =
-                    Number(card.dataset.productId);
-
-                openProductModal(id);
-            }
-        );
-    }
-
-    /* =========================================================
-       CLOSE BUTTON
-       ========================================================= */
-
-    if (modalCloseBtn) {
-
-        modalCloseBtn.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                closeProductModal();
-            }
-        );
-    }
-
-    /* Extra fallback for different close classes */
-
-    document.addEventListener(
-        "click",
-        event => {
-
-            const closeTarget =
-                event.target.closest(
-                    "#modalCloseBtn, .modal-close-btn, .modal-close, [data-modal-close]"
-                );
-
-            if (!closeTarget) return;
-
-            if (
-                modal &&
-                modal.contains(closeTarget)
-            ) {
-                closeProductModal();
-            }
-        }
-    );
-
-    /* =========================================================
-       CLICK BACKDROP TO CLOSE
-       ========================================================= */
-
-    if (modal) {
-
-        modal.addEventListener(
-            "click",
-            event => {
-
-                if (
-                    event.target === modal
-                ) {
-                    closeProductModal();
-                }
-            }
-        );
-    }
-
-    /* =========================================================
-       KEYBOARD NAVIGATION
-       ========================================================= */
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (
-                !modal ||
-                !modal.hasAttribute("open")
-            ) {
-                return;
-            }
-
-            const target =
-                event.target;
-
-            const tag =
-                target &&
-                target.tagName
-                    ? target.tagName.toLowerCase()
-                    : "";
-
-            if (
-                tag === "input" ||
-                tag === "textarea" ||
-                tag === "select" ||
-                target?.isContentEditable
-            ) {
-                return;
-            }
-
-            if (event.key === "ArrowLeft") {
-
-                event.preventDefault();
-
-                navigateProduct(-1);
-            }
-
-            if (event.key === "ArrowRight") {
-
-                event.preventDefault();
-
-                navigateProduct(1);
-            }
-
-            if (event.key === "Escape") {
-
-                event.preventDefault();
-
-                closeProductModal();
-            }
-
-            if (event.key === "z" || event.key === "Z") {
-
-                event.preventDefault();
-
-                setZoomState(!isZoomed);
-            }
-        }
-    );
-
-    /* =========================================================
-       MOBILE TOUCH SWIPE
-       ========================================================= */
-
-    const swipeStage =
-        document.getElementById(
-            "modalMediaStage"
-        );
-
-    if (swipeStage) {
-
-        swipeStage.addEventListener(
-            "touchstart",
-            event => {
-
-                if (!event.touches.length) return;
-
-                touchStartX =
-                    event.touches[0].clientX;
-
-                touchStartY =
-                    event.touches[0].clientY;
-            },
-            {
-                passive: true
-            }
-        );
-
-        swipeStage.addEventListener(
-            "touchend",
-            event => {
-
-                if (!event.changedTouches.length) {
-                    return;
-                }
-
-                const endX =
-                    event.changedTouches[0].clientX;
-
-                const endY =
-                    event.changedTouches[0].clientY;
-
-                const diffX =
-                    endX - touchStartX;
-
-                const diffY =
-                    endY - touchStartY;
-
-                const minSwipe =
-                    55;
-
-                if (
-                    Math.abs(diffX) <
-                    minSwipe
-                ) {
-                    return;
-                }
-
-                if (
-                    Math.abs(diffX) <=
-                    Math.abs(diffY)
-                ) {
-                    return;
-                }
-
-                if (diffX < 0) {
-                    navigateProduct(1);
-                } else {
-                    navigateProduct(-1);
-                }
-            },
-            {
-                passive: true
-            }
-        );
-    }
-
-    /* =========================================================
-       FILTER SYSTEM
-       ========================================================= */
-
-    document
-        .querySelectorAll(
-            ".filter-btn[data-category]"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    activeCategory =
-                        button.dataset.category ||
-                        "all";
-
-                    document
-                        .querySelectorAll(
-                            ".filter-btn[data-category]"
-                        )
-                        .forEach(btn => {
-
-                            const active =
-                                btn === button;
-
-                            btn.classList.toggle(
-                                "active",
-                                active
-                            );
-
-                            btn.setAttribute(
-                                "aria-selected",
-                                active
-                                    ? "true"
-                                    : "false"
-                            );
-                        });
-
-                    filteredProducts =
-                        getFilteredProducts();
-
-                    renderGrid();
-
-                    window.scrollTo({
-                        top: 0,
-                        behavior: "smooth"
-                    });
-                }
-            );
-        });
-
-    /* =========================================================
-       SIZE FORMAT SWITCHER
-       ========================================================= */
-
-    document
-        .querySelectorAll(
-            "#sizeFilters .size-btn[data-size]"
-        )
-        .forEach(button => {
-
-            button.addEventListener(
-                "click",
-                () => {
-                    const size = button.dataset.size || "bento";
-                    activeSizeStyle = size;
-
-                    document
-                        .querySelectorAll(
-                            "#sizeFilters .size-btn[data-size]"
-                        )
-                        .forEach(btn => {
-                            btn.classList.toggle("active", btn === button);
-                        });
-
-                    if (grid) {
-                        grid.className = `collection-grid size-style-${activeSizeStyle}`;
-                    }
-                }
-            );
-        });
-
-    /* =========================================================
-       CART
-       ========================================================= */
-
-    function getCart() {
-
-        try {
-
-            const raw =
-                localStorage.getItem(
-                    CART_KEY
-                );
-
-            if (!raw) return [];
-
-            const parsed =
-                JSON.parse(raw);
-
-            return Array.isArray(parsed)
-                ? parsed
-                : [];
-
-        } catch (error) {
-
-            console.warn(
-                "Cart read error:",
-                error
-            );
-
-            return [];
-        }
-    }
-
-    function saveCart(cart) {
-
-        try {
-
-            localStorage.setItem(
-                CART_KEY,
-                JSON.stringify(cart)
-            );
-
-        } catch (error) {
-
-            console.warn(
-                "Cart save error:",
-                error
-            );
-        }
-
-        updateCartCount();
-    }
-
-    function getCartCount() {
-
-        const cart =
-            getCart();
-
-        return cart.reduce(
-            (total, item) =>
-                total +
-                Number(
-                    item.quantity ||
-                    item.qty ||
-                    1
-                ),
-            0
-        );
-    }
-
-    function updateCartCount() {
-
-        const count =
-            getCartCount();
-
-        const ids = [
-            "cart-count",
-            "drawer-cart-count",
-            "dock-cart-count"
-        ];
-
-        ids.forEach(id => {
-
-            const element =
-                document.getElementById(id);
-
-            if (element) {
-                element.textContent =
-                    count;
-            }
-        });
-    }
-
-    window.handleModalAddToCart =
-        function () {
-
-            const productId =
-                Number(
-                    modalAddToCartBtn?.dataset.productId ||
-                    activeProductId
-                );
-
-            const product =
-                products.find(
-                    item =>
-                        item.id === productId
-                );
-
-            if (!product) return;
-
-            const cart =
-                getCart();
-
-            const existing =
-                cart.find(
-                    item =>
-                        Number(item.id) ===
-                        product.id
-                );
-
-            if (existing) {
-
-                existing.quantity =
-                    Number(
-                        existing.quantity ||
-                        1
-                    ) + 1;
-
-            } else {
-
-                cart.push({
-                    id: product.id,
-                    title: product.title,
-                    image: product.previewImg,
-                    price: product.price,
-                    category: product.category,
-                    quantity: 1
-                });
-            }
-
-            saveCart(cart);
-
-            showToast(
-                "Archive piece added to bag"
-            );
-        };
-
-    /* =========================================================
-       TOAST
-       ========================================================= */
-
-    let toastTimer = null;
-
-    function showToast(message) {
-
-        const toast =
-            document.getElementById(
-                "luxuryToast"
-            );
-
-        const toastMessage =
-            document.getElementById(
-                "toastMessage"
-            );
-
-        if (!toast) return;
-
-        if (toastMessage) {
-            toastMessage.textContent =
-                message;
-        }
-
-        toast.classList.add(
-            "show"
-        );
-
-        clearTimeout(
-            toastTimer
-        );
-
-        toastTimer =
-            setTimeout(
-                () => {
-
-                    toast.classList.remove(
-                        "show"
-                    );
-
-                },
-                3000
-            );
-    }
-
-    /* =========================================================
-       CART STORAGE SYNC
-       ========================================================= */
-
-    window.addEventListener(
-        "storage",
-        event => {
-
-            if (
-                event.key === CART_KEY
-            ) {
-                updateCartCount();
-            }
-        }
-    );
-
-    /* =========================================================
-       ESCAPE LOCK
-       ========================================================= */
-
-    window.addEventListener(
-        "beforeunload",
-        () => {
-
-            document.body.classList.remove(
-                "atelier-gallery-open"
-            );
-        }
-    );
-
-    /* =========================================================
-       INITIALIZE
-       ========================================================= */
-
-    renderGrid();
-
-    updateCartCount();
-
-    /* Ensure initial state */
-
-    if (modal) {
-        modal.removeAttribute("open");
-    }
-
-    document.body.classList.remove(
-        "atelier-gallery-open"
-    );
-
-    const hash = window.location.hash;
-    if (hash && hash.startsWith("#product-")) {
-        const id = Number(hash.replace("#product-", ""));
-        if (id) {
-            openProductModal(id);
-        }
-    }
-
-    console.log(
-        `%cABDULLAH PSYCHOTIC%c — Atelier Collection loaded: ${products.length} works`,
-        "font-weight:700;",
-        "font-weight:400;"
-    );
-});
+const items = [{"id": 170, "title": "Visual Arts Exhibition", "subtitle": "Ingoude Company · Exhibition Key Art", "group": "art", "categoryLabel": "Art & Exhibitions", "client": "Ingoude Company", "year": "2025", "description": "Editorial exhibition key art featuring fluid liquid-chrome and molten gold cybernetic hands reaching in tension across a cosmic void, creating a modern renaissance homage to Michelangelo with high-contrast display serif typography.", "img": "170.webp"}, {"id": 171, "title": "Live Podcast Broadcast", "subtitle": "SailorEnterprise.co · Punk Zine Identity", "group": "art", "categoryLabel": "Art & Exhibitions", "client": "SailorEnterprise.co", "year": "2025", "description": "Raw punk-zine editorial poster blending newspaper torn paper collages, high-contrast black and white halftone broadcast radio, clenched fist microphone, and energetic vermillion red dry-brush typography.", "img": "171.webp"}, {"id": 172, "title": "Internal Psycho · Key Art", "subtitle": "Internal Psycho Films · Cinematic Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Internal Psycho Films", "year": "2025", "description": "Atmospheric psychological thriller landscape key art exploring split identity through high-contrast split lighting, distressed brush title lettering, and a silhouetted figure overlooking a nocturnal rainy metropolis.", "img": "172.webp"}, {"id": 173, "title": "Bite The Bullet · Signature Sneaker", "subtitle": "Abdullah Psychotic · Commercial Footwear Campaign", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Atelier", "year": "2025", "description": "Commercial product campaign for custom bespoke leather high-tops resting on volcanic basalt stone with atmospheric crimson smoke, featuring architectural macro callout tiles detailing the embroidered tongue, crest, and traction outsole.", "img": "173.webp"}, {"id": 174, "title": "Humen In Action", "subtitle": "Humen Studio · Syndicate Action Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Humen Studio", "year": "2025", "description": "Cinematic crime syndicate theatrical poster presenting a hooded dual-wielding protagonist flanked by an executive security phalanx in sharp tailored suits, standing over mirror-wet asphalt under intense spotlight backlighting.", "img": "174.webp"}, {"id": 175, "title": "Internal Psycho · Dual Psyche", "subtitle": "Internal Psycho Films · Character Study Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Internal Psycho Films", "year": "2025", "description": "Intimate landscape character study poster capturing the protagonist between light and shadow with haunting dual-exposure reflections, deep crimson aura, and classical serif narrative credits.", "img": "175.webp"}, {"id": 176, "title": "Wander More · Explore The World", "subtitle": "Wander More Travel · Global Campaign Key Art", "group": "art", "categoryLabel": "Art & Exhibitions", "client": "Wander More Travel", "year": "2025", "description": "Aspirational panoramic tourism campaign poster capturing a solo backpacker perched upon an alpine peak overlooking a sunlit fjord at dawn, complemented by flowing script titles and gold travel badge iconography.", "img": "176.webp"}, {"id": 177, "title": "The Grill House · Special Steak", "subtitle": "The Grill House · Culinary Advertising Campaign", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "The Grill House", "year": "2025", "description": "High-impact culinary advertisement showcasing a sizzling prime-cut ribeye steak with rosemary sprigs, roasted garlic, and golden fingerling potatoes on rustic slate, paired with distressed woodcut typography and badge pricing.", "img": "177.webp"}, {"id": 178, "title": "Apex Fighting League · Achievement Diploma", "subtitle": "Apex Fighting League · Luxury Combat Credential", "group": "certificates", "categoryLabel": "Certificates", "client": "Apex Fighting League", "year": "2025", "description": "Haute ceremonial achievement diploma featuring an editorial portrait of Abdullah The King, silver hairline ornamental borders, debossed crimson wax seal emblem, and formal copperplate calligraphy.", "img": "178.webp"}, {"id": 179, "title": "Annual Athletics Championship", "subtitle": "Apex Sports · High-Performance Key Art", "group": "sports", "categoryLabel": "Sports & Racing", "client": "Apex Sports Presents", "year": "2025", "description": "Dynamic track and field championship poster capturing an elite sprinter exploding from the starting blocks, wrapped in luminous gold stadium dust and distressed athletic display typography.", "img": "179.webp"}, {"id": 180, "title": "The Fighter · Official Credential", "subtitle": "Apex Fighting League · Gold Leaf Title Diploma", "group": "certificates", "categoryLabel": "Certificates", "client": "Apex Fighting League", "year": "2025", "description": "Gold-foil adorned champion credential framed in geometric art deco corner brackets, featuring a crowned combat insignia, embossed wax seal, and elegant serif type dedicating discipline and victory.", "img": "180.webp"}, {"id": 181, "title": "Creative Art Exhibition", "subtitle": "The Art Collective · Museum Exhibition Key Art", "group": "art", "categoryLabel": "Art & Exhibitions", "client": "The Art Collective", "year": "2025", "description": "Museum retrospective exhibition key art depicting a classical marble bust of David in an ambient dark gallery, interrupted by a visceral scarlet paint stroke over the eyes, contrasting classical tradition with modern rebellion.", "img": "181.webp"}, {"id": 182, "title": "AP Luxury Wireless Headphones", "subtitle": "Abdullah Psychotic · Audiophile Hardware Ad", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "High-end consumer audio campaign presenting over-ear audiophile headphones with brushed stainless steel accents, set against a dark volcanic terrain with dramatic crimson edge illumination and technical feature callouts.", "img": "182.webp"}, {"id": 183, "title": "Bite The Bullet · Shadow Wolf", "subtitle": "Abdullah Psychotic · Streetwear Lookbook Graphic", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Fashion Brand", "year": "2025", "description": "Streetwear graphic poster showcasing an illustrated portrait of the designer in a hooded sweatshirt, backed by an ink-splattered red brush halo and a snarling black wolf emblem crowned with the AP royal monogram.", "img": "183.webp"}, {"id": 184, "title": "Abdullah Psychotic · Lifestyle Drink", "subtitle": "Abdullah Psychotic · Beverage Packaging & Key Art", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Commercial beverage visual advertising a 250ml slimline energy drink can drenched in condensation, bursting through crystalline ice cubes and fluid crimson energy splashes under high-contrast studio strobes.", "img": "184.webp"}, {"id": 185, "title": "Wear Your Mindset · Lookbook", "subtitle": "Abdullah Psychotic · Streetwear Campaign", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Fashion", "year": "2025", "description": "Editorial streetwear advertising piece featuring model in technical cargo garments on urban stone steps, detailed with product inset windows for the embroidered trucker cap, heavyweight hoodie, and branded luxury hang tag.", "img": "185.webp"}, {"id": 186, "title": "Human vs Robot · One Future", "subtitle": "Dreamer Films · Theatrical Sci-Fi Poster", "group": "posters", "categoryLabel": "Posters & Films", "client": "Dreamer Films", "year": "2025", "description": "Duality-themed cinematic science fiction poster confronting a human warrior with a sentient chrome automaton across a cybernetic neon divide, balancing cold cyan circuitry with passionate crimson defiance.", "img": "186.webp"}, {"id": 187, "title": "The Lost Empire · Adventure Key Art", "subtitle": "Dreamer Films · Theatrical Adventure Poster", "group": "posters", "categoryLabel": "Posters & Films", "client": "Dreamer Films Production", "year": "2025", "description": "Epic adventure key art depicting explorers standing before an uncharted misty temple citadel hidden in jungle mountains, complemented by chiseled stone gold serif typography, antique compass, and explorer maps.", "img": "187.webp"}, {"id": 188, "title": "Gangsters vs Fighter", "subtitle": "Dreamer Films · Crime Thriller Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Dreamer Films", "year": "2025", "description": "High-stakes urban crime thriller poster pairing a resilient underdog street fighter against a ruthless mob syndicate, framed with black Rolls-Royce and G-Wagen luxury grilles, smoking cigars, and steel distressed typography.", "img": "188.webp"}, {"id": 189, "title": "Back to School · Gear Up For Greatness", "subtitle": "Abdullah Psychotic · Academic Lifestyle Collection", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Campus lifestyle campaign poster capturing a student walking toward grand classical university pillars at golden hour, carrying a branded technical backpack and textbooks embossed with the AP crown seal.", "img": "189.webp"}, {"id": 190, "title": "Sports Event Announcement", "subtitle": "Abdullah Psychotic · Arena Event Key Art", "group": "sports", "categoryLabel": "Sports & Racing", "client": "Abdullah Psychotic Athletics", "year": "2025", "description": "Adrenaline-fueled stadium event announcement showcasing a muscular sprinter surging along a dark Olympic curve beneath a blood-red sky, bordered by aggressive crimson chevron speed accents.", "img": "190.webp"}, {"id": 191, "title": "Sports Sponsorship · Powering Talent", "subtitle": "Abdullah Psychotic · Official Partnership Campaign", "group": "sports", "categoryLabel": "Sports & Racing", "client": "Abdullah Psychotic Athletics", "year": "2025", "description": "Athletic partnership campaign poster featuring a sprinter in ready stance with a towering satin AP banner billowing into the floodlit stadium stands, highlighted by custom race spike product presentation.", "img": "191.webp"}, {"id": 192, "title": "Back to School · New Chapter", "subtitle": "Abdullah Psychotic · Stationery & Gear Suite", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Atmospheric educational lifestyle poster detailing branded spiral notebooks, executive ballpoint pen, tactical water bottle, and cap laid out on an outdoor study table with university halls in the background.", "img": "192.webp"}, {"id": 193, "title": "Golf · Better Play Every Day", "subtitle": "Apex Sports Club · Luxury Outdoor Campaign", "group": "sports", "categoryLabel": "Sports & Racing", "client": "Apex Sports Club", "year": "2025", "description": "Sophisticated golf club advertising poster blending a macro close-up of a dimpled ball on the tee with a scenic morning fairway overlook and double-exposed portrait of an athlete finishing a powerful drive.", "img": "193.webp"}, {"id": 194, "title": "Don't Stop · Face The Storm", "subtitle": "Abdullah Psychotic Films · Theatrical Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Abdullah Psychotic Films", "year": "2025", "description": "Dramatic theatrical teaser poster showing a leather-clad protagonist facing into crimson storm clouds above a rainy skyline, backed by an exotic sports coupe and lone clifftop sentinel silhouette.", "img": "194.webp"}, {"id": 195, "title": "Supercar Racing · Monaco Grand Prix", "subtitle": "Monaco Grand Prix / AP Racing · Motorsport Key Art", "group": "sports", "categoryLabel": "Sports & Racing", "client": "Monaco Grand Prix / AP Racing", "year": "2026", "description": "Adrenaline-charged motorsport racing key art featuring custom matte-black and red Lamborghini GT charging across a wet chicane in Monaco with spray plumes and trailing Ferrari and McLaren contenders.", "img": "195.webp"}, {"id": 196, "title": "Super Car Racing · Fast Cars No Limits", "subtitle": "R1 Racing Syndicate · Alpine Circuit Key Art", "group": "sports", "categoryLabel": "Sports & Racing", "client": "R1 Racing Syndicate", "year": "2025", "description": "Cinematic supercar poster showing exotic race cars drifting through an alpine grand prix circuit with tracking helicopter overhead, cheering crowds, and bold Japanese calligraphic background elements.", "img": "196.webp"}, {"id": 197, "title": "Red Bull · Gives You Wings", "subtitle": "Red Bull International · Panoramic Brand Campaign", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "Red Bull International", "year": "2025", "description": "Expansive panoramic brand banner illustrating the iconic Red Bull energy drink can flanked by multi-layered vector feathered wings soaring above alpine summits under vivid blue skies.", "img": "197.webp"}, {"id": 198, "title": "0 To Rich · The Journey", "subtitle": "Abdullah Psychotic Films · Documentary Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Abdullah Psychotic Films", "year": "2025", "description": "Cinematic documentary poster portraying the grit and ambition of a young visionary, flanked by analog film negative strips tracing grueling gym sessions and late-night study sessions to exotic cars and skyline penthouses.", "img": "198.webp"}, {"id": 199, "title": "New Drop · Same Mindset", "subtitle": "Abdullah Psychotic · Limited Edition Footwear", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Bite The Bullet", "year": "2025", "description": "High-energy streetwear product release poster featuring bespoke Air Jordan style high-top sneakers with hand-painted crown insignias, set on torn distress parchment paper and blood-red spatter textures.", "img": "199.webp"}, {"id": 200, "title": "The Human Canvas · Emotion & Form", "subtitle": "The Riverdale Art Gallery · Museum Exhibition Key Art", "group": "art", "categoryLabel": "Art & Exhibitions", "client": "The Riverdale Art Gallery", "year": "2025", "description": "Museum-caliber exhibition poster combining classical Greco-Roman marble sculpture with a sculptural impasto slash of vermillion oil paint, framed with precise Swiss modernist typographic hierarchy.", "img": "200.webp"}, {"id": 201, "title": "AP Signature Watch · Luxury Edition", "subtitle": "Abdullah Psychotic Horlogerie · Haute Timepiece Ad", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "Abdullah Psychotic Horlogerie", "year": "2025", "description": "Luxury watch advertising campaign presenting a rose gold dress watch with jet-black dial and alligator leather band upon a polished red marble plinth, surrounded by crushed crimson velvet and gold serif branding.", "img": "201.webp"}, {"id": 202, "title": "CleanFood · Good Food Better Life", "subtitle": "CleanFood Organic · Wellness Brand Campaign", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "CleanFood Organic Co.", "year": "2025", "description": "Sunlit, pristine health-food campaign featuring an artisanal grain bowl with grilled herb chicken breast, Hass avocado, heirloom tomatoes, and organic quinoa, styled with elegant green and ivory typography.", "img": "202.webp"}, {"id": 203, "title": "CleanFood · Brand Authenticity Certificate", "subtitle": "CleanFood Organic · Official Brand Certification", "group": "certificates", "categoryLabel": "Certificates", "client": "CleanFood Organic Co.", "year": "2025", "description": "Official brand certificate of authenticity featuring an ivory parchment background, embossed gold foil medallion with green grosgrain ribbons, natural botanical leaf framing, and verified seal.", "img": "203.webp"}, {"id": 204, "title": "AP Lifestyle · Complete Brand Guidelines & Collateral", "subtitle": "Abdullah Psychotic · Comprehensive Visual Identity System", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Complete luxury brand identity matrix showcasing the ruby metallic foil monogram, luxury packaging gift box, matte shopping bag, embroidered hoodie, woven neck label, hang tag, mobile UI wallpaper, and color chips.", "img": "204.webp"}, {"id": 205, "title": "New Arrival · Retro CRT Broadcast", "subtitle": "Abdullah Psychotic · High-Fashion Campaign", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Editorial high-fashion campaign presenting an overcoat-clad model alongside a glowing vintage television set displaying a black-and-white portrait, surrounded by lifestyle brand books and over-ear headphones.", "img": "205.webp"}, {"id": 206, "title": "Abdullah Forhad · Luxury Script Identity Suite", "subtitle": "Abdullah Forhad Atelier · Monogram & Wordmark System", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Forhad Atelier", "year": "2025", "description": "Comprehensive master luxury logotype presentation featuring intertwined AF chrome and crimson monogram, full cursive signature wordmark, iOS app icon, embossed leather patch, and gold foil packaging.", "img": "206.webp"}, {"id": 207, "title": "AP Bite The Bullet · Oversized Streetwear Tee", "subtitle": "Abdullah Psychotic · Technical Apparel Design", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Technical fashion merchandise spread demonstrating oversized heavyweight drop-shoulder t-shirt with front and back screenprints, detailed collar tag close-up, and lifestyle lookbook model photography.", "img": "207.webp"}, {"id": 208, "title": "AP Bullet Chronograph · Tactical Black Edition", "subtitle": "Abdullah Psychotic Horlogerie · 44mm Chronograph Campaign", "group": "commercial", "categoryLabel": "Commercial & 3D", "client": "Abdullah Psychotic Horlogerie", "year": "2025", "description": "Master commercial horology advertisement for a 44mm black stainless steel chronograph watch with red tachymeter accents, presenting front, side, and caseback angles, luminescent dial glow, warranty card, and collector box.", "img": "208.webp"}, {"id": 209, "title": "Bigger Dreams · Live Bold", "subtitle": "Abdullah Psychotic · Urban Streetwear Manifesto", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "High-impact motivational streetwear poster depicting a resilient young founder against a dark skyscraper cityscape, accompanied by a glowing supercar rear end and a menacing shadow wolf aura.", "img": "209.webp"}, {"id": 210, "title": "Psycho: The Hidden Mind", "subtitle": "Abdullah Psychotic Films · Psychological Horror Key Art", "group": "posters", "categoryLabel": "Posters & Films", "client": "Abdullah Psychotic Films", "year": "2025", "description": "Visceral psychological horror theatrical poster created with shattered mirror shards reflecting fractured glances of trauma, armed noir silhouette standing over city rain puddles, and dripping crimson brush titles.", "img": "210.webp"}, {"id": 211, "title": "Podcast Time · Hear The Sound Get The Meaning", "subtitle": "Graphix By Jaber · Broadcast Audio Key Art", "group": "art", "categoryLabel": "Art & Exhibitions", "client": "Graphix by Jaber / Broadcast Series", "year": "2025", "description": "Vibrant modern podcast poster incorporating high-contrast halftone screen singer screaming into a crimson megaphone, stylized soundwave frequency bars, and bold distressed typography.", "img": "211.webp"}, {"id": 212, "title": "New Arrival · Cyberpunk CRT Terminal", "subtitle": "Abdullah Psychotic · Neo-Tokyo Broadcast Campaign", "group": "branding", "categoryLabel": "Branding & Apparel", "client": "Abdullah Psychotic Lifestyle", "year": "2025", "description": "Cyberpunk retro-futuristic campaign poster staging a glowing teal CRT television monitor on an executive desk amidst VHS tapes and AP branded merchandise, framed by neon city skyscrapers.", "img": "212.webp"}];
+let filter="all",query="",index=0,visible=[];
+const $=id=>document.getElementById(id),grid=$("grid"),modal=$("modal");
+function update(){visible=items.filter(x=>(filter==="all"||x.group===filter)&&(!query||[x.title,x.subtitle,x.client,x.description,x.categoryLabel].join(" ").toLowerCase().includes(query)));render()}
+function render(){grid.innerHTML="";if(!visible.length){grid.innerHTML='<div class="empty">No works found for this selection.</div>';return}const frag=document.createDocumentFragment();visible.forEach((x,i)=>{const card=document.createElement("article");card.className="card";card.innerHTML=`<div class="visual"><span class="number">${String(x.id).padStart(3,"0")}</span><img src="${x.img}" alt="${x.title}" loading="${i<6?"eager":"lazy"}"><span class="open-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><div class="meta"><h2>${x.title}</h2><div class="meta-row"><b>${x.categoryLabel}</b><span>${x.year}</span></div></div>`;card.onclick=()=>open(i);frag.appendChild(card)});grid.appendChild(frag)}
+function open(i){index=i;const x=visible[index];if(!x)return;$("modalImg").src=x.img;$("modalImg").alt=x.title;$("modalTitle").textContent=x.title;$("modalCategory").textContent=x.categoryLabel;$("modalDesc").textContent=x.description;$("modalClient").textContent=x.client;$("modalYear").textContent=x.year;$("modalId").textContent=x.id;$("counter").textContent=`${String(index+1).padStart(2,"0")} / ${String(visible.length).padStart(2,"0")}`;$("original").href=x.img;$("whatsapp").href="https://wa.me/8801342900364?text="+encodeURIComponent('Hello Abdullah, I am interested in commissioning work similar to "'+x.title+'".');document.body.classList.add("lock", "modal-open");if(!modal.open)modal.showModal()}
+function close(){document.body.classList.remove("lock", "modal-open");modal.close()}
+function move(step){index=(index+step+visible.length)%visible.length;open(index)}
+$("close").onclick=close;$("next").onclick=()=>move(1);$("prev").onclick=()=>move(-1);
+modal.addEventListener("click",e=>{if(e.target===modal)close()});
+document.addEventListener("keydown",e=>{if(!modal.open)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")move(1);if(e.key==="ArrowLeft")move(-1)});
+$("stage").addEventListener("touchstart",e=>$("stage").dataset.x=e.changedTouches[0].screenX,{passive:true});$("stage").addEventListener("touchend",e=>{const d=e.changedTouches[0].screenX-Number($("stage").dataset.x||0);if(Math.abs(d)>45)move(d<0?1:-1)},{passive:true});
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.filter;update()});
+$("search").oninput=e=>{query=e.target.value.toLowerCase().trim();update()};
+update();
 </script>
-
 </body>
 </html>
