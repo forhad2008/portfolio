@@ -289,27 +289,6 @@ main{
    IMAGE OVERLAYS
 ========================================================= */
 
-.number{
-  position:absolute;
-  top:13px;
-  left:13px;
-  z-index:3;
-
-  background:rgba(0,0,0,.58);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:999px;
-
-  padding:5px 9px;
-
-  font-size:.65rem;
-  font-weight:800;
-  letter-spacing:.08em;
-  line-height:1.2;
-
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-
 .open-icon{
   position:absolute;
   right:13px;
@@ -433,19 +412,12 @@ dialog::backdrop{
 
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:flex-end;
 
   padding:0 28px;
 
   border-bottom:1px solid var(--line);
   background:#0d0d11;
-}
-
-.counter{
-  font-size:.8rem;
-  color:var(--muted);
-  font-weight:800;
-  letter-spacing:.08em;
 }
 
 .close{
@@ -817,15 +789,6 @@ dialog::backdrop{
     bottom:9px;
   }
 
-  .number{
-    top:9px;
-    left:9px;
-
-    padding:4px 7px;
-
-    font-size:.58rem;
-  }
-
   /* =======================================================
      MOBILE MODAL
   ======================================================= */
@@ -935,13 +898,6 @@ dialog::backdrop{
 
   .meta-row{
     font-size:.57rem;
-  }
-
-  .number{
-    top:7px;
-    left:7px;
-    padding:3px 6px;
-    font-size:.52rem;
   }
 
   .open-icon{
@@ -1116,7 +1072,7 @@ dialog::backdrop{
 <section class="grid" id="grid" aria-label="Graphic design collection"></section>
 </main>
 <footer><strong>ABDULLAH PSYCHOTIC</strong><p>Haute digital atelier & graphic design. Available for commissions and brand art direction worldwide.</p><div class="socials"><a href="https://www.instagram.com/abdullah.thelegend2008" target="_blank"><i class="fa-brands fa-instagram"></i></a><a href="https://www.tiktok.com/@abdullah.thelegen" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank"><i class="fa-brands fa-youtube"></i></a><a href="https://t.me/abdullah_psychotic" target="_blank"><i class="fa-brands fa-telegram"></i></a></div><div>© 2025–2026 Abdullah Psychotic · All Rights Reserved</div></footer>
-<dialog id="modal"><div class="modal-top"><span class="counter" id="counter"></span><button class="close" id="close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-layout"><section class="stage" id="stage"><button class="arrow prev" id="prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button><img id="modalImg" src="" alt=""><button class="arrow next" id="next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button></section><aside class="info"><span class="tag" id="modalCategory"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="details"><div class="detail"><span>Client</span><span id="modalClient"></span></div><div class="detail"><span>Year</span><span id="modalYear"></span></div><div class="detail"><span>Archive ID</span><span id="modalId"></span></div></div><div class="actions"><a class="whatsapp" id="whatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Commission Similar Work</a><a class="original" id="original" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Original Image</a></div></aside></div></dialog>
+<dialog id="modal"><div class="modal-top"><button class="close" id="close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-layout"><section class="stage" id="stage"><button class="arrow prev" id="prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button><img id="modalImg" src="" alt=""><button class="arrow next" id="next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button></section><aside class="info"><span class="tag" id="modalCategory"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="details"><div class="detail"><span>Client</span><span id="modalClient"></span></div><div class="detail"><span>Year</span><span id="modalYear"></span></div></div><div class="actions"><a class="whatsapp" id="whatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Commission Similar Work</a><a class="original" id="original" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Original Image</a></div></aside></div></dialog>
 
     <!-- Luxury Mobile Bottom Floating Dock with Collection Menu Active -->
     <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
@@ -1195,8 +1151,8 @@ const items = [{"id": 170, "title": "Visual Arts Exhibition", "subtitle": "Ingou
 let filter="all",query="",index=0,visible=[];
 const $=id=>document.getElementById(id),grid=$("grid"),modal=$("modal");
 function update(){visible=items.filter(x=>(filter==="all"||x.group===filter)&&(!query||[x.title,x.subtitle,x.client,x.description,x.categoryLabel].join(" ").toLowerCase().includes(query)));render()}
-function render(){grid.innerHTML="";if(!visible.length){grid.innerHTML='<div class="empty">No works found for this selection.</div>';return}const frag=document.createDocumentFragment();visible.forEach((x,i)=>{const card=document.createElement("article");card.className="card";card.innerHTML=`<div class="visual"><span class="number">${String(x.id).padStart(3,"0")}</span><img src="${x.img}" alt="${x.title}" loading="${i<6?"eager":"lazy"}"><span class="open-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><div class="meta"><h2>${x.title}</h2><div class="meta-row"><b>${x.categoryLabel}</b><span>${x.year}</span></div></div>`;card.onclick=()=>open(i);frag.appendChild(card)});grid.appendChild(frag)}
-function open(i){index=i;const x=visible[index];if(!x)return;$("modalImg").src=x.img;$("modalImg").alt=x.title;$("modalTitle").textContent=x.title;$("modalCategory").textContent=x.categoryLabel;$("modalDesc").textContent=x.description;$("modalClient").textContent=x.client;$("modalYear").textContent=x.year;$("modalId").textContent=x.id;$("counter").textContent=`${String(index+1).padStart(2,"0")} / ${String(visible.length).padStart(2,"0")}`;$("original").href=x.img;$("whatsapp").href="https://wa.me/8801342900364?text="+encodeURIComponent('Hello Abdullah, I am interested in commissioning work similar to "'+x.title+'".');document.body.classList.add("lock", "modal-open");if(!modal.open)modal.showModal()}
+function render(){grid.innerHTML="";if(!visible.length){grid.innerHTML='<div class="empty">No works found for this selection.</div>';return}const frag=document.createDocumentFragment();visible.forEach((x,i)=>{const card=document.createElement("article");card.className="card";card.innerHTML=`<div class="visual"><img src="${x.img}" alt="${x.title}" loading="${i<6?"eager":"lazy"}"><span class="open-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><div class="meta"><h2>${x.title}</h2><div class="meta-row"><b>${x.categoryLabel}</b><span>${x.year}</span></div></div>`;card.onclick=()=>open(i);frag.appendChild(card)});grid.appendChild(frag)}
+function open(i){index=i;const x=visible[index];if(!x)return;$("modalImg").src=x.img;$("modalImg").alt=x.title;$("modalTitle").textContent=x.title;$("modalCategory").textContent=x.categoryLabel;$("modalDesc").textContent=x.description;$("modalClient").textContent=x.client;$("modalYear").textContent=x.year;$("original").href=x.img;$("whatsapp").href="https://wa.me/8801342900364?text="+encodeURIComponent('Hello Abdullah, I am interested in commissioning work similar to "'+x.title+'".');document.body.classList.add("lock", "modal-open");if(!modal.open)modal.showModal()}
 function close(){document.body.classList.remove("lock", "modal-open");modal.close()}
 function move(step){index=(index+step+visible.length)%visible.length;open(index)}
 $("close").onclick=close;$("next").onclick=()=>move(1);$("prev").onclick=()=>move(-1);
