@@ -40,7 +40,7 @@
             --bg-glass: rgba(6, 6, 6, 0.85);
 
             /* Imperial Crimson Palette */
-            --primary-color: #850009;
+            --primary-color: #600007;
             --primary-hover: #a3000b;
             --primary-deep: #4a0005;
             --accent-neon: #850009;
@@ -148,9 +148,9 @@
             width: 140%;
             height: 140%;
             background:
-                radial-gradient(circle at 18% 18%, rgba(185, 28, 28, 0.22) 0%, transparent 45%),
-                radial-gradient(circle at 82% 78%, rgba(212, 175, 55, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(133, 0, 9, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at 18% 18%, rgba(45, 5, 5, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 82% 78%, rgba(212, 55, 55, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(36, 1, 4, 0.15) 0%, transparent 55%),
                 #040404;
             z-index: -3;
             pointer-events: none;
@@ -288,7 +288,7 @@
         }
 
         .dock-item:hover i {
-            color: #f87171 !important;
+            color: #450606 !important;
         }
 
         .dock-item:active {
@@ -836,9 +836,9 @@
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--gold-accent);
-            color: var(--gold-accent);
+            background: rgb(101, 3, 3);
+            border-color: rgb(251, 249, 249);
+            color: rgb(252, 249, 249);
             transform: translateY(-2px);
             box-shadow: var(--morphism-drop-btn-hover);
         }
@@ -1256,6 +1256,8 @@
             background: #850009 !important;
             color: #ffffff !important;
             border-color: #a3000b !important;
+                        transition: var(--transition-tactile);
+
             box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 6px rgba(0, 0, 0, 0.8), inset 0 0 14px rgba(212, 55, 55, 0.5), 0 4px 18px rgba(133, 0, 9, 0.45) !important;
             transform: translateY(-2px);
         }
