@@ -165,7 +165,7 @@ nav.site-navbar.scrolled {
 }
 
 .logo img, .brand-logo img {
-    height: 42px;
+    height: 50px;
     width: auto;
     max-width: 180px;
     display: block;
@@ -266,10 +266,10 @@ nav.site-navbar.scrolled {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(248, 113, 113, 0.28);
     color: var(--nav-text-main);
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -290,8 +290,8 @@ nav.site-navbar.scrolled {
 }
 
 .cart-svg {
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -345,10 +345,10 @@ nav.site-navbar.scrolled {
     align-items: center;
     justify-content: center;
 
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    min-height: 44px;
+    width: 40x;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
 
     padding: 0;
     margin: 0;
@@ -380,8 +380,8 @@ nav.site-navbar.scrolled {
 .hamburger-btn > span {
     display: block;
 
-    width: 20px;
-    height: 2px;
+    width: 16px;
+    height: 1px;
 
     margin: 0;
     padding: 0;
@@ -496,16 +496,16 @@ nav.site-navbar.scrolled {
     #navbar, nav.site-navbar {
         height: var(--navbar-height-mobile);
         padding: 0 16px !important;
-        background: rgba(6, 2, 4, 0.88) !important;
-        backdrop-filter: blur(24px) saturate(190%) !important;
+        background: transparent;
+        backdrop-filter: blur(12px) saturate(190%) !important;
         -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
         border-bottom: 1px solid var(--navbar-border) !important;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.75) !important;
     }
 
     .logo img, .brand-logo img {
-        height: 36px;
-        max-width: 140px;
+        height: 45px;
+        max-width: 150px;
     }
 
     .nav-actions {
