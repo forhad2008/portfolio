@@ -8,10 +8,10 @@
     --navbar-height-mobile: 62px;
     --navbar-bg-scrolled: rgba(6, 2, 4, 0.92);
     --navbar-border: rgba(212, 55, 55, 0.22);
-    --navbar-border-gold: rgba(212, 175, 55, 0.35);
+    --navbar-border-gold: rgba(212, 55, 55, 0.35);
     --nav-accent-crimson: #850009;
     --nav-accent-crimson-hover: #a5000c;
-    --nav-accent-gold: #d4af37;
+    --nav-accent-gold: #d43737;
     --nav-text-main: #f4f4f5;
     --nav-text-muted: #a1a1aa;
     --dock-height: 62px;
@@ -132,8 +132,8 @@
                 border-color 0.35s var(--ease-luxury), 
                 box-shadow 0.35s var(--ease-luxury), 
                 height 0.35s var(--ease-luxury);
-        background: transparent;
-        backdrop-filter: blur(12px) saturate(190%) !important;    border-bottom: 1px solid transparent;
+    background: transparent;
+    border-bottom: 1px solid transparent;
 }
 
 /* Container Support if used */
@@ -496,8 +496,8 @@ nav.site-navbar.scrolled {
     #navbar, nav.site-navbar {
         height: var(--navbar-height-mobile);
         padding: 0 16px !important;
-        background: transparent;
-        backdrop-filter: blur(12px) saturate(190%) !important;
+        background: rgba(6, 2, 4, 0.88) !important;
+        backdrop-filter: blur(24px) saturate(190%) !important;
         -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
         border-bottom: 1px solid var(--navbar-border) !important;
         box-shadow: 0 6px 25px rgba(0, 0, 0, 0.75) !important;
