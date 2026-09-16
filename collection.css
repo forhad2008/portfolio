@@ -14,11 +14,11 @@
     --collection-muted: rgba(245,245,242,.58);
     --collection-dim: rgba(245,245,242,.28);
 
-    --collection-red: #a8040f;
+    --collection-red: #860009;
     --collection-red-dark: #640008;
 
     --collection-gold: #c8a96b;
-    --collection-gold-soft: rgba(200,169,107,.42);
+    --collection-gold-soft: rgba(200, 107, 107, 0.42);
 
     --collection-border: rgba(255,255,255,.10);
     --collection-border-soft: rgba(255,255,255,.055);
