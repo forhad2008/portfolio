@@ -132,8 +132,8 @@
                 border-color 0.35s var(--ease-luxury), 
                 box-shadow 0.35s var(--ease-luxury), 
                 height 0.35s var(--ease-luxury);
-    background: transparent;
-    border-bottom: 1px solid transparent;
+        background: transparent;
+        backdrop-filter: blur(12px) saturate(190%) !important;    border-bottom: 1px solid transparent;
 }
 
 /* Container Support if used */
