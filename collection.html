@@ -74,7 +74,7 @@ main{
 }
 
 .eyebrow{
-  color:var(--gold);
+  color:    linear-gradient(135deg, #8B0000 0%, #C62828 35%, #F5E6E6 70%, #FFFFFF 100%);
   font-size:.72rem;
   font-weight:800;
   letter-spacing:.2em;
@@ -88,8 +88,22 @@ main{
 }
 
 .hero h1 span{
-  color:var(--gold);
+  background: linear-gradient(
+    90deg,
+    #FFF5F5 0%,
+    #F4B5B5 25%,
+    #d14646 50%,
+    #D93636 75%,
+    #aa1515 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
+
 
 .hero p{
   max-width:650px;
@@ -189,7 +203,7 @@ main{
 }
 
 .search input:focus{
-  border-color:var(--gold);
+  border-color: var(--gold);
   background:#15151a;
 }
 
