@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" href="logo1.png">
+<title>Graphic Collection — Abdullah Psychotic</title>
+<meta name="description" content="A curated graphic design collection by Abdullah Psychotic.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<!-- Unified Navbar & Mobile Dock Styles & Script -->
+<link rel="stylesheet" href="navbar.css">
+<script src="navbar.js" defer></script>
+<style>
+:root{
+  --bg:#08080a;
+  --panel:#111116;
+  --panel2:#17171e;
+  --line:rgba(255,255,255,.1);
+  --muted:#9d9292;
+  --text:#f7f7fa;
+  --gold:#880000;
+  --red:#d7193f;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  background:var(--bg);
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"DM Sans",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at 50% -180px,rgba(214,182,106,.12),transparent 65%),
+    var(--bg);
+  overflow-x:hidden;
+}
+
+body.lock{
+  overflow:hidden;
+}
+
+body.lock .mobile-bottom-dock,
+body.modal-open .mobile-bottom-dock {
+  transform: translateY(100%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main{
+  width:min(1540px,calc(100% - 40px));
+  margin:auto;
+  padding:132px 0 90px;
+}
+
+.hero{
+  text-align:center;
+  max-width:850px;
+  margin:0 auto 48px;
+}
+
+.eyebrow{
+  color:var(--gold);
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+.hero h1{
+  font:700 clamp(2.5rem,6vw,5.7rem)/.98 "Space Grotesk",sans-serif;
+  letter-spacing:-.065em;
+}
+
+.hero h1 span{
+  color:var(--gold);
+}
+
+.hero p{
+  max-width:650px;
+  margin:22px auto 0;
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.8;
+}
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar{
+  position:sticky;
+  top:var(--navbar-height-desktop, 78px);
+  z-index:900;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:center;
+  padding:16px 0;
+  margin-bottom:30px;
+  background:rgba(8,8,10,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.filters{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filters button{
+  flex:0 0 auto;
+  border:1px solid var(--line);
+  background:var(--panel);
+  color:var(--muted);
+  border-radius:999px;
+  padding:10px 15px;
+  font:600 .75rem "DM Sans",sans-serif;
+  cursor:pointer;
+  transition:
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    transform .25s ease;
+}
+
+.filters button:hover{
+  border-color:rgba(214,182,106,.4);
+  color:#fff;
+}
+
+.filters button.active{
+  background:#fff;
+  color:#08080a;
+  border-color:#fff;
+}
+
+.search{
+  position:relative;
+  flex:0 0 260px;
+}
+
+.search i{
+  position:absolute;
+  left:14px;
+  top:13px;
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+.search input{
+  width:100%;
+  height:40px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--panel);
+  color:#fff;
+  padding:0 15px 0 36px;
+  outline:none;
+  font-family:"DM Sans",sans-serif;
+  transition:border-color .25s ease,background .25s ease;
+}
+
+.search input::placeholder{
+  color:#666670;
+}
+
+.search input:focus{
+  border-color:var(--gold);
+  background:#15151a;
+}
+
+/* =========================================================
+   PRODUCT GRID
+   IMPORTANT:
+   No fixed aspect-ratio.
+   Every image determines its own height.
+========================================================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:24px;
+  align-items:start;
+}
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.card{
+  grid-column:span 4;
+  min-width:0;
+  align-self:start;
+
+  background:var(--panel);
+
+  border:1px solid var(--line);
+  border-radius:18px;
+
+  overflow:hidden;
+  cursor:pointer;
+
+  transition:
+    transform .35s var(--ease),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(214,182,106,.5);
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+
+/* =========================================================
+   ACTUAL IMAGE CONTAINER
+   No fixed height.
+   No aspect ratio.
+   No artificial black area.
+========================================================= */
+
+.visual{
+  position:relative;
+
+  width:100%;
+  height:auto;
+
+  display:block;
+
+  overflow:hidden;
+
+  background:transparent;
+  line-height:0;
+}
+
+/*
+   Image defines the actual product-box height.
+   Width remains 100%, height stays auto.
+*/
+.visual img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  max-width:100%;
+
+  object-fit:initial;
+
+  margin:0;
+  padding:0;
+
+  background:transparent;
+
+  transition:
+    transform .5s var(--ease),
+    filter .4s ease;
+}
+
+.card:hover .visual img{
+  transform:scale(1.025);
+}
+
+/* =========================================================
+   IMAGE OVERLAYS
+========================================================= */
+
+.open-icon{
+  position:absolute;
+  right:13px;
+  bottom:13px;
+  z-index:3;
+
+  width:36px;
+  height:36px;
+
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:#fff;
+  color:#000;
+
+  opacity:0;
+  transform:translateY(8px);
+
+  transition:
+    opacity .3s ease,
+    transform .3s ease;
+}
+
+.card:hover .open-icon{
+  opacity:1;
+  transform:none;
+}
+
+/* =========================================================
+   PRODUCT META
+========================================================= */
+
+.meta{
+  padding:18px 19px 20px;
+  background:var(--panel);
+}
+
+.meta h2{
+  font:600 1rem/1.35 "Space Grotesk",sans-serif;
+  margin-bottom:9px;
+}
+
+.meta-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color:var(--muted);
+  font-size:.72rem;
+  line-height:1.4;
+}
+
+.meta-row b{
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  text-align:center;
+  border-top:1px solid var(--line);
+  padding:48px 20px;
+  color:var(--muted);
+  font-size:.8rem;
+}
+
+footer strong{
+  display:block;
+  color:#fff;
+  font:700 1.15rem "Space Grotesk",sans-serif;
+  margin-bottom:8px;
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:22px 0;
+}
+
+.socials a{
+  color:var(--muted);
+  font-size:1.1rem;
+  transition:color .25s ease,transform .25s ease;
+}
+
+.socials a:hover{
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+dialog{
+  border:0;
+  padding:0;
+  margin:0;
+
+  width:100vw;
+  height:100dvh;
+
+  max-width:none;
+  max-height:none;
+
+  background:rgba(0,0,0,.96);
+  color:#fff;
+}
+
+dialog::backdrop{
+  background:rgba(0,0,0,.92);
+}
+
+.modal-top{
+  height:72px;
+
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+
+  padding:0 28px;
+
+  border-bottom:1px solid var(--line);
+  background:#0d0d11;
+}
+
+.close{
+  width:42px;
+  height:42px;
+
+  border:1px solid var(--line);
+  border-radius:50%;
+
+  background:#191920;
+  color:#fff;
+
+  cursor:pointer;
+  font-size:1rem;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.close:hover{
+  background:#fff;
+  color:#000;
+  transform:rotate(90deg);
+}
+
+.modal-layout{
+  height:calc(100dvh - 72px);
+
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 390px;
+}
+
+/* =========================================================
+   MODAL IMAGE STAGE
+========================================================= */
+
+.stage{
+  position:relative;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:34px;
+
+  min-width:0;
+
+  background:
+    radial-gradient(
+      500px 350px at 50% 50%,
+      #1a1a22,
+      #050507 70%
+    );
+}
+
+.stage img{
+  display:block;
+
+  width:auto;
+  height:auto;
+
+  max-width:100%;
+  max-height:calc(100dvh - 140px);
+
+  object-fit:contain;
+
+  box-shadow:0 25px 80px #000;
+
+  border-radius:6px;
+}
+
+.arrow{
+  position:absolute;
+
+  top:50%;
+  transform:translateY(-50%);
+
+  width:48px;
+  height:48px;
+
+  border-radius:50%;
+  border:1px solid var(--line);
+
+  background:rgba(20,20,25,.9);
+  color:#fff;
+
+  cursor:pointer;
+
+  z-index:2;
+
+  transition:
+    background .25s ease,
+    color .25s ease,
+    transform .25s ease;
+}
+
+.arrow:hover{
+  background:#fff;
+  color:#000;
+}
+
+.prev{
+  left:22px;
+}
+
+.next{
+  right:22px;
+}
+
+/* =========================================================
+   MODAL INFORMATION
+========================================================= */
+
+.info{
+  padding:42px 32px;
+
+  background:#111116;
+
+  border-left:1px solid var(--line);
+
+  overflow:auto;
+}
+
+.tag{
+  display:inline-block;
+
+  color:var(--gold);
+
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+  border:1px solid rgba(214,182,106,.3);
+
+  padding:7px 10px;
+
+  border-radius:999px;
+}
+
+.info h2{
+  font:700 clamp(1.6rem,2.4vw,2.5rem)/1.08 "Space Grotesk",sans-serif;
+
+  letter-spacing:-.04em;
+
+  margin:22px 0 16px;
+}
+
+.info p{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.8;
+}
+
+.details{
+  margin-top:30px;
+  border-top:1px solid var(--line);
+}
+
+.detail{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid var(--line);
+
+  font-size:.8rem;
+}
+
+.detail span:first-child{
+  color:var(--muted);
+}
+
+.detail span:last-child{
+  text-align:right;
+  font-weight:700;
+}
+
+.actions{
+  display:grid;
+  gap:10px;
+  margin-top:30px;
+}
+
+.actions a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+
+  padding:14px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-size:.8rem;
+  font-weight:800;
+
+  transition:
+    transform .25s ease,
+    filter .25s ease;
+}
+
+.actions a:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
+}
+
+.whatsapp{
+  background:#25d366;
+  color:#071b0e;
+}
+
+.original{
+  border:1px solid var(--line);
+  color:#fff;
+  background:#191920;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty{
+  grid-column:1/-1;
+
+  text-align:center;
+
+  padding:80px 20px;
+
+  color:var(--muted);
+}
+
+/* =========================================================
+   LARGE TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+  .card{
+    grid-column:span 6;
+  }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px){
+
+  main{
+    width:calc(100% - 28px);
+    padding-top:104px;
+  }
+
+  .hero{
+    margin-bottom:34px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.3rem,12vw,4rem);
+  }
+
+  .hero p{
+    font-size:.88rem;
+  }
+
+  /* =======================================================
+     MOBILE TOOLBAR
+  ======================================================= */
+
+  .toolbar{
+    top:var(--navbar-height-mobile, 62px);
+
+    display:block;
+
+    padding:12px 0;
+  }
+
+  .filters{
+    margin-bottom:10px;
+  }
+
+  .search{
+    width:100%;
+  }
+
+  /* =======================================================
+     MOBILE PRODUCT GRID
+     Natural image height preserved.
+  ======================================================= */
+
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+
+    align-items:start;
+  }
+
+  .card{
+    grid-column:span 1;
+
+    border-radius:13px;
+
+    align-self:start;
+  }
+
+  /*
+     IMPORTANT:
+     No aspect-ratio here.
+     No fixed height.
+  */
+
+  .visual{
+    width:100%;
+    height:auto;
+
+    display:block;
+
+    background:transparent;
+  }
+
+  .visual img{
+    width:100%;
+    height:auto;
+
+    max-width:100%;
+
+    object-fit:initial;
+
+    display:block;
+  }
+
+  .meta{
+    padding:12px;
+  }
+
+  .meta h2{
+    font-size:.78rem;
+    margin-bottom:7px;
+  }
+
+  .meta-row{
+    font-size:.61rem;
+    display:block;
+  }
+
+  .meta-row b{
+    display:block;
+    margin-bottom:4px;
+  }
+
+  .open-icon{
+    opacity:1;
+    transform:none;
+
+    width:29px;
+    height:29px;
+
+    font-size:.7rem;
+
+    right:9px;
+    bottom:9px;
+  }
+
+  /* =======================================================
+     MOBILE MODAL
+  ======================================================= */
+
+  .modal-top{
+    height:62px;
+    padding:0 16px;
+  }
+
+  .modal-layout{
+    height:calc(100dvh - 62px);
+
+    display:flex;
+    flex-direction:column;
+
+    overflow:auto;
+  }
+
+  .stage{
+    flex:0 0 auto;
+
+    min-height:0;
+
+    padding:18px;
+
+    background:
+      radial-gradient(
+        350px 260px at 50% 50%,
+        #1a1a22,
+        #050507 72%
+      );
+  }
+
+  .stage img{
+    width:auto;
+    height:auto;
+
+    max-width:100%;
+    max-height:44dvh;
+
+    object-fit:contain;
+  }
+
+  .arrow{
+    width:38px;
+    height:38px;
+  }
+
+  .prev{
+    left:10px;
+  }
+
+  .next{
+    right:10px;
+  }
+
+  .info{
+    border-left:0;
+    border-top:1px solid var(--line);
+
+    padding:25px 20px 35px;
+  }
+
+  .info h2{
+    font-size:1.65rem;
+  }
+
+  .info p{
+    font-size:.84rem;
+  }
+
+  .details{
+    margin-top:22px;
+  }
+
+  .actions{
+    margin-top:24px;
+  }
+
+}
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media(max-width:420px){
+
+  main{
+    width:calc(100% - 20px);
+  }
+
+  .grid{
+    gap:9px;
+  }
+
+  .card{
+    border-radius:11px;
+  }
+
+  .meta{
+    padding:10px;
+  }
+
+  .meta h2{
+    font-size:.72rem;
+  }
+
+  .meta-row{
+    font-size:.57rem;
+  }
+
+  .open-icon{
+    right:7px;
+    bottom:7px;
+    width:27px;
+    height:27px;
+  }
+
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *:before,
+  *:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+
+}
+</style>
+</head>
+<body>
+    <!-- Atelier Desktop Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">
+            <img src="logo1.png" alt="Abdullah Forhad Logo">
+        </a>
+        <ul class="desktop-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#shop">Shop</a></li>
+            <li class="active"><a href="collection.html">Design</a></li>
+            <li><a href="webcollection.html">Websites</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <!-- Shopping Cart Trigger -->
+            <a href="cart.html" class="cart-icon-btn" id="cart-icon-btn" aria-label="Shopping Bag">
+                <svg viewBox="0 0 32 32" class="cart-svg" aria-hidden="true">
+                    <path d="M4 6h4l3.1 14.2a2 2 0 0 0 2 1.6h10.8a2 2 0 0 0 1.9-1.4L29 11H9"/>
+                    <circle cx="13" cy="27" r="1.8"/>
+                    <circle cx="25" cy="27" r="1.8"/>
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </a>
+
+            <!-- Mobile Hamburger -->
+            <div class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Luxury Atelier Mobile Drawer Menu -->
+    <div class="menu-window" id="menu-window" aria-modal="true" role="dialog" aria-label="Mobile Navigation Menu">
+        <div class="menu-window-content">
+            <div class="menu-window-header">
+                <div class="menu-brand">
+                    <span class="menu-monogram">AP</span>
+                    <div class="menu-brand-text">
+                        <span class="menu-brand-name">Abdullah Psychotic</span>
+                        <span class="menu-brand-kicker">Haute Digital Atelier</span>
+                    </div>
+                </div>
+                <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="Close navigation menu">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="menu-kicker-bar">
+                <span>Atelier Directory · 2026 Editions</span>
+                <span class="menu-status-pill"><span class="menu-status-dot"></span> Commissions Open</span>
+            </div>
+
+            <ul class="mobile-nav-list" id="mobile-nav-links">
+                <li class="mobile-nav-item">
+                    <a href="index.html" class="mobile-nav-link">
+                        <span class="nav-num">01</span>
+                        <span class="nav-title">Curated Home</span>
+                        <span class="nav-desc">Portfolio Front</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#shop" class="mobile-nav-link">
+                        <span class="nav-num">02</span>
+                        <span class="nav-title">Shop</span>
+                        <span class="nav-desc">17 Bespoke Pieces</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="collection.html" class="mobile-nav-link active">
+                        <span class="nav-num">03</span>
+                        <span class="nav-title">Graphic Design</span>
+                        <span class="nav-desc">Graphic Arts & Poster Archive</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="webcollection.html" class="mobile-nav-link">
+                        <span class="nav-num">04</span>
+                        <span class="nav-title">Websites & Platforms</span>
+                        <span class="nav-desc">Production Apps & Live Builds</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="cart.html" class="mobile-nav-link">
+                        <span class="nav-num">05</span>
+                        <span class="nav-title">Shopping Bag</span>
+                        <span class="nav-desc">Acquisition Bag (<span id="mobile-cart-count">0</span>)</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="service.html" class="mobile-nav-link">
+                        <span class="nav-num">06</span>
+                        <span class="nav-title">Atelier Services</span>
+                        <span class="nav-desc">Identity & Engineering</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="about.html" class="mobile-nav-link">
+                        <span class="nav-num">07</span>
+                        <span class="nav-title">About Abdullah</span>
+                        <span class="nav-desc">Philosophy & Profile</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="resume.html" class="mobile-nav-link">
+                        <span class="nav-num">08</span>
+                        <span class="nav-title">Curriculum Vitae</span>
+                        <span class="nav-desc">Experience & Capabilities</span>
+                    </a>
+                </li>
+                <li class="mobile-nav-item">
+                    <a href="index.html#contact" class="mobile-nav-link">
+                        <span class="nav-num">09</span>
+                        <span class="nav-title">Private Commission</span>
+                        <span class="nav-desc">Inquire / Meeting</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="menu-window-footer">
+                <a href="index.html#contact" class="btn-menu-cta">
+                    <span>Start Bespoke Project</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <div class="menu-socials">
+                    <a href="https://wa.me/8801342900364" target="_blank" class="menu-social-link" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/abdullah.thelegend2008?igsh=YWd3a3dqdmc4cXo2" target="_blank" class="menu-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/forhad2008" target="_blank" class="menu-social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullah-forhad-bb0470423" target="_blank" class="menu-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="mailto:forhadalpha08@gmail.com" class="menu-social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <div class="menu-legal">© 2026 ABDULLAH PSYCHOTIC · ALL RIGHTS RESERVED</div>
+            </div>
+        </div>
+    </div>
+<main>
+<section class="hero"><div class="eyebrow">Archive / 2025—2026</div><h1>Graphic <span>Design</span></h1><p>A carefully presented archive of visual identities, cinematic posters, editorial campaigns, commercial artwork and brand systems.</p></section>
+<section class="toolbar"><div class="filters" id="filters"><button class="active" data-filter="all">All Works</button><button data-filter="branding">Branding</button><button data-filter="posters">Posters & Films</button><button data-filter="art">Art & Exhibitions</button><button data-filter="commercial">Commercial</button><button data-filter="sports">Sports</button><button data-filter="certificates">Certificates</button></div><label class="search"><i class="fa-solid fa-magnifying-glass"></i><input id="search" type="search" placeholder="Search the archive…"></label></section>
+<section class="grid" id="grid" aria-label="Graphic design collection"></section>
+</main>
+<footer><strong>ABDULLAH PSYCHOTIC</strong><p>Haute digital atelier & graphic design. Available for commissions and brand art direction worldwide.</p><div class="socials"><a href="https://www.instagram.com/abdullah.thelegend2008" target="_blank"><i class="fa-brands fa-instagram"></i></a><a href="https://www.tiktok.com/@abdullah.thelegen" target="_blank"><i class="fa-brands fa-tiktok"></i></a><a href="https://www.facebook.com/profile.php?id=61580779565120" target="_blank"><i class="fa-brands fa-facebook"></i></a><a href="https://www.youtube.com/@abdullahforhadthelegend" target="_blank"><i class="fa-brands fa-youtube"></i></a><a href="https://t.me/abdullah_psychotic" target="_blank"><i class="fa-brands fa-telegram"></i></a></div><div>© 2025–2026 Abdullah Psychotic · All Rights Reserved</div></footer>
+<dialog id="modal"><div class="modal-top"><button class="close" id="close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-layout"><section class="stage" id="stage"><button class="arrow prev" id="prev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button><img id="modalImg" src="" alt=""><button class="arrow next" id="next" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button></section><aside class="info"><span class="tag" id="modalCategory"></span><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="details"><div class="detail"><span>Client</span><span id="modalClient"></span></div><div class="detail"><span>Year</span><span id="modalYear"></span></div></div><div class="actions"><a class="whatsapp" id="whatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Commission Similar Work</a><a class="original" id="original" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Original Image</a></div></aside></div></dialog>
+
+    <!-- Luxury Mobile Bottom Floating Dock with Collection Menu Active -->
+    <nav class="mobile-bottom-dock" id="mobile-bottom-dock" aria-label="Quick Mobile Navigation">
+        <a href="index.html" class="dock-item" id="dock-item-home" aria-label="Home">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="collection.html" class="dock-item active" id="dock-item-collection" aria-label="Collection">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Design</span>
+        </a>
+        <a href="webcollection.html" class="dock-item" id="dock-item-web" aria-label="Web">
+            <i class="fa-solid fa-globe"></i>
+            <span>Web</span>
+        </a>
+        <a href="cart.html" class="dock-item dock-cart-btn" id="dock-cart-btn" aria-label="Shopping Bag">
+            <div class="dock-icon-wrap">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="dock-badge" id="dock-cart-count">0</span>
+            </div>
+            <span>Bag</span>
+        </a>
+        <a href="service.html" class="dock-item" id="dock-item-service" aria-label="Services">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Services</span>
+        </a>
+        <a href="about.html" class="dock-item" id="dock-item-about" aria-label="About">
+            <i class="fa-solid fa-user-tie"></i>
+            <span>About</span>
+        </a>
+        <a href="index.html#contact" class="dock-item" id="dock-item-contact" aria-label="Contact / Inquire">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Inquire</span>
+        </a>
+    </nav>
+
+    <!-- Slide-Out Luxury Shopping Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Bag Drawer">
+        <div class="cart-drawer-header">
+            <div class="cart-drawer-title">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>SHOPPING BAG</span>
+            </div>
+            <button class="cart-drawer-close" id="cart-close-btn" aria-label="Close Cart">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-items-container">
+            <!-- Dynamic Cart Items Populated via JS -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="cart-drawer-subtotal">
+                <span>ORDER SUBTOTAL</span>
+                <strong id="cart-subtotal">$0.00</strong>
+            </div>
+            <p class="cart-shipping-note">
+                <i class="fa-solid fa-shield-halved"></i> Verified Checkout · Instant Dispatch & Digital Delivery
+            </p>
+            <div class="cart-drawer-actions">
+                <a href="cart.html" class="btn-checkout">
+                    <span>PROCEED TO SECURE CHECKOUT</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <button class="btn-continue" id="cart-continue-btn" type="button">
+                    ← Continue Exploring Collections
+                </button>
+            </div>
+        </div>
+    </aside>
+<script>
+
+const items = [
+  {"img":"170.webp","title":"Food Poster","categoryLabel":"Poster"},
+  {"img":"171.webp","title":"Luxury Watch Banner","categoryLabel":"Banner"},
+  {"img":"172.webp","title":"Internal Psycho · Key Art","categoryLabel":"Posters & Films"},
+  {"img":"173.webp","title":"Bite The Bullet · Signature Sneaker","categoryLabel":"Branding & Apparel"},
+  {"img":"174.webp","title":"Humen In Action","categoryLabel":"Posters & Films"},
+  {"img":"175.webp","title":"Internal Psycho · Dual Psyche","categoryLabel":"Posters & Films"},
+  {"img":"176.webp","title":"Wander More · Explore The World","categoryLabel":"Art & Exhibitions"},
+  {"img":"177.webp","title":"The Grill House · Special Steak","categoryLabel":"Commercial & 3D"},
+  {"img":"178.webp","title":"Apex Fighting League · Achievement Diploma","categoryLabel":"Certificates"},
+  {"img":"179.webp","title":"Annual Athletics Championship","categoryLabel":"Sports & Racing"},
+  {"img":"180.webp","title":"The Fighter · Official Credential","categoryLabel":"Certificates"},
+  {"img":"181.webp","title":"Creative Art Exhibition","categoryLabel":"Art & Exhibitions"},
+  {"img":"182.webp","title":"AP Luxury Wireless Headphones","categoryLabel":"Commercial & 3D"},
+  {"img":"183.webp","title":"Bite The Bullet · Shadow Wolf","categoryLabel":"Branding & Apparel"},
+  {"img":"184.webp","title":"Abdullah Psychotic · Lifestyle Drink","categoryLabel":"Commercial & 3D"},
+  {"img":"185.webp","title":"Wear Your Mindset · Lookbook","categoryLabel":"Branding & Apparel"},
+  {"img":"186.webp","title":"Human vs Robot · One Future","categoryLabel":"Posters & Films"},
+  {"img":"187.webp","title":"The Lost Empire · Adventure Key Art","categoryLabel":"Posters & Films"},
+  {"img":"188.webp","title":"Gangsters vs Fighter","categoryLabel":"Posters & Films"},
+  {"img":"189.webp","title":"Back to School · Gear Up For Greatness","categoryLabel":"Branding & Apparel"},
+  {"img":"190.webp","title":"Sports Event Announcement","categoryLabel":"Sports & Racing"},
+  {"img":"191.webp","title":"Sports Sponsorship · Powering Talent","categoryLabel":"Sports & Racing"},
+  {"img":"192.webp","title":"Back to School · New Chapter","categoryLabel":"Branding & Apparel"},
+  {"img":"193.webp","title":"Golf · Better Play Every Day","categoryLabel":"Sports & Racing"},
+  {"img":"194.webp","title":"Don't Stop · Face The Storm","categoryLabel":"Posters & Films"},
+  {"img":"195.webp","title":"Supercar Racing · Monaco Grand Prix","categoryLabel":"Sports & Racing"},
+  {"img":"196.webp","title":"Super Car Racing · Fast Cars No Limits","categoryLabel":"Sports & Racing"},
+  {"img":"197.webp","title":"Red Bull · Gives You Wings","categoryLabel":"Commercial & 3D"},
+  {"img":"198.webp","title":"0 To Rich · The Journey","categoryLabel":"Posters & Films"},
+  {"img":"199.webp","title":"Art Exibition Poster","categoryLabel":"Branding & Apparel"},
+  {"img":"200.webp","title":"The Human Canvas · Emotion & Form","categoryLabel":"Art & Exhibitions"},
+  {"img":"201.webp","title":"AP Signature Watch · Luxury Edition","categoryLabel":"Commercial & 3D"},
+  {"img":"202.webp","title":"CleanFood · Good Food Better Life","categoryLabel":"Commercial & 3D"},
+  {"img":"203.webp","title":"CleanFood · Brand Authenticity Certificate","categoryLabel":"Certificates"},
+  {"img":"204.webp","title":"AP Lifestyle · Complete Brand Guidelines & Collateral","categoryLabel":"Branding & Apparel"},
+  {"img":"205.webp","title":"New Arrival · Retro CRT Broadcast","categoryLabel":"Branding & Apparel"},
+  {"img":"206.webp","title":"Abdullah Forhad · Luxury Script Identity Suite","categoryLabel":"Branding & Apparel"},
+  {"img":"207.webp","title":"AP Sonic Xi Airpod Sonsor Banner","categoryLabel":"Sponsor"},
+  {"img":"208.webp","title":"AP Bullet Chronograph · Tactical Black Edition","categoryLabel":"Commercial & 3D"},
+  {"img":"209.webp","title":"Bigger Dreams · Live Bold","categoryLabel":"Branding & Apparel"},
+  {"img":"210.webp","title":"Psycho: The Hidden Mind","categoryLabel":"Posters & Films"},
+  {"img":"211.webp","title":"Podcast Time · Hear The Sound Get The Meaning","categoryLabel":"Art & Exhibitions"},
+  {"img":"212.webp","title":"New Arrival · Cyberpunk CRT Terminal","categoryLabel":"Branding & Apparel"}
+];
+
+let filter="all",query="",index=0,visible=[];
+const $=id=>document.getElementById(id),grid=$("grid"),modal=$("modal");
+function update(){visible=items.filter(x=>(filter==="all"||x.group===filter)&&(!query||[x.title,x.subtitle,x.client,x.description,x.categoryLabel].join(" ").toLowerCase().includes(query)));render()}
+function render(){grid.innerHTML="";if(!visible.length){grid.innerHTML='<div class="empty">No works found for this selection.</div>';return}const frag=document.createDocumentFragment();visible.forEach((x,i)=>{const card=document.createElement("article");card.className="card";card.innerHTML=`<div class="visual"><img src="${x.img}" alt="${x.title}" loading="${i<6?"eager":"lazy"}"><span class="open-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div><div class="meta"><h2>${x.title}</h2><div class="meta-row"><b>${x.categoryLabel}</b><span>${x.year}</span></div></div>`;card.onclick=()=>open(i);frag.appendChild(card)});grid.appendChild(frag)}
+function open(i){index=i;const x=visible[index];if(!x)return;$("modalImg").src=x.img;$("modalImg").alt=x.title;$("modalTitle").textContent=x.title;$("modalCategory").textContent=x.categoryLabel;$("modalDesc").textContent=x.description;$("modalClient").textContent=x.client;$("modalYear").textContent=x.year;$("original").href=x.img;$("whatsapp").href="https://wa.me/8801342900364?text="+encodeURIComponent('Hello Abdullah, I am interested in commissioning work similar to "'+x.title+'".');document.body.classList.add("lock", "modal-open");if(!modal.open)modal.showModal()}
+function close(){document.body.classList.remove("lock", "modal-open");modal.close()}
+function move(step){index=(index+step+visible.length)%visible.length;open(index)}
+$("close").onclick=close;$("next").onclick=()=>move(1);$("prev").onclick=()=>move(-1);
+modal.addEventListener("click",e=>{if(e.target===modal)close()});
+document.addEventListener("keydown",e=>{if(!modal.open)return;if(e.key==="Escape")close();if(e.key==="ArrowRight")move(1);if(e.key==="ArrowLeft")move(-1)});
+$("stage").addEventListener("touchstart",e=>$("stage").dataset.x=e.changedTouches[0].screenX,{passive:true});$("stage").addEventListener("touchend",e=>{const d=e.changedTouches[0].screenX-Number($("stage").dataset.x||0);if(Math.abs(d)>45)move(d<0?1:-1)},{passive:true});
+document.querySelectorAll("[data-filter]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-filter]").forEach(x=>x.classList.remove("active"));b.classList.add("active");filter=b.dataset.filter;update()});
+$("search").oninput=e=>{query=e.target.value.toLowerCase().trim();update()};
+update();
+</script>
+</body>
+</html>
