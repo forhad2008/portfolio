@@ -22,8 +22,8 @@
     <link rel="dns-prefetch" href="https://script.google.com">
     <link rel="stylesheet" href="navbar.css">
     <!-- Targeted High-Priority Preloads: Mobile Wallpaper vs Desktop Hero (LCP Optimization) -->
-    <link rel="preload" as="image" href="32.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
-    <link rel="preload" as="image" href="2.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+<link rel="preload" as="image" href="a.webp" type="image/webp" fetchpriority="high">
+
     <link rel="preload" as="image" href="logo1.webp" type="image/webp" fetchpriority="high">
     <script src="navbar.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -128,35 +128,41 @@
         }
 
 
+
         body {
-            font-family: var(--font-body);
+                        font-family: var(--font-body);
             color: var(--text-primary);
-            line-height: 1.6;
-            position: relative;
-            background: #040404;
-        }
+    background: #040404 url("a.webp") center center / cover no-repeat fixed;
+    line-height: 1.6;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0%;
+    width: 110%;
+    height: 110%;
+
+    background:
+        url("a.webp") center center / cover no-repeat;
+
+    z-index: -3;
+    pointer-events: none;
+
+    animation:
+        cyberAuraDrift 24s cubic-bezier(0.4, 0, 0.2, 1)
+        infinite alternate;
+
+    will-change: transform;
+}
+
+
 
         body.no-scroll {
             overflow: hidden;
         }
 
-        /* Dynamic Futuristic Ambient Aura Background */
-        body::before {
-            content: "";
-            position: fixed;
-            inset: -20%;
-            width: 140%;
-            height: 140%;
-            background:
-                radial-gradient(circle at 18% 18%, rgba(45, 5, 5, 0.22) 0%, transparent 45%),
-                radial-gradient(circle at 82% 78%, rgba(212, 55, 55, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(78, 2, 8, 0.236) 0%, transparent 55%),
-                #040404;
-            z-index: -3;
-            pointer-events: none;
-            animation: cyberAuraDrift 24s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
-            will-change: transform;
-        }
 
         @keyframes cyberAuraDrift {
             0% {
@@ -684,6 +690,7 @@
         .toast-link:hover {
             background: rgba(212, 84, 55, 0.25);
         }
+ 
 
         /* =========================================================
            HERO SECTION
@@ -869,7 +876,6 @@
             right: 0;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg, var(--primary-color), var(--gold-accent), transparent);
         }
 
         .statement-card h3 {
@@ -929,13 +935,14 @@
            PARITY WITH PRODUCT DECORATION DEMO.HTML
         ========================================================= */
         .design-showcase {
-            padding: 110px 7% 90px;
-            border-top: 1px solid var(--input-border);
-            background: #040404;
-            position: relative;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    padding: 110px 7% 90px;
+    border-top: 1px solid var(--input-border);
+    /* Refined deep crimson-to-noir glass gradient */
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+    
 
         .section-header {
             display: flex;
