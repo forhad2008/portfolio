@@ -41,6 +41,8 @@
             let currentPage = 'home';
             if (path.includes('webcollection.html')) {
                 currentPage = 'webcollection';
+            } else if (path.includes('application.html')) {
+                currentPage = 'application';
             } else if (path.includes('collection.html')) {
                 currentPage = 'collection';
             } else if (path.includes('about.html')) {
@@ -63,6 +65,7 @@
                 const isMatch = (
                     (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
                     (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
+                    (currentPage === 'application' && href.includes('application.html')) ||
                     (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
                     (currentPage === 'about' && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
@@ -88,6 +91,7 @@
                 const isMatch = (
                     (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
                     (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
+                    (currentPage === 'application' && href.includes('application.html')) ||
                     (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
                     (currentPage === 'about' && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
@@ -107,6 +111,7 @@
                 const isMatch = (
                     (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
                     (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
+                    (currentPage === 'application' && href.includes('application.html')) ||
                     (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
                     (currentPage === 'drops' && (href.includes('#shop') || href.includes('drops'))) ||
                     (currentPage === 'cart' && href.includes('cart.html')) ||
@@ -375,6 +380,28 @@
         window.addEventListener('storage', updateCartBadges);
         window.addEventListener('cartUpdated', updateCartBadges);
         window.updateNavbarCart = updateCartBadges;
+
+        // Universal Link Guard: Ensure all links open in the same tab ('link rel' not 'blank')
+        function enforceSameTabLinks() {
+            document.querySelectorAll('a[target="_blank"]').forEach(a => {
+                a.removeAttribute('target');
+                if (!a.getAttribute('rel')) {
+                    a.setAttribute('rel', 'noopener noreferrer');
+                }
+            });
+        }
+        enforceSameTabLinks();
+
+        // Capture dynamic clicks on any anchor that might specify target="_blank"
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest && e.target.closest('a');
+            if (link && link.getAttribute('target') === '_blank') {
+                link.removeAttribute('target');
+                if (!link.getAttribute('rel')) {
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+            }
+        }, true);
 
         // Register Service Worker across all pages
         if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
