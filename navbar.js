@@ -55,7 +55,7 @@
                 currentPage = 'cart';
             } else if (path.includes('privacy.html')) {
                 currentPage = 'privacy';
-            } else if (path.match(/\/(?:[1-9]|1[0-1])\.html/)) {
+            } else if (path.match(/(?:^|[\\/])(?:[1-9]|1[0-1])\.html/)) {
                 currentPage = 'drops';
             }
 
@@ -67,10 +67,10 @@
                     (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
                     (currentPage === 'application' && href.includes('application.html')) ||
                     (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
-                    (currentPage === 'about' && href.includes('about.html')) ||
+                    ((currentPage === 'about' || currentPage === 'privacy') && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
                     (currentPage === 'resume' && href.includes('resume.html')) ||
-                    (currentPage === 'drops' && href.includes('#shop'))
+                    (currentPage === 'drops' && (href.includes('#shop') || (href.includes('collection.html') && !href.includes('webcollection.html'))))
                 );
 
                 if (isMatch) {
@@ -93,32 +93,51 @@
                     (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
                     (currentPage === 'application' && href.includes('application.html')) ||
                     (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
-                    (currentPage === 'about' && href.includes('about.html')) ||
+                    ((currentPage === 'about' || currentPage === 'privacy') && href.includes('about.html')) ||
                     (currentPage === 'service' && href.includes('service.html')) ||
                     (currentPage === 'resume' && href.includes('resume.html')) ||
                     (currentPage === 'cart' && href.includes('cart.html')) ||
-                    (currentPage === 'drops' && href.includes('#shop'))
+                    (currentPage === 'drops' && (href.includes('#shop') || (href.includes('collection.html') && !href.includes('webcollection.html'))))
                 );
 
                 if (isMatch) {
                     link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
                 }
             });
 
-            // Mobile Bottom Dock
+            // Mobile Bottom Dock: Select active item according to page category
+            const hasResumeDockItem = !!document.querySelector('.mobile-bottom-dock #dock-item-resume, .mobile-bottom-dock a[href*="resume.html"]');
+
             document.querySelectorAll('.mobile-bottom-dock .dock-item').forEach(item => {
+                const id = item.id || '';
                 const href = (item.getAttribute('href') || '').toLowerCase();
-                const isMatch = (
-                    (currentPage === 'home' && (href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'))) ||
-                    (currentPage === 'webcollection' && href.includes('webcollection.html')) ||
-                    (currentPage === 'application' && href.includes('application.html')) ||
-                    (currentPage === 'collection' && href.includes('collection.html') && !href.includes('webcollection.html')) ||
-                    (currentPage === 'drops' && (href.includes('#shop') || href.includes('drops'))) ||
-                    (currentPage === 'cart' && href.includes('cart.html')) ||
-                    (currentPage === 'service' && href.includes('service.html')) ||
-                    (currentPage === 'about' && href.includes('about.html')) ||
-                    (currentPage === 'resume' && (href.includes('resume.html') || href.includes('about.html')))
-                );
+                let isMatch = false;
+
+                if (currentPage === 'home') {
+                    isMatch = (id === 'dock-item-home' || href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'));
+                } else if (currentPage === 'collection' || currentPage === 'drops') {
+                    // Drops (1.html - 11.html) belong to the Collection / Design catalog category
+                    isMatch = (id === 'dock-item-collection' || (href.includes('collection.html') && !href.includes('webcollection.html')));
+                } else if (currentPage === 'webcollection') {
+                    isMatch = (id === 'dock-item-web' || href.includes('webcollection.html'));
+                } else if (currentPage === 'application') {
+                    isMatch = (id === 'dock-item-application' || href.includes('application.html'));
+                } else if (currentPage === 'cart') {
+                    isMatch = (id === 'dock-cart-btn' || href.includes('cart.html'));
+                } else if (currentPage === 'service') {
+                    isMatch = (id === 'dock-item-service' || href.includes('service.html'));
+                } else if (currentPage === 'about' || currentPage === 'privacy') {
+                    // Privacy is part of Atelier Profile / About category
+                    isMatch = (id === 'dock-item-about' || href.includes('about.html'));
+                } else if (currentPage === 'resume') {
+                    if (hasResumeDockItem) {
+                        isMatch = (id === 'dock-item-resume' || href.includes('resume.html'));
+                    } else {
+                        isMatch = (id === 'dock-item-about' || href.includes('about.html'));
+                    }
+                }
 
                 if (isMatch) {
                     item.classList.add('active');
