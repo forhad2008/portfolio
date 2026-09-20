@@ -116,7 +116,11 @@
                 let isMatch = false;
 
                 if (currentPage === 'home') {
-                    isMatch = (id === 'dock-item-home' || href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'));
+                    if (window.location.hash === '#contact') {
+                        isMatch = (id === 'dock-item-contact' || href === '#contact');
+                    } else {
+                        isMatch = (id === 'dock-item-home' || href === 'index.html' || href === '#home' || href === './' || href.endsWith('/index.html'));
+                    }
                 } else if (currentPage === 'collection' || currentPage === 'drops') {
                     // Drops (1.html - 11.html) belong to the Collection / Design catalog category
                     isMatch = (id === 'dock-item-collection' || (href.includes('collection.html') && !href.includes('webcollection.html')));
@@ -148,6 +152,7 @@
         }
 
         highlightActiveLinks();
+        window.addEventListener('hashchange', highlightActiveLinks);
 
         // 3. Mobile Drawer Open/Close Logic
         function openDrawer() {
@@ -339,15 +344,14 @@
             });
         }
 
-        const dockCartBtn = document.getElementById('dock-cart-btn') || document.querySelector('.dock-cart-btn');
-        if (dockCartBtn) {
-            dockCartBtn.addEventListener('click', (e) => {
+        document.querySelectorAll('#dock-cart-btn, .dock-cart-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 if (document.getElementById('cart-drawer')) {
                     e.preventDefault();
                     window.openCartDrawer();
                 }
             });
-        }
+        });
 
         if (cartCloseBtn) cartCloseBtn.addEventListener('click', window.closeCartDrawer);
         if (cartContinueBtn) cartContinueBtn.addEventListener('click', window.closeCartDrawer);
@@ -394,6 +398,17 @@
         }
 
         updateCartBadges();
+
+        // Wrap localStorage.setItem so adding to cart on any page immediately updates all badges
+        try {
+            const originalSetItem = localStorage.setItem;
+            localStorage.setItem = function(key, val) {
+                originalSetItem.apply(this, arguments);
+                if (key === 'ap_user_cart') {
+                    updateCartBadges();
+                }
+            };
+        } catch (e) {}
 
         // Listen for storage events across tabs or local triggers
         window.addEventListener('storage', updateCartBadges);

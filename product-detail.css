@@ -546,9 +546,15 @@ body::after {
     gap: 12px;
     transform: translateY(140%);
     opacity: 0;
+    pointer-events: none;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
     z-index: 9999;
     backdrop-filter: blur(16px);
+}
+
+#detail-toast[style*="opacity: 1"],
+#detail-toast.show {
+    pointer-events: auto;
 }
 
 #detail-toast a {
@@ -562,14 +568,13 @@ body::after {
    LUXURY MOBILE BOTTOM NAVIGATION BAR (Full Width Edge-to-Edge)
 ========================================================= */
 .mobile-bottom-dock {
-    display: none;
+    display: flex;
     position: fixed;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    transform: none !important;
     height: calc(58px + env(safe-area-inset-bottom, 0px));
     background: rgba(8, 8, 10, 0.97) !important;
     backdrop-filter: blur(24px) saturate(180%);
@@ -586,6 +591,13 @@ body::after {
     align-items: center;
     justify-content: space-around;
     margin: 0 !important;
+    transition: transform 0.35s var(--ease-luxury, cubic-bezier(0.16, 1, 0.3, 1)), opacity 0.35s ease;
+}
+
+@media (min-width: 992px) {
+    .mobile-bottom-dock {
+        display: none !important;
+    }
 }
 
 .dock-item {
@@ -662,8 +674,8 @@ body::after {
     box-shadow: 0 0 8px rgba(239, 68, 68, 0.85);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 991px) {
     body {
         padding: 95px 14px calc(70px + env(safe-area-inset-bottom, 0px));
     }
